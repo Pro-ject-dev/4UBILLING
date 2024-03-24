@@ -31,6 +31,8 @@ Partial Class Form1
         AddProductsToolStripMenuItem = New ToolStripMenuItem()
         UpdateProductsToolStripMenuItem = New ToolStripMenuItem()
         ReportsToolStripMenuItem = New ToolStripMenuItem()
+        SalesReportToolStripMenuItem = New ToolStripMenuItem()
+        StocksReportToolStripMenuItem = New ToolStripMenuItem()
         ExitToolStripMenuItem1 = New ToolStripMenuItem()
         ExitToolStripMenuItem2 = New ToolStripMenuItem()
         Panel1 = New Panel()
@@ -96,9 +98,20 @@ Partial Class Form1
         UpdateProductsToolStripMenuItem.Text = "Update Products"' 
         ' ReportsToolStripMenuItem
         ' 
+        ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesReportToolStripMenuItem, StocksReportToolStripMenuItem})
         ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         ReportsToolStripMenuItem.Size = New Size(89, 29)
         ReportsToolStripMenuItem.Text = "Reports"' 
+        ' SalesReportToolStripMenuItem
+        ' 
+        SalesReportToolStripMenuItem.Name = "SalesReportToolStripMenuItem"
+        SalesReportToolStripMenuItem.Size = New Size(270, 34)
+        SalesReportToolStripMenuItem.Text = "Sales Report"' 
+        ' StocksReportToolStripMenuItem
+        ' 
+        StocksReportToolStripMenuItem.Name = "StocksReportToolStripMenuItem"
+        StocksReportToolStripMenuItem.Size = New Size(270, 34)
+        StocksReportToolStripMenuItem.Text = "Stocks Report"' 
         ' ExitToolStripMenuItem1
         ' 
         ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
@@ -249,4 +262,6 @@ Partial Class Form1
     Friend WithEvents Label6 As Label
     Friend WithEvents AddProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateProductsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SalesReportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StocksReportToolStripMenuItem As ToolStripMenuItem
 End Class

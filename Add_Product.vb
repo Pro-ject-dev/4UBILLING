@@ -145,7 +145,7 @@ Public Class Add_Product
             Else
                 Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
                 If state Then
-                    Dim insertquery As String = "insert into products (Cat_id,Product_name,Quantity,Price,Barcode,Brand_id,Status )values((select Cat_id from Category where Category=@value1),@value2,@value3,@value4,@value5,(select brand_id from Brands where Brand=@value6),'1')"
+                    Dim insertquery As String = "insert into products (Cat_id,Product_name,Quantity,Price,Barcode,Brand_id,Status,date )values((select Cat_id from Category where Category=@value1),@value2,@value3,@value4,@value5,(select brand_id from Brands where Brand=@value6),'1',CAST(GETDATE() AS DATE))"
                     Dim valuesToInsert As New Dictionary(Of String, Object)
                     valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
                     valuesToInsert.Add("@value2", TextBox2.Text)

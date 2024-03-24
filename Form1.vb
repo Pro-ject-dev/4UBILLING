@@ -25,4 +25,19 @@ Public Class Form1
         frm.MdiParent = Me
 
     End Sub
+
+
+
+    Private Sub SalesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReportToolStripMenuItem.Click
+        Dim frm = salesreport
+        frm.Show()
+        frm.MdiParent = Me
+
+    End Sub
+
+    Private Sub StocksReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StocksReportToolStripMenuItem.Click
+        Dim frm = stock_report
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
 End Class

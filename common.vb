@@ -15,8 +15,9 @@ Module common
     Public update_quantity As String = ""
     Public update_barcode As String = ""
     Public status As String = ""
+    Public stock_query As String = ""
+    Public sales_query As String = ""
     Public connectionString As String = "Data Source=vasu\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
         Try
             Using connection As New SqlConnection(connectionString)
@@ -93,6 +94,22 @@ Module common
         End Try
 
         Return dataTable
+    End Function
+
+
+    Function ModifyColumnNames(ByVal query As String) As String
+        Dim columnMappings As New Dictionary(Of String, String)()
+        columnMappings.Add("'Product ID'", "'product_id'")
+        columnMappings.Add("'Created Date'", "'date'")
+        columnMappings.Add("'Product Name'", "'product_name'")
+        columnMappings.Add("'Category'", "'cat_id'")
+        columnMappings.Add("'Brand Name'", "'brand_id'")
+
+        For Each kvp As KeyValuePair(Of String, String) In columnMappings
+            query = query.Replace(kvp.Key, kvp.Value)
+        Next
+
+        Return query
     End Function
 
 
