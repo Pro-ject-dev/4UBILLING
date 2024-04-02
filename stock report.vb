@@ -3,15 +3,17 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class stock_report
     Public query As String
+    Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        load_data()
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
         ComboBox4.Items.Add("")
         Add_list("select product_name from products where status='1'", ComboBox4, "product_name")
         Add_list("select category from category where status = '1' ", ComboBox2, "category")
         Add_list("select brand from brands where status = '1' ", ComboBox3, "brand")
+        DataGridView1.ClearSelection()
+
     End Sub
 
 
@@ -38,7 +40,7 @@ Public Class stock_report
             query += "order by Products.Product_id"
         End If
 
-        Dim dataTable As DataTable = LoadDataTable(query)
+        dataTable = LoadDataTable(query)
         If dataTable IsNot Nothing Then
             DataGridView1.DataSource = dataTable
             DataGridView1.Columns(0).Width = 140
@@ -95,9 +97,14 @@ Public Class stock_report
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        stock_query = ModifyColumnNames(query)
-        Dim frm = New stock_print
-        frm.ShowDialog()
-        frm.MdiParent = Form1
+        If dataTable.Rows.Count = 0 Then
+            MsgBox("Please Select Any of the Fields !")
+        Else
+
+            stock_query = ModifyColumnNames(query)
+            Dim frm = New stock_print
+            frm.ShowDialog()
+            frm.MdiParent = admin_panel
+        End If
     End Sub
 End Class

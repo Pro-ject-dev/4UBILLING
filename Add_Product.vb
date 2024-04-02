@@ -20,7 +20,7 @@ Public Class Add_Product
         common.status = "brand"
         Dim frm = New Add_dialogue
         frm.Show()
-        frm.MdiParent = Form1
+        frm.MdiParent = admin_panel
 
     End Sub
 
@@ -28,7 +28,7 @@ Public Class Add_Product
         common.status = "category"
         Dim frm = New Add_dialogue
         frm.Show()
-        frm.MdiParent = Form1
+        frm.MdiParent = admin_panel
 
 
     End Sub

@@ -17,6 +17,7 @@ Module common
     Public status As String = ""
     Public stock_query As String = ""
     Public sales_query As String = ""
+    Public UserId As Int32 = 1
     Public connectionString As String = "Data Source=vasu\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
         Try
@@ -165,5 +166,301 @@ Module common
         Return count
     End Function
 
+    Public Function GetSuggestions(searchText As String, query As String) As AutoCompleteStringCollection
+        Dim suggestions As New AutoCompleteStringCollection
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Dim cmd As New SqlCommand(query, connection)
+            cmd.Parameters.AddWithValue("@searchText", searchText)
+            Using reader As SqlDataReader = cmd.ExecuteReader()
+                While reader.Read()
+                    suggestions.Add(reader.GetString(0))
+                End While
+            End Using
+        End Using
 
-End Module
+        Return suggestions
+    End Function
+
+
+
+    Public Function getLeaderMonth(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Dim query As String = "EXECUTE leaderMonth @Year = @Year, @Month = @Month"
+
+                Using connection As New SqlConnection(connectionString)
+                    Using command As New SqlCommand(query, connection)
+                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
+                        command.Parameters.AddWithValue("@Month", parameters.GetValueOrDefault("@month"))
+
+                        connection.Open()
+
+                        Dim reader As SqlDataReader = command.ExecuteReader()
+
+                    If reader.HasRows Then
+                        While reader.Read()
+                            Dim totalCost As Integer = reader.GetInt32(0)
+                            Dim customerName As String = reader.GetString(1)
+                            Dim place As String = reader.GetString(2)
+                            returnDict.Add("custName", customerName)
+                            returnDict.Add("custPlace", place)
+                            returnDict.Add("custCost", totalCost)
+
+                        End While
+                    Else
+                        MsgBox("No date found on your preference")
+
+                        returnDict.Add("custName", 0)
+                        returnDict.Add("custPlace", 0)
+                        returnDict.Add("custCost", 0)
+                    End If
+
+                    reader.Close()
+                    End Using
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+
+        Public Function getLeaderYear(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Dim query As String = "EXECUTE leaderYear @Year = @Year"
+
+                Using connection As New SqlConnection(connectionString)
+                    Using command As New SqlCommand(query, connection)
+                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
+
+                        connection.Open()
+
+                        Dim reader As SqlDataReader = command.ExecuteReader()
+
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim totalCost As Integer = reader.GetInt32(0)
+                                Dim customerName As String = reader.GetString(1)
+                                Dim place As String = reader.GetString(2)
+                                returnDict.Add("custName", customerName)
+                                returnDict.Add("custPlace", place)
+                                returnDict.Add("custCost", totalCost)
+
+                            End While
+                        Else
+                            returnDict.Add("custName", 0)
+                            returnDict.Add("custPlace", 0)
+                            returnDict.Add("custCost", 0)
+                            MsgBox("No date found on your preference")
+                        End If
+
+                        reader.Close()
+                    End Using
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+
+        Public Function getProductMonth(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Dim query As String = "EXECUTE sellingMonth @year = @Year, @month = @Month"
+
+                Using connection As New SqlConnection(connectionString)
+                    Using command As New SqlCommand(query, connection)
+                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
+                        command.Parameters.AddWithValue("@Month", parameters.GetValueOrDefault("@month"))
+
+                        connection.Open()
+
+                        Dim reader As SqlDataReader = command.ExecuteReader()
+
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim productCost As Integer = reader.GetInt32(1)
+                                Dim productName As String = reader.GetString(0)
+                                Dim productQty As String = reader.GetInt32(2)
+                                returnDict.Add("productName", productName)
+                                returnDict.Add("productQty", productQty)
+                                returnDict.Add("productCost", productCost)
+
+                            End While
+                        Else
+                            returnDict.Add("productName", 0)
+                            returnDict.Add("productQty", 0)
+                            returnDict.Add("productCost", 0)
+                            MsgBox("No date found on your preference")
+                        End If
+
+                        reader.Close()
+                    End Using
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+
+        Public Function getProductYear(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Dim query As String = "EXECUTE sellingYear @year = @Year"
+
+                Using connection As New SqlConnection(connectionString)
+                    Using command As New SqlCommand(query, connection)
+                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
+
+                        connection.Open()
+
+                        Dim reader As SqlDataReader = command.ExecuteReader()
+
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim productCost As Integer = reader.GetInt32(1)
+                                Dim productName As String = reader.GetString(0)
+                                Dim productQty As String = reader.GetInt32(2)
+                                returnDict.Add("productName", productName)
+                                returnDict.Add("productQty", productQty)
+                                returnDict.Add("productCost", productCost)
+
+                            End While
+                        Else
+                            returnDict.Add("productName", 0)
+                            returnDict.Add("productQty", 0)
+                            returnDict.Add("productCost", 0)
+                            MsgBox("No date found on your preference")
+                        End If
+
+                        reader.Close()
+                    End Using
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+
+        Public Function getStockList(queryStockList As String) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Using conn As SqlConnection = New SqlConnection(connectionString)
+                    Using Command As SqlCommand = New SqlCommand(queryStockList, conn)
+                        conn.Open()
+                        Dim reader As SqlDataReader = Command.ExecuteReader()
+                        If reader.HasRows Then
+                            Dim i As Integer = 1
+                            While reader.Read()
+                                Dim productName As String = reader.GetString(0)
+                                Dim productQty As String = reader.GetString(1)
+                                returnDict.Add("prd" + (i.ToString()), productName)
+                                returnDict.Add("qty" + (i.ToString()), productQty)
+                                i += 1
+                            End While
+                        Else
+                            Dim i As Integer = 1
+                            While i < 11
+                                returnDict.Add("prd" + (i.ToString()), 0)
+                                returnDict.Add("qty" + (i.ToString()), 0)
+                                i += 1
+                            End While
+                        End If
+                    End Using
+                    conn.Close()
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+
+
+        Public Function getSalesMonth(queryMonthSales As String, queryTotalSales As String, parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Using conn As SqlConnection = New SqlConnection(connectionString)
+                    conn.Open()
+                    Using Command As SqlCommand = New SqlCommand(queryMonthSales, conn)
+                        Command.Parameters.AddWithValue("@month", parameters.GetValueOrDefault("@month"))
+                        Command.Parameters.AddWithValue("@year", parameters.GetValueOrDefault("@year"))
+                        Dim reader As SqlDataReader = Command.ExecuteReader()
+                        Dim monthCost As Integer = 0
+                        If reader.HasRows Then
+                            reader.Read()
+                            monthCost = reader.GetInt32(0)
+                            returnDict.Add("monthCost", monthCost)
+                        Else
+                            returnDict.Add("monthCost", 2)
+                        End If
+                        conn.Close()
+                    End Using
+                    conn.Open()
+                    Using Command As SqlCommand = New SqlCommand(queryTotalSales, conn)
+                        Dim reader As SqlDataReader = Command.ExecuteReader()
+                        Dim totalCost As Integer = 0
+                        If reader.HasRows Then
+                            reader.Read()
+                            totalCost = reader.GetInt32(0)
+                            returnDict.Add("totalCost", totalCost)
+                        Else
+                            returnDict.Add("totalCost", 2)
+                        End If
+                    End Using
+                    conn.Close()
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+        Public Function getSalesYear(queryYearSales As String, queryTotalSales As String, parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
+            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            Try
+                Using conn As SqlConnection = New SqlConnection(connectionString)
+                    conn.Open()
+                    Using Command As SqlCommand = New SqlCommand(queryYearSales, conn)
+                        Command.Parameters.AddWithValue("@year", parameters.GetValueOrDefault("@year"))
+                        Dim reader As SqlDataReader = Command.ExecuteReader()
+                        Dim YearCost As Integer = 0
+                        If reader.HasRows Then
+                            reader.Read()
+                            YearCost = reader.GetInt32(0)
+                            returnDict.Add("yearCost", YearCost)
+                        Else
+                            returnDict.Add("yearCost", 0)
+                        End If
+                        conn.Close()
+                    End Using
+                    conn.Open()
+                    Using Command As SqlCommand = New SqlCommand(queryTotalSales, conn)
+                        Dim reader As SqlDataReader = Command.ExecuteReader()
+                        Dim totalCost As Integer = 0
+                        If reader.HasRows Then
+                            reader.Read()
+                            totalCost = reader.GetInt32(0)
+                            returnDict.Add("totalCost", totalCost)
+                        Else
+                            returnDict.Add("totalCost", 0)
+                        End If
+                    End Using
+                    conn.Close()
+                End Using
+                Return returnDict
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+                Return returnDict
+            End Try
+        End Function
+    End Module
+
+
+
+

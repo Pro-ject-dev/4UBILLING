@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class admin_panel
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -58,70 +58,70 @@ Partial Class Form1
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1924, 33)
         MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1"' 
+        MenuStrip1.Text = "MenuStrip1" ' 
         ' HomeToolStripMenuItem
         ' 
         HomeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DashboardToolStripMenuItem, ExitToolStripMenuItem})
         HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
         HomeToolStripMenuItem.Size = New Size(77, 29)
-        HomeToolStripMenuItem.Text = "Home"' 
+        HomeToolStripMenuItem.Text = "Home" ' 
         ' DashboardToolStripMenuItem
         ' 
         DashboardToolStripMenuItem.Name = "DashboardToolStripMenuItem"
-        DashboardToolStripMenuItem.Size = New Size(202, 34)
-        DashboardToolStripMenuItem.Text = "Dashboard"' 
+        DashboardToolStripMenuItem.Size = New Size(270, 34)
+        DashboardToolStripMenuItem.Text = "Dashboard" ' 
         ' ExitToolStripMenuItem
         ' 
         ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        ExitToolStripMenuItem.Size = New Size(202, 34)
-        ExitToolStripMenuItem.Text = "Exit"' 
+        ExitToolStripMenuItem.Size = New Size(270, 34)
+        ExitToolStripMenuItem.Text = "Exit" ' 
         ' BillingToolStripMenuItem
         ' 
         BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
         BillingToolStripMenuItem.Size = New Size(75, 29)
-        BillingToolStripMenuItem.Text = "Billing"' 
+        BillingToolStripMenuItem.Text = "Billing" ' 
         ' StockManagementToolStripMenuItem
         ' 
         StockManagementToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddProductsToolStripMenuItem, UpdateProductsToolStripMenuItem})
         StockManagementToolStripMenuItem.Name = "StockManagementToolStripMenuItem"
         StockManagementToolStripMenuItem.Size = New Size(181, 29)
-        StockManagementToolStripMenuItem.Text = "Stock Management"' 
+        StockManagementToolStripMenuItem.Text = "Stock Management" ' 
         ' AddProductsToolStripMenuItem
         ' 
         AddProductsToolStripMenuItem.Name = "AddProductsToolStripMenuItem"
         AddProductsToolStripMenuItem.Size = New Size(247, 34)
-        AddProductsToolStripMenuItem.Text = "Add Products"' 
+        AddProductsToolStripMenuItem.Text = "Add Products" ' 
         ' UpdateProductsToolStripMenuItem
         ' 
         UpdateProductsToolStripMenuItem.Name = "UpdateProductsToolStripMenuItem"
         UpdateProductsToolStripMenuItem.Size = New Size(247, 34)
-        UpdateProductsToolStripMenuItem.Text = "Update Products"' 
+        UpdateProductsToolStripMenuItem.Text = "Update Products" ' 
         ' ReportsToolStripMenuItem
         ' 
         ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesReportToolStripMenuItem, StocksReportToolStripMenuItem})
         ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         ReportsToolStripMenuItem.Size = New Size(89, 29)
-        ReportsToolStripMenuItem.Text = "Reports"' 
+        ReportsToolStripMenuItem.Text = "Reports" ' 
         ' SalesReportToolStripMenuItem
         ' 
         SalesReportToolStripMenuItem.Name = "SalesReportToolStripMenuItem"
-        SalesReportToolStripMenuItem.Size = New Size(270, 34)
-        SalesReportToolStripMenuItem.Text = "Sales Report"' 
+        SalesReportToolStripMenuItem.Size = New Size(223, 34)
+        SalesReportToolStripMenuItem.Text = "Sales Report" ' 
         ' StocksReportToolStripMenuItem
         ' 
         StocksReportToolStripMenuItem.Name = "StocksReportToolStripMenuItem"
-        StocksReportToolStripMenuItem.Size = New Size(270, 34)
-        StocksReportToolStripMenuItem.Text = "Stocks Report"' 
+        StocksReportToolStripMenuItem.Size = New Size(223, 34)
+        StocksReportToolStripMenuItem.Text = "Stocks Report" ' 
         ' ExitToolStripMenuItem1
         ' 
         ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
         ExitToolStripMenuItem1.Size = New Size(93, 29)
-        ExitToolStripMenuItem1.Text = "Backups"' 
+        ExitToolStripMenuItem1.Text = "Backups" ' 
         ' ExitToolStripMenuItem2
         ' 
         ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2"
         ExitToolStripMenuItem2.Size = New Size(158, 29)
-        ExitToolStripMenuItem2.Text = "Barcode Printing"' 
+        ExitToolStripMenuItem2.Text = "Barcode Printing" ' 
         ' Panel1
         ' 
         Panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink
@@ -149,7 +149,7 @@ Partial Class Form1
         Label9.Name = "Label9"
         Label9.Size = New Size(246, 27)
         Label9.TabIndex = 8
-        Label9.Text = "4U FASHIONS READYMADES"' 
+        Label9.Text = "4U FASHIONS READYMADES" ' 
         ' Label7
         ' 
         Label7.AutoSize = True
@@ -159,7 +159,7 @@ Partial Class Form1
         Label7.Name = "Label7"
         Label7.Size = New Size(91, 27)
         Label7.TabIndex = 7
-        Label7.Text = "10:47 AM"' 
+        Label7.Text = "10:47 AM" ' 
         ' Label8
         ' 
         Label8.AutoSize = True
@@ -167,7 +167,7 @@ Partial Class Form1
         Label8.Name = "Label8"
         Label8.Size = New Size(59, 25)
         Label8.TabIndex = 6
-        Label8.Text = "Time :"' 
+        Label8.Text = "Time :" ' 
         ' Label5
         ' 
         Label5.AutoSize = True
@@ -177,7 +177,7 @@ Partial Class Form1
         Label5.Name = "Label5"
         Label5.Size = New Size(108, 27)
         Label5.TabIndex = 5
-        Label5.Text = "07-03-2024"' 
+        Label5.Text = "07-03-2024" ' 
         ' Label6
         ' 
         Label6.AutoSize = True
@@ -185,7 +185,7 @@ Partial Class Form1
         Label6.Name = "Label6"
         Label6.Size = New Size(58, 25)
         Label6.TabIndex = 4
-        Label6.Text = "Date :"' 
+        Label6.Text = "Date :" ' 
         ' Label3
         ' 
         Label3.AutoSize = True
@@ -195,7 +195,7 @@ Partial Class Form1
         Label3.Name = "Label3"
         Label3.Size = New Size(67, 27)
         Label3.TabIndex = 3
-        Label3.Text = "Admin"' 
+        Label3.Text = "Admin" ' 
         ' Label4
         ' 
         Label4.AutoSize = True
@@ -203,7 +203,7 @@ Partial Class Form1
         Label4.Name = "Label4"
         Label4.Size = New Size(55, 25)
         Label4.TabIndex = 2
-        Label4.Text = "Role :"' 
+        Label4.Text = "Role :" ' 
         ' Label2
         ' 
         Label2.AutoSize = True
@@ -213,7 +213,7 @@ Partial Class Form1
         Label2.Name = "Label2"
         Label2.Size = New Size(117, 27)
         Label2.TabIndex = 1
-        Label2.Text = "Vasudevan N"' 
+        Label2.Text = "Vasudevan N" ' 
         ' Label1
         ' 
         Label1.AutoSize = True
@@ -221,17 +221,17 @@ Partial Class Form1
         Label1.Name = "Label1"
         Label1.Size = New Size(56, 25)
         Label1.TabIndex = 0
-        Label1.Text = "User :"' 
-        ' Form1
+        Label1.Text = "User :" ' 
+        ' admin_panel
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.AppWorkspace
         ClientSize = New Size(1924, 1040)
         Controls.Add(Panel1)
         Controls.Add(MenuStrip1)
         IsMdiContainer = True
-        Name = "Form1"
+        Name = "admin_panel"
         Text = "4U Fashions - Billing Management Application"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

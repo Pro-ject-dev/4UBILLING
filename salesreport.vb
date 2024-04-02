@@ -1,53 +1,79 @@
-﻿Imports System.Security.Cryptography
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
+Imports System.Security.Cryptography
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class salesreport
     Public query As String
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+        pro_filter.Checked = True
+        cust_filter.Checked = True
+        date_filter.Checked = True
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
         ComboBox4.Items.Add("")
         Add_list("select product_name from products where status='1'", ComboBox4, "product_name")
         Add_list("select category from category where status = '1' ", ComboBox2, "category")
         Add_list("select brand from brands where status = '1' ", ComboBox3, "brand")
+        load_data()
     End Sub
 
 
     Public Sub load_data()
-        query = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name' , Quantity , Price, Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.status='1'"
-        If ComboBox2.SelectedItem <> "" Then
-            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' )"
-        End If
-        If ComboBox3.SelectedItem <> "" Then
-            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "' )"
-        End If
-        If ComboBox4.SelectedItem <> "" Then
-            query += " and product_name ='" + ComboBox4.SelectedItem + "'"
+        query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Bill No.', cus.customername As 'Customer Name', cus.mobileno As 'Mobile No.',p.product_name As 'Product Name', b.quantity As ' Quantity', b.price 'Price', billed_by As 'Billed By' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
+        Dim st_dt = DateTimePicker1.Value.ToString.Split(" ")(0).Split("/")
+        Dim end_dt = DateTimePicker2.Value.ToString.Split(" ")(0).Split("/")
+        Dim ac_st_dt = st_dt(2) & "-" & st_dt(0) & "-" & st_dt(1)
+        Dim ac_end_dt = end_dt(2) & "-" & end_dt(0) & "-" & end_dt(1)
+        If date_filter.Checked = True Then
+            query += " and b.date between '" + ac_st_dt.ToString + "' and '" + ac_end_dt.ToString + "'"
         End If
 
-        If Len(ComboBox2.SelectedItem) Or Len(ComboBox3.SelectedItem) <> 0 Or Len(ComboBox4.SelectedItem) <> 0 Then
-            Dim dataTable As DataTable = LoadDataTable(query)
-            If dataTable IsNot Nothing Then
-                DataGridView1.DataSource = dataTable
-                DataGridView1.Columns(0).Width = 180
-                DataGridView1.Columns(1).Width = 330
-                DataGridView1.Columns(2).Width = 300
-                DataGridView1.Columns(3).Width = 200
-                DataGridView1.Columns(4).Width = 100
-                DataGridView1.Columns(5).Width = 213
-                DataGridView1.Columns(6).Visible = False
-                DataGridView1.ClearSelection()
-                DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
-                DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-                DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-
-            Else
+        If pro_filter.Checked = True Then
+            If ComboBox2.SelectedItem <> "" Then
+                query += " and p.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' )"
             End If
-        Else
-            DataGridView1.DataSource = ""
+            If ComboBox3.SelectedItem <> "" Then
+                query += " and p.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "' )"
+            End If
+            If ComboBox4.SelectedItem <> "" Then
+                query += " and p.product_name ='" + ComboBox4.SelectedItem + "'"
+            End If
         End If
+        If cust_filter.Checked = True Then
+            If TextBox1.Text <> "" Then
+
+                query += " and cus.mobileno Like '" + TextBox1.Text + "%' "
+
+            End If
+
+            If TextBox2.Text <> "" Then
+                query += " and b.billing_no Like '" + TextBox2.Text + "%' "
+            End If
+        End If
+        query += "order by b.billing_no"
+
+
+
+        Dim dataTable As DataTable = LoadDataTable(query)
+        If dataTable IsNot Nothing Then
+            DataGridView1.DataSource = dataTable
+            DataGridView1.Columns(0).Width = 180
+            DataGridView1.Columns(1).Width = 180
+            DataGridView1.Columns(2).Width = 180
+            DataGridView1.Columns(3).Width = 180
+            DataGridView1.Columns(4).Width = 180
+            DataGridView1.Columns(5).Width = 180
+            DataGridView1.Columns(6).Width = 180
+            DataGridView1.ClearSelection()
+            DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
+            DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+            DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+
+        Else
+        End If
+
 
     End Sub
 
@@ -60,6 +86,14 @@ Public Class salesreport
     End Sub
 
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+        load_data()
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        load_data()
+    End Sub
+
+    Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
         load_data()
     End Sub
 
@@ -76,25 +110,66 @@ Public Class salesreport
         End If
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
 
-        Dim selectedRow As DataGridViewRow = DataGridView1.CurrentRow
-        update_productid = selectedRow.Cells(0).Value.ToString
-        common.update_product = selectedRow.Cells(1).Value.ToString
-        update_quantity = selectedRow.Cells(4).Value.ToString
-        update_category = selectedRow.Cells(2).Value.ToString
-        update_brand = selectedRow.Cells(3).Value.ToString
-        update_barcode = selectedRow.Cells(6).Value.ToString
-        update_price = selectedRow.Cells(5).Value.ToString
-        common.update = "1"
-        Dim frm = New Add_Product
-        frm.ShowDialog()
-        frm.MdiParent = Form1
 
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+        load_data()
+
+        Dim query = "SELECT billing_no FROM billing WHERE billing_no LIKE @searchText + '%'"
+        TextBox2.AutoCompleteCustomSource = GetSuggestions(TextBox2.Text, query)
+        TextBox2.AutoCompleteMode = AutoCompleteMode.Suggest
+        TextBox2.AutoCompleteSource = AutoCompleteSource.CustomSource
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        load_data()
+        Dim query = "SELECT mobileno FROM customer WHERE mobileno LIKE @searchText + '%'"
+        TextBox1.AutoCompleteCustomSource = GetSuggestions(TextBox1.Text, query)
+        TextBox1.AutoCompleteMode = AutoCompleteMode.Suggest
+        TextBox1.AutoCompleteSource = AutoCompleteSource.CustomSource
+    End Sub
+
+    Private Sub date_filter_CheckedChanged(sender As Object, e As EventArgs) Handles date_filter.CheckedChanged
+        If date_filter.Checked <> True Then
+            DateTimePicker1.Enabled = False
+            DateTimePicker2.Enabled = False
+        Else
+            DateTimePicker1.Enabled = True
+            DateTimePicker2.Enabled = True
+        End If
+        load_data()
+    End Sub
+
+    Private Sub cust_filter_CheckedChanged(sender As Object, e As EventArgs) Handles cust_filter.CheckedChanged
+        If cust_filter.Checked <> True Then
+            TextBox1.Enabled = False
+            TextBox2.Enabled = False
+        Else
+            TextBox1.Enabled = True
+            TextBox2.Enabled = True
+        End If
+        load_data()
+    End Sub
+
+    Private Sub pro_filter_CheckedChanged(sender As Object, e As EventArgs) Handles pro_filter.CheckedChanged
+        If pro_filter.Checked <> True Then
+            ComboBox2.Enabled = False
+            ComboBox3.Enabled = False
+            ComboBox4.Enabled = False
+        Else
+            ComboBox2.Enabled = True
+            ComboBox3.Enabled = True
+            ComboBox4.Enabled = True
+        End If
+        load_data()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        sales_query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Billing_no', cus.customername As 'ref_id', cus.mobileno As 'Customer_id',p.product_name As 'Product_id', b.quantity As 'Quantity', b.price 'Price',b.total As 'Total', billed_by As 'Billed_by' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
+        Dim frm = New sales_print
+        frm.ShowDialog()
 
     End Sub
 End Class

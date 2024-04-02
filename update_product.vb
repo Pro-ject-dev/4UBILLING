@@ -96,7 +96,7 @@ Public Class update_product
         common.update = "1"
         Dim frm = New Add_Product
         frm.ShowDialog()
-        frm.MdiParent = Form1
+        frm.MdiParent = admin_panel
 
     End Sub
 

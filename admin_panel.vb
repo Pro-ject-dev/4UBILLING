@@ -1,6 +1,8 @@
 ﻿
 
-Public Class Form1
+Imports System.Security.Cryptography
+
+Public Class admin_panel
     Private Sub AddProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddProductsToolStripMenuItem.Click
         Dim frm = Add_Product
         frm.Show()
@@ -37,6 +39,23 @@ Public Class Form1
 
     Private Sub StocksReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StocksReportToolStripMenuItem.Click
         Dim frm = stock_report
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
+
+    Private Sub BillingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BillingToolStripMenuItem.Click
+        Dim frm = New BILLING
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
+
+    Private Sub admin_panel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+    End Sub
+
+    Private Sub DashboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DashboardToolStripMenuItem.Click
+        Dim frm = New Dashboard
         frm.Show()
         frm.MdiParent = Me
     End Sub

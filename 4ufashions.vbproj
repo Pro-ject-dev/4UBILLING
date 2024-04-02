@@ -41,10 +41,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="dataaas.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dataaas.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Dataset.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Dataset1.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Dataset1.xsd</DependentUpon>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
@@ -55,11 +65,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="_4ufashionDataSet1.Designer.vb">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>_4ufashionDataSet1.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -72,17 +77,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="dataaas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dataaas.Designer.vb</LastGenOutput>
+    </None>
     <None Update="Dataset.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Dataset.Designer.vb</LastGenOutput>
     </None>
+    <None Update="Dataset1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Dataset1.Designer.vb</LastGenOutput>
+    </None>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
-    </None>
-    <None Update="_4ufashionDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_4ufashionDataSet1.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
 

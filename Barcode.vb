@@ -20,7 +20,6 @@
 
 
     Private Sub ButtonColumn_Click(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-
         Dim clickedRowIndex As Integer = e.RowIndex
         Dim barcodee = DataGridView1.CurrentRow.Cells(5).Value()
         PictureBox1.Image = generate(barcodee)
