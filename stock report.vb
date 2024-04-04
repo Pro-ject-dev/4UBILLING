@@ -101,7 +101,7 @@ Public Class stock_report
             MsgBox("Please Select Any of the Fields !")
         Else
 
-            stock_query = ModifyColumnNames(query)
+            stock_query = ModifystockColumnNames(query)
             Dim frm = New stock_print
             frm.ShowDialog()
             frm.MdiParent = admin_panel

@@ -1004,7 +1004,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Sum(Fields!Total.Value, "dataset")</Value>
+                  <Value>=Sum(Convert.ToDouble(Fields!Total.Value), "dataset")</Value>
                   <Style>
                     <FontFamily>Bahnschrift</FontFamily>
                   </Style>

@@ -19,7 +19,7 @@ Public Class stock_print
             End Using
             With Me.ReportViewer1.LocalReport
                 .DataSources.Clear()
-                .ReportPath = "C:\Users\Vasudevan.N\source\repos\4ufashions\Report1.rdlc"
+                .ReportPath = "Report1.rdlc"
                 .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dt))
             End With
             Dim ps As New PageSettings()

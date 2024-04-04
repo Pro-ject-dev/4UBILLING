@@ -1,6 +1,7 @@
 ﻿Public Class Barcode
 
     Private Sub Barcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Label1.Text = "Enter the Product  :"
         PictureBox1.Visible = False
         load()
         Dim View_button = New DataGridViewButtonColumn()
@@ -72,7 +73,7 @@
         Dim dataTable As DataTable = LoadDataTable(query)
         DataGridView1.DataSource = dataTable
         DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Purple
-        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Brown
+        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
 
     End Sub

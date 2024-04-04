@@ -50,13 +50,47 @@ Public Class admin_panel
     End Sub
 
     Private Sub admin_panel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim frm = Splash
+        frm.ShowDialog()
+        Dim frm1 = Loginscreen
+        frm1.ShowDialog()
+        User.Text = currentuser
+        role.Text = currentrole
+        Dim time As New Timer()
+        time.Interval = 1000
+        AddHandler time.Tick, AddressOf Timer_Tick
+        time.Start()
+
+        Me.WindowState = FormWindowState.Maximized
+        Dim frm2 = New Dashboardd
+        frm2.Show()
+        frm2.MdiParent = Me
 
 
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DashboardToolStripMenuItem.Click
-        Dim frm = New Dashboard
+        Dim frm = New Dashboardd
         frm.Show()
         frm.MdiParent = Me
     End Sub
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs)
+        Try
+            d_t()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString, "failed!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Function d_t()
+        Dim currentDate As DateTime = DateTime.Now
+        Dim dates = currentDate.ToString("dd-MM-yyyy")
+        Dim time = currentDate.ToString("hh:mm:ss tt")
+        timet.Text = time.ToString
+        datedt.Text = dates
+    End Function
+
+
 End Class

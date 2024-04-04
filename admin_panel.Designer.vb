@@ -37,13 +37,13 @@ Partial Class admin_panel
         ExitToolStripMenuItem2 = New ToolStripMenuItem()
         Panel1 = New Panel()
         Label9 = New Label()
-        Label7 = New Label()
+        timet = New Label()
         Label8 = New Label()
-        Label5 = New Label()
+        datedt = New Label()
         Label6 = New Label()
-        Label3 = New Label()
+        role = New Label()
         Label4 = New Label()
-        Label2 = New Label()
+        User = New Label()
         Label1 = New Label()
         MenuStrip1.SuspendLayout()
         Panel1.SuspendLayout()
@@ -58,82 +58,82 @@ Partial Class admin_panel
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1924, 33)
         MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1" ' 
+        MenuStrip1.Text = "MenuStrip1"' 
         ' HomeToolStripMenuItem
         ' 
         HomeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DashboardToolStripMenuItem, ExitToolStripMenuItem})
         HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
         HomeToolStripMenuItem.Size = New Size(77, 29)
-        HomeToolStripMenuItem.Text = "Home" ' 
+        HomeToolStripMenuItem.Text = "Home"' 
         ' DashboardToolStripMenuItem
         ' 
         DashboardToolStripMenuItem.Name = "DashboardToolStripMenuItem"
-        DashboardToolStripMenuItem.Size = New Size(270, 34)
-        DashboardToolStripMenuItem.Text = "Dashboard" ' 
+        DashboardToolStripMenuItem.Size = New Size(202, 34)
+        DashboardToolStripMenuItem.Text = "Dashboard"' 
         ' ExitToolStripMenuItem
         ' 
         ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        ExitToolStripMenuItem.Size = New Size(270, 34)
-        ExitToolStripMenuItem.Text = "Exit" ' 
+        ExitToolStripMenuItem.Size = New Size(202, 34)
+        ExitToolStripMenuItem.Text = "Exit"' 
         ' BillingToolStripMenuItem
         ' 
         BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
         BillingToolStripMenuItem.Size = New Size(75, 29)
-        BillingToolStripMenuItem.Text = "Billing" ' 
+        BillingToolStripMenuItem.Text = "Billing"' 
         ' StockManagementToolStripMenuItem
         ' 
         StockManagementToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddProductsToolStripMenuItem, UpdateProductsToolStripMenuItem})
         StockManagementToolStripMenuItem.Name = "StockManagementToolStripMenuItem"
         StockManagementToolStripMenuItem.Size = New Size(181, 29)
-        StockManagementToolStripMenuItem.Text = "Stock Management" ' 
+        StockManagementToolStripMenuItem.Text = "Stock Management"' 
         ' AddProductsToolStripMenuItem
         ' 
         AddProductsToolStripMenuItem.Name = "AddProductsToolStripMenuItem"
         AddProductsToolStripMenuItem.Size = New Size(247, 34)
-        AddProductsToolStripMenuItem.Text = "Add Products" ' 
+        AddProductsToolStripMenuItem.Text = "Add Products"' 
         ' UpdateProductsToolStripMenuItem
         ' 
         UpdateProductsToolStripMenuItem.Name = "UpdateProductsToolStripMenuItem"
         UpdateProductsToolStripMenuItem.Size = New Size(247, 34)
-        UpdateProductsToolStripMenuItem.Text = "Update Products" ' 
+        UpdateProductsToolStripMenuItem.Text = "Update Products"' 
         ' ReportsToolStripMenuItem
         ' 
         ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesReportToolStripMenuItem, StocksReportToolStripMenuItem})
         ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         ReportsToolStripMenuItem.Size = New Size(89, 29)
-        ReportsToolStripMenuItem.Text = "Reports" ' 
+        ReportsToolStripMenuItem.Text = "Reports"' 
         ' SalesReportToolStripMenuItem
         ' 
         SalesReportToolStripMenuItem.Name = "SalesReportToolStripMenuItem"
         SalesReportToolStripMenuItem.Size = New Size(223, 34)
-        SalesReportToolStripMenuItem.Text = "Sales Report" ' 
+        SalesReportToolStripMenuItem.Text = "Sales Report"' 
         ' StocksReportToolStripMenuItem
         ' 
         StocksReportToolStripMenuItem.Name = "StocksReportToolStripMenuItem"
         StocksReportToolStripMenuItem.Size = New Size(223, 34)
-        StocksReportToolStripMenuItem.Text = "Stocks Report" ' 
+        StocksReportToolStripMenuItem.Text = "Stocks Report"' 
         ' ExitToolStripMenuItem1
         ' 
         ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
         ExitToolStripMenuItem1.Size = New Size(93, 29)
-        ExitToolStripMenuItem1.Text = "Backups" ' 
+        ExitToolStripMenuItem1.Text = "Backups"' 
         ' ExitToolStripMenuItem2
         ' 
         ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2"
         ExitToolStripMenuItem2.Size = New Size(158, 29)
-        ExitToolStripMenuItem2.Text = "Barcode Printing" ' 
+        ExitToolStripMenuItem2.Text = "Barcode Printing"' 
         ' Panel1
         ' 
         Panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink
         Panel1.BackColor = SystemColors.Control
         Panel1.Controls.Add(Label9)
-        Panel1.Controls.Add(Label7)
+        Panel1.Controls.Add(timet)
         Panel1.Controls.Add(Label8)
-        Panel1.Controls.Add(Label5)
+        Panel1.Controls.Add(datedt)
         Panel1.Controls.Add(Label6)
-        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(role)
         Panel1.Controls.Add(Label4)
-        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(User)
         Panel1.Controls.Add(Label1)
         Panel1.Location = New Point(0, 1005)
         Panel1.Name = "Panel1"
@@ -145,75 +145,83 @@ Partial Class admin_panel
         Label9.AutoSize = True
         Label9.BackColor = Color.White
         Label9.BorderStyle = BorderStyle.Fixed3D
-        Label9.Location = New Point(725, 5)
+        Label9.Location = New Point(856, 5)
         Label9.Name = "Label9"
         Label9.Size = New Size(246, 27)
         Label9.TabIndex = 8
-        Label9.Text = "4U FASHIONS READYMADES" ' 
-        ' Label7
+        Label9.Text = "4U FASHIONS READYMADES"' 
+        ' timet
         ' 
-        Label7.AutoSize = True
-        Label7.BackColor = Color.White
-        Label7.BorderStyle = BorderStyle.Fixed3D
-        Label7.Location = New Point(611, 5)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(91, 27)
-        Label7.TabIndex = 7
-        Label7.Text = "10:47 AM" ' 
+        timet.AutoSize = True
+        timet.BackColor = Color.White
+        timet.BorderStyle = BorderStyle.Fixed3D
+        timet.Location = New Point(705, 5)
+        timet.MaximumSize = New Size(130, 0)
+        timet.MinimumSize = New Size(130, 0)
+        timet.Name = "timet"
+        timet.Size = New Size(130, 27)
+        timet.TabIndex = 7
+        ' 
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(553, 5)
+        Label8.Location = New Point(647, 5)
         Label8.Name = "Label8"
         Label8.Size = New Size(59, 25)
         Label8.TabIndex = 6
-        Label8.Text = "Time :" ' 
-        ' Label5
+        Label8.Text = "Time :"' 
+        ' datedt
         ' 
-        Label5.AutoSize = True
-        Label5.BackColor = Color.White
-        Label5.BorderStyle = BorderStyle.Fixed3D
-        Label5.Location = New Point(416, 6)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(108, 27)
-        Label5.TabIndex = 5
-        Label5.Text = "07-03-2024" ' 
+        datedt.AutoSize = True
+        datedt.BackColor = Color.White
+        datedt.BorderStyle = BorderStyle.Fixed3D
+        datedt.Location = New Point(495, 5)
+        datedt.MaximumSize = New Size(130, 0)
+        datedt.MinimumSize = New Size(130, 0)
+        datedt.Name = "datedt"
+        datedt.Size = New Size(130, 27)
+        datedt.TabIndex = 5
+        ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(358, 6)
+        Label6.Location = New Point(427, 6)
         Label6.Name = "Label6"
         Label6.Size = New Size(58, 25)
         Label6.TabIndex = 4
-        Label6.Text = "Date :" ' 
-        ' Label3
+        Label6.Text = "Date :"' 
+        ' role
         ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.White
-        Label3.BorderStyle = BorderStyle.Fixed3D
-        Label3.Location = New Point(266, 4)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(67, 27)
-        Label3.TabIndex = 3
-        Label3.Text = "Admin" ' 
+        role.AutoSize = True
+        role.BackColor = Color.White
+        role.BorderStyle = BorderStyle.Fixed3D
+        role.Location = New Point(276, 4)
+        role.MaximumSize = New Size(130, 0)
+        role.MinimumSize = New Size(130, 0)
+        role.Name = "role"
+        role.Size = New Size(130, 27)
+        role.TabIndex = 3
+        ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(209, 5)
+        Label4.Location = New Point(219, 5)
         Label4.Name = "Label4"
         Label4.Size = New Size(55, 25)
         Label4.TabIndex = 2
-        Label4.Text = "Role :" ' 
-        ' Label2
+        Label4.Text = "Role :"' 
+        ' User
         ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.White
-        Label2.BorderStyle = BorderStyle.Fixed3D
-        Label2.Location = New Point(69, 3)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(117, 27)
-        Label2.TabIndex = 1
-        Label2.Text = "Vasudevan N" ' 
+        User.AutoSize = True
+        User.BackColor = Color.White
+        User.BorderStyle = BorderStyle.Fixed3D
+        User.Location = New Point(69, 3)
+        User.MaximumSize = New Size(140, 0)
+        User.MinimumSize = New Size(140, 0)
+        User.Name = "User"
+        User.Size = New Size(140, 27)
+        User.TabIndex = 1
+        ' 
         ' Label1
         ' 
         Label1.AutoSize = True
@@ -221,10 +229,10 @@ Partial Class admin_panel
         Label1.Name = "Label1"
         Label1.Size = New Size(56, 25)
         Label1.TabIndex = 0
-        Label1.Text = "User :" ' 
+        Label1.Text = "User :"' 
         ' admin_panel
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.AppWorkspace
         ClientSize = New Size(1924, 1040)
@@ -251,14 +259,14 @@ Partial Class admin_panel
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label2 As Label
+    Friend WithEvents User As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents role As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents timet As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents datedt As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents AddProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateProductsToolStripMenuItem As ToolStripMenuItem

@@ -1,16 +1,5 @@
-﻿Imports System.ComponentModel
-Imports System.ComponentModel.Design
-Imports System.Data.SqlClient
-Imports System.DirectoryServices.ActiveDirectory
-Imports System.Drawing.Design
-Imports System.Net
-Imports System.Net.Sockets
-Imports System.Runtime.CompilerServices
-Imports System.Runtime.Serialization
-Imports System.Windows.Forms.Design
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports MessagingToolkit.Barcode.Client.Results
-Imports ZXing.Client.Result
+﻿Imports System.Data.SqlClient
+
 
 Public Class Add_Product
 
@@ -35,7 +24,7 @@ Public Class Add_Product
 
     Public Sub Add_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If common.update = "1" Then
-            Button2.Location = New Point(12, 400)
+            Button2.Location = New Point(12, 441)
             Button5.Visible = True
 
         End If
@@ -46,21 +35,22 @@ Public Class Add_Product
 
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-
-        Dim query As String = "SELECT barcode FROM products WHERE Product_id = (SELECT MAX(Product_id) FROM products)"
-        Dim dataTable As DataTable = GetTableData(query)
-        If dataTable.Rows.Count > 0 Then
-            Dim firstRow As DataRow = dataTable.Rows(0)
-            Dim value As Object = firstRow(0)
-            Dim code As Integer = Integer.Parse(value)
-            code = code + 1
-            barcode = code.ToString
+        If ComboBox1.Text <> "" And ComboBox2.Text <> "" And ComboBox3.Text <> "" And TextBox2.Text.Trim() <> "" And TextBox3.Text.Trim() <> "" And NumericUpDown1.Value <> 0 Then
+            Dim query As String = "SELECT barcode FROM products WHERE Product_id = (SELECT MAX(Product_id) FROM products)"
+            Dim dataTable As DataTable = GetTableData(query)
+            If dataTable.Rows.Count > 0 Then
+                Dim firstRow As DataRow = dataTable.Rows(0)
+                Dim value As Object = firstRow(0)
+                Dim code As Integer = Integer.Parse(value)
+                code = code + 1
+                barcode = code.ToString
+            Else
+                barcode = "10000001"
+            End If
+            PictureBox1.Image = generate(barcode)
         Else
-            barcode = "10000001"
+            MsgBox("All Fields Are Manditory !")
         End If
-        PictureBox1.Image = generate(barcode)
-
-
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -120,7 +110,7 @@ Public Class Add_Product
                 If state Then
 
 
-                    Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6) WHERE product_id=@value7"
+                    Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1) WHERE product_id=@value7"
 
                     Dim valuesToInsert As New Dictionary(Of String, Object)
                     valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
@@ -130,6 +120,8 @@ Public Class Add_Product
                     valuesToInsert.Add("@value5", update_barcode)
                     valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
                     valuesToInsert.Add("@value7", update_productid)
+                    valuesToInsert.Add("@value8", ComboBox3.SelectedItem)
+
 
                     InsertData(updateQuery, valuesToInsert)
                     common.update = "0"
@@ -143,33 +135,52 @@ Public Class Add_Product
                 End If
 
             Else
-                Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
-                If state Then
-                    Dim insertquery As String = "insert into products (Cat_id,Product_name,Quantity,Price,Barcode,Brand_id,Status,date )values((select Cat_id from Category where Category=@value1),@value2,@value3,@value4,@value5,(select brand_id from Brands where Brand=@value6),'1',CAST(GETDATE() AS DATE))"
-                    Dim valuesToInsert As New Dictionary(Of String, Object)
-                    valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
-                    valuesToInsert.Add("@value2", TextBox2.Text)
-                    valuesToInsert.Add("@value3", NumericUpDown1.Value)
-                    valuesToInsert.Add("@value4", TextBox3.Text)
-                    valuesToInsert.Add("@value5", barcode)
-                    valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
-                    InsertData(insertquery, valuesToInsert)
-                    MsgBox("Product is Added Successful !")
+                If barcode = "" Then
+                    MsgBox("Please Generate the Barcode...")
+
+                Else
+
+
+                    Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
+                    If state Then
+                        Dim price = Double.Parse(TextBox3.Text).ToString("0.00")
+                        Dim insertquery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN " &
+                           "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size) " &
+                           "VALUES ((SELECT Cat_id FROM Category WHERE Category = @value1 AND status = 1), @value2, @value3, @value4, " &
+                           "@value5, (SELECT brand_id FROM Brands WHERE Brand = @value6 AND status = 1), '1', CAST(GETDATE() AS DATE), " &
+                           "(SELECT size_id FROM size WHERE size = @value7 AND status = 1)) END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) END"
+
+                        Dim valuesToInsert As New Dictionary(Of String, Object)
+                        valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
+                        valuesToInsert.Add("@value2", TextBox2.Text.ToUpper)
+                        valuesToInsert.Add("@value3", NumericUpDown1.Value)
+                        valuesToInsert.Add("@value4", price.ToString)
+                        valuesToInsert.Add("@value5", barcode)
+                        valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
+                        valuesToInsert.Add("@value7", ComboBox3.SelectedItem)
+
+
+                        Dim result As Boolean = InsertData(insertquery, valuesToInsert)
+
+                        If result = True Then
+                            MsgBox("Product Added Successfully!")
+                        End If
+
+                    End If
+                    End If
+                    clear()
                 End If
-                clear()
+
             End If
 
 
 
-
-
-
-        End If
     End Sub
 
     Public Sub clear()
         ComboBox1.Items.Clear()
         ComboBox2.Items.Clear()
+        ComboBox3.Items.Clear()
         NumericUpDown1.Value = 0
         TextBox2.Text = ""
         TextBox3.Text = ""
@@ -181,10 +192,13 @@ Public Class Add_Product
     Public Sub loaded()
         Add_list("select * from category  where status='1' order by cat_id", ComboBox1, "category")
         Add_list("select * from brands  where status='1' order by brand_id", ComboBox2, "brand")
+        Add_list("select * from size  where status='1' order by size_id", ComboBox3, "size")
+
         If (common.update = "1") Then
             Button2.Text = "Update Product"
             Me.Text = "Update Products"
             ComboBox1.SelectedItem = update_category
+            ComboBox3.SelectedItem = update_size
             ComboBox2.SelectedItem = update_brand
             TextBox2.Text = common.update_product
             NumericUpDown1.Value = update_quantity
@@ -214,16 +228,11 @@ Public Class Add_Product
             update_product.DataGridView1.DataSource = dataTable
             update_product.DataGridView1.ClearSelection()
         End If
-
-
-
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         If ComboBox1.SelectedItem <> "" Then
-            Dim count As Integer = GetRowCount("Select * From products where cat_id = (select Cat_id From Category where Category=@value1) and status='1'", New SqlParameter("@value1", ComboBox1.SelectedItem))
-            MsgBox(count.ToString)
-
+            Dim count As Integer = GetRowCount("Select * From products where cat_id = (select Cat_id From Category where Category=@value1 and status='1') and status='1'", New SqlParameter("@value1", ComboBox1.SelectedItem))
             If count = 0 Then
                 Dim state As Boolean = ShowConfirmation("Are You Sure to Delete this Category ?")
                 If state Then
@@ -246,9 +255,7 @@ Public Class Add_Product
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If ComboBox2.SelectedItem <> "" Then
-            Dim count As Integer = GetRowCount("Select * From Products where brand_id = (select brand_id From brands where brand=@value1) and status='1'", New SqlParameter("@value1", ComboBox2.SelectedItem))
-
-            MsgBox(count.ToString)
+            Dim count As Integer = GetRowCount("Select * From Products where brand_id = (select brand_id From brands where brand=@value1 and status='1') and status='1'", New SqlParameter("@value1", ComboBox2.SelectedItem))
             If count = 0 Then
                 Dim state As Boolean = ShowConfirmation("Are You Sure to Delete this Brand ?")
                 If state Then
@@ -266,6 +273,57 @@ Public Class Add_Product
         Else
 
             MsgBox("Brand is Not Selected")
+        End If
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        load_product()
+    End Sub
+
+    Public Function load_product()
+        TextBox2.Text = ComboBox2.Text & " " & ComboBox1.Text & " - " & ComboBox3.Text
+    End Function
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        load_product()
+    End Sub
+
+    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+        load_product()
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        common.status = "Size"
+        Dim frm = New Add_dialogue
+        frm.Show()
+        frm.MdiParent = admin_panel
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If ComboBox2.SelectedItem <> "" Then
+            Dim count As Integer = GetRowCount("Select * From Products where size = (select size_id From size where size=@value1 and status='1') and status='1'", New SqlParameter("@value1", ComboBox3.SelectedItem))
+            If count = 0 Then
+                Dim state As Boolean = ShowConfirmation("Are You Sure to Delete this Size ?")
+                If state Then
+                    Dim deleteQuery As String = "UPDATE size Set status=0 where size_id  = (select size_id From size where size=@value1 and status='1')"
+                    Dim valuesToInsert As New Dictionary(Of String, Object)
+                    valuesToInsert.Add("@value1", ComboBox3.SelectedItem)
+                    InsertData(deleteQuery, valuesToInsert)
+                    MsgBox("Size is Deleted Successful !")
+                    ComboBox3.Items.Clear()
+                    Add_list("select * from size where status = '1' order by size_id", ComboBox3, "size")
+                End If
+            Else
+                MsgBox("This Size is Added with Some Products !")
+            End If
+        Else
+
+            MsgBox("Size is Not Selected")
         End If
     End Sub
 End Class

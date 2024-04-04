@@ -19,15 +19,15 @@ Public Class update_product
         load_data()
     End Sub
     Public Sub load_data()
-        query = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name' , Quantity , Price, Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.status='1'"
+        query = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name' , Quantity , Price, Barcode,Size.size from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id INNER JOIN Size ON products.size = Size.Size_id WHERE 1=1 and products.status='1'"
         If ComboBox1.SelectedItem <> "" Then
             query += " and product_id='" + ComboBox1.SelectedItem + "'"
         End If
         If ComboBox2.SelectedItem <> "" Then
-            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' )"
+            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' and status='1' )"
         End If
         If ComboBox3.SelectedItem <> "" Then
-            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "' )"
+            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "' and status='1')"
         End If
         If ComboBox4.SelectedItem <> "" Then
             query += " and product_name ='" + ComboBox4.SelectedItem + "'"
@@ -44,6 +44,7 @@ Public Class update_product
                 DataGridView1.Columns(4).Width = 100
                 DataGridView1.Columns(5).Width = 213
                 DataGridView1.Columns(6).Visible = False
+                DataGridView1.Columns(7).Visible = False
                 DataGridView1.ClearSelection()
                 DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
                 DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
@@ -93,6 +94,9 @@ Public Class update_product
         update_brand = selectedRow.Cells(3).Value.ToString
         update_barcode = selectedRow.Cells(6).Value.ToString
         update_price = selectedRow.Cells(5).Value.ToString
+        update_size = selectedRow.Cells(7).Value.ToString
+        MsgBox(update_size)
+
         common.update = "1"
         Dim frm = New Add_Product
         frm.ShowDialog()

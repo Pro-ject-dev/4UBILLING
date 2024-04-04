@@ -117,4 +117,134 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="totalcustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalcustomer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud-data-storage-rack-concept-glass-cube-cloudscape-digital-metaverse-server-global-network-business-web-database-backup-computer-private-infrastructure-technology" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud-data-storage-rack-concept-glass-cube-cloudscape-digital-metaverse-server-global-network-business-web-database-backup-computer-private-infrastructure-technology.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalproduct" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalproduct.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="decrement" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\decrement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4ufashion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4ufashion.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="topdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\topdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leaderboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leaderboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="man" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\man.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customergrowth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customergrowth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="location" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalbilling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalbilling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thunder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thunder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sellingproduct" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sellingproduct.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="changecostqty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\changecostqty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="increment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\increment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rupee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rupee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalsales" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalsales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4ufashion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4ufashion1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="changecostqty1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\changecostqty1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customergrowth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customergrowth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="decrement1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\decrement1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="four" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\four1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="increment1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\increment1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leaderboard1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leaderboard1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letter-u" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\letter-u1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="location1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\location1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginloadingblue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginloadingblue1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginloadingrose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginloadingrose1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginpage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginpage1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginpassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginpassword1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loginuser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginuser1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="man1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\man1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moustache" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moustache1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rupee1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rupee1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sellingproduct1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sellingproduct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thunder1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thunder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="topdate1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\topdate1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalbilling1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalbilling1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalcustomer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalcustomer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalproduct1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalproduct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="totalsales1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\totalsales1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user (2)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user (2)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

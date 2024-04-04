@@ -19,7 +19,7 @@ Public Class sales_print
             End Using
             With Me.ReportViewer1.LocalReport
                 .DataSources.Clear()
-                .ReportPath = "C:\Users\Vasudevan.N\source\repos\4ufashions\Report2.rdlc"
+                .ReportPath = "Report2.rdlc"
                 .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dataset", dt))
 
 

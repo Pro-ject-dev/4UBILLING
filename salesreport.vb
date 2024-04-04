@@ -5,6 +5,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class salesreport
     Public query As String
+    Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         pro_filter.Checked = True
@@ -21,7 +22,7 @@ Public Class salesreport
 
 
     Public Sub load_data()
-        query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Bill No.', cus.customername As 'Customer Name', cus.mobileno As 'Mobile No.',p.product_name As 'Product Name', b.quantity As ' Quantity', b.price 'Price', billed_by As 'Billed By' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
+        query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Billing No.', cus.customername As 'Customer Name', cus.mobileno As 'Mobile No.',p.product_name As 'Product', b.quantity As 'Quantity', b.price 'Price',b.total As 'Total', billed_by As 'Billed by' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
         Dim st_dt = DateTimePicker1.Value.ToString.Split(" ")(0).Split("/")
         Dim end_dt = DateTimePicker2.Value.ToString.Split(" ")(0).Split("/")
         Dim ac_st_dt = st_dt(2) & "-" & st_dt(0) & "-" & st_dt(1)
@@ -56,7 +57,7 @@ Public Class salesreport
 
 
 
-        Dim dataTable As DataTable = LoadDataTable(query)
+        dataTable = LoadDataTable(query)
         If dataTable IsNot Nothing Then
             DataGridView1.DataSource = dataTable
             DataGridView1.Columns(0).Width = 180
@@ -167,9 +168,13 @@ Public Class salesreport
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        sales_query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Billing_no', cus.customername As 'ref_id', cus.mobileno As 'Customer_id',p.product_name As 'Product_id', b.quantity As 'Quantity', b.price 'Price',b.total As 'Total', billed_by As 'Billed_by' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
-        Dim frm = New sales_print
-        frm.ShowDialog()
+        If dataTable.Rows.Count = 0 Then
+            MsgBox("Please Select Any of the Fields !")
+        Else
+            sales_query = ModifysalesColumnNames(query)
+            Dim frm = New sales_print
+            frm.ShowDialog()
+        End If
 
     End Sub
 End Class

@@ -6,10 +6,13 @@ Imports MessagingToolkit.Barcode
 
 
 Module common
+    Public currentuser As String = ""
+    Public currentrole As String = ""
     Public update As String = "0"
     Public update_productid As String = ""
     Public update_product As String = ""
     Public update_category As String = ""
+    Public update_size As String = ""
     Public update_brand As String = ""
     Public update_price As String = ""
     Public update_quantity As String = ""
@@ -32,7 +35,7 @@ Module common
                 End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
+            MessageBox.Show(ex.Message, "Unable to Add", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -98,13 +101,28 @@ Module common
     End Function
 
 
-    Function ModifyColumnNames(ByVal query As String) As String
+    Function ModifystockColumnNames(ByVal query As String) As String
         Dim columnMappings As New Dictionary(Of String, String)()
         columnMappings.Add("'Product ID'", "'product_id'")
         columnMappings.Add("'Created Date'", "'date'")
         columnMappings.Add("'Product Name'", "'product_name'")
         columnMappings.Add("'Category'", "'cat_id'")
         columnMappings.Add("'Brand Name'", "'brand_id'")
+
+        For Each kvp As KeyValuePair(Of String, String) In columnMappings
+            query = query.Replace(kvp.Key, kvp.Value)
+        Next
+
+        Return query
+    End Function
+
+    Function ModifysalesColumnNames(ByVal query As String) As String
+        Dim columnMappings As New Dictionary(Of String, String)()
+        columnMappings.Add("'Billing No.'", "'Billing_no'")
+        columnMappings.Add("'Customer Name'", "'ref_id'")
+        columnMappings.Add("'Mobile No.'", "'Customer_id'")
+        columnMappings.Add("'Product'", "'Product_id'")
+        columnMappings.Add("'Billed by'", "'Billed_by'")
 
         For Each kvp As KeyValuePair(Of String, String) In columnMappings
             query = query.Replace(kvp.Key, kvp.Value)
@@ -184,282 +202,7 @@ Module common
 
 
 
-    Public Function getLeaderMonth(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Dim query As String = "EXECUTE leaderMonth @Year = @Year, @Month = @Month"
-
-                Using connection As New SqlConnection(connectionString)
-                    Using command As New SqlCommand(query, connection)
-                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
-                        command.Parameters.AddWithValue("@Month", parameters.GetValueOrDefault("@month"))
-
-                        connection.Open()
-
-                        Dim reader As SqlDataReader = command.ExecuteReader()
-
-                    If reader.HasRows Then
-                        While reader.Read()
-                            Dim totalCost As Integer = reader.GetInt32(0)
-                            Dim customerName As String = reader.GetString(1)
-                            Dim place As String = reader.GetString(2)
-                            returnDict.Add("custName", customerName)
-                            returnDict.Add("custPlace", place)
-                            returnDict.Add("custCost", totalCost)
-
-                        End While
-                    Else
-                        MsgBox("No date found on your preference")
-
-                        returnDict.Add("custName", 0)
-                        returnDict.Add("custPlace", 0)
-                        returnDict.Add("custCost", 0)
-                    End If
-
-                    reader.Close()
-                    End Using
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-
-        Public Function getLeaderYear(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Dim query As String = "EXECUTE leaderYear @Year = @Year"
-
-                Using connection As New SqlConnection(connectionString)
-                    Using command As New SqlCommand(query, connection)
-                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
-
-                        connection.Open()
-
-                        Dim reader As SqlDataReader = command.ExecuteReader()
-
-                        If reader.HasRows Then
-                            While reader.Read()
-                                Dim totalCost As Integer = reader.GetInt32(0)
-                                Dim customerName As String = reader.GetString(1)
-                                Dim place As String = reader.GetString(2)
-                                returnDict.Add("custName", customerName)
-                                returnDict.Add("custPlace", place)
-                                returnDict.Add("custCost", totalCost)
-
-                            End While
-                        Else
-                            returnDict.Add("custName", 0)
-                            returnDict.Add("custPlace", 0)
-                            returnDict.Add("custCost", 0)
-                            MsgBox("No date found on your preference")
-                        End If
-
-                        reader.Close()
-                    End Using
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-
-        Public Function getProductMonth(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Dim query As String = "EXECUTE sellingMonth @year = @Year, @month = @Month"
-
-                Using connection As New SqlConnection(connectionString)
-                    Using command As New SqlCommand(query, connection)
-                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
-                        command.Parameters.AddWithValue("@Month", parameters.GetValueOrDefault("@month"))
-
-                        connection.Open()
-
-                        Dim reader As SqlDataReader = command.ExecuteReader()
-
-                        If reader.HasRows Then
-                            While reader.Read()
-                                Dim productCost As Integer = reader.GetInt32(1)
-                                Dim productName As String = reader.GetString(0)
-                                Dim productQty As String = reader.GetInt32(2)
-                                returnDict.Add("productName", productName)
-                                returnDict.Add("productQty", productQty)
-                                returnDict.Add("productCost", productCost)
-
-                            End While
-                        Else
-                            returnDict.Add("productName", 0)
-                            returnDict.Add("productQty", 0)
-                            returnDict.Add("productCost", 0)
-                            MsgBox("No date found on your preference")
-                        End If
-
-                        reader.Close()
-                    End Using
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-
-        Public Function getProductYear(parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Dim query As String = "EXECUTE sellingYear @year = @Year"
-
-                Using connection As New SqlConnection(connectionString)
-                    Using command As New SqlCommand(query, connection)
-                        command.Parameters.AddWithValue("@Year", parameters.GetValueOrDefault("@year"))
-
-                        connection.Open()
-
-                        Dim reader As SqlDataReader = command.ExecuteReader()
-
-                        If reader.HasRows Then
-                            While reader.Read()
-                                Dim productCost As Integer = reader.GetInt32(1)
-                                Dim productName As String = reader.GetString(0)
-                                Dim productQty As String = reader.GetInt32(2)
-                                returnDict.Add("productName", productName)
-                                returnDict.Add("productQty", productQty)
-                                returnDict.Add("productCost", productCost)
-
-                            End While
-                        Else
-                            returnDict.Add("productName", 0)
-                            returnDict.Add("productQty", 0)
-                            returnDict.Add("productCost", 0)
-                            MsgBox("No date found on your preference")
-                        End If
-
-                        reader.Close()
-                    End Using
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-
-        Public Function getStockList(queryStockList As String) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Using conn As SqlConnection = New SqlConnection(connectionString)
-                    Using Command As SqlCommand = New SqlCommand(queryStockList, conn)
-                        conn.Open()
-                        Dim reader As SqlDataReader = Command.ExecuteReader()
-                        If reader.HasRows Then
-                            Dim i As Integer = 1
-                            While reader.Read()
-                                Dim productName As String = reader.GetString(0)
-                                Dim productQty As String = reader.GetString(1)
-                                returnDict.Add("prd" + (i.ToString()), productName)
-                                returnDict.Add("qty" + (i.ToString()), productQty)
-                                i += 1
-                            End While
-                        Else
-                            Dim i As Integer = 1
-                            While i < 11
-                                returnDict.Add("prd" + (i.ToString()), 0)
-                                returnDict.Add("qty" + (i.ToString()), 0)
-                                i += 1
-                            End While
-                        End If
-                    End Using
-                    conn.Close()
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-
-
-        Public Function getSalesMonth(queryMonthSales As String, queryTotalSales As String, parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Using conn As SqlConnection = New SqlConnection(connectionString)
-                    conn.Open()
-                    Using Command As SqlCommand = New SqlCommand(queryMonthSales, conn)
-                        Command.Parameters.AddWithValue("@month", parameters.GetValueOrDefault("@month"))
-                        Command.Parameters.AddWithValue("@year", parameters.GetValueOrDefault("@year"))
-                        Dim reader As SqlDataReader = Command.ExecuteReader()
-                        Dim monthCost As Integer = 0
-                        If reader.HasRows Then
-                            reader.Read()
-                            monthCost = reader.GetInt32(0)
-                            returnDict.Add("monthCost", monthCost)
-                        Else
-                            returnDict.Add("monthCost", 2)
-                        End If
-                        conn.Close()
-                    End Using
-                    conn.Open()
-                    Using Command As SqlCommand = New SqlCommand(queryTotalSales, conn)
-                        Dim reader As SqlDataReader = Command.ExecuteReader()
-                        Dim totalCost As Integer = 0
-                        If reader.HasRows Then
-                            reader.Read()
-                            totalCost = reader.GetInt32(0)
-                            returnDict.Add("totalCost", totalCost)
-                        Else
-                            returnDict.Add("totalCost", 2)
-                        End If
-                    End Using
-                    conn.Close()
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-        Public Function getSalesYear(queryYearSales As String, queryTotalSales As String, parameters As Dictionary(Of String, Object)) As Dictionary(Of String, Object)
-            Dim returnDict As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-            Try
-                Using conn As SqlConnection = New SqlConnection(connectionString)
-                    conn.Open()
-                    Using Command As SqlCommand = New SqlCommand(queryYearSales, conn)
-                        Command.Parameters.AddWithValue("@year", parameters.GetValueOrDefault("@year"))
-                        Dim reader As SqlDataReader = Command.ExecuteReader()
-                        Dim YearCost As Integer = 0
-                        If reader.HasRows Then
-                            reader.Read()
-                            YearCost = reader.GetInt32(0)
-                            returnDict.Add("yearCost", YearCost)
-                        Else
-                            returnDict.Add("yearCost", 0)
-                        End If
-                        conn.Close()
-                    End Using
-                    conn.Open()
-                    Using Command As SqlCommand = New SqlCommand(queryTotalSales, conn)
-                        Dim reader As SqlDataReader = Command.ExecuteReader()
-                        Dim totalCost As Integer = 0
-                        If reader.HasRows Then
-                            reader.Read()
-                            totalCost = reader.GetInt32(0)
-                            returnDict.Add("totalCost", totalCost)
-                        Else
-                            returnDict.Add("totalCost", 0)
-                        End If
-                    End Using
-                    conn.Close()
-                End Using
-                Return returnDict
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-                Return returnDict
-            End Try
-        End Function
-    End Module
+End Module
 
 
 
