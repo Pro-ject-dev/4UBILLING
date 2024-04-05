@@ -26,15 +26,15 @@ Partial Class admin_panel
         HomeToolStripMenuItem = New ToolStripMenuItem()
         DashboardToolStripMenuItem = New ToolStripMenuItem()
         ExitToolStripMenuItem = New ToolStripMenuItem()
-        BillingToolStripMenuItem = New ToolStripMenuItem()
         StockManagementToolStripMenuItem = New ToolStripMenuItem()
         AddProductsToolStripMenuItem = New ToolStripMenuItem()
         UpdateProductsToolStripMenuItem = New ToolStripMenuItem()
+        BillingToolStripMenuItem = New ToolStripMenuItem()
         ReportsToolStripMenuItem = New ToolStripMenuItem()
         SalesReportToolStripMenuItem = New ToolStripMenuItem()
         StocksReportToolStripMenuItem = New ToolStripMenuItem()
-        ExitToolStripMenuItem1 = New ToolStripMenuItem()
         ExitToolStripMenuItem2 = New ToolStripMenuItem()
+        ExitToolStripMenuItem1 = New ToolStripMenuItem()
         Panel1 = New Panel()
         Label9 = New Label()
         timet = New Label()
@@ -53,7 +53,7 @@ Partial Class admin_panel
         ' 
         MenuStrip1.BackColor = SystemColors.Control
         MenuStrip1.ImageScalingSize = New Size(24, 24)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {HomeToolStripMenuItem, BillingToolStripMenuItem, StockManagementToolStripMenuItem, ReportsToolStripMenuItem, ExitToolStripMenuItem1, ExitToolStripMenuItem2})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {HomeToolStripMenuItem, StockManagementToolStripMenuItem, BillingToolStripMenuItem, ReportsToolStripMenuItem, ExitToolStripMenuItem2, ExitToolStripMenuItem1})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(1924, 33)
@@ -75,11 +75,6 @@ Partial Class admin_panel
         ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         ExitToolStripMenuItem.Size = New Size(202, 34)
         ExitToolStripMenuItem.Text = "Exit"' 
-        ' BillingToolStripMenuItem
-        ' 
-        BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
-        BillingToolStripMenuItem.Size = New Size(75, 29)
-        BillingToolStripMenuItem.Text = "Billing"' 
         ' StockManagementToolStripMenuItem
         ' 
         StockManagementToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddProductsToolStripMenuItem, UpdateProductsToolStripMenuItem})
@@ -96,6 +91,11 @@ Partial Class admin_panel
         UpdateProductsToolStripMenuItem.Name = "UpdateProductsToolStripMenuItem"
         UpdateProductsToolStripMenuItem.Size = New Size(247, 34)
         UpdateProductsToolStripMenuItem.Text = "Update Products"' 
+        ' BillingToolStripMenuItem
+        ' 
+        BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
+        BillingToolStripMenuItem.Size = New Size(75, 29)
+        BillingToolStripMenuItem.Text = "Billing"' 
         ' ReportsToolStripMenuItem
         ' 
         ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesReportToolStripMenuItem, StocksReportToolStripMenuItem})
@@ -112,16 +112,16 @@ Partial Class admin_panel
         StocksReportToolStripMenuItem.Name = "StocksReportToolStripMenuItem"
         StocksReportToolStripMenuItem.Size = New Size(223, 34)
         StocksReportToolStripMenuItem.Text = "Stocks Report"' 
-        ' ExitToolStripMenuItem1
-        ' 
-        ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        ExitToolStripMenuItem1.Size = New Size(93, 29)
-        ExitToolStripMenuItem1.Text = "Backups"' 
         ' ExitToolStripMenuItem2
         ' 
         ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2"
         ExitToolStripMenuItem2.Size = New Size(158, 29)
         ExitToolStripMenuItem2.Text = "Barcode Printing"' 
+        ' ExitToolStripMenuItem1
+        ' 
+        ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
+        ExitToolStripMenuItem1.Size = New Size(93, 29)
+        ExitToolStripMenuItem1.Text = "Backups"' 
         ' Panel1
         ' 
         Panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink
@@ -145,7 +145,7 @@ Partial Class admin_panel
         Label9.AutoSize = True
         Label9.BackColor = Color.White
         Label9.BorderStyle = BorderStyle.Fixed3D
-        Label9.Location = New Point(856, 5)
+        Label9.Location = New Point(878, 5)
         Label9.Name = "Label9"
         Label9.Size = New Size(246, 27)
         Label9.TabIndex = 8
@@ -155,7 +155,7 @@ Partial Class admin_panel
         timet.AutoSize = True
         timet.BackColor = Color.White
         timet.BorderStyle = BorderStyle.Fixed3D
-        timet.Location = New Point(705, 5)
+        timet.Location = New Point(727, 5)
         timet.MaximumSize = New Size(130, 0)
         timet.MinimumSize = New Size(130, 0)
         timet.Name = "timet"
@@ -165,7 +165,7 @@ Partial Class admin_panel
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(647, 5)
+        Label8.Location = New Point(669, 5)
         Label8.Name = "Label8"
         Label8.Size = New Size(59, 25)
         Label8.TabIndex = 6
@@ -175,7 +175,7 @@ Partial Class admin_panel
         datedt.AutoSize = True
         datedt.BackColor = Color.White
         datedt.BorderStyle = BorderStyle.Fixed3D
-        datedt.Location = New Point(495, 5)
+        datedt.Location = New Point(517, 5)
         datedt.MaximumSize = New Size(130, 0)
         datedt.MinimumSize = New Size(130, 0)
         datedt.Name = "datedt"
@@ -185,7 +185,7 @@ Partial Class admin_panel
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(427, 6)
+        Label6.Location = New Point(449, 6)
         Label6.Name = "Label6"
         Label6.Size = New Size(58, 25)
         Label6.TabIndex = 4
@@ -196,10 +196,10 @@ Partial Class admin_panel
         role.BackColor = Color.White
         role.BorderStyle = BorderStyle.Fixed3D
         role.Location = New Point(276, 4)
-        role.MaximumSize = New Size(130, 0)
-        role.MinimumSize = New Size(130, 0)
+        role.MaximumSize = New Size(160, 0)
+        role.MinimumSize = New Size(160, 0)
         role.Name = "role"
-        role.Size = New Size(130, 27)
+        role.Size = New Size(160, 27)
         role.TabIndex = 3
         ' 
         ' Label4

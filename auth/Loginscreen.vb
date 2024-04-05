@@ -10,6 +10,7 @@ Public Class Loginscreen
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Me.IconU.Size = New System.Drawing.Size(65, 70)
         Me.IconFour.Size = New System.Drawing.Size(65, 70)
         Me.Label3.Size = New System.Drawing.Size(66, 29)
@@ -71,8 +72,8 @@ Public Class Loginscreen
             parameters.Add("@role", dropdown.SelectedItem)
             If getLoginData(queryString, parameters) Then
                 allow = True
-                currentuser = username.Text.Trim.ToString
-                currentrole = dropdown.SelectedItem.ToString
+                currentuser = username.Text.Trim.ToString.ToUpper
+                currentrole = dropdown.SelectedItem.ToString.ToUpper
                 Me.Close()
             Else
                 MsgBox("Incorrect Credentials")
@@ -93,7 +94,7 @@ Public Class Loginscreen
 
 
 
-    Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
         If allow = False Then
             Application.Exit()
 
@@ -101,6 +102,10 @@ Public Class Loginscreen
     End Sub
 
     Private Sub PictureLogin_Click(sender As Object, e As EventArgs) Handles PictureLogin.Click
+
+    End Sub
+
+    Private Sub dropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dropdown.SelectedIndexChanged
 
     End Sub
 End Class

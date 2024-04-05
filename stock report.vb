@@ -26,10 +26,10 @@ Public Class stock_report
 
         query += " and date between '" + ac_st_dt.ToString + "' and '" + ac_end_dt.ToString + "'"
         If ComboBox2.SelectedItem <> "" Then
-            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' )"
+            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' and Category.status='1' )"
         End If
         If ComboBox3.SelectedItem <> "" Then
-            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "' )"
+            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "'  and  brands.status='1' )"
         End If
         If ComboBox4.SelectedItem <> "" Then
             query += " and product_name ='" + ComboBox4.SelectedItem + "'"

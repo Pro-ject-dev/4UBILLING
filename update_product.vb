@@ -95,8 +95,6 @@ Public Class update_product
         update_barcode = selectedRow.Cells(6).Value.ToString
         update_price = selectedRow.Cells(5).Value.ToString
         update_size = selectedRow.Cells(7).Value.ToString
-        MsgBox(update_size)
-
         common.update = "1"
         Dim frm = New Add_Product
         frm.ShowDialog()

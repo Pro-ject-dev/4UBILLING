@@ -12,15 +12,24 @@ Public Class Backup
 
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         Dim backup_status = GenerateBackup()
         If backup_status Then
-            MsgBox("enter")
+            Dim frm = New waitingscreen
+            frm.Show()
             SendDocumentAsync(botClient, chatId, backupFileName)
+            frm.close()
+            MsgBox("Successfully Backuped the Data's !")
+            Me.Close()
         End If
     End Sub
 
 
     Public Function GenerateBackup() As Boolean
+
+
+
+
         Dim backupFolderPath As String = "C:\billing_backup"
         Dim databaseName As String = "4ufashion"
 
@@ -52,28 +61,6 @@ Public Class Backup
             End Try
         End Using
     End Function
-
-
-
-
-    Public Async Function telegram() As Task
-        Dim chatId As String = "1465946175"
-        Dim filePath As String = "path/to/your/file.txt"
-        Dim errorf As String = ""
-
-        Try
-
-
-            'Else
-            '    errorf = "File not found!"
-            'End If
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Function
-
-
 
 
 

@@ -22,7 +22,7 @@ Public Class salesreport
 
 
     Public Sub load_data()
-        query = "SELECT CONVERT(varchar,b.date,105) AS Date, billing_no As 'Billing No.', cus.customername As 'Customer Name', cus.mobileno As 'Mobile No.',p.product_name As 'Product', b.quantity As 'Quantity', b.price 'Price',b.total As 'Total', billed_by As 'Billed by' FROM billing As b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id where b.status=1"
+        query = "SELECT CONVERT(varchar, b.date, 105) AS Date, b.billing_no AS 'Billing No.', cus.customername AS 'Customer Name', cus.mobileno AS 'Mobile No.', p.product_name AS 'Product', b.quantity - ISNULL((SELECT SUM(r.quantity) FROM ReturnTable r WHERE r.Product_id = b.Product_id AND r.Billing_no = b.billing_no), 0) AS 'Quantity', b.price AS 'Price', convert(DECIMAL(10, 2),b.total)- ISNULL((SELECT SUM(r.quantity * CAST(r.price AS DECIMAL(10, 2))) FROM ReturnTable r JOIN Products p ON r.Product_id = p.Product_id WHERE r.Product_id = b.Product_id AND r.Billing_no = b.billing_no), 0) AS 'Total', (select username from login where userid=b.billed_by) AS 'Billed by'  FROM billing AS b INNER JOIN customer AS cus ON b.customer_id = cus.customer_id INNER JOIN products AS p ON b.Product_id = p.Product_id WHERE b.status = 1"
         Dim st_dt = DateTimePicker1.Value.ToString.Split(" ")(0).Split("/")
         Dim end_dt = DateTimePicker2.Value.ToString.Split(" ")(0).Split("/")
         Dim ac_st_dt = st_dt(2) & "-" & st_dt(0) & "-" & st_dt(1)

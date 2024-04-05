@@ -50,6 +50,8 @@ Public Class admin_panel
     End Sub
 
     Private Sub admin_panel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         Dim frm = Splash
         frm.ShowDialog()
         Dim frm1 = Loginscreen
@@ -62,6 +64,16 @@ Public Class admin_panel
         time.Start()
 
         Me.WindowState = FormWindowState.Maximized
+        If currentrole <> "ADMINISTRATOR" Then
+
+            StockManagementToolStripMenuItem.Visible = False
+            ReportsToolStripMenuItem.Visible = False
+            ExitToolStripMenuItem1.Visible = False
+            ExitToolStripMenuItem.Visible = False
+            ExitToolStripMenuItem2.Visible = False
+
+
+        End If
         Dim frm2 = New Dashboardd
         frm2.Show()
         frm2.MdiParent = Me

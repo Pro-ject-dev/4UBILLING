@@ -201,8 +201,9 @@ Module DashSql
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) Then
                                 Dim productName As String = reader.GetString(0)
                                 Dim productQty As String = reader.GetString(1)
+
                                 returnDict.Add("prd" + (i.ToString()), productName)
-                                returnDict.Add("qty" + (i.ToString()), productQty)
+                                returnDict.Add("qty" + (i.ToString()), Int32.Parse(productQty))
                                 i += 1
                             Else
                                 While i < 11

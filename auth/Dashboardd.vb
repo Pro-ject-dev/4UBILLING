@@ -5,7 +5,7 @@ Public Class Dashboardd
     Private Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-        Dim queryStockList As String = "SELECT TOP(10) Product_name, Quantity FROM Products ORDER BY CAST(Quantity As INT) ASC"
+        Dim queryStockList As String = "SELECT TOP(10) Product_name, convert(varchar,Quantity) FROM Products ORDER BY Quantity ASC"
         Dim result As Dictionary(Of String, Object) = getStockList(queryStockList)
         Dim i As Integer = 1
         While i < 11
