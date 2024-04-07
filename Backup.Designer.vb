@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Backup
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Backup
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Button1 = New Button()
         Label1 = New Label()
@@ -44,7 +44,7 @@ Partial Class Backup
         Label1.Name = "Label1"
         Label1.Size = New Size(355, 25)
         Label1.TabIndex = 1
-        Label1.Text = "Safeguard your data with our backup form."' 
+        Label1.Text = "Safeguard your data with our backup form." ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = My.Resources.Resources.cloud_data_storage_rack_concept_glass_cube_cloudscape_digital_metaverse_server_global_network_business_web_database_backup_computer_private_infrastructure_technology
@@ -57,7 +57,7 @@ Partial Class Backup
         ' 
         ' Backup
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 529)
         Controls.Add(PictureBox1)

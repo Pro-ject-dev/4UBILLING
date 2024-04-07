@@ -1,10 +1,13 @@
 ﻿Imports System.Security.Cryptography
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class stock_report
     Public query As String
     Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        pro_filter.Checked = True
+        date_filter.Checked = True
         load_data()
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
@@ -18,21 +21,23 @@ Public Class stock_report
 
 
     Public Sub load_data()
-        query = "Select product_id as 'Product ID',CONVERT(varchar,date,105) AS 'Created Date' , product_name as 'Product Name', Category.Category as 'Category' , brands.brand as 'Brand Name' , Quantity , Price, Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.status='1'"
-        Dim st_dt = DateTimePicker1.Value.ToString.Split(" ")(0).Split("/")
-        Dim end_dt = DateTimePicker2.Value.ToString.Split(" ")(0).Split("/")
-        Dim ac_st_dt = st_dt(2) & "-" & st_dt(0) & "-" & st_dt(1)
-        Dim ac_end_dt = end_dt(2) & "-" & end_dt(0) & "-" & end_dt(1)
 
-        query += " and date between '" + ac_st_dt.ToString + "' and '" + ac_end_dt.ToString + "'"
-        If ComboBox2.SelectedItem <> "" Then
-            query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' and Category.status='1' )"
+        query = "Select product_id as 'Product ID',CONVERT(varchar,date,105) AS 'Created Date' , product_name as 'Product Name', Category.Category as 'Category' , brands.brand as 'Brand Name' , Quantity , Price, Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.status='1'"
+        Dim st_dt = DateTimePicker1.Value.ToString("dd-MM-yyyy")
+        Dim end_dt = DateTimePicker2.Value.ToString("dd-MM-yyyy")
+        If date_filter.Checked = True Then
+            query += " and convert(varchar,date,105) between '" + st_dt + "' and '" + end_dt.ToString + "'"
         End If
-        If ComboBox3.SelectedItem <> "" Then
-            query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "'  and  brands.status='1' )"
-        End If
-        If ComboBox4.SelectedItem <> "" Then
-            query += " and product_name ='" + ComboBox4.SelectedItem + "'"
+        If pro_filter.Checked = True Then
+            If ComboBox2.SelectedItem <> "" Then
+                query += " and Products.cat_id = (select cat_id from category where category = '" + ComboBox2.SelectedItem + "' and Category.status='1' )"
+            End If
+            If ComboBox3.SelectedItem <> "" Then
+                query += " and brands.brand_id = (select brand_id from brands where brand= '" + ComboBox3.SelectedItem + "'  and  brands.status='1' )"
+            End If
+            If ComboBox4.SelectedItem <> "" Then
+                query += " and product_name ='" + ComboBox4.SelectedItem + "'"
+            End If
         End If
         If CheckBox1.Checked = True Then
             query += " order by Products.Price desc"
@@ -107,4 +112,32 @@ Public Class stock_report
             frm.MdiParent = admin_panel
         End If
     End Sub
+
+
+
+    Private Sub pro_filter_CheckedChanged(sender As Object, e As EventArgs) Handles pro_filter.CheckedChanged
+        If pro_filter.Checked <> True Then
+            ComboBox2.Enabled = False
+            ComboBox3.Enabled = False
+            ComboBox4.Enabled = False
+        Else
+            ComboBox2.Enabled = True
+            ComboBox3.Enabled = True
+            ComboBox4.Enabled = True
+        End If
+        load_data()
+    End Sub
+
+    Private Sub date_filter_CheckedChanged(sender As Object, e As EventArgs) Handles date_filter.CheckedChanged
+        If date_filter.Checked <> True Then
+            DateTimePicker1.Enabled = False
+            DateTimePicker2.Enabled = False
+        Else
+            DateTimePicker1.Enabled = True
+            DateTimePicker2.Enabled = True
+        End If
+        load_data()
+    End Sub
+
+
 End Class

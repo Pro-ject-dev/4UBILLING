@@ -23,10 +23,9 @@ Module DashSql
                         'MsgBox(parameters.GetValueOrDefault("@year").ToString + "-" + parameters.GetValueOrDefault("@month").ToString)
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim totalCost As Integer = reader.GetDouble(0)
-                                Dim customerName As String = reader.GetString(1)
-                                Dim place As String = reader.GetString(2)
-                                MsgBox(customerName)
+                                Dim totalCost As Integer = reader.GetDouble(2)
+                                Dim customerName As String = reader.GetString(0)
+                                Dim place As String = reader.GetString(1)
                                 returnDict.Add("custName", customerName)
                                 returnDict.Add("custPlace", place)
                                 returnDict.Add("custCost", totalCost)
@@ -70,9 +69,9 @@ Module DashSql
                     If reader.HasRows Then
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim totalCost As Integer = reader.GetDouble(0)
-                                Dim customerName As String = reader.GetString(1)
-                                Dim place As String = reader.GetString(2)
+                                Dim totalCost As Integer = reader.GetDouble(2)
+                                Dim customerName As String = reader.GetString(0)
+                                Dim place As String = reader.GetString(1)
                                 returnDict.Add("custName", customerName)
                                 returnDict.Add("custPlace", place)
                                 returnDict.Add("custCost", totalCost)
@@ -116,9 +115,9 @@ Module DashSql
                     If reader.HasRows Then
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim productCost As Integer = reader.GetDouble(1)
+                                Dim productCost As String = reader.GetDouble(2)
                                 Dim productName As String = reader.GetString(0)
-                                Dim productQty As String = reader.GetInt32(2)
+                                Dim productQty As String = reader.GetInt32(1)
                                 returnDict.Add("productName", productName)
                                 returnDict.Add("productQty", productQty)
                                 returnDict.Add("productCost", productCost)
@@ -139,7 +138,8 @@ Module DashSql
             End Using
             Return returnDict
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
+            MsgBox("err:" & ex.Message)
+
             Return returnDict
         End Try
     End Function
@@ -160,9 +160,9 @@ Module DashSql
                     If reader.HasRows Then
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim productCost As Integer = reader.GetDouble(1)
+                                Dim productCost As Integer = reader.GetDouble(2)
                                 Dim productName As String = reader.GetString(0)
-                                Dim productQty As String = reader.GetInt32(2)
+                                Dim productQty As String = reader.GetInt32(1)
                                 returnDict.Add("productName", productName)
                                 returnDict.Add("productQty", productQty)
                                 returnDict.Add("productCost", productCost)
@@ -183,7 +183,7 @@ Module DashSql
             End Using
             Return returnDict
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
+            MsgBox("err:" & ex.Message)
             Return returnDict
         End Try
     End Function
@@ -417,5 +417,24 @@ Module DashSql
             MessageBox.Show("Error: " & ex.Message)
             Return returnDict
         End Try
+    End Function
+
+    Public Function getSalesToday(query As String) As DataTable
+        Dim dataTable As New DataTable()
+
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(query, connection)
+                Try
+                    connection.Open()
+                    Using adapter As New SqlDataAdapter(command)
+                        adapter.Fill(dataTable)
+                    End Using
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return dataTable
     End Function
 End Module

@@ -35,6 +35,10 @@ Partial Class Add_Product
         Label2 = New Label()
         Label1 = New Label()
         GroupBox2 = New GroupBox()
+        Label7 = New Label()
+        Button8 = New Button()
+        Button9 = New Button()
+        ComboBox3 = New ComboBox()
         Button7 = New Button()
         Button6 = New Button()
         PictureBox2 = New PictureBox()
@@ -47,10 +51,6 @@ Partial Class Add_Product
         ComboBox1 = New ComboBox()
         PrintPreviewDialog1 = New PrintPreviewDialog()
         PrintDocument1 = New Printing.PrintDocument()
-        Label7 = New Label()
-        Button8 = New Button()
-        Button9 = New Button()
-        ComboBox3 = New ComboBox()
         GroupBox1.SuspendLayout()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox2.SuspendLayout()
@@ -123,6 +123,7 @@ Partial Class Add_Product
         ' NumericUpDown1
         ' 
         NumericUpDown1.Location = New Point(191, 277)
+        NumericUpDown1.Maximum = New [Decimal](New Integer() {1000000, 0, 0, 0})
         NumericUpDown1.Name = "NumericUpDown1"
         NumericUpDown1.Size = New Size(370, 31)
         NumericUpDown1.TabIndex = 6
@@ -181,6 +182,41 @@ Partial Class Add_Product
         GroupBox2.TabIndex = 10
         GroupBox2.TabStop = False
         GroupBox2.Text = "***"' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(13, 147)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(142, 25)
+        Label7.TabIndex = 23
+        Label7.Text = "Size                   :"' 
+        ' Button8
+        ' 
+        Button8.Location = New Point(743, 142)
+        Button8.Name = "Button8"
+        Button8.Size = New Size(194, 34)
+        Button8.TabIndex = 26
+        Button8.Text = "Delete Size"
+        Button8.UseVisualStyleBackColor = True
+        ' 
+        ' Button9
+        ' 
+        Button9.Location = New Point(551, 143)
+        Button9.Name = "Button9"
+        Button9.Size = New Size(184, 34)
+        Button9.TabIndex = 25
+        Button9.Text = "Add Size"
+        Button9.UseVisualStyleBackColor = True
+        ' 
+        ' ComboBox3
+        ' 
+        ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboBox3.FormattingEnabled = True
+        ComboBox3.Location = New Point(175, 143)
+        ComboBox3.Name = "ComboBox3"
+        ComboBox3.Size = New Size(370, 33)
+        ComboBox3.TabIndex = 24
+        ' 
         ' Button7
         ' 
         Button7.Location = New Point(743, 87)
@@ -285,41 +321,6 @@ Partial Class Add_Product
         ' 
         ' PrintDocument1
         ' 
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Location = New Point(13, 147)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(142, 25)
-        Label7.TabIndex = 23
-        Label7.Text = "Size                   :"' 
-        ' Button8
-        ' 
-        Button8.Location = New Point(743, 142)
-        Button8.Name = "Button8"
-        Button8.Size = New Size(194, 34)
-        Button8.TabIndex = 26
-        Button8.Text = "Delete Size"
-        Button8.UseVisualStyleBackColor = True
-        ' 
-        ' Button9
-        ' 
-        Button9.Location = New Point(551, 143)
-        Button9.Name = "Button9"
-        Button9.Size = New Size(184, 34)
-        Button9.TabIndex = 25
-        Button9.Text = "Add Size"
-        Button9.UseVisualStyleBackColor = True
-        ' 
-        ' ComboBox3
-        ' 
-        ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox3.FormattingEnabled = True
-        ComboBox3.Location = New Point(175, 143)
-        ComboBox3.Name = "ComboBox3"
-        ComboBox3.Size = New Size(370, 33)
-        ComboBox3.TabIndex = 24
         ' 
         ' Add_Product
         ' 

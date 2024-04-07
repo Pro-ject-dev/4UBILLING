@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 
 Public Class Add_Product
@@ -168,13 +169,13 @@ Public Class Add_Product
                         If result = True Then
                             MsgBox("Product Added Successfully!")
                         End If
+                        clear()
 
                     End If
-                    End If
-                    clear()
                 End If
-
             End If
+
+        End If
 
 
 
@@ -279,8 +280,13 @@ Public Class Add_Product
         End If
     End Sub
 
-    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
-
+    Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox3.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "." AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+        If e.KeyChar = "." AndAlso TextBox3.Text.Contains(".") Then
+            e.Handled = True
+        End If
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged

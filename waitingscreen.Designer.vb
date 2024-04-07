@@ -24,7 +24,6 @@ Partial Class waitingscreen
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
         Label1 = New Label()
-        Label2 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -43,24 +42,15 @@ Partial Class waitingscreen
         Label1.AutoSize = True
         Label1.Location = New Point(136, 37)
         Label1.Name = "Label1"
-        Label1.Size = New Size(139, 25)
+        Label1.Size = New Size(213, 25)
         Label1.TabIndex = 1
-        Label1.Text = "Backuping .........."' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(268, 38)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(42, 25)
-        Label2.TabIndex = 2
-        Label2.Text = "0 %"' 
+        Label1.Text = "Please Wait Backuping ....."' 
         ' waitingscreen
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.WhiteSmoke
         ClientSize = New Size(378, 89)
-        Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
         FormBorderStyle = FormBorderStyle.None

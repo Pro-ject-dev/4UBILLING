@@ -35,18 +35,18 @@ Partial Class admin_panel
         StocksReportToolStripMenuItem = New ToolStripMenuItem()
         ExitToolStripMenuItem2 = New ToolStripMenuItem()
         ExitToolStripMenuItem1 = New ToolStripMenuItem()
-        Panel1 = New Panel()
-        Label9 = New Label()
-        timet = New Label()
-        Label8 = New Label()
-        datedt = New Label()
-        Label6 = New Label()
-        role = New Label()
-        Label4 = New Label()
-        User = New Label()
-        Label1 = New Label()
+        StatusStrip1 = New StatusStrip()
+        ToolStripStatusLabel1 = New ToolStripStatusLabel()
+        user = New ToolStripStatusLabel()
+        ToolStripStatusLabel4 = New ToolStripStatusLabel()
+        role = New ToolStripStatusLabel()
+        ToolStripStatusLabel6 = New ToolStripStatusLabel()
+        datedt = New ToolStripStatusLabel()
+        ToolStripStatusLabel3 = New ToolStripStatusLabel()
+        timet = New ToolStripStatusLabel()
+        ToolStripStatusLabel8 = New ToolStripStatusLabel()
         MenuStrip1.SuspendLayout()
-        Panel1.SuspendLayout()
+        StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
         ' MenuStrip1
@@ -122,129 +122,101 @@ Partial Class admin_panel
         ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
         ExitToolStripMenuItem1.Size = New Size(93, 29)
         ExitToolStripMenuItem1.Text = "Backups"' 
-        ' Panel1
+        ' StatusStrip1
         ' 
-        Panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink
-        Panel1.BackColor = SystemColors.Control
-        Panel1.Controls.Add(Label9)
-        Panel1.Controls.Add(timet)
-        Panel1.Controls.Add(Label8)
-        Panel1.Controls.Add(datedt)
-        Panel1.Controls.Add(Label6)
-        Panel1.Controls.Add(role)
-        Panel1.Controls.Add(Label4)
-        Panel1.Controls.Add(User)
-        Panel1.Controls.Add(Label1)
-        Panel1.Location = New Point(0, 1005)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1924, 37)
-        Panel1.TabIndex = 1
+        StatusStrip1.ImageScalingSize = New Size(24, 24)
+        StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1, user, ToolStripStatusLabel4, role, ToolStripStatusLabel6, datedt, ToolStripStatusLabel3, timet, ToolStripStatusLabel8})
+        StatusStrip1.Location = New Point(0, 991)
+        StatusStrip1.Name = "StatusStrip1"
+        StatusStrip1.Size = New Size(1924, 49)
+        StatusStrip1.TabIndex = 3
+        StatusStrip1.Text = "StatusStrip1"' 
+        ' ToolStripStatusLabel1
         ' 
-        ' Label9
+        ToolStripStatusLabel1.BackColor = SystemColors.Control
+        ToolStripStatusLabel1.Margin = New Padding(10)
+        ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        ToolStripStatusLabel1.Size = New Size(56, 29)
+        ToolStripStatusLabel1.Text = "User :"' 
+        ' user
         ' 
-        Label9.AutoSize = True
-        Label9.BackColor = Color.White
-        Label9.BorderStyle = BorderStyle.Fixed3D
-        Label9.Location = New Point(878, 5)
-        Label9.Name = "Label9"
-        Label9.Size = New Size(246, 27)
-        Label9.TabIndex = 8
-        Label9.Text = "4U FASHIONS READYMADES"' 
-        ' timet
+        user.BackColor = Color.White
+        user.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
+        user.Margin = New Padding(0, 10, 10, 10)
+        user.Name = "user"
+        user.Padding = New Padding(0, 2, 0, 2)
+        user.Size = New Size(4, 29)
         ' 
-        timet.AutoSize = True
-        timet.BackColor = Color.White
-        timet.BorderStyle = BorderStyle.Fixed3D
-        timet.Location = New Point(727, 5)
-        timet.MaximumSize = New Size(130, 0)
-        timet.MinimumSize = New Size(130, 0)
-        timet.Name = "timet"
-        timet.Size = New Size(130, 27)
-        timet.TabIndex = 7
+        ' ToolStripStatusLabel4
         ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Location = New Point(669, 5)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(59, 25)
-        Label8.TabIndex = 6
-        Label8.Text = "Time :"' 
-        ' datedt
-        ' 
-        datedt.AutoSize = True
-        datedt.BackColor = Color.White
-        datedt.BorderStyle = BorderStyle.Fixed3D
-        datedt.Location = New Point(517, 5)
-        datedt.MaximumSize = New Size(130, 0)
-        datedt.MinimumSize = New Size(130, 0)
-        datedt.Name = "datedt"
-        datedt.Size = New Size(130, 27)
-        datedt.TabIndex = 5
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Location = New Point(449, 6)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(58, 25)
-        Label6.TabIndex = 4
-        Label6.Text = "Date :"' 
+        ToolStripStatusLabel4.BackColor = SystemColors.Control
+        ToolStripStatusLabel4.Margin = New Padding(0, 10, 10, 10)
+        ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        ToolStripStatusLabel4.Size = New Size(55, 29)
+        ToolStripStatusLabel4.Text = "Role :"' 
         ' role
         ' 
-        role.AutoSize = True
         role.BackColor = Color.White
-        role.BorderStyle = BorderStyle.Fixed3D
-        role.Location = New Point(276, 4)
-        role.MaximumSize = New Size(160, 0)
-        role.MinimumSize = New Size(160, 0)
+        role.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
+        role.Margin = New Padding(0, 10, 10, 10)
         role.Name = "role"
-        role.Size = New Size(160, 27)
-        role.TabIndex = 3
+        role.Padding = New Padding(0, 2, 0, 2)
+        role.Size = New Size(4, 29)
         ' 
-        ' Label4
+        ' ToolStripStatusLabel6
         ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(219, 5)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(55, 25)
-        Label4.TabIndex = 2
-        Label4.Text = "Role :"' 
-        ' User
+        ToolStripStatusLabel6.BackColor = SystemColors.Control
+        ToolStripStatusLabel6.Margin = New Padding(0, 10, 10, 10)
+        ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
+        ToolStripStatusLabel6.Size = New Size(58, 29)
+        ToolStripStatusLabel6.Text = "Date :"' 
+        ' datedt
         ' 
-        User.AutoSize = True
-        User.BackColor = Color.White
-        User.BorderStyle = BorderStyle.Fixed3D
-        User.Location = New Point(69, 3)
-        User.MaximumSize = New Size(140, 0)
-        User.MinimumSize = New Size(140, 0)
-        User.Name = "User"
-        User.Size = New Size(140, 27)
-        User.TabIndex = 1
+        datedt.BackColor = Color.White
+        datedt.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
+        datedt.Margin = New Padding(0, 10, 10, 10)
+        datedt.Name = "datedt"
+        datedt.RightToLeft = RightToLeft.No
+        datedt.Size = New Size(4, 29)
         ' 
-        ' Label1
+        ' ToolStripStatusLabel3
         ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(13, 3)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(56, 25)
-        Label1.TabIndex = 0
-        Label1.Text = "User :"' 
+        ToolStripStatusLabel3.BackColor = SystemColors.Control
+        ToolStripStatusLabel3.Margin = New Padding(0, 10, 10, 10)
+        ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        ToolStripStatusLabel3.Size = New Size(59, 29)
+        ToolStripStatusLabel3.Text = "Time :"' 
+        ' timet
+        ' 
+        timet.BackColor = Color.White
+        timet.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
+        timet.Margin = New Padding(0, 10, 10, 10)
+        timet.Name = "timet"
+        timet.Size = New Size(4, 29)
+        ' 
+        ' ToolStripStatusLabel8
+        ' 
+        ToolStripStatusLabel8.BackColor = Color.White
+        ToolStripStatusLabel8.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
+        ToolStripStatusLabel8.Margin = New Padding(10)
+        ToolStripStatusLabel8.Name = "ToolStripStatusLabel8"
+        ToolStripStatusLabel8.Size = New Size(238, 29)
+        ToolStripStatusLabel8.Text = "4U FASHION READYMADES"' 
         ' admin_panel
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.AppWorkspace
         ClientSize = New Size(1924, 1040)
-        Controls.Add(Panel1)
         Controls.Add(MenuStrip1)
+        Controls.Add(StatusStrip1)
         IsMdiContainer = True
         Name = "admin_panel"
         Text = "4U Fashions - Billing Management Application"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
+        StatusStrip1.ResumeLayout(False)
+        StatusStrip1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -258,18 +230,18 @@ Partial Class admin_panel
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents User As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents role As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents timet As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents datedt As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents AddProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalesReportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StocksReportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents user As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
+    Friend WithEvents role As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel6 As ToolStripStatusLabel
+    Friend WithEvents datedt As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents timet As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel8 As ToolStripStatusLabel
 End Class

@@ -1,6 +1,4 @@
-﻿
-
-Imports System.Security.Cryptography
+﻿Imports System.Security.Cryptography
 
 Public Class admin_panel
     Private Sub AddProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddProductsToolStripMenuItem.Click
@@ -25,16 +23,12 @@ Public Class admin_panel
         Dim frm = Backup
         frm.Show()
         frm.MdiParent = Me
-
     End Sub
-
-
 
     Private Sub SalesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReportToolStripMenuItem.Click
         Dim frm = salesreport
         frm.Show()
         frm.MdiParent = Me
-
     End Sub
 
     Private Sub StocksReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StocksReportToolStripMenuItem.Click
@@ -50,13 +44,11 @@ Public Class admin_panel
     End Sub
 
     Private Sub admin_panel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         Dim frm = Splash
         frm.ShowDialog()
         Dim frm1 = Loginscreen
         frm1.ShowDialog()
-        User.Text = currentuser
+        user.Text = currentuser
         role.Text = currentrole
         Dim time As New Timer()
         time.Interval = 1000
@@ -65,20 +57,15 @@ Public Class admin_panel
 
         Me.WindowState = FormWindowState.Maximized
         If currentrole <> "ADMINISTRATOR" Then
-
             StockManagementToolStripMenuItem.Visible = False
             ReportsToolStripMenuItem.Visible = False
             ExitToolStripMenuItem1.Visible = False
             ExitToolStripMenuItem.Visible = False
             ExitToolStripMenuItem2.Visible = False
-
-
         End If
         Dim frm2 = New Dashboardd
         frm2.Show()
         frm2.MdiParent = Me
-
-
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DashboardToolStripMenuItem.Click
@@ -93,7 +80,6 @@ Public Class admin_panel
         Catch ex As Exception
             MessageBox.Show(ex.ToString, "failed!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
 
     Function d_t()
@@ -103,6 +89,4 @@ Public Class admin_panel
         timet.Text = time.ToString
         datedt.Text = dates
     End Function
-
-
 End Class

@@ -22,7 +22,7 @@ Partial Class stock_report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox2 = New GroupBox()
         Button1 = New Button()
         DataGridView1 = New DataGridView()
@@ -41,10 +41,13 @@ Partial Class stock_report
         Label6 = New Label()
         Panel5 = New Panel()
         Panel3 = New Panel()
+        date_filter = New CheckBox()
+        pro_filter = New CheckBox()
         GroupBox2.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
         Panel5.SuspendLayout()
+        Panel3.SuspendLayout()
         SuspendLayout()
         ' 
         ' GroupBox2
@@ -59,7 +62,7 @@ Partial Class stock_report
         GroupBox2.Size = New Size(1190, 660)
         GroupBox2.TabIndex = 1
         GroupBox2.TabStop = False
-        GroupBox2.Text = "Sales Details" ' 
+        GroupBox2.Text = "Sales Details"' 
         ' Button1
         ' 
         Button1.Location = New Point(442, 613)
@@ -89,8 +92,8 @@ Partial Class stock_report
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 89
         DataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.RowTemplate.Height = 50
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridView1.Size = New Size(1150, 529)
@@ -123,7 +126,7 @@ Partial Class stock_report
         Label4.Name = "Label4"
         Label4.Size = New Size(67, 25)
         Label4.TabIndex = 9
-        Label4.Text = "Brand :" ' 
+        Label4.Text = "Brand :"' 
         ' Label2
         ' 
         Label2.AutoSize = True
@@ -132,7 +135,7 @@ Partial Class stock_report
         Label2.Name = "Label2"
         Label2.Size = New Size(91, 25)
         Label2.TabIndex = 5
-        Label2.Text = "Products :" ' 
+        Label2.Text = "Products :"' 
         ' ComboBox3
         ' 
         ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
@@ -159,7 +162,7 @@ Partial Class stock_report
         Label3.Name = "Label3"
         Label3.Size = New Size(93, 25)
         Label3.TabIndex = 7
-        Label3.Text = "Category :" ' 
+        Label3.Text = "Category :"' 
         ' DateTimePicker2
         ' 
         DateTimePicker2.Location = New Point(49, 222)
@@ -175,7 +178,7 @@ Partial Class stock_report
         Label5.Name = "Label5"
         Label5.Size = New Size(72, 25)
         Label5.TabIndex = 11
-        Label5.Text = "To Date" ' 
+        Label5.Text = "To Date"' 
         ' DateTimePicker1
         ' 
         DateTimePicker1.Location = New Point(49, 138)
@@ -191,17 +194,17 @@ Partial Class stock_report
         Label1.Name = "Label1"
         Label1.Size = New Size(96, 25)
         Label1.TabIndex = 3
-        Label1.Text = "From Date" ' 
+        Label1.Text = "From Date"' 
         ' GroupBox1
         ' 
         GroupBox1.BackColor = SystemColors.Control
         GroupBox1.Controls.Add(Label6)
-        GroupBox1.Controls.Add(Panel5)
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(DateTimePicker1)
         GroupBox1.Controls.Add(Label5)
         GroupBox1.Controls.Add(DateTimePicker2)
         GroupBox1.Controls.Add(Panel3)
+        GroupBox1.Controls.Add(Panel5)
         GroupBox1.FlatStyle = FlatStyle.Flat
         GroupBox1.ForeColor = Color.Black
         GroupBox1.Location = New Point(12, 12)
@@ -209,7 +212,7 @@ Partial Class stock_report
         GroupBox1.Size = New Size(443, 660)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
-        GroupBox1.Text = "***" ' 
+        GroupBox1.Text = "***"' 
         ' Label6
         ' 
         Label6.AutoSize = True
@@ -217,7 +220,7 @@ Partial Class stock_report
         Label6.Name = "Label6"
         Label6.Size = New Size(148, 25)
         Label6.TabIndex = 21
-        Label6.Text = "Select the Filters :" ' 
+        Label6.Text = "Select the Filters :"' 
         ' Panel5
         ' 
         Panel5.BorderStyle = BorderStyle.FixedSingle
@@ -235,17 +238,37 @@ Partial Class stock_report
         ' Panel3
         ' 
         Panel3.BorderStyle = BorderStyle.FixedSingle
+        Panel3.Controls.Add(date_filter)
         Panel3.Location = New Point(20, 82)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(405, 204)
         Panel3.TabIndex = 20
         ' 
+        ' date_filter
+        ' 
+        date_filter.AutoSize = True
+        date_filter.Location = New Point(374, 7)
+        date_filter.Name = "date_filter"
+        date_filter.Size = New Size(22, 21)
+        date_filter.TabIndex = 0
+        date_filter.UseVisualStyleBackColor = True
+        ' 
+        ' pro_filter
+        ' 
+        pro_filter.AutoSize = True
+        pro_filter.Location = New Point(407, 337)
+        pro_filter.Name = "pro_filter"
+        pro_filter.Size = New Size(22, 21)
+        pro_filter.TabIndex = 1
+        pro_filter.UseVisualStyleBackColor = True
+        ' 
         ' stock_report
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
         ClientSize = New Size(1663, 708)
+        Controls.Add(pro_filter)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
         MaximizeBox = False
@@ -260,7 +283,10 @@ Partial Class stock_report
         GroupBox1.PerformLayout()
         Panel5.ResumeLayout(False)
         Panel5.PerformLayout()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Panel2 As Panel
@@ -282,4 +308,6 @@ Partial Class stock_report
     Friend WithEvents Button1 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents date_filter As CheckBox
+    Friend WithEvents pro_filter As CheckBox
 End Class

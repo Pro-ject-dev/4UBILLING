@@ -29,7 +29,8 @@ Public Class Dashboardd
         BtnProductMonth.PerformClick()
         BtnSalesMonth.PerformClick()
         BtnGrowthMonth.PerformClick()
-
+        Button1.PerformClick()
+        Button1.Select()
         'image load
         Me.IconRupee.Image = My.Resources.rupee
         Me.IconQuantity.Image = My.Resources.totalcustomer
@@ -41,7 +42,7 @@ Public Class Dashboardd
         Dim dateString As String = (Date.Now).ToString
         Dim array As String() = dateString.Split(" ")
         array = array(0).Split("/")
-        Dim monthInteger As Integer = Convert.ToInt32(array(1))
+        Dim monthInteger As Integer = Convert.ToInt32(array(0))
         Dim yearInteger As Integer = Convert.ToInt32(array(2))
         Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
         parameters.Add("@month", monthInteger)
@@ -55,9 +56,6 @@ Public Class Dashboardd
         LLeaderCustomer.Text = result.GetValueOrDefault("custName")
         LLeaderPlace.Text = result.GetValueOrDefault("custPlace")
         LLeaderAmount.Text = result.GetValueOrDefault("custCost")
-
-
-
     End Sub
 
     Private Sub BtnLeaderYear_Click(sender As Object, e As EventArgs) Handles BtnLeaderYear.Click
@@ -82,16 +80,16 @@ Public Class Dashboardd
     End Sub
 
     Private Sub BtnSalesMonth_Click(sender As Object, e As EventArgs) Handles BtnSalesMonth.Click
-        Dim queryMonthSales As String = "SELECT SUM(CONVERT(FLOAT,Total)) FROM Billing WHERE MONTH(Date) = @month AND YEAR(Date) = @year"
-        Dim queryTotalSales As String = "SELECT SUM(CONVERT(FLOAT,Total)) FROM Billing"
+        Dim queryMonthSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing WHERE MONTH(Date) = @month AND YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE MONTH(Date) = @month AND YEAR(Date) = @year)"
+        Dim queryTotalSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
         Dim result As Dictionary(Of String, Object) = getSalesMonth(queryMonthSales, queryTotalSales, getParameters())
         LTotalSales.Text = (result.GetValueOrDefault("totalCost")).ToString
         LChangeSales.Text = (result.GetValueOrDefault("monthCost")).ToString
     End Sub
 
     Private Sub BtnSalesYear_Click(sender As Object, e As EventArgs) Handles BtnSalesYear.Click
-        Dim queryYearSales As String = "SELECT SUM(CONVERT(FLOAT,Total)) FROM Billing WHERE YEAR(Date) = @year"
-        Dim queryTotalSales As String = "SELECT SUM(CONVERT(FLOAT,Total)) FROM Billing"
+        Dim queryYearSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing WHERE YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE YEAR(Date) = @year)"
+        Dim queryTotalSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
         Dim result As Dictionary(Of String, Object) = getSalesYear(queryYearSales, queryTotalSales, getParameters())
         LTotalSales.Text = (result.GetValueOrDefault("totalCost")).ToString
         LChangeSales.Text = (result.GetValueOrDefault("yearCost")).ToString
@@ -113,4 +111,24 @@ Public Class Dashboardd
         LChangeCustomer.Text = result.GetValueOrDefault("custVisit")
     End Sub
 
+    Private Sub button1_click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim amount As Double
+        Dim dtString As String = (Date.Now).ToString("dd-MM-yyyy")
+        Dim querytodaysales As String = "select (select sum(convert(float, total)) from billing where convert(varchar,date,105) = '" + dtString + "' ) - isnull((select sum(convert(float, total)) from returntable where convert(varchar,date,105)='" + dtString + "'),0 )as tot"
+        Dim datatable As DataTable = getSalesToday(querytodaysales)
+        Try
+            If datatable.Rows.Count <> 0 Then
+                For Each row As DataRow In datatable.Rows
+                    If Not IsDBNull(row("tot")) Then
+                        amount = Convert.ToDouble(row("tot"))
+                    Else
+                        amount = 0.0
+                    End If
+                Next
+                LChangeSales.Text = amount.ToString
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

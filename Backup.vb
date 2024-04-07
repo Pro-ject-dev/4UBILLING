@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Runtime.Intrinsics
 Imports Telegram.Bot
 Imports Telegram.Bot.Types
 Imports Telegram.Bot.Types.InputFiles
@@ -9,19 +10,18 @@ Public Class Backup
     Dim chatId As String = "1465946175"
     Dim filePath As String = "C:\Users\Vasudevan.N\Documents\fonta.jpg"
     Dim botClient As New TelegramBotClient("6575002610:AAEwBo7GBmg3VQCFvvETSa3jKDKQgqRxRjs")
-
+    Dim frm = New waitingscreen
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim backup_status As Boolean = GenerateBackup()
 
-        Dim backup_status = GenerateBackup()
         If backup_status Then
-            Dim frm = New waitingscreen
+
             frm.Show()
             SendDocumentAsync(botClient, chatId, backupFileName)
-            frm.close()
-            MsgBox("Successfully Backuped the Data's !")
-            Me.Close()
+
         End If
+
     End Sub
 
 
@@ -70,12 +70,13 @@ Public Class Backup
         Dim documentFile As InputOnlineFile = New InputOnlineFile(fileStream, fileInfo.Name)
         Dim sentDocument As Message = Await botClient.SendDocumentAsync(chatId, documentFile)
         fileStream.Close()
-
+        frm.Close()
+        MessageBox.Show("Successfully backed up the data!", "Backup Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Me.Close()
 
     End Function
 
+    Private Sub Backup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
-
+    End Sub
 End Class
