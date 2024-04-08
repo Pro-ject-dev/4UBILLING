@@ -2,35 +2,13 @@
 
 Public Class Dashboardd
 
-    Private Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        timer_tick()
+        Dim time As New Timer()
+        time.Interval = 10000
+        AddHandler time.Tick, AddressOf timer_tick
+        time.Start()
 
-
-        Dim queryStockList As String = "SELECT TOP(10) Product_name, convert(varchar,Quantity) FROM Products ORDER BY Quantity ASC"
-        Dim result As Dictionary(Of String, Object) = getStockList(queryStockList)
-        Dim i As Integer = 1
-        While i < 11
-            Dim textPrd As String = "LStock" + (i.ToString())
-            Dim textQty As String = "LQty" + (i.ToString())
-            Dim lblPrd As Label = Me.Controls.Find(textPrd, True).FirstOrDefault()
-            Dim lblQty As Label = Me.Controls.Find(textQty, True).FirstOrDefault()
-            If lblPrd IsNot Nothing And TypeOf lblPrd Is Label And lblQty IsNot Nothing And TypeOf lblQty Is Label Then
-                lblPrd.Text = result.GetValueOrDefault("prd" + (i.ToString()))
-                lblQty.Text = result.GetValueOrDefault("qty" + (i.ToString()))
-                i += 1
-            Else
-                MsgBox("no label")
-                i += 1
-            End If
-
-        End While
-
-        'btn click events
-        BtnLeaderMonth.PerformClick()
-        BtnProductMonth.PerformClick()
-        BtnSalesMonth.PerformClick()
-        BtnGrowthMonth.PerformClick()
-        Button1.PerformClick()
-        Button1.Select()
         'image load
         Me.IconRupee.Image = My.Resources.rupee
         Me.IconQuantity.Image = My.Resources.totalcustomer
@@ -49,6 +27,32 @@ Public Class Dashboardd
         parameters.Add("@year", yearInteger)
         Return parameters
     End Function
+
+    Public Sub timer_tick()
+        Dim queryStockList As String = "SELECT TOP(10) Product_name, convert(varchar,Quantity) FROM Products ORDER BY Quantity ASC"
+        Dim result As Dictionary(Of String, Object) = getStockList(queryStockList)
+        Dim i As Integer = 1
+        While i < 11
+            Dim textPrd As String = "LStock" + (i.ToString())
+            Dim textQty As String = "LQty" + (i.ToString())
+            Dim lblPrd As Label = Me.Controls.Find(textPrd, True).FirstOrDefault()
+            Dim lblQty As Label = Me.Controls.Find(textQty, True).FirstOrDefault()
+            If lblPrd IsNot Nothing And TypeOf lblPrd Is Label And lblQty IsNot Nothing And TypeOf lblQty Is Label Then
+                lblPrd.Text = result.GetValueOrDefault("prd" + (i.ToString()))
+                lblQty.Text = result.GetValueOrDefault("qty" + (i.ToString()))
+                i += 1
+            Else
+                i += 1
+            End If
+
+        End While
+        BtnLeaderMonth.PerformClick()
+        BtnProductMonth.PerformClick()
+        BtnSalesMonth.PerformClick()
+        BtnGrowthMonth.PerformClick()
+        Button1.PerformClick()
+        Button1.Select()
+    End Sub
 
 
     Private Sub BtnLeaderMonth_Click(sender As Object, e As EventArgs) Handles BtnLeaderMonth.Click
@@ -88,8 +92,8 @@ Public Class Dashboardd
     End Sub
 
     Private Sub BtnSalesYear_Click(sender As Object, e As EventArgs) Handles BtnSalesYear.Click
-        Dim queryYearSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing WHERE YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE YEAR(Date) = @year)"
-        Dim queryTotalSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
+        Dim queryYearSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing WHERE YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE YEAR(Date) = @year)"
+        Dim queryTotalSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
         Dim result As Dictionary(Of String, Object) = getSalesYear(queryYearSales, queryTotalSales, getParameters())
         LTotalSales.Text = (result.GetValueOrDefault("totalCost")).ToString
         LChangeSales.Text = (result.GetValueOrDefault("yearCost")).ToString
@@ -114,13 +118,13 @@ Public Class Dashboardd
     Private Sub button1_click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim amount As Double
         Dim dtString As String = (Date.Now).ToString("dd-MM-yyyy")
-        Dim querytodaysales As String = "select (select sum(convert(float, total)) from billing where convert(varchar,date,105) = '" + dtString + "' ) - isnull((select sum(convert(float, total)) from returntable where convert(varchar,date,105)='" + dtString + "'),0 )as tot"
+        Dim querytodaysales As String = "select (select sum(CAST(Total AS DECIMAL(10,2))) from billing where convert(varchar,date,105) = '" + dtString + "' ) - isnull((select sum(convert(float, total)) from returntable where convert(varchar,date,105)='" + dtString + "'),0 )as tot"
         Dim datatable As DataTable = getSalesToday(querytodaysales)
         Try
             If datatable.Rows.Count <> 0 Then
                 For Each row As DataRow In datatable.Rows
                     If Not IsDBNull(row("tot")) Then
-                        amount = Convert.ToDouble(row("tot"))
+                        amount = Convert.ToInt32(row("tot"))
                     Else
                         amount = 0.0
                     End If

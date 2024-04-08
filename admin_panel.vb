@@ -1,6 +1,7 @@
 ﻿Imports System.Security.Cryptography
 
 Public Class admin_panel
+
     Private Sub AddProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddProductsToolStripMenuItem.Click
         Dim frm = Add_Product
         frm.Show()
@@ -63,15 +64,13 @@ Public Class admin_panel
             ExitToolStripMenuItem.Visible = False
             ExitToolStripMenuItem2.Visible = False
         End If
-        Dim frm2 = New Dashboardd
-        frm2.Show()
-        frm2.MdiParent = Me
+        DashboardToolStripMenuItem.PerformClick()
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DashboardToolStripMenuItem.Click
-        Dim frm = New Dashboardd
-        frm.Show()
-        frm.MdiParent = Me
+        Dim dashhboad = Dashboardd
+        dashhboad.Show()
+        dashhboad.MdiParent = Me
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs)

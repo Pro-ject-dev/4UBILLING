@@ -210,13 +210,13 @@ Partial Class Dashboardd
         ' LabelSubHead
         ' 
         LabelSubHead.AutoSize = True
-        LabelSubHead.Font = New Font("Microsoft Sans Serif", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LabelSubHead.Font = New Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point)
         LabelSubHead.ForeColor = SystemColors.ButtonShadow
         LabelSubHead.Location = New Point(72, 65)
         LabelSubHead.Name = "LabelSubHead"
         LabelSubHead.Size = New Size(288, 20)
         LabelSubHead.TabIndex = 32
-        LabelSubHead.Text = "Your current sales summary and activity" ' 
+        LabelSubHead.Text = "Your current sales summary and activity"' 
         ' Panel12
         ' 
         Panel12.BackColor = Color.FromArgb(CByte(243), CByte(245), CByte(247))
@@ -250,7 +250,7 @@ Partial Class Dashboardd
         ' Panel20
         ' 
         Panel20.Controls.Add(LStock4)
-        Panel20.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel20.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel20.Location = New Point(3, 3)
         Panel20.Name = "Panel20"
         Panel20.Size = New Size(251, 33)
@@ -259,13 +259,13 @@ Partial Class Dashboardd
         ' LStock4
         ' 
         LStock4.AutoSize = True
-        LStock4.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock4.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock4.ForeColor = SystemColors.ControlText
         LStock4.Location = New Point(3, 5)
         LStock4.Name = "LStock4"
         LStock4.Size = New Size(150, 22)
         LStock4.TabIndex = 16
-        LStock4.Text = "Jungle Fullshirt M" ' 
+        LStock4.Text = "Jungle Fullshirt M"' 
         ' Panel21
         ' 
         Panel21.Controls.Add(LQty4)
@@ -277,13 +277,13 @@ Partial Class Dashboardd
         ' LQty4
         ' 
         LQty4.AutoSize = True
-        LQty4.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty4.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty4.ForeColor = SystemColors.ActiveCaptionText
         LQty4.Location = New Point(3, 5)
         LQty4.Name = "LQty4"
         LQty4.Size = New Size(20, 22)
         LQty4.TabIndex = 16
-        LQty4.Text = "1" ' 
+        LQty4.Text = "1"' 
         ' FlowLayoutPanel10
         ' 
         FlowLayoutPanel10.BackColor = Color.Silver
@@ -305,7 +305,7 @@ Partial Class Dashboardd
         ' Panel13
         ' 
         Panel13.Controls.Add(LStock1)
-        Panel13.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel13.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel13.Location = New Point(3, 3)
         Panel13.Name = "Panel13"
         Panel13.Size = New Size(251, 33)
@@ -314,13 +314,13 @@ Partial Class Dashboardd
         ' LStock1
         ' 
         LStock1.AutoSize = True
-        LStock1.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock1.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock1.ForeColor = SystemColors.ControlText
         LStock1.Location = New Point(3, 5)
         LStock1.Name = "LStock1"
         LStock1.Size = New Size(150, 22)
         LStock1.TabIndex = 16
-        LStock1.Text = "Jungle Fullshirt M" ' 
+        LStock1.Text = "Jungle Fullshirt M"' 
         ' Panel18
         ' 
         Panel18.Controls.Add(LQty1)
@@ -332,13 +332,13 @@ Partial Class Dashboardd
         ' LQty1
         ' 
         LQty1.AutoSize = True
-        LQty1.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty1.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty1.ForeColor = SystemColors.ActiveCaptionText
         LQty1.Location = New Point(3, 5)
         LQty1.Name = "LQty1"
         LQty1.Size = New Size(20, 22)
         LQty1.TabIndex = 16
-        LQty1.Text = "1" ' 
+        LQty1.Text = "1"' 
         ' FlowLayoutPanel4
         ' 
         FlowLayoutPanel4.BackColor = Color.Silver
@@ -359,13 +359,13 @@ Partial Class Dashboardd
         ' 
         Label16.AutoSize = True
         Label16.BackColor = Color.FromArgb(CByte(240), CByte(253), CByte(244))
-        Label16.Font = New Font("Microsoft Sans Serif", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label16.Font = New Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point)
         Label16.ForeColor = Color.FromArgb(CByte(192), CByte(0), CByte(0))
         Label16.Location = New Point(3, 0)
         Label16.Name = "Label16"
         Label16.Size = New Size(102, 20)
         Label16.TabIndex = 16
-        Label16.Text = "LOW STOCK" ' 
+        Label16.Text = "LOW STOCK"' 
         ' FlowLayoutPanel21
         ' 
         FlowLayoutPanel21.Controls.Add(Panel32)
@@ -379,7 +379,7 @@ Partial Class Dashboardd
         ' Panel32
         ' 
         Panel32.Controls.Add(LStock10)
-        Panel32.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel32.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel32.Location = New Point(3, 3)
         Panel32.Name = "Panel32"
         Panel32.Size = New Size(251, 33)
@@ -388,13 +388,13 @@ Partial Class Dashboardd
         ' LStock10
         ' 
         LStock10.AutoSize = True
-        LStock10.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock10.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock10.ForeColor = SystemColors.ControlText
         LStock10.Location = New Point(3, 5)
         LStock10.Name = "LStock10"
         LStock10.Size = New Size(150, 22)
         LStock10.TabIndex = 16
-        LStock10.Text = "Jungle Fullshirt M" ' 
+        LStock10.Text = "Jungle Fullshirt M"' 
         ' Panel33
         ' 
         Panel33.Controls.Add(LQty10)
@@ -406,13 +406,13 @@ Partial Class Dashboardd
         ' LQty10
         ' 
         LQty10.AutoSize = True
-        LQty10.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty10.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty10.ForeColor = SystemColors.ActiveCaptionText
         LQty10.Location = New Point(3, 5)
         LQty10.Name = "LQty10"
         LQty10.Size = New Size(20, 22)
         LQty10.TabIndex = 16
-        LQty10.Text = "1" ' 
+        LQty10.Text = "1"' 
         ' FlowLayoutPanel22
         ' 
         FlowLayoutPanel22.BackColor = Color.Silver
@@ -434,7 +434,7 @@ Partial Class Dashboardd
         ' Panel30
         ' 
         Panel30.Controls.Add(LStock9)
-        Panel30.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel30.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel30.Location = New Point(3, 3)
         Panel30.Name = "Panel30"
         Panel30.Size = New Size(251, 33)
@@ -443,13 +443,13 @@ Partial Class Dashboardd
         ' LStock9
         ' 
         LStock9.AutoSize = True
-        LStock9.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock9.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock9.ForeColor = SystemColors.ControlText
         LStock9.Location = New Point(3, 5)
         LStock9.Name = "LStock9"
         LStock9.Size = New Size(150, 22)
         LStock9.TabIndex = 16
-        LStock9.Text = "Jungle Fullshirt M" ' 
+        LStock9.Text = "Jungle Fullshirt M"' 
         ' Panel31
         ' 
         Panel31.Controls.Add(LQty9)
@@ -461,13 +461,13 @@ Partial Class Dashboardd
         ' LQty9
         ' 
         LQty9.AutoSize = True
-        LQty9.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty9.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty9.ForeColor = SystemColors.ActiveCaptionText
         LQty9.Location = New Point(3, 5)
         LQty9.Name = "LQty9"
         LQty9.Size = New Size(20, 22)
         LQty9.TabIndex = 16
-        LQty9.Text = "1" ' 
+        LQty9.Text = "1"' 
         ' FlowLayoutPanel20
         ' 
         FlowLayoutPanel20.BackColor = Color.Silver
@@ -489,7 +489,7 @@ Partial Class Dashboardd
         ' Panel28
         ' 
         Panel28.Controls.Add(LStock8)
-        Panel28.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel28.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel28.Location = New Point(3, 3)
         Panel28.Name = "Panel28"
         Panel28.Size = New Size(251, 33)
@@ -498,13 +498,13 @@ Partial Class Dashboardd
         ' LStock8
         ' 
         LStock8.AutoSize = True
-        LStock8.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock8.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock8.ForeColor = SystemColors.ControlText
         LStock8.Location = New Point(3, 5)
         LStock8.Name = "LStock8"
         LStock8.Size = New Size(150, 22)
         LStock8.TabIndex = 16
-        LStock8.Text = "Jungle Fullshirt M" ' 
+        LStock8.Text = "Jungle Fullshirt M"' 
         ' Panel29
         ' 
         Panel29.Controls.Add(LQty8)
@@ -516,13 +516,13 @@ Partial Class Dashboardd
         ' LQty8
         ' 
         LQty8.AutoSize = True
-        LQty8.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty8.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty8.ForeColor = SystemColors.ActiveCaptionText
         LQty8.Location = New Point(3, 5)
         LQty8.Name = "LQty8"
         LQty8.Size = New Size(20, 22)
         LQty8.TabIndex = 16
-        LQty8.Text = "1" ' 
+        LQty8.Text = "1"' 
         ' FlowLayoutPanel18
         ' 
         FlowLayoutPanel18.BackColor = Color.Silver
@@ -544,7 +544,7 @@ Partial Class Dashboardd
         ' Panel26
         ' 
         Panel26.Controls.Add(LStock7)
-        Panel26.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel26.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel26.Location = New Point(3, 3)
         Panel26.Name = "Panel26"
         Panel26.Size = New Size(251, 33)
@@ -553,13 +553,13 @@ Partial Class Dashboardd
         ' LStock7
         ' 
         LStock7.AutoSize = True
-        LStock7.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock7.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock7.ForeColor = SystemColors.ControlText
         LStock7.Location = New Point(3, 5)
         LStock7.Name = "LStock7"
         LStock7.Size = New Size(150, 22)
         LStock7.TabIndex = 16
-        LStock7.Text = "Jungle Fullshirt M" ' 
+        LStock7.Text = "Jungle Fullshirt M"' 
         ' Panel27
         ' 
         Panel27.Controls.Add(LQty7)
@@ -571,13 +571,13 @@ Partial Class Dashboardd
         ' LQty7
         ' 
         LQty7.AutoSize = True
-        LQty7.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty7.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty7.ForeColor = SystemColors.ActiveCaptionText
         LQty7.Location = New Point(3, 5)
         LQty7.Name = "LQty7"
         LQty7.Size = New Size(20, 22)
         LQty7.TabIndex = 16
-        LQty7.Text = "1" ' 
+        LQty7.Text = "1"' 
         ' FlowLayoutPanel16
         ' 
         FlowLayoutPanel16.BackColor = Color.Silver
@@ -599,7 +599,7 @@ Partial Class Dashboardd
         ' Panel24
         ' 
         Panel24.Controls.Add(LStock6)
-        Panel24.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel24.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel24.Location = New Point(3, 3)
         Panel24.Name = "Panel24"
         Panel24.Size = New Size(251, 33)
@@ -608,13 +608,13 @@ Partial Class Dashboardd
         ' LStock6
         ' 
         LStock6.AutoSize = True
-        LStock6.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock6.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock6.ForeColor = SystemColors.ControlText
         LStock6.Location = New Point(3, 5)
         LStock6.Name = "LStock6"
         LStock6.Size = New Size(150, 22)
         LStock6.TabIndex = 16
-        LStock6.Text = "Jungle Fullshirt M" ' 
+        LStock6.Text = "Jungle Fullshirt M"' 
         ' Panel25
         ' 
         Panel25.Controls.Add(LQty6)
@@ -626,13 +626,13 @@ Partial Class Dashboardd
         ' LQty6
         ' 
         LQty6.AutoSize = True
-        LQty6.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty6.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty6.ForeColor = SystemColors.ActiveCaptionText
         LQty6.Location = New Point(3, 5)
         LQty6.Name = "LQty6"
         LQty6.Size = New Size(20, 22)
         LQty6.TabIndex = 16
-        LQty6.Text = "1" ' 
+        LQty6.Text = "1"' 
         ' FlowLayoutPanel14
         ' 
         FlowLayoutPanel14.BackColor = Color.Silver
@@ -654,7 +654,7 @@ Partial Class Dashboardd
         ' Panel22
         ' 
         Panel22.Controls.Add(LStock5)
-        Panel22.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel22.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel22.Location = New Point(3, 3)
         Panel22.Name = "Panel22"
         Panel22.Size = New Size(251, 33)
@@ -663,13 +663,13 @@ Partial Class Dashboardd
         ' LStock5
         ' 
         LStock5.AutoSize = True
-        LStock5.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock5.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock5.ForeColor = SystemColors.ControlText
         LStock5.Location = New Point(3, 5)
         LStock5.Name = "LStock5"
         LStock5.Size = New Size(150, 22)
         LStock5.TabIndex = 16
-        LStock5.Text = "Jungle Fullshirt M" ' 
+        LStock5.Text = "Jungle Fullshirt M"' 
         ' Qty
         ' 
         Qty.Controls.Add(LQty5)
@@ -681,13 +681,13 @@ Partial Class Dashboardd
         ' LQty5
         ' 
         LQty5.AutoSize = True
-        LQty5.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty5.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty5.ForeColor = SystemColors.ActiveCaptionText
         LQty5.Location = New Point(3, 5)
         LQty5.Name = "LQty5"
         LQty5.Size = New Size(20, 22)
         LQty5.TabIndex = 16
-        LQty5.Text = "1" ' 
+        LQty5.Text = "1"' 
         ' FlowLayoutPanel12
         ' 
         FlowLayoutPanel12.BackColor = Color.Silver
@@ -699,13 +699,13 @@ Partial Class Dashboardd
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label14.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label14.ForeColor = SystemColors.ControlDarkDark
         Label14.Location = New Point(22, 30)
         Label14.Name = "Label14"
         Label14.Size = New Size(217, 29)
         Label14.TabIndex = 1
-        Label14.Text = "Products Stock List" ' 
+        Label14.Text = "Products Stock List"' 
         ' FlowLayoutPanel7
         ' 
         FlowLayoutPanel7.Controls.Add(Panel16)
@@ -719,7 +719,7 @@ Partial Class Dashboardd
         ' Panel16
         ' 
         Panel16.Controls.Add(LStock3)
-        Panel16.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel16.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel16.Location = New Point(3, 3)
         Panel16.Name = "Panel16"
         Panel16.Size = New Size(251, 33)
@@ -728,13 +728,13 @@ Partial Class Dashboardd
         ' LStock3
         ' 
         LStock3.AutoSize = True
-        LStock3.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock3.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock3.ForeColor = SystemColors.ControlText
         LStock3.Location = New Point(3, 5)
         LStock3.Name = "LStock3"
         LStock3.Size = New Size(150, 22)
         LStock3.TabIndex = 16
-        LStock3.Text = "Jungle Fullshirt M" ' 
+        LStock3.Text = "Jungle Fullshirt M"' 
         ' Panel19
         ' 
         Panel19.Controls.Add(LQty3)
@@ -746,13 +746,13 @@ Partial Class Dashboardd
         ' LQty3
         ' 
         LQty3.AutoSize = True
-        LQty3.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty3.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty3.ForeColor = SystemColors.ActiveCaptionText
         LQty3.Location = New Point(3, 5)
         LQty3.Name = "LQty3"
         LQty3.Size = New Size(20, 22)
         LQty3.TabIndex = 16
-        LQty3.Text = "1" ' 
+        LQty3.Text = "1"' 
         ' FlowLayoutPanel8
         ' 
         FlowLayoutPanel8.BackColor = Color.Silver
@@ -774,7 +774,7 @@ Partial Class Dashboardd
         ' Panel14
         ' 
         Panel14.Controls.Add(LStock2)
-        Panel14.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel14.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel14.Location = New Point(3, 3)
         Panel14.Name = "Panel14"
         Panel14.Size = New Size(251, 33)
@@ -783,13 +783,13 @@ Partial Class Dashboardd
         ' LStock2
         ' 
         LStock2.AutoSize = True
-        LStock2.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LStock2.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LStock2.ForeColor = SystemColors.ControlText
         LStock2.Location = New Point(3, 5)
         LStock2.Name = "LStock2"
         LStock2.Size = New Size(150, 22)
         LStock2.TabIndex = 16
-        LStock2.Text = "Jungle Fullshirt M" ' 
+        LStock2.Text = "Jungle Fullshirt M"' 
         ' Panel15
         ' 
         Panel15.Controls.Add(LQty2)
@@ -801,13 +801,13 @@ Partial Class Dashboardd
         ' LQty2
         ' 
         LQty2.AutoSize = True
-        LQty2.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LQty2.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LQty2.ForeColor = SystemColors.ActiveCaptionText
         LQty2.Location = New Point(3, 5)
         LQty2.Name = "LQty2"
         LQty2.Size = New Size(20, 22)
         LQty2.TabIndex = 16
-        LQty2.Text = "1" ' 
+        LQty2.Text = "1"' 
         ' FlowLayoutPanel6
         ' 
         FlowLayoutPanel6.BackColor = Color.Silver
@@ -842,7 +842,7 @@ Partial Class Dashboardd
         ' Panel79
         ' 
         Panel79.Controls.Add(LLeaderCustomer)
-        Panel79.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel79.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel79.Location = New Point(3, 3)
         Panel79.Name = "Panel79"
         Panel79.Size = New Size(194, 35)
@@ -851,13 +851,13 @@ Partial Class Dashboardd
         ' LLeaderCustomer
         ' 
         LLeaderCustomer.AutoSize = True
-        LLeaderCustomer.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LLeaderCustomer.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LLeaderCustomer.ForeColor = SystemColors.ControlText
         LLeaderCustomer.Location = New Point(6, 13)
         LLeaderCustomer.Name = "LLeaderCustomer"
         LLeaderCustomer.Size = New Size(118, 22)
         LLeaderCustomer.TabIndex = 16
-        LLeaderCustomer.Text = "Vasudevan N" ' 
+        LLeaderCustomer.Text = "Vasudevan N"' 
         ' Panel80
         ' 
         Panel80.Controls.Add(LLeaderPlace)
@@ -870,23 +870,23 @@ Partial Class Dashboardd
         ' 
         LLeaderPlace.AutoSize = True
         LLeaderPlace.BackColor = Color.Transparent
-        LLeaderPlace.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LLeaderPlace.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LLeaderPlace.ForeColor = SystemColors.ActiveCaptionText
         LLeaderPlace.Location = New Point(6, 13)
         LLeaderPlace.Name = "LLeaderPlace"
         LLeaderPlace.Size = New Size(145, 22)
         LLeaderPlace.TabIndex = 16
-        LLeaderPlace.Text = "Ponnamaravathy" ' 
+        LLeaderPlace.Text = "Ponnamaravathy"' 
         ' LabelCustomer
         ' 
         LabelCustomer.AutoSize = True
-        LabelCustomer.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LabelCustomer.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LabelCustomer.ForeColor = SystemColors.ControlDarkDark
         LabelCustomer.Location = New Point(44, 30)
         LabelCustomer.Name = "LabelCustomer"
         LabelCustomer.Size = New Size(262, 29)
         LabelCustomer.TabIndex = 30
-        LabelCustomer.Text = "Customer Leaderboard" ' 
+        LabelCustomer.Text = "Customer Leaderboard"' 
         ' FlowLayoutPanel1
         ' 
         FlowLayoutPanel1.Controls.Add(Panel5)
@@ -899,7 +899,7 @@ Partial Class Dashboardd
         ' Panel5
         ' 
         Panel5.Controls.Add(Label5)
-        Panel5.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel5.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel5.Location = New Point(3, 3)
         Panel5.Name = "Panel5"
         Panel5.Size = New Size(194, 35)
@@ -908,13 +908,13 @@ Partial Class Dashboardd
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Microsoft Sans Serif", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label5.Font = New Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.ForeColor = SystemColors.ActiveCaptionText
         Label5.Location = New Point(6, 0)
         Label5.Name = "Label5"
         Label5.Size = New Size(140, 20)
         Label5.TabIndex = 17
-        Label5.Text = "Purchase Amount:" ' 
+        Label5.Text = "Purchase Amount:"' 
         ' Panel7
         ' 
         Panel7.Controls.Add(LLeaderAmount)
@@ -926,13 +926,13 @@ Partial Class Dashboardd
         ' LLeaderAmount
         ' 
         LLeaderAmount.AutoSize = True
-        LLeaderAmount.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LLeaderAmount.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LLeaderAmount.ForeColor = SystemColors.ActiveCaptionText
         LLeaderAmount.Location = New Point(6, 0)
         LLeaderAmount.Name = "LLeaderAmount"
         LLeaderAmount.Size = New Size(65, 22)
         LLeaderAmount.TabIndex = 16
-        LLeaderAmount.Text = "40,000" ' 
+        LLeaderAmount.Text = "40,000"' 
         ' BtnLeaderYear
         ' 
         BtnLeaderYear.Location = New Point(162, 86)
@@ -954,7 +954,7 @@ Partial Class Dashboardd
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.ForeColor = SystemColors.ControlDarkDark
         Label6.Location = New Point(338, 338)
         Label6.Name = "Label6"
@@ -997,13 +997,13 @@ Partial Class Dashboardd
         ' LProductAmount
         ' 
         LProductAmount.AutoSize = True
-        LProductAmount.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LProductAmount.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LProductAmount.ForeColor = SystemColors.ActiveCaptionText
         LProductAmount.Location = New Point(6, 0)
         LProductAmount.Name = "LProductAmount"
         LProductAmount.Size = New Size(65, 22)
         LProductAmount.TabIndex = 16
-        LProductAmount.Text = "40,000" ' 
+        LProductAmount.Text = "40,000"' 
         ' Panel9
         ' 
         Panel9.Controls.Add(LProductQty)
@@ -1016,13 +1016,13 @@ Partial Class Dashboardd
         ' 
         LProductQty.AutoSize = True
         LProductQty.BackColor = Color.Transparent
-        LProductQty.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LProductQty.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LProductQty.ForeColor = SystemColors.ActiveCaptionText
         LProductQty.Location = New Point(6, 13)
         LProductQty.Name = "LProductQty"
         LProductQty.Size = New Size(63, 22)
         LProductQty.TabIndex = 16
-        LProductQty.Text = "40 Qty" ' 
+        LProductQty.Text = "40 Qty"' 
         ' BtnProductMonth
         ' 
         BtnProductMonth.Location = New Point(44, 86)
@@ -1043,7 +1043,7 @@ Partial Class Dashboardd
         ' Panel10
         ' 
         Panel10.Controls.Add(Label10)
-        Panel10.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel10.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel10.Location = New Point(3, 3)
         Panel10.Name = "Panel10"
         Panel10.Size = New Size(225, 35)
@@ -1052,13 +1052,13 @@ Partial Class Dashboardd
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Font = New Font("Microsoft Sans Serif", 8.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label10.Font = New Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point)
         Label10.ForeColor = SystemColors.ActiveCaptionText
         Label10.Location = New Point(6, 0)
         Label10.Name = "Label10"
         Label10.Size = New Size(105, 20)
         Label10.TabIndex = 17
-        Label10.Text = "Sale Amount:" ' 
+        Label10.Text = "Sale Amount:"' 
         ' FlowLayoutPanel2
         ' 
         FlowLayoutPanel2.Controls.Add(Panel8)
@@ -1070,7 +1070,7 @@ Partial Class Dashboardd
         ' Panel8
         ' 
         Panel8.Controls.Add(LProductName)
-        Panel8.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Panel8.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Panel8.Location = New Point(3, 3)
         Panel8.Name = "Panel8"
         Panel8.Size = New Size(225, 35)
@@ -1079,17 +1079,17 @@ Partial Class Dashboardd
         ' LProductName
         ' 
         LProductName.AutoSize = True
-        LProductName.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LProductName.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LProductName.ForeColor = SystemColors.ControlText
         LProductName.Location = New Point(6, 13)
         LProductName.Name = "LProductName"
         LProductName.Size = New Size(150, 22)
         LProductName.TabIndex = 16
-        LProductName.Text = "Jungle Fullshirt M" ' 
+        LProductName.Text = "Jungle Fullshirt M"' 
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label11.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.ForeColor = SystemColors.ControlDarkDark
         Label11.Location = New Point(338, 338)
         Label11.Name = "Label11"
@@ -1099,13 +1099,13 @@ Partial Class Dashboardd
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label13.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label13.ForeColor = SystemColors.ControlDarkDark
         Label13.Location = New Point(44, 30)
         Label13.Name = "Label13"
         Label13.Size = New Size(227, 29)
         Label13.TabIndex = 0
-        Label13.Text = "Top Selling Product" ' 
+        Label13.Text = "Top Selling Product"' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(243), CByte(245), CByte(247))
@@ -1154,13 +1154,13 @@ Partial Class Dashboardd
         ' LChangeCustomer
         ' 
         LChangeCustomer.AutoSize = True
-        LChangeCustomer.Font = New Font("Microsoft Sans Serif", 16.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LChangeCustomer.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Point)
         LChangeCustomer.ForeColor = SystemColors.ActiveCaptionText
         LChangeCustomer.Location = New Point(279, 174)
         LChangeCustomer.Name = "LChangeCustomer"
         LChangeCustomer.Size = New Size(122, 37)
         LChangeCustomer.TabIndex = 27
-        LChangeCustomer.Text = "50,000" ' 
+        LChangeCustomer.Text = "50,000"' 
         ' IconChangeQty
         ' 
         IconChangeQty.BackColor = Color.FromArgb(CByte(243), CByte(245), CByte(247))
@@ -1175,7 +1175,7 @@ Partial Class Dashboardd
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.ForeColor = SystemColors.ControlDarkDark
         Label2.Location = New Point(338, 338)
         Label2.Name = "Label2"
@@ -1185,23 +1185,23 @@ Partial Class Dashboardd
         ' LTotalCustomer
         ' 
         LTotalCustomer.AutoSize = True
-        LTotalCustomer.Font = New Font("Microsoft Sans Serif", 16.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LTotalCustomer.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Point)
         LTotalCustomer.ForeColor = SystemColors.ActiveCaptionText
         LTotalCustomer.Location = New Point(83, 174)
         LTotalCustomer.Name = "LTotalCustomer"
         LTotalCustomer.Size = New Size(122, 37)
         LTotalCustomer.TabIndex = 3
-        LTotalCustomer.Text = "50,000" ' 
+        LTotalCustomer.Text = "50,000"' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label4.ForeColor = SystemColors.ControlDarkDark
         Label4.Location = New Point(44, 30)
         Label4.Name = "Label4"
         Label4.Size = New Size(200, 29)
         Label4.TabIndex = 0
-        Label4.Text = "Customer Growth" ' 
+        Label4.Text = "Customer Growth"' 
         ' Panel6
         ' 
         Panel6.BackColor = Color.FromArgb(CByte(243), CByte(245), CByte(247))
@@ -1249,13 +1249,13 @@ Partial Class Dashboardd
         ' LChangeSales
         ' 
         LChangeSales.AutoSize = True
-        LChangeSales.Font = New Font("Microsoft Sans Serif", 16.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LChangeSales.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Point)
         LChangeSales.ForeColor = SystemColors.ActiveCaptionText
         LChangeSales.Location = New Point(279, 174)
         LChangeSales.Name = "LChangeSales"
         LChangeSales.Size = New Size(122, 37)
         LChangeSales.TabIndex = 27
-        LChangeSales.Text = "50,000" ' 
+        LChangeSales.Text = "50,000"' 
         ' IconChangeCost
         ' 
         IconChangeCost.BackColor = Color.FromArgb(CByte(243), CByte(245), CByte(247))
@@ -1270,7 +1270,7 @@ Partial Class Dashboardd
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label7.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.ForeColor = SystemColors.ControlDarkDark
         Label7.Location = New Point(338, 338)
         Label7.Name = "Label7"
@@ -1291,35 +1291,35 @@ Partial Class Dashboardd
         ' LTotalSales
         ' 
         LTotalSales.AutoSize = True
-        LTotalSales.Font = New Font("Microsoft Sans Serif", 16.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LTotalSales.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Point)
         LTotalSales.ForeColor = SystemColors.ActiveCaptionText
         LTotalSales.Location = New Point(83, 174)
         LTotalSales.Name = "LTotalSales"
         LTotalSales.Size = New Size(122, 37)
         LTotalSales.TabIndex = 3
-        LTotalSales.Text = "50,000" ' 
+        LTotalSales.Text = "50,000"' 
         ' labelSales
         ' 
         labelSales.AutoSize = True
-        labelSales.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        labelSales.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         labelSales.ForeColor = SystemColors.ControlDarkDark
         labelSales.Location = New Point(44, 30)
         labelSales.Name = "labelSales"
         labelSales.Size = New Size(135, 29)
         labelSales.TabIndex = 0
-        labelSales.Text = "Total Sales" ' 
+        labelSales.Text = "Total Sales"' 
         ' LabelHead
         ' 
         LabelHead.AutoSize = True
-        LabelHead.Font = New Font("Microsoft Sans Serif", 14.0F, FontStyle.Bold, GraphicsUnit.Point)
+        LabelHead.Font = New Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point)
         LabelHead.Location = New Point(72, 33)
         LabelHead.Name = "LabelHead"
         LabelHead.Size = New Size(173, 32)
         LabelHead.TabIndex = 7
-        LabelHead.Text = "Dash Board" ' 
+        LabelHead.Text = "Dash Board"' 
         ' Dashboardd
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1608, 823)
         Controls.Add(Panel1)
@@ -1327,7 +1327,7 @@ Partial Class Dashboardd
         MinimizeBox = False
         Name = "Dashboardd"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Dash"
+        Text = "DashBoard"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         Panel12.ResumeLayout(False)

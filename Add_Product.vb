@@ -168,6 +168,9 @@ Public Class Add_Product
 
                         If result = True Then
                             MsgBox("Product Added Successfully!")
+                            Me.Close()
+
+
                         End If
                         clear()
 
@@ -213,6 +216,9 @@ Public Class Add_Product
 
         End If
 
+
+
+
     End Sub
 
     Private Sub Add_Product_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -232,6 +238,7 @@ Public Class Add_Product
             update_product.DataGridView1.DataSource = dataTable
             update_product.DataGridView1.ClearSelection()
         End If
+
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
