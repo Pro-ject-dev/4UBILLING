@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 538</value>
+    <value>9, 502</value>
   </data>
   <data name="Label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 468</value>
+    <value>10, 435</value>
   </data>
   <data name="Label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 22</value>
@@ -187,10 +187,10 @@
     <value>1</value>
   </data>
   <data name="ReturnAmount.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="ReturnAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 567</value>
+    <value>10, 532</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ReturnAmount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -203,7 +203,7 @@
     <value>Horizontal</value>
   </data>
   <data name="ReturnAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>215, 27</value>
   </data>
   <data name="ReturnAmount.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -224,7 +224,7 @@
     <value>2</value>
   </data>
   <data name="MobileNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 639</value>
+    <value>9, 595</value>
   </data>
   <data name="MobileNo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -233,7 +233,7 @@
     <value>10</value>
   </data>
   <data name="MobileNo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 27</value>
+    <value>216, 27</value>
   </data>
   <data name="MobileNo.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -251,10 +251,10 @@
     <value>3</value>
   </data>
   <data name="BarcodeCodetxt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="BarcodeCodetxt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 120</value>
+    <value>9, 111</value>
   </data>
   <data name="BarcodeCodetxt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -266,7 +266,7 @@
     <value>Horizontal</value>
   </data>
   <data name="BarcodeCodetxt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>216, 27</value>
   </data>
   <data name="BarcodeCodetxt.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -287,10 +287,10 @@
     <value>4</value>
   </data>
   <data name="Return_billno.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Return_billno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 498</value>
+    <value>10, 465</value>
   </data>
   <data name="Return_billno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -302,7 +302,7 @@
     <value>Horizontal</value>
   </data>
   <data name="Return_billno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>215, 27</value>
   </data>
   <data name="Return_billno.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -326,19 +326,19 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="AddUserbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 674</value>
+    <value>10, 632</value>
   </data>
   <data name="AddUserbtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
   <data name="AddUserbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 42</value>
+    <value>93, 42</value>
   </data>
   <data name="AddUserbtn.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="AddUserbtn.Text" xml:space="preserve">
-    <value>ADD USER</value>
+    <value>ADD</value>
   </data>
   <data name="&gt;&gt;AddUserbtn.Name" xml:space="preserve">
     <value>AddUserbtn</value>
@@ -356,13 +356,13 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="Billbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 724</value>
+    <value>132, 634</value>
   </data>
   <data name="Billbtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
   <data name="Billbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 42</value>
+    <value>93, 42</value>
   </data>
   <data name="Billbtn.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -389,7 +389,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 611</value>
+    <value>10, 569</value>
   </data>
   <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 22</value>
@@ -419,7 +419,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 94</value>
+    <value>5, 84</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -473,10 +473,10 @@
     <value>10</value>
   </data>
   <data name="Bill_no.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Bill_no.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 57</value>
+    <value>9, 52</value>
   </data>
   <data name="Bill_no.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -488,7 +488,7 @@
     <value>Horizontal</value>
   </data>
   <data name="Bill_no.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>216, 27</value>
   </data>
   <data name="Bill_no.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -512,7 +512,7 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="Button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 430</value>
+    <value>132, 393</value>
   </data>
   <data name="Button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -542,7 +542,7 @@
     <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
   </data>
   <data name="Button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 429</value>
+    <value>10, 393</value>
   </data>
   <data name="Button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -575,7 +575,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 158</value>
+    <value>5, 146</value>
   </data>
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 22</value>
@@ -599,10 +599,10 @@
     <value>14</value>
   </data>
   <data name="ProductName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="ProductName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 186</value>
+    <value>9, 172</value>
   </data>
   <data name="ProductName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -614,7 +614,7 @@
     <value>Horizontal</value>
   </data>
   <data name="ProductName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>216, 27</value>
   </data>
   <data name="ProductName.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -641,7 +641,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 359</value>
+    <value>7, 332</value>
   </data>
   <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 22</value>
@@ -665,10 +665,10 @@
     <value>16</value>
   </data>
   <data name="Total.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Total.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 386</value>
+    <value>10, 357</value>
   </data>
   <data name="Total.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -680,7 +680,7 @@
     <value>Horizontal</value>
   </data>
   <data name="Total.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>216, 27</value>
   </data>
   <data name="Total.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -707,7 +707,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 291</value>
+    <value>7, 268</value>
   </data>
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 22</value>
@@ -731,10 +731,10 @@
     <value>18</value>
   </data>
   <data name="Price.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Price.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 321</value>
+    <value>9, 294</value>
   </data>
   <data name="Price.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -746,7 +746,7 @@
     <value>Horizontal</value>
   </data>
   <data name="Price.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>216, 27</value>
   </data>
   <data name="Price.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -773,7 +773,7 @@
     <value>Microsoft Sans Serif, 10.8pt</value>
   </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 223</value>
+    <value>6, 206</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -797,10 +797,10 @@
     <value>20</value>
   </data>
   <data name="Quantity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.8pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="Quantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 253</value>
+    <value>10, 234</value>
   </data>
   <data name="Quantity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -812,7 +812,7 @@
     <value>Horizontal</value>
   </data>
   <data name="Quantity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 33</value>
+    <value>215, 27</value>
   </data>
   <data name="Quantity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -842,7 +842,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 777</value>
+    <value>241, 685</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -866,7 +866,7 @@
     <value>50</value>
   </data>
   <data name="BillingGridsumma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 15</value>
+    <value>259, 15</value>
   </data>
   <data name="BillingGridsumma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -875,7 +875,7 @@
     <value>51</value>
   </data>
   <data name="BillingGridsumma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1257, 661</value>
+    <value>1178, 569</value>
   </data>
   <data name="BillingGridsumma.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -892,11 +892,239 @@
   <data name="&gt;&gt;BillingGridsumma.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;Label15.Name" xml:space="preserve">
+    <value>Label15</value>
+  </data>
+  <data name="&gt;&gt;Label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label15.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Label14.Name" xml:space="preserve">
+    <value>Label14</value>
+  </data>
+  <data name="&gt;&gt;Label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label14.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label14.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Label13.Name" xml:space="preserve">
+    <value>Label13</value>
+  </data>
+  <data name="&gt;&gt;Label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label13.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Balance.Name" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="&gt;&gt;Balance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Balance.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Balance.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Label12.Name" xml:space="preserve">
+    <value>Label12</value>
+  </data>
+  <data name="&gt;&gt;Label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label12.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label12.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Amount.Name" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="&gt;&gt;Amount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Amount.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Amount.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;Label11.Name" xml:space="preserve">
+    <value>Label11</value>
+  </data>
+  <data name="&gt;&gt;Label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label11.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Label8.Name" xml:space="preserve">
+    <value>Label8</value>
+  </data>
+  <data name="&gt;&gt;Label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label8.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;grandtot.Name" xml:space="preserve">
+    <value>grandtot</value>
+  </data>
+  <data name="&gt;&gt;grandtot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grandtot.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;grandtot.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="GroupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 592</value>
+  </data>
+  <data name="GroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="GroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1178, 98</value>
+  </data>
+  <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="GroupBox3.Text" xml:space="preserve">
+    <value>INSTRUCTION</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Name" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 74</value>
+  </data>
+  <data name="Label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 20</value>
+  </data>
+  <data name="Label15.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="Label15.Text" xml:space="preserve">
+    <value>3) Focus Mobile No -use the keyboard shortcut Alt + F2.</value>
+  </data>
+  <data name="&gt;&gt;Label15.Name" xml:space="preserve">
+    <value>Label15</value>
+  </data>
+  <data name="&gt;&gt;Label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label15.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="Label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 20</value>
+  </data>
+  <data name="Label14.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="Label14.Text" xml:space="preserve">
+    <value>2) Focus Barcode  -use the keyboard shortcut Alt + F1.</value>
+  </data>
+  <data name="&gt;&gt;Label14.Name" xml:space="preserve">
+    <value>Label14</value>
+  </data>
+  <data name="&gt;&gt;Label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label14.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label14.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 24</value>
+  </data>
+  <data name="Label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 20</value>
+  </data>
+  <data name="Label13.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="Label13.Text" xml:space="preserve">
+    <value>1) Place Bill -use the keyboard shortcut Alt + F3.</value>
+  </data>
+  <data name="&gt;&gt;Label13.Name" xml:space="preserve">
+    <value>Label13</value>
+  </data>
+  <data name="&gt;&gt;Label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label13.Parent" xml:space="preserve">
+    <value>GroupBox3</value>
+  </data>
+  <data name="&gt;&gt;Label13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="Balance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 13.8pt</value>
   </data>
   <data name="Balance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>774, 57</value>
+    <value>649, 57</value>
   </data>
   <data name="Balance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -926,7 +1154,7 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;Balance.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="Label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -938,7 +1166,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>774, 31</value>
+    <value>649, 31</value>
   </data>
   <data name="Label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 22</value>
@@ -959,13 +1187,13 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;Label12.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="Amount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 13.8pt</value>
   </data>
   <data name="Amount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 56</value>
+    <value>408, 56</value>
   </data>
   <data name="Amount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -995,7 +1223,7 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;Amount.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="Label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1007,7 +1235,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 31</value>
+    <value>408, 31</value>
   </data>
   <data name="Label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 22</value>
@@ -1028,7 +1256,7 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;Label11.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="Label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1040,7 +1268,7 @@
     <value>NoControl</value>
   </data>
   <data name="Label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1015, 28</value>
+    <value>890, 28</value>
   </data>
   <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 22</value>
@@ -1061,13 +1289,13 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="grandtot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 13.8pt</value>
   </data>
   <data name="grandtot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1015, 56</value>
+    <value>890, 56</value>
   </data>
   <data name="grandtot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -1097,37 +1325,7 @@
     <value>GroupBox3</value>
   </data>
   <data name="&gt;&gt;grandtot.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GroupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 684</value>
-  </data>
-  <data name="GroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="GroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1257, 98</value>
-  </data>
-  <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="GroupBox3.Text" xml:space="preserve">
-    <value>INSTRUCTION</value>
-  </data>
-  <data name="&gt;&gt;GroupBox3.Name" xml:space="preserve">
-    <value>GroupBox3</value>
-  </data>
-  <data name="&gt;&gt;GroupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>8</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1139,7 +1337,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1540, 786</value>
+    <value>1450, 700</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

@@ -40,6 +40,7 @@ Partial Class ReturnForm
         BillNo.Location = New Point(12, 40)
         BillNo.Margin = New Padding(3, 4, 3, 4)
         BillNo.Name = "BillNo"
+        BillNo.PlaceholderText = "Bill No"
         BillNo.Size = New Size(153, 27)
         BillNo.TabIndex = 0
         ' 
@@ -48,6 +49,7 @@ Partial Class ReturnForm
         Barcode.Location = New Point(199, 40)
         Barcode.Margin = New Padding(3, 4, 3, 4)
         Barcode.Name = "Barcode"
+        Barcode.PlaceholderText = "BarCode No"
         Barcode.Size = New Size(153, 27)
         Barcode.TabIndex = 1
         ' 
@@ -62,12 +64,12 @@ Partial Class ReturnForm
         ReturnGrid.ReadOnly = True
         ReturnGrid.RowHeadersWidth = 51
         ReturnGrid.RowTemplate.Height = 24
-        ReturnGrid.Size = New Size(845, 384)
+        ReturnGrid.Size = New Size(802, 384)
         ReturnGrid.TabIndex = 2
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(546, 32)
+        Button1.Location = New Point(508, 31)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
         Button1.Size = New Size(91, 44)
@@ -77,7 +79,7 @@ Partial Class ReturnForm
         ' 
         ' Button2
         ' 
-        Button2.Location = New Point(643, 31)
+        Button2.Location = New Point(605, 30)
         Button2.Margin = New Padding(3, 4, 3, 4)
         Button2.Name = "Button2"
         Button2.Size = New Size(96, 44)
@@ -87,7 +89,7 @@ Partial Class ReturnForm
         ' 
         ' Button3
         ' 
-        Button3.Location = New Point(745, 32)
+        Button3.Location = New Point(707, 31)
         Button3.Margin = New Padding(3, 4, 3, 4)
         Button3.Name = "Button3"
         Button3.Size = New Size(107, 44)
@@ -97,7 +99,7 @@ Partial Class ReturnForm
         ' 
         ' GrandTotal
         ' 
-        GrandTotal.Location = New Point(678, 482)
+        GrandTotal.Location = New Point(635, 482)
         GrandTotal.Name = "GrandTotal"
         GrandTotal.Size = New Size(179, 27)
         GrandTotal.TabIndex = 6
@@ -105,7 +107,7 @@ Partial Class ReturnForm
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(583, 485)
+        Label1.Location = New Point(540, 485)
         Label1.Name = "Label1"
         Label1.Size = New Size(89, 20)
         Label1.TabIndex = 7
@@ -114,7 +116,7 @@ Partial Class ReturnForm
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(295, 485)
+        Label2.Location = New Point(252, 485)
         Label2.Name = "Label2"
         Label2.Size = New Size(97, 20)
         Label2.TabIndex = 9
@@ -122,7 +124,7 @@ Partial Class ReturnForm
         ' 
         ' CurrentTotal
         ' 
-        CurrentTotal.Location = New Point(398, 482)
+        CurrentTotal.Location = New Point(355, 482)
         CurrentTotal.Name = "CurrentTotal"
         CurrentTotal.Size = New Size(179, 27)
         CurrentTotal.TabIndex = 8
@@ -131,7 +133,7 @@ Partial Class ReturnForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(869, 521)
+        ClientSize = New Size(828, 521)
         Controls.Add(Label2)
         Controls.Add(CurrentTotal)
         Controls.Add(Label1)
