@@ -3,11 +3,11 @@
 Public Class Dashboardd
 
     Public Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        timer_tick()
-        Dim time As New Timer()
-        time.Interval = 10000
-        AddHandler time.Tick, AddressOf timer_tick
-        time.Start()
+        'timer_tick()
+        'Dim time As New Timer()
+        'time.Interval = 10000
+        'AddHandler time.Tick, AddressOf timer_tick
+        'time.Start()
 
         'image load
         Me.IconRupee.Image = My.Resources.rupee

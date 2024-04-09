@@ -39,7 +39,6 @@ Public Class BILLING
 
     Private Sub InitialLoad()
         BarcodeCodetxt.Focus()
-        BarcodeCodetxt.Focus()
         Me.ProductName.Clear()
         Me.ReturnAmount.Clear()
         Me.Return_billno.Clear()
@@ -630,9 +629,8 @@ Public Class BILLING
                 Billbtn.PerformClick()
         End Select
         Select Case e.Alt And e.KeyCode
-
             Case Keys.F1
-                Barcode.Focus()
+                BarcodeCodetxt.Focus()
 
         End Select
         Select Case e.Alt And e.KeyCode
@@ -723,7 +721,5 @@ Public Class BILLING
 
     End Sub
 
-    Private Sub BarcodeCodetxt_TextChanged(sender As Object, e As EventArgs) Handles BarcodeCodetxt.TextChanged
 
-    End Sub
 End Class
