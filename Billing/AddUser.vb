@@ -15,7 +15,7 @@ Public Class AddUser
 
 
     Private Sub AddUser()
-        Dim query As String = "Insert into Customer(CustomerName,MobileNo,Place,date)values(@CustomerName,@MobileNo,@Place,GETDATE())"
+        Dim query As String = "Insert into Customer(CustomerName,MobileNo,Place,Date)values(@CustomerName,@MobileNo,@Place,GETDATE())"
         Dim InsertParameter As New List(Of SqlParameter)
         InsertParameter.Add(New SqlParameter("@CustomerName", Me.Nametxt.Text))
         InsertParameter.Add(New SqlParameter("@MobileNo", Me.Mobiletxt.Text))

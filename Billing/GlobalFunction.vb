@@ -144,6 +144,8 @@ Module GlobalFunction
                 Grid.Columns(GridColumn(i)).Width = Gridsize(i)
             Next
 
+            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+            Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             For Each row As DataGridViewRow In Grid.Rows
                 If row.Index Mod 2 = 0 Then
                     row.DefaultCellStyle.BackColor = Color.LightBlue

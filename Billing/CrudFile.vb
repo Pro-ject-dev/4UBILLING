@@ -2,7 +2,7 @@
 Imports Microsoft.Data.SqlClient
 
 Module CrudFile
-    Public Sub InsertDataa(Sqlquery As String, Parameters As List(Of SqlParameter))
+    Public Sub InsertDataas(Sqlquery As String, Parameters As List(Of SqlParameter))
         Try
             Using con As SqlConnection = New SqlConnection(connectionString)
                 con.Open()

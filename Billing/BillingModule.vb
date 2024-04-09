@@ -6,6 +6,7 @@ Imports Microsoft.Data.SqlClient
 
 Public Class BILLING
     Public ProductId As String
+    Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
@@ -28,9 +29,10 @@ Public Class BILLING
         End With
         validate.UseColumnTextForButtonValue = True
         delete.UseColumnTextForButtonValue = True
-        BillingGrid.Columns.Add(validate)
-        BillingGrid.Columns.Add(delete)
-
+        BillingGridsumma.Columns.Add(validate)
+        BillingGridsumma.Columns.Add(delete)
+        BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+        BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
     End Sub
 
 
@@ -39,6 +41,10 @@ Public Class BILLING
         BarcodeCodetxt.Focus()
         Me.BarcodeCodetxt.Clear()
         Me.ProductName.Clear()
+        Me.ReturnAmount.Clear()
+        Me.Return_billno.Clear()
+        Me.Amount.Clear()
+        Me.Balance.Clear()
         Me.Total.Text = 0
         Me.Price.Text = 0
         Me.Quantity.Text = 1
@@ -159,7 +165,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then
-                                            InsertDataa(InsertQuery, InsertParameter)
+                                            InsertDataas(InsertQuery, InsertParameter)
                                         Else
                                             MsgBox("Add Product In Inventory")
                                         End If
@@ -235,8 +241,15 @@ Public Class BILLING
         End If
     End Sub
 
-
-
+    Private Sub ReduceReturnAmount()
+        If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
+            ReduceAmount = GetTheReturnAmount(Me.Return_billno.Text)
+        Else
+            MsgBox("please Enter Valid BillNo")
+            Me.ReturnAmount.Clear()
+            Me.Return_billno.Clear()
+        End If
+    End Sub
 
     Private Function DeleteProduct(Sqlquery As String, Parameters As List(Of SqlParameter))
         Try
@@ -264,7 +277,7 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            gridWithPram(BillingGrid, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {300, 150, 150, 150, 80, 100, 100}.ToList, parameters)
+            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {120, 200, 200, 150, 80, 100, 100}.ToList, parameters)
 
             'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
@@ -272,8 +285,8 @@ Public Class BILLING
             MsgBox($"SQL Exception occurred loadgrid: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
             Debug.WriteLine(ex.ToString)
         End Try
-        BillingGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        BillingGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+        BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
 
     End Sub
     Private Sub CalculateGrandTotal(BillNo As String)
@@ -344,7 +357,12 @@ Public Class BILLING
                                     If ReduceQuantity = 1 Then
                                         Dim Exec As Int32 = QueryProcess(InsertCusidQuery, parameters)
                                         If Exec = 1 Then
-                                            GenerateBill()
+                                            Try
+                                                GenerateBill()
+
+                                            Catch ex As Exception
+                                                MsgBox(ex.ToString)
+                                            End Try
                                             GeneratetheBillNo()
                                             InitialLoad()
                                         End If
@@ -388,7 +406,7 @@ Public Class BILLING
     Sub changelongpaper()
         Dim rowcount As Integer
         longpaper = 0
-        rowcount = BillingGrid.Rows.Count
+        rowcount = BillingGridsumma.Rows.Count
         longpaper = rowcount * 15
         longpaper = longpaper + 200
     End Sub
@@ -431,7 +449,8 @@ Public Class BILLING
         b = Me.Bill_no.Text
         'range from top
         e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, centermargin, 5, center)
-        e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 25, center)
+        'e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 25, center)
+        e.Graphics.DrawString(" " + "RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin, 25, center)
         e.Graphics.DrawString("Pudukkottai - Dt,Cell : 78712 93638", f10, Brushes.Black, centermargin, 40, center)
         Dim BillAndDatehi As Integer = 70
         e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 120, BillAndDatehi)
@@ -442,20 +461,15 @@ Public Class BILLING
         e.Graphics.DrawString("Cashier", f8, Brushes.Black, 0, CashierAndAdminhi)
         e.Graphics.DrawString(":", f8, Brushes.Black, 50, CashierAndAdminhi)
         e.Graphics.DrawString("Admin", f8, Brushes.Black, 70, CashierAndAdminhi)
-
         'e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 0, 90)
-
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, 100)
-
         e.Graphics.DrawString("Product Name", f10b, Brushes.Black, 0, 110)
-        e.Graphics.DrawString("Quantity", f10b, Brushes.Black, 25, 135)
+        e.Graphics.DrawString("Quantity", f10b, Brushes.Black, 20, 135)
         e.Graphics.DrawString("Price", f10b, Brushes.Black, 85, 135)
         e.Graphics.DrawString("Total", f10b, Brushes.Black, 150, 135)
-
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, 150)
-
         Dim height As Integer 'DGV Position
-        BillingGrid.AllowUserToAddRows = False
+        BillingGridsumma.AllowUserToAddRows = False
         'If DataGridView1.CurrentCell.Value Is Nothing Then
         '    Exit Sub
         'Else
@@ -463,19 +477,19 @@ Public Class BILLING
         Dim Queryes = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
         height = 50
         hi = 0
-        For row As Integer = 0 To BillingGrid.RowCount - 1
+        For row As Integer = 0 To BillingGridsumma.RowCount - 1
             height += 20 + hi
             'MsgBox(row)
             'Product Name
             'hi = row * 2
             hi = 17 + row
-            e.Graphics.DrawString(BillingGrid.Rows(row).Cells(3).Value.ToString, f10, Brushes.Black, 0, 100 + height)
+            e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(3).Value.ToString, f10, Brushes.Black, 0, 100 + height)
             'Quantity
-            e.Graphics.DrawString(BillingGrid.Rows(row).Cells(6).Value.ToString, f10, Brushes.Black, 25, 100 + height + hi)
+            e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(6).Value.ToString, f10, Brushes.Black, 25, 100 + height + hi)
             'price
-            e.Graphics.DrawString(BillingGrid.Rows(row).Cells(7).Value.ToString, f10, Brushes.Black, 80, 100 + height + hi)
+            e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(7).Value.ToString, f10, Brushes.Black, 80, 100 + height + hi)
             'Total
-            e.Graphics.DrawString(BillingGrid.Rows(row).Cells(8).Value.ToString, f10, Brushes.Black, 150, 100 + height + hi)
+            e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(8).Value.ToString, f10, Brushes.Black, 150, 100 + height + hi)
 
         Next
         'End If
@@ -485,23 +499,49 @@ Public Class BILLING
         sumprice() 'call sub
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, height2)
         'e.Graphics.DrawString("0", f10b, Brushes.Black, 170, 10 + height2)
-        e.Graphics.DrawString("Grand Total:" + " " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
-        e.Graphics.DrawString("Total Quantity:" + " " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
-        e.Graphics.DrawString("~ Thanks for ordering ~", f10, Brushes.Black, centermargin, 35 + height2 + 20, center)
+        Dim RefundAmount As Double = 0
+        Dim ReturnAmounts As Double = 0
+        If Len(Me.ReturnAmount.Text) <> 0 And Len(Return_billno.Text) <> 0 Then
+            ReduceAmount = Convert.ToDouble(Me.grandtot.Text) - Convert.ToDouble(ReturnAmount.Text)
+            Dim Query As String = "update ReturnTable set Returned=@val where Returned=0 And Status = 1 And Billing_no=@BillNo"
+            Dim parameters As New List(Of SqlParameter)
+            parameters.Add(New SqlParameter("@val", 1))
+            parameters.Add(New SqlParameter("@BillNo", Return_billno.Text))
+            QueryProcess(Query, parameters)
+            ReturnAmounts = Convert.ToDouble(ReturnAmount.Text)
+            If ReduceAmount <= 0 Then
+                RefundAmount = Math.Abs(ReduceAmount)
+                ReduceAmount = 0
+            Else
+                RefundAmount = 0
+            End If
+            e.Graphics.DrawString("Total Quantity:" + "    " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
+            e.Graphics.DrawString("Net Amount:    " + "    " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 15)
+            e.Graphics.DrawString("Return Amount: " + " " + ReturnAmounts.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 30)
+            e.Graphics.DrawString("Grand Total:   " + "      " + ReduceAmount.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 45)
+            e.Graphics.DrawString("Refund Amount: " + " " + RefundAmount.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 60)
+            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 80, center)
+        Else
+            ReduceAmount = Convert.ToDouble(Me.grandtot.Text)
+            e.Graphics.DrawString("Total Quantity:" + " " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
+            e.Graphics.DrawString("Net Amount:    " + " " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
+            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
+        End If
+
         'e.Graphics.DrawString("~ Nosware Store ~", f10, Brushes.Black, centermargin, 50 + height2, center)
     End Sub
     Dim t_price As Integer
     Dim t_qty As Integer
     Sub sumprice()
         Dim countprice As Integer = 0
-        For rowitem As Integer = 0 To BillingGrid.RowCount - 1
-            countprice = countprice + Val(BillingGrid.Rows(rowitem).Cells(7).Value * BillingGrid.Rows(rowitem).Cells(6).Value)
+        For rowitem As Integer = 0 To BillingGridsumma.RowCount - 1
+            countprice = countprice + Val(BillingGridsumma.Rows(rowitem).Cells(7).Value * BillingGridsumma.Rows(rowitem).Cells(6).Value)
         Next
         t_price = countprice
 
         Dim countqty As Integer = 0
-        For rowitem As Integer = 0 To BillingGrid.RowCount - 1
-            countqty = countqty + BillingGrid.Rows(rowitem).Cells(6).Value
+        For rowitem As Integer = 0 To BillingGridsumma.RowCount - 1
+            countqty = countqty + BillingGridsumma.Rows(rowitem).Cells(6).Value
         Next
         t_qty = countqty
     End Sub
@@ -567,7 +607,6 @@ Public Class BILLING
 
     Private Sub Billbtn_Click(sender As Object, e As EventArgs) Handles Billbtn.Click
         FinalizeBill()
-        'GenerateBill()
     End Sub
 
 
@@ -593,9 +632,9 @@ Public Class BILLING
         End Select
     End Sub
 
-    Private Sub BillingGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles BillingGrid.CellContentClick
-        If BillingGrid.Columns(e.ColumnIndex).Name = "del" Then ' Ensure a valid cell is clicked
-            Dim RefId As String = BillingGrid.Rows(e.RowIndex).Cells(2).Value.ToString()
+    Private Sub BillingGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles BillingGridsumma.CellContentClick
+        If BillingGridsumma.Columns(e.ColumnIndex).Name = "del" Then ' Ensure a valid cell is clicked
+            Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
             Dim DeleteQuery As String = "DELETE FROM Billing WHERE ref_id=@RefId;"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@RefId", Convert.ToInt32(RefId)))
@@ -605,12 +644,12 @@ Public Class BILLING
                 MsgBox("Deleted The Product!")
             End If
 
-        ElseIf BillingGrid.Columns(e.ColumnIndex).Name = "val" Then
-            Dim RefId As String = BillingGrid.Rows(e.RowIndex).Cells(2).Value.ToString()
-            Dim Quantity As String = BillingGrid.Rows(e.RowIndex).Cells(6).Value.ToString()
-            Dim Price As String = BillingGrid.Rows(e.RowIndex).Cells(7).Value.ToString()
-            BillingGrid.Rows(e.RowIndex).Selected = True
-            Dim dr As DataGridViewRow = BillingGrid.SelectedRows(0)
+        ElseIf BillingGridsumma.Columns(e.ColumnIndex).Name = "val" Then
+            Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
+            Dim Quantity As String = BillingGridsumma.Rows(e.RowIndex).Cells(6).Value.ToString()
+            Dim Price As String = BillingGridsumma.Rows(e.RowIndex).Cells(7).Value.ToString()
+            BillingGridsumma.Rows(e.RowIndex).Selected = True
+            Dim dr As DataGridViewRow = BillingGridsumma.SelectedRows(0)
             UpdateProduct(RefId, Quantity, Price)
         End If
     End Sub
@@ -623,6 +662,54 @@ Public Class BILLING
     End Sub
 
     Private Sub BILLING_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Dim Query As String = "Delete Billing where Billing_no=@BillNo"
+        Me.DeleteBillWhenFormClose(Me.Bill_no.Text, Query)
+    End Sub
+
+    Public Sub DeleteBillWhenFormClose(BillNo, Query)
+        Dim parameters As New List(Of SqlParameter)
+        parameters.Add(New SqlParameter("@BillNO", BillNo))
+        QueryProcess(Query, parameters)
+
+    End Sub
+    Private Sub Return_billno_KeyDown(sender As Object, e As KeyEventArgs) Handles Return_billno.KeyDown
+        If e.KeyCode = Keys.Enter And Len(Return_billno.Text) <> 0 Then
+            If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
+                Me.ReturnAmount.Text = GetTheReturnAmount(Me.Return_billno.Text).ToString
+            Else
+                MsgBox("please Provide Appropriate Return BillNo")
+                Me.ReturnAmount.Clear()
+                Me.Return_billno.Clear()
+            End If
+        End If
+
+    End Sub
+
+
+
+    Private Sub Amount_KeyDown(sender As Object, e As KeyEventArgs) Handles Amount.KeyDown
+        Try
+            If e.KeyCode = Keys.Enter Then
+                Dim GrandTotal As Integer = Convert.ToDouble(Me.grandtot.Text)
+                Dim UserAmount As Integer = Convert.ToDouble(Me.Amount.Text)
+                Dim ReturnAmount As Integer
+                If Not String.IsNullOrEmpty(Me.ReturnAmount.Text) Then
+                    ReturnAmount = Convert.ToDouble(Me.ReturnAmount.Text)
+                Else
+                    ReturnAmount = 0
+                End If
+
+                If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount Then
+                    Me.Balance.Text = ReturnAmount + UserAmount - GrandTotal
+                Else
+                    Me.Balance.Text = 0
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            InitialLoad()
+        End Try
+
 
     End Sub
 End Class
