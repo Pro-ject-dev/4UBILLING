@@ -39,7 +39,7 @@ Public Class BILLING
 
     Private Sub InitialLoad()
         BarcodeCodetxt.Focus()
-        Me.BarcodeCodetxt.Clear()
+        BarcodeCodetxt.Focus()
         Me.ProductName.Clear()
         Me.ReturnAmount.Clear()
         Me.Return_billno.Clear()
@@ -49,7 +49,9 @@ Public Class BILLING
         Me.Price.Text = 0
         Me.Quantity.Text = 1
         Me.MobileNo.Text = ""
+        Me.BarcodeCodetxt.Clear()
         LoadGrid(Me.Bill_no.Text)
+        BarcodeCodetxt.Focus()
     End Sub
 
     Private Sub GettheProduct(Barcodeval As String)
@@ -140,6 +142,7 @@ Public Class BILLING
                                 Dim QuantityCheckData As Int32 = QuantityCheck(Convert.ToInt32(reader("PRODUCT ID")), Quantity)
                                 If QuantityCheckData = 1 Then
                                     QueryProcess(QuantityUpdateQuery, parameter)
+                                    BarcodeCodetxt.Focus()
                                 Else
                                     MsgBox("Add Product In Inventory")
                                 End If
@@ -166,6 +169,7 @@ Public Class BILLING
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then
                                             InsertDataas(InsertQuery, InsertParameter)
+                                            BarcodeCodetxt.Focus()
                                         Else
                                             MsgBox("Add Product In Inventory")
                                         End If
@@ -277,7 +281,7 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {120, 200, 200, 150, 80, 100, 100}.ToList, parameters)
+            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
 
             'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
@@ -582,7 +586,7 @@ Public Class BILLING
     Private Sub BarcodeCodetxt_KeyDown(sender As Object, e As KeyEventArgs) Handles BarcodeCodetxt.KeyDown
         If e.KeyCode = Keys.Enter Then
             GettheProduct(BarcodeCodetxt.Text)
-            e.SuppressKeyPress = True
+            Me.Quantity.Focus()
         End If
     End Sub
 
@@ -602,6 +606,7 @@ Public Class BILLING
     Private Sub Quantity_KeyDown(sender As Object, e As KeyEventArgs) Handles Quantity.KeyDown
         If e.KeyCode = Keys.Enter Then
             Button2.PerformClick()
+            Me.BarcodeCodetxt.Focus()
         End If
     End Sub
 
@@ -622,13 +627,18 @@ Public Class BILLING
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Select Case e.KeyCode
             Case Keys.F3
-                BarcodeCodetxt.Focus()
+                Billbtn.PerformClick()
         End Select
         Select Case e.Alt And e.KeyCode
 
-            Case Keys.F7
-                Billbtn.PerformClick()
+            Case Keys.F1
+                Barcode.Focus()
 
+        End Select
+        Select Case e.Alt And e.KeyCode
+
+            Case Keys.F2
+                MobileNo.Focus()
         End Select
     End Sub
 
@@ -710,6 +720,10 @@ Public Class BILLING
             InitialLoad()
         End Try
 
+
+    End Sub
+
+    Private Sub BarcodeCodetxt_TextChanged(sender As Object, e As EventArgs) Handles BarcodeCodetxt.TextChanged
 
     End Sub
 End Class
