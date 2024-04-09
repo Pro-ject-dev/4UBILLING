@@ -88,4 +88,10 @@ Public Class admin_panel
         timet.Text = time.ToString
         datedt.Text = dates
     End Function
+
+    Private Sub ReturnManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnManagementToolStripMenuItem.Click
+        Dim frm = New ReturnForm
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
 End Class

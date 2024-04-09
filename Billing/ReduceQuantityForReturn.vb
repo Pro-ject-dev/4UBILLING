@@ -1,6 +1,5 @@
-﻿
-
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Module ReduceQuantityForReturn
     Private Function GetReturnDetails(billingNo As String) As DataTable

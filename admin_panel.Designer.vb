@@ -45,6 +45,7 @@ Partial Class admin_panel
         ToolStripStatusLabel3 = New ToolStripStatusLabel()
         timet = New ToolStripStatusLabel()
         ToolStripStatusLabel8 = New ToolStripStatusLabel()
+        ReturnManagementToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         StatusStrip1.SuspendLayout()
         SuspendLayout()
@@ -53,91 +54,108 @@ Partial Class admin_panel
         ' 
         MenuStrip1.BackColor = SystemColors.Control
         MenuStrip1.ImageScalingSize = New Size(24, 24)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {HomeToolStripMenuItem, StockManagementToolStripMenuItem, BillingToolStripMenuItem, ReportsToolStripMenuItem, ExitToolStripMenuItem2, ExitToolStripMenuItem1})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {HomeToolStripMenuItem, StockManagementToolStripMenuItem, BillingToolStripMenuItem, ReportsToolStripMenuItem, ExitToolStripMenuItem2, ExitToolStripMenuItem1, ReturnManagementToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(1924, 33)
+        MenuStrip1.Padding = New Padding(5, 2, 0, 2)
+        MenuStrip1.Size = New Size(1539, 28)
         MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1"' 
+        MenuStrip1.Text = "MenuStrip1"
+        ' 
         ' HomeToolStripMenuItem
         ' 
         HomeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DashboardToolStripMenuItem, ExitToolStripMenuItem})
         HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        HomeToolStripMenuItem.Size = New Size(77, 29)
-        HomeToolStripMenuItem.Text = "Home"' 
+        HomeToolStripMenuItem.Size = New Size(64, 24)
+        HomeToolStripMenuItem.Text = "Home"
+        ' 
         ' DashboardToolStripMenuItem
         ' 
         DashboardToolStripMenuItem.Name = "DashboardToolStripMenuItem"
-        DashboardToolStripMenuItem.Size = New Size(202, 34)
-        DashboardToolStripMenuItem.Text = "Dashboard"' 
+        DashboardToolStripMenuItem.Size = New Size(165, 26)
+        DashboardToolStripMenuItem.Text = "Dashboard"
+        ' 
         ' ExitToolStripMenuItem
         ' 
         ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        ExitToolStripMenuItem.Size = New Size(202, 34)
-        ExitToolStripMenuItem.Text = "Exit"' 
+        ExitToolStripMenuItem.Size = New Size(165, 26)
+        ExitToolStripMenuItem.Text = "Exit"
+        ' 
         ' StockManagementToolStripMenuItem
         ' 
         StockManagementToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddProductsToolStripMenuItem, UpdateProductsToolStripMenuItem})
         StockManagementToolStripMenuItem.Name = "StockManagementToolStripMenuItem"
-        StockManagementToolStripMenuItem.Size = New Size(181, 29)
-        StockManagementToolStripMenuItem.Text = "Stock Management"' 
+        StockManagementToolStripMenuItem.Size = New Size(151, 24)
+        StockManagementToolStripMenuItem.Text = "Stock Management"
+        ' 
         ' AddProductsToolStripMenuItem
         ' 
         AddProductsToolStripMenuItem.Name = "AddProductsToolStripMenuItem"
-        AddProductsToolStripMenuItem.Size = New Size(247, 34)
-        AddProductsToolStripMenuItem.Text = "Add Products"' 
+        AddProductsToolStripMenuItem.Size = New Size(202, 26)
+        AddProductsToolStripMenuItem.Text = "Add Products"
+        ' 
         ' UpdateProductsToolStripMenuItem
         ' 
         UpdateProductsToolStripMenuItem.Name = "UpdateProductsToolStripMenuItem"
-        UpdateProductsToolStripMenuItem.Size = New Size(247, 34)
-        UpdateProductsToolStripMenuItem.Text = "Update Products"' 
+        UpdateProductsToolStripMenuItem.Size = New Size(202, 26)
+        UpdateProductsToolStripMenuItem.Text = "Update Products"
+        ' 
         ' BillingToolStripMenuItem
         ' 
         BillingToolStripMenuItem.Name = "BillingToolStripMenuItem"
-        BillingToolStripMenuItem.Size = New Size(75, 29)
-        BillingToolStripMenuItem.Text = "Billing"' 
+        BillingToolStripMenuItem.Size = New Size(65, 24)
+        BillingToolStripMenuItem.Text = "Billing"
+        ' 
         ' ReportsToolStripMenuItem
         ' 
         ReportsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesReportToolStripMenuItem, StocksReportToolStripMenuItem})
         ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        ReportsToolStripMenuItem.Size = New Size(89, 29)
-        ReportsToolStripMenuItem.Text = "Reports"' 
+        ReportsToolStripMenuItem.Size = New Size(74, 24)
+        ReportsToolStripMenuItem.Text = "Reports"
+        ' 
         ' SalesReportToolStripMenuItem
         ' 
         SalesReportToolStripMenuItem.Name = "SalesReportToolStripMenuItem"
-        SalesReportToolStripMenuItem.Size = New Size(223, 34)
-        SalesReportToolStripMenuItem.Text = "Sales Report"' 
+        SalesReportToolStripMenuItem.Size = New Size(183, 26)
+        SalesReportToolStripMenuItem.Text = "Sales Report"
+        ' 
         ' StocksReportToolStripMenuItem
         ' 
         StocksReportToolStripMenuItem.Name = "StocksReportToolStripMenuItem"
-        StocksReportToolStripMenuItem.Size = New Size(223, 34)
-        StocksReportToolStripMenuItem.Text = "Stocks Report"' 
+        StocksReportToolStripMenuItem.Size = New Size(183, 26)
+        StocksReportToolStripMenuItem.Text = "Stocks Report"
+        ' 
         ' ExitToolStripMenuItem2
         ' 
         ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2"
-        ExitToolStripMenuItem2.Size = New Size(158, 29)
-        ExitToolStripMenuItem2.Text = "Barcode Printing"' 
+        ExitToolStripMenuItem2.Size = New Size(133, 24)
+        ExitToolStripMenuItem2.Text = "Barcode Printing"
+        ' 
         ' ExitToolStripMenuItem1
         ' 
         ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        ExitToolStripMenuItem1.Size = New Size(93, 29)
-        ExitToolStripMenuItem1.Text = "Backups"' 
+        ExitToolStripMenuItem1.Size = New Size(77, 24)
+        ExitToolStripMenuItem1.Text = "Backups"
+        ' 
         ' StatusStrip1
         ' 
         StatusStrip1.ImageScalingSize = New Size(24, 24)
         StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1, user, ToolStripStatusLabel4, role, ToolStripStatusLabel6, datedt, ToolStripStatusLabel3, timet, ToolStripStatusLabel8})
-        StatusStrip1.Location = New Point(0, 991)
+        StatusStrip1.Location = New Point(0, 788)
         StatusStrip1.Name = "StatusStrip1"
-        StatusStrip1.Size = New Size(1924, 49)
+        StatusStrip1.Padding = New Padding(1, 0, 11, 0)
+        StatusStrip1.Size = New Size(1539, 44)
         StatusStrip1.TabIndex = 3
-        StatusStrip1.Text = "StatusStrip1"' 
+        StatusStrip1.Text = "StatusStrip1"
+        ' 
         ' ToolStripStatusLabel1
         ' 
         ToolStripStatusLabel1.BackColor = SystemColors.Control
         ToolStripStatusLabel1.Margin = New Padding(10)
         ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        ToolStripStatusLabel1.Size = New Size(56, 29)
-        ToolStripStatusLabel1.Text = "User :"' 
+        ToolStripStatusLabel1.Size = New Size(45, 24)
+        ToolStripStatusLabel1.Text = "User :"
+        ' 
         ' user
         ' 
         user.BackColor = Color.White
@@ -145,15 +163,16 @@ Partial Class admin_panel
         user.Margin = New Padding(0, 10, 10, 10)
         user.Name = "user"
         user.Padding = New Padding(0, 2, 0, 2)
-        user.Size = New Size(4, 29)
+        user.Size = New Size(4, 24)
         ' 
         ' ToolStripStatusLabel4
         ' 
         ToolStripStatusLabel4.BackColor = SystemColors.Control
         ToolStripStatusLabel4.Margin = New Padding(0, 10, 10, 10)
         ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        ToolStripStatusLabel4.Size = New Size(55, 29)
-        ToolStripStatusLabel4.Text = "Role :"' 
+        ToolStripStatusLabel4.Size = New Size(46, 24)
+        ToolStripStatusLabel4.Text = "Role :"
+        ' 
         ' role
         ' 
         role.BackColor = Color.White
@@ -161,15 +180,16 @@ Partial Class admin_panel
         role.Margin = New Padding(0, 10, 10, 10)
         role.Name = "role"
         role.Padding = New Padding(0, 2, 0, 2)
-        role.Size = New Size(4, 29)
+        role.Size = New Size(4, 24)
         ' 
         ' ToolStripStatusLabel6
         ' 
         ToolStripStatusLabel6.BackColor = SystemColors.Control
         ToolStripStatusLabel6.Margin = New Padding(0, 10, 10, 10)
         ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
-        ToolStripStatusLabel6.Size = New Size(58, 29)
-        ToolStripStatusLabel6.Text = "Date :"' 
+        ToolStripStatusLabel6.Size = New Size(48, 24)
+        ToolStripStatusLabel6.Text = "Date :"
+        ' 
         ' datedt
         ' 
         datedt.BackColor = Color.White
@@ -177,22 +197,23 @@ Partial Class admin_panel
         datedt.Margin = New Padding(0, 10, 10, 10)
         datedt.Name = "datedt"
         datedt.RightToLeft = RightToLeft.No
-        datedt.Size = New Size(4, 29)
+        datedt.Size = New Size(4, 24)
         ' 
         ' ToolStripStatusLabel3
         ' 
         ToolStripStatusLabel3.BackColor = SystemColors.Control
         ToolStripStatusLabel3.Margin = New Padding(0, 10, 10, 10)
         ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        ToolStripStatusLabel3.Size = New Size(59, 29)
-        ToolStripStatusLabel3.Text = "Time :"' 
+        ToolStripStatusLabel3.Size = New Size(49, 24)
+        ToolStripStatusLabel3.Text = "Time :"
+        ' 
         ' timet
         ' 
         timet.BackColor = Color.White
         timet.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
         timet.Margin = New Padding(0, 10, 10, 10)
         timet.Name = "timet"
-        timet.Size = New Size(4, 29)
+        timet.Size = New Size(4, 24)
         ' 
         ' ToolStripStatusLabel8
         ' 
@@ -200,17 +221,25 @@ Partial Class admin_panel
         ToolStripStatusLabel8.BorderSides = ToolStripStatusLabelBorderSides.Left Or ToolStripStatusLabelBorderSides.Top Or ToolStripStatusLabelBorderSides.Right Or ToolStripStatusLabelBorderSides.Bottom
         ToolStripStatusLabel8.Margin = New Padding(10)
         ToolStripStatusLabel8.Name = "ToolStripStatusLabel8"
-        ToolStripStatusLabel8.Size = New Size(238, 29)
-        ToolStripStatusLabel8.Text = "4U FASHION READYMADES"' 
+        ToolStripStatusLabel8.Size = New Size(196, 24)
+        ToolStripStatusLabel8.Text = "4U FASHION READYMADES"
+        ' 
+        ' ReturnManagementToolStripMenuItem
+        ' 
+        ReturnManagementToolStripMenuItem.Name = "ReturnManagementToolStripMenuItem"
+        ReturnManagementToolStripMenuItem.Size = New Size(154, 24)
+        ReturnManagementToolStripMenuItem.Text = "ReturnManagement"
+        ' 
         ' admin_panel
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.AppWorkspace
-        ClientSize = New Size(1924, 1040)
+        ClientSize = New Size(1539, 832)
         Controls.Add(MenuStrip1)
         Controls.Add(StatusStrip1)
         IsMdiContainer = True
+        Margin = New Padding(2, 2, 2, 2)
         Name = "admin_panel"
         Text = "4U Fashions - Billing Management Application"
         MenuStrip1.ResumeLayout(False)
@@ -244,4 +273,5 @@ Partial Class admin_panel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents timet As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel8 As ToolStripStatusLabel
+    Friend WithEvents ReturnManagementToolStripMenuItem As ToolStripMenuItem
 End Class
