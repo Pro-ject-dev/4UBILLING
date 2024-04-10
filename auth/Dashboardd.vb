@@ -4,12 +4,6 @@ Public Class Dashboardd
 
     Public Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         timer_tick()
-        Dim time As New Timer()
-        time.Interval = 10000
-        AddHandler time.Tick, AddressOf timer_tick
-        time.Start()
-
-        'image load
         Me.IconRupee.Image = My.Resources.rupee
         Me.IconQuantity.Image = My.Resources.totalcustomer
         Me.IconChangeCost.Image = My.Resources.changecostqty
@@ -84,16 +78,16 @@ Public Class Dashboardd
     End Sub
 
     Private Sub BtnSalesMonth_Click(sender As Object, e As EventArgs) Handles BtnSalesMonth.Click
-        Dim queryMonthSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing WHERE MONTH(Date) = @month AND YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE MONTH(Date) = @month AND YEAR(Date) = @year)"
-        Dim queryTotalSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
+        Dim queryMonthSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing WHERE status=1 and MONTH(Date) = @month AND YEAR(Date) = @year) - isnull((SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE status=1 and MONTH(Date) = @month AND YEAR(Date) = @year),0)"
+        Dim queryTotalSales As String = "SELECT (SELECT SUM(CONVERT(FLOAT, Total)) FROM Billing where status=1) -  isnull((SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable where status=1),0)"
         Dim result As Dictionary(Of String, Object) = getSalesMonth(queryMonthSales, queryTotalSales, getParameters())
         LTotalSales.Text = (result.GetValueOrDefault("totalCost")).ToString
         LChangeSales.Text = (result.GetValueOrDefault("monthCost")).ToString
     End Sub
 
     Private Sub BtnSalesYear_Click(sender As Object, e As EventArgs) Handles BtnSalesYear.Click
-        Dim queryYearSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing WHERE YEAR(Date) = @year) - (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE YEAR(Date) = @year)"
-        Dim queryTotalSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing) -  (SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable)"
+        Dim queryYearSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing WHERE status=1 and  YEAR(Date) = @year) - isnull((SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable WHERE YEAR(Date) = @year),0)"
+        Dim queryTotalSales As String = "SELECT (SELECT SUM(CAST(Total AS DECIMAL(10,2))) FROM Billing where status=1) -  isnull((SELECT SUM(CONVERT(FLOAT, Total)) FROM ReturnTable where status=1),0)"
         Dim result As Dictionary(Of String, Object) = getSalesYear(queryYearSales, queryTotalSales, getParameters())
         LTotalSales.Text = (result.GetValueOrDefault("totalCost")).ToString
         LChangeSales.Text = (result.GetValueOrDefault("yearCost")).ToString
@@ -101,7 +95,7 @@ Public Class Dashboardd
 
     Private Sub BtnGrowthMonth_Click(sender As Object, e As EventArgs) Handles BtnGrowthMonth.Click
         Dim queryCustQty As String = "select COUNT(Customer_id) from Customer"
-        Dim queryCustVisitQty As String = "select COUNT(DISTINCT Customer_id) from Billing where MONTH(Date) = @month AND YEAR(Date) = @year"
+        Dim queryCustVisitQty As String = "select COUNT(DISTINCT Customer_id) from Billing where status=1 and MONTH(Date) = @month AND YEAR(Date) = @year"
         Dim result As Dictionary(Of String, Object) = getCustomerMonth(queryCustQty, queryCustVisitQty, getParameters())
         LTotalCustomer.Text = result.GetValueOrDefault("custQty")
         LChangeCustomer.Text = result.GetValueOrDefault("custVisit")
@@ -118,7 +112,7 @@ Public Class Dashboardd
     Private Sub button1_click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim amount As Double
         Dim dtString As String = (Date.Now).ToString("dd-MM-yyyy")
-        Dim querytodaysales As String = "select (select sum(CAST(Total AS DECIMAL(10,2))) from billing where convert(varchar,date,105) = '" + dtString + "' ) - isnull((select sum(convert(float, total)) from returntable where convert(varchar,date,105)='" + dtString + "'),0 )as tot"
+        Dim querytodaysales As String = "select (select sum(CAST(Total AS DECIMAL(10,2))) from billing where status=1 and convert(varchar,date,105) = '" + dtString + "' ) - isnull((select sum(convert(float, total)) from returntable where status=1 and convert(varchar,date,105)='" + dtString + "'),0 )as tot"
         Dim datatable As DataTable = getSalesToday(querytodaysales)
         Try
             If datatable.Rows.Count <> 0 Then
@@ -134,5 +128,9 @@ Public Class Dashboardd
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        timer_tick()
     End Sub
 End Class

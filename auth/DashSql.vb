@@ -115,7 +115,7 @@ Module DashSql
                     If reader.HasRows Then
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim productCost As Integer = reader.GetInt32(2)
+                                Dim productCost As String = reader.GetDouble(2)
                                 Dim productName As String = reader.GetString(0)
                                 Dim productQty As String = reader.GetInt32(1)
                                 returnDict.Add("productName", productName)
@@ -160,7 +160,7 @@ Module DashSql
                     If reader.HasRows Then
                         While reader.Read()
                             If Not reader.IsDBNull(0) And Not reader.IsDBNull(1) And Not reader.IsDBNull(2) Then
-                                Dim productCost As Integer = reader.GetInt32(2)
+                                Dim productCost As Integer = reader.GetDouble(2)
                                 Dim productName As String = reader.GetString(0)
                                 Dim productQty As String = reader.GetInt32(1)
                                 returnDict.Add("productName", productName)

@@ -110,31 +110,30 @@ Public Class Add_Product
 
                 If state Then
 
-
-                    Dim updateQuery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1) WHERE product_id=@value7 END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) End"
-
-                    Dim valuesToInsert As New Dictionary(Of String, Object)
-                    valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
-                    valuesToInsert.Add("@value2", TextBox2.Text)
-                    valuesToInsert.Add("@value3", NumericUpDown1.Value)
-                    valuesToInsert.Add("@value4", TextBox3.Text)
-                    valuesToInsert.Add("@value5", update_barcode)
-                    valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
-                    valuesToInsert.Add("@value7", update_productid)
-                    valuesToInsert.Add("@value8", ComboBox3.SelectedItem)
-
-
-                    Dim status = InsertData(updateQuery, valuesToInsert)
-                    common.update = "0"
-                    If status Then
-                        MsgBox("Product is updated successful !")
-
+                    Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1) WHERE product_id=@value7"
+                    Dim param = New SqlParameter("@value1", TextBox2.Text.Trim())
+                    Dim count = GetRowCount("SELECT 1 FROM products WHERE Product_name =@value1 and barcode='" + update_barcode + "' and status=1", param)
+                    If count = 1 Then
+                        Dim valuesToInsert As New Dictionary(Of String, Object)
+                        valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
+                        valuesToInsert.Add("@value2", TextBox2.Text)
+                        valuesToInsert.Add("@value3", NumericUpDown1.Value)
+                        valuesToInsert.Add("@value4", TextBox3.Text)
+                        valuesToInsert.Add("@value5", update_barcode)
+                        valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
+                        valuesToInsert.Add("@value7", update_productid)
+                        valuesToInsert.Add("@value8", ComboBox3.SelectedItem)
+                        Dim status = InsertData(updateQuery, valuesToInsert)
+                        If status Then
+                            MsgBox("Product Updated Successfully!")
+                        End If
+                    Else
+                        MsgBox("This Product is Already Added!")
                     End If
+                    common.update = "0"
                     Dim dataTable As DataTable = LoadDataTable(update_product.query)
                     update_product.DataGridView1.DataSource = dataTable
                     update_product.DataGridView1.ClearSelection()
-
-
                     Me.Close()
                 End If
 

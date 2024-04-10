@@ -138,6 +138,7 @@ Partial Class Dashboardd
         LTotalSales = New Label()
         labelSales = New Label()
         LabelHead = New Label()
+        Button2 = New Button()
         Panel1.SuspendLayout()
         Panel12.SuspendLayout()
         FlowLayoutPanel9.SuspendLayout()
@@ -195,6 +196,7 @@ Partial Class Dashboardd
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(LabelSubHead)
         Panel1.Controls.Add(Panel12)
         Panel1.Controls.Add(Panel3)
@@ -1317,6 +1319,15 @@ Partial Class Dashboardd
         LabelHead.Size = New Size(173, 32)
         LabelHead.TabIndex = 7
         LabelHead.Text = "Dash Board"' 
+        ' Button2
+        ' 
+        Button2.Location = New Point(1315, 34)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(186, 44)
+        Button2.TabIndex = 33
+        Button2.Text = "Click To Refresh 🗘"
+        Button2.UseVisualStyleBackColor = True
+        ' 
         ' Dashboardd
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
@@ -1535,4 +1546,5 @@ Partial Class Dashboardd
     Friend WithEvents FlowLayoutPanel20 As FlowLayoutPanel
     Friend WithEvents LabelSubHead As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
