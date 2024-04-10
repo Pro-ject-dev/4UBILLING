@@ -8,17 +8,19 @@ Imports Telegram.Bot.Types.InputFiles
 Public Class Backup
     Dim backupFileName As String
     Dim chatId As String = "1465946175"
-    Dim filePath As String = "C:\Users\Vasudevan.N\Documents\fonta.jpg"
     Dim botClient As New TelegramBotClient("6575002610:AAEwBo7GBmg3VQCFvvETSa3jKDKQgqRxRjs")
     Dim frm = New waitingscreen
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim backup_status As Boolean = GenerateBackup()
-
         If backup_status Then
-
             frm.Show()
-            SendDocumentAsync(botClient, chatId, backupFileName)
+            Try
+                SendDocumentAsync(botClient, chatId, backupFileName)
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
 
         End If
 
