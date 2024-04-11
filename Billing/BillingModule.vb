@@ -72,7 +72,6 @@ Public Class BILLING
                             Me.ProductName.Text = ProductName
                             Me.Price.Text = Price
                             Me.Quantity.Focus()
-
                             'MessageBox.Show($"Product Name: {ProductName}{Environment.NewLine}Quantity: {Quantity}{Environment.NewLine}Price: {Price}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             IncrementTheTotal(Me.Quantity.Text, Me.Price.Text)
                         End While
