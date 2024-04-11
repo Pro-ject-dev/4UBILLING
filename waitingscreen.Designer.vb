@@ -24,6 +24,7 @@ Partial Class waitingscreen
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
         Label1 = New Label()
+        statuss = New ProgressBar()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -40,17 +41,25 @@ Partial Class waitingscreen
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(136, 37)
+        Label1.Location = New Point(133, 55)
         Label1.Name = "Label1"
         Label1.Size = New Size(213, 25)
         Label1.TabIndex = 1
         Label1.Text = "Please Wait Backuping ....."' 
+        ' statuss
+        ' 
+        statuss.Location = New Point(133, 18)
+        statuss.Name = "statuss"
+        statuss.Size = New Size(222, 34)
+        statuss.TabIndex = 2
+        ' 
         ' waitingscreen
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.WhiteSmoke
         ClientSize = New Size(378, 89)
+        Controls.Add(statuss)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
         FormBorderStyle = FormBorderStyle.None
@@ -65,4 +74,5 @@ Partial Class waitingscreen
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents statuss As ProgressBar
 End Class
