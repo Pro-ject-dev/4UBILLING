@@ -22,7 +22,7 @@ Partial Class stock_report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox2 = New GroupBox()
         Button1 = New Button()
         DataGridView1 = New DataGridView()
@@ -39,15 +39,15 @@ Partial Class stock_report
         Label1 = New Label()
         GroupBox1 = New GroupBox()
         Label6 = New Label()
-        Panel5 = New Panel()
         Panel3 = New Panel()
         date_filter = New CheckBox()
+        Panel5 = New Panel()
         pro_filter = New CheckBox()
         GroupBox2.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
-        Panel5.SuspendLayout()
         Panel3.SuspendLayout()
+        Panel5.SuspendLayout()
         SuspendLayout()
         ' 
         ' GroupBox2
@@ -62,7 +62,7 @@ Partial Class stock_report
         GroupBox2.Size = New Size(1190, 660)
         GroupBox2.TabIndex = 1
         GroupBox2.TabStop = False
-        GroupBox2.Text = "Sales Details"' 
+        GroupBox2.Text = "Stocks Details"' 
         ' Button1
         ' 
         Button1.Location = New Point(442, 613)
@@ -92,8 +92,8 @@ Partial Class stock_report
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 89
         DataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.RowTemplate.Height = 50
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridView1.Size = New Size(1150, 529)
@@ -221,20 +221,6 @@ Partial Class stock_report
         Label6.Size = New Size(148, 25)
         Label6.TabIndex = 21
         Label6.Text = "Select the Filters :"' 
-        ' Panel5
-        ' 
-        Panel5.BorderStyle = BorderStyle.FixedSingle
-        Panel5.Controls.Add(ComboBox3)
-        Panel5.Controls.Add(ComboBox2)
-        Panel5.Controls.Add(Label2)
-        Panel5.Controls.Add(Label3)
-        Panel5.Controls.Add(ComboBox4)
-        Panel5.Controls.Add(Label4)
-        Panel5.Location = New Point(20, 316)
-        Panel5.Name = "Panel5"
-        Panel5.Size = New Size(405, 320)
-        Panel5.TabIndex = 19
-        ' 
         ' Panel3
         ' 
         Panel3.BorderStyle = BorderStyle.FixedSingle
@@ -252,6 +238,20 @@ Partial Class stock_report
         date_filter.Size = New Size(22, 21)
         date_filter.TabIndex = 0
         date_filter.UseVisualStyleBackColor = True
+        ' 
+        ' Panel5
+        ' 
+        Panel5.BorderStyle = BorderStyle.FixedSingle
+        Panel5.Controls.Add(ComboBox3)
+        Panel5.Controls.Add(ComboBox2)
+        Panel5.Controls.Add(Label2)
+        Panel5.Controls.Add(Label3)
+        Panel5.Controls.Add(ComboBox4)
+        Panel5.Controls.Add(Label4)
+        Panel5.Location = New Point(20, 316)
+        Panel5.Name = "Panel5"
+        Panel5.Size = New Size(405, 320)
+        Panel5.TabIndex = 19
         ' 
         ' pro_filter
         ' 
@@ -275,16 +275,16 @@ Partial Class stock_report
         MinimizeBox = False
         Name = "stock_report"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Sales Report"
+        Text = "Stocks Report"
         GroupBox2.ResumeLayout(False)
         GroupBox2.PerformLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
-        Panel5.ResumeLayout(False)
-        Panel5.PerformLayout()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
+        Panel5.ResumeLayout(False)
+        Panel5.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
