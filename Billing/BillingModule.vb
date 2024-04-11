@@ -549,31 +549,11 @@ Public Class BILLING
         t_qty = countqty
     End Sub
 
-    Private Sub LoadAutoComplete()
-        Dim con As New SqlConnection(connectionString)
-
+    Public Sub LoadAutoComplete()
         Try
-            Dim cmd As SqlCommand
-            Dim da As SqlDataAdapter
-            Dim ds As DataSet
-            Dim dt As DataTable
-            con.Open()
-            Dim query As String = "SELECT DISTINCT MobileNo FROM Customer"
-            cmd = New SqlCommand(query, con)
-            da = New SqlDataAdapter(cmd)
-            ds = New DataSet()
-            da.Fill(ds, "MobileNo")
-            dt = ds.Tables("MobileNo")
-
-            Dim col As New AutoCompleteStringCollection
-            For Each row As DataRow In dt.Rows
-                col.Add(row("MobileNo").ToString())
-            Next
-            MobileNo.AutoCompleteCustomSource = col
+            MobileNo.AutoCompleteCustomSource = ReturnUserData()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-        Finally
-            con.Close()
         End Try
     End Sub
 
@@ -624,19 +604,39 @@ Public Class BILLING
 
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        Select Case e.KeyCode
+        Select Case e.Alt And e.KeyCode
             Case Keys.F3
                 Billbtn.PerformClick()
         End Select
+        Select Case e.Control And e.KeyCode
+            Case Keys.F3
+                Return_billno.Focus()
+        End Select
+
         Select Case e.Alt And e.KeyCode
             Case Keys.F1
                 BarcodeCodetxt.Focus()
+
+        End Select
+        Select Case e.Control And e.KeyCode
+            Case Keys.F1
+                Quantity.Focus()
 
         End Select
         Select Case e.Alt And e.KeyCode
 
             Case Keys.F2
                 MobileNo.Focus()
+        End Select
+        Select Case e.Control And e.KeyCode
+
+            Case Keys.F2
+                Amount.Focus()
+        End Select
+        Select Case e.Control And e.KeyCode
+
+            Case Keys.L
+                LoadAutoComplete()
         End Select
     End Sub
 
@@ -722,4 +722,8 @@ Public Class BILLING
     End Sub
 
 
+
+    Private Sub MobileNo_GotFocus(sender As Object, e As EventArgs) Handles MobileNo.GotFocus
+        LoadAutoComplete()
+    End Sub
 End Class

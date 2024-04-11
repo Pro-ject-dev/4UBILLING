@@ -11,6 +11,7 @@ Public Class AddUser
                 AddUser()
             End If
         End If
+        BILLING.LoadAutoComplete()
     End Sub
 
 
