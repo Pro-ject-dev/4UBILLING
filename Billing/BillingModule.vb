@@ -462,7 +462,7 @@ Public Class BILLING
         Dim CashierAndAdminhi As Integer = 80
         e.Graphics.DrawString("Cashier", f8, Brushes.Black, 0, CashierAndAdminhi)
         e.Graphics.DrawString(":", f8, Brushes.Black, 50, CashierAndAdminhi)
-        e.Graphics.DrawString("Admin", f8, Brushes.Black, 70, CashierAndAdminhi)
+        e.Graphics.DrawString(currentuser.ToString, f8, Brushes.Black, 70, CashierAndAdminhi)
         'e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 0, 90)
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, 100)
         e.Graphics.DrawString("Product Name", f10b, Brushes.Black, 0, 110)
