@@ -60,15 +60,36 @@ Public Class Loginscreen
             user_holder.Visible = True
         End If
     End Sub
+    Private Sub username_KeyPress(sender As Object, e As KeyPressEventArgs) Handles username.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            password.Select()
 
+
+        End If
+
+    End Sub
+
+    Private Sub pass_KeyPress(sender As Object, e As KeyPressEventArgs) Handles password.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            dropdown.Select()
+        End If
+    End Sub
+    Private Sub role_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dropdown.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            Login.Select()
+        End If
+    End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Login.Click
         Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
         Dim queryString As String = "select * from Login where UserName = @user and Password = @pass and Role = @role"
         If Len(username.Text) > 0 And Len(password.Text) > 0 Then
             userRequired.Visible = False
             passRequired.Visible = False
-            parameters.Add("@user", username.Text)
-            parameters.Add("@pass", password.Text)
+            parameters.Add("@user", username.Text.Trim)
+            parameters.Add("@pass", EncryptData(password.Text.Trim))
             parameters.Add("@role", dropdown.SelectedItem)
             If getLoginData(queryString, parameters) Then
                 allow = True
@@ -101,11 +122,16 @@ Public Class Loginscreen
         End If
     End Sub
 
-    Private Sub PictureLogin_Click(sender As Object, e As EventArgs) Handles PictureLogin.Click
-
+    Private Sub user_holder_Click(sender As Object, e As EventArgs) Handles user_holder.Click
+        username.Select()
+        username.Focus()
+    End Sub
+    Private Sub pass_holder_Click(sender As Object, e As EventArgs) Handles pass_holder.Click
+        password.Select()
+        password.Focus()
     End Sub
 
-    Private Sub dropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dropdown.SelectedIndexChanged
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
     End Sub
 End Class

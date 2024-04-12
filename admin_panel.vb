@@ -61,8 +61,8 @@ Public Class admin_panel
             StockManagementToolStripMenuItem.Visible = False
             ReportsToolStripMenuItem.Visible = False
             ExitToolStripMenuItem1.Visible = False
-            ExitToolStripMenuItem.Visible = False
             ExitToolStripMenuItem2.Visible = False
+            UserAccountsToolStripMenuItem.Visible = False
         End If
         DashboardToolStripMenuItem.PerformClick()
     End Sub
@@ -91,6 +91,18 @@ Public Class admin_panel
 
     Private Sub ReturnManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnManagementToolStripMenuItem.Click
         Dim frm = New ReturnForm
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
+
+    Private Sub RegisterUserAccountToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegisterUserAccountToolStripMenuItem.Click
+        Dim frm = New registration
+        frm.Show()
+        frm.MdiParent = Me
+    End Sub
+
+    Private Sub UpdateUserAccountToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateUserAccountToolStripMenuItem.Click
+        Dim frm = New updateAccounts
         frm.Show()
         frm.MdiParent = Me
     End Sub

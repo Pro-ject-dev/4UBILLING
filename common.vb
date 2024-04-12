@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Drawing2D
 Imports System.Reflection.Emit
+Imports System.Security.Cryptography
+Imports System.Text
 Imports MessagingToolkit.Barcode
 
 
@@ -20,9 +22,17 @@ Module common
     Public status As String = ""
     Public stock_query As String = ""
     Public sales_query As String = ""
-    Public UserId As Int32 = 1
+    Public userID As String = ""
+    Public userstatus As String = "1"
+    Public updateuserid As String = ""
+    Public updateusername As String = ""
+    Public updatepass As String = ""
+    Public updaterole As String = ""
+
+    Private ReadOnly key As Byte() = Encoding.UTF8.GetBytes("ThisIsA16ByteKey")
+    Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
     ' Public connectionString As String = "Data Source=mssql-168791-0.cloudclusters.net,10058;Initial Catalog=4ufashion;User ID=vasudev;Password=Vasu@12345"
-    Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
+    Public connectionString As String = "Data Source=vasu\sqlexpress;Initial Catalog=4ufashion;Integrated Security=True"
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
         Try
             Using connection As New SqlConnection(connectionString)
@@ -195,6 +205,37 @@ Module common
         Return suggestions
     End Function
 
+
+    Public Function EncryptData(data As String) As String
+        Using aesAlg As New AesCryptoServiceProvider()
+            aesAlg.Key = key
+            aesAlg.IV = iv
+
+            Dim encryptor As ICryptoTransform = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV)
+            Dim msEncrypt As New System.IO.MemoryStream()
+            Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                Using swEncrypt As New System.IO.StreamWriter(csEncrypt)
+                    swEncrypt.Write(data)
+                End Using
+            End Using
+            Return Convert.ToBase64String(msEncrypt.ToArray())
+        End Using
+    End Function
+
+    Public Function DecryptData(encryptedData As String) As String
+        Dim cipherText As Byte() = Convert.FromBase64String(encryptedData)
+        Using aesAlg As New AesCryptoServiceProvider()
+            aesAlg.Key = key
+            aesAlg.IV = iv
+            Dim decryptor As ICryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV)
+            Dim msDecrypt As New System.IO.MemoryStream(cipherText)
+            Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+                Using srDecrypt As New System.IO.StreamReader(csDecrypt)
+                    Return srDecrypt.ReadToEnd()
+                End Using
+            End Using
+        End Using
+    End Function
 
 
 End Module

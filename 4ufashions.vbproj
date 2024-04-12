@@ -10,7 +10,12 @@
     <HighDpiMode>2</HighDpiMode>
     <SaveMySettingsOnExit>True</SaveMySettingsOnExit>
     <EnableVisualStyles>False</EnableVisualStyles>
+    <ApplicationIcon>4ufashion.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="4ufashion.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Report1.rdlc" />

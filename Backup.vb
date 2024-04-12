@@ -11,12 +11,18 @@ Public Class Backup
 
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Label2.Visible = True
-        Label3.Visible = True
-        Dim backup_status = GenerateBackup(ProgressBar1)
-        If backup_status Then
-            SendDocumentAsync(botClient, chatId, backupFileName, ProgressBar1)
+        If My.Computer.Network.IsAvailable Then
+            Label2.Visible = True
+            Label3.Visible = True
+            Dim backup_status = GenerateBackup(ProgressBar1)
+            If backup_status Then
+                SendDocumentAsync(botClient, chatId, backupFileName, ProgressBar1)
+            End If
+        Else
+            MessageBox.Show("Please Make Sure Your Internet !", "Network Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         End If
+
     End Sub
 
 

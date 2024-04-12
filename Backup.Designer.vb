@@ -62,13 +62,13 @@ Partial Class Backup
         ' 
         ProgressBar1.Location = New Point(20, 428)
         ProgressBar1.Name = "ProgressBar1"
-        ProgressBar1.Size = New Size(583, 34)
+        ProgressBar1.Size = New Size(583, 24)
         ProgressBar1.TabIndex = 3
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(228, 468)
+        Label2.Location = New Point(228, 464)
         Label2.Name = "Label2"
         Label2.Size = New Size(138, 25)
         Label2.TabIndex = 4
@@ -76,7 +76,7 @@ Partial Class Backup
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(358, 469)
+        Label3.Location = New Point(358, 465)
         Label3.Name = "Label3"
         Label3.Size = New Size(42, 25)
         Label3.TabIndex = 5
@@ -87,11 +87,11 @@ Partial Class Backup
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(622, 544)
         Controls.Add(Label3)
-        Controls.Add(Label2)
         Controls.Add(ProgressBar1)
         Controls.Add(PictureBox1)
         Controls.Add(Label1)
         Controls.Add(Button1)
+        Controls.Add(Label2)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Backup"
