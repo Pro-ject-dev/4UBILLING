@@ -43,4 +43,24 @@ Module CrudFile
             Return -1
         End Try
     End Function
+
+    Public Function ReturnUserData() As AutoCompleteStringCollection
+        Dim con As New SqlConnection(connectionString)
+        Dim cmd As SqlCommand
+        Dim da As SqlDataAdapter
+        Dim ds As DataSet
+        Dim dt As DataTable
+        con.Open()
+        Dim query As String = "SELECT DISTINCT MobileNo FROM Customer"
+        cmd = New SqlCommand(query, con)
+        da = New SqlDataAdapter(cmd)
+        ds = New DataSet()
+        da.Fill(ds, "MobileNo")
+        dt = ds.Tables("MobileNo")
+        Dim col As New AutoCompleteStringCollection
+        For Each row As DataRow In dt.Rows
+            col.Add(row("MobileNo").ToString())
+        Next
+        Return col
+    End Function
 End Module
