@@ -146,7 +146,9 @@ Partial Class ReturnForm
         Controls.Add(BillNo)
         Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
+        MaximumSize = New Size(846, 568)
         MinimizeBox = False
+        MinimumSize = New Size(846, 568)
         Name = "ReturnForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "REPLACE"

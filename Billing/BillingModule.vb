@@ -280,15 +280,15 @@ Public Class BILLING
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
             gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
-
+            BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+            BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
         Catch ex As Exception
             MsgBox($"SQL Exception occurred loadgrid: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
             Debug.WriteLine(ex.ToString)
         End Try
-        BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+
 
     End Sub
     Private Sub CalculateGrandTotal(BillNo As String)
