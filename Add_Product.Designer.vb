@@ -24,6 +24,7 @@ Partial Class Add_Product
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Add_Product))
         GroupBox1 = New GroupBox()
+        Button10 = New Button()
         Button5 = New Button()
         Button2 = New Button()
         Label5 = New Label()
@@ -60,6 +61,7 @@ Partial Class Add_Product
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(Button10)
         GroupBox1.Controls.Add(Button5)
         GroupBox1.Controls.Add(Button2)
         GroupBox1.Controls.Add(Label5)
@@ -77,6 +79,16 @@ Partial Class Add_Product
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "Product Details"' 
+        ' Button10
+        ' 
+        Button10.Location = New Point(16, 441)
+        Button10.Name = "Button10"
+        Button10.Size = New Size(370, 34)
+        Button10.TabIndex = 16
+        Button10.Text = "Update Product"
+        Button10.UseVisualStyleBackColor = True
+        Button10.Visible = False
+        ' 
         ' Button5
         ' 
         Button5.Location = New Point(602, 441)
@@ -372,4 +384,5 @@ Partial Class Add_Product
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
     Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents Button10 As Button
 End Class

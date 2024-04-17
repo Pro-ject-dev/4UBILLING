@@ -23,8 +23,8 @@ Partial Class BILLING
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(BILLING))
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox1 = New GroupBox()
         Label9 = New Label()
         Label10 = New Label()
@@ -224,24 +224,24 @@ Partial Class BILLING
         ' BillingGridsumma
         ' 
         BillingGridsumma.BackgroundColor = Color.White
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Black
-        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = Color.White
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = Color.Black
+        DataGridViewCellStyle15.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle15.ForeColor = Color.White
+        DataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = DataGridViewTriState.True
+        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         resources.ApplyResources(BillingGridsumma, "BillingGridsumma")
         BillingGridsumma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Tahoma", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        BillingGridsumma.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = SystemColors.Window
+        DataGridViewCellStyle16.Font = New Font("Tahoma", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = DataGridViewTriState.False
+        BillingGridsumma.DefaultCellStyle = DataGridViewCellStyle16
         BillingGridsumma.Name = "BillingGridsumma"
         BillingGridsumma.ReadOnly = True
         BillingGridsumma.RowTemplate.Height = 40

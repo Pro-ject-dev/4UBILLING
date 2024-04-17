@@ -155,7 +155,7 @@ Partial Class update_product
         GroupBox1.Controls.Add(ComboBox1)
         GroupBox1.Location = New Point(12, 12)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(1385, 98)
+        GroupBox1.Size = New Size(1385, 114)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "***"' 
@@ -166,6 +166,7 @@ Partial Class update_product
         ClientSize = New Size(1409, 699)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "update_product"

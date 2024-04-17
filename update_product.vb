@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Public Class update_product
     Public query As String
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.Size = New Size(screenwidth / 1.35, screenheight / 1.42)
         ComboBox1.Items.Add("")
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
@@ -13,6 +13,7 @@ Public Class update_product
         Add_list("select product_name from products where status='1'", ComboBox4, "product_name")
         Add_list("select category from category where status = '1' ", ComboBox2, "category")
         Add_list("select brand from brands where status = '1' ", ComboBox3, "brand")
+
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -37,20 +38,19 @@ Public Class update_product
             Dim dataTable As DataTable = LoadDataTable(query)
             If dataTable IsNot Nothing Then
                 DataGridView1.DataSource = dataTable
-                DataGridView1.Columns(0).Width = 180
-                DataGridView1.Columns(1).Width = 330
-                DataGridView1.Columns(2).Width = 300
-                DataGridView1.Columns(3).Width = 200
-                DataGridView1.Columns(4).Width = 100
-                DataGridView1.Columns(5).Width = 213
+                DataGridView1.Columns(0).Width = screenwidth / 10
+                DataGridView1.Columns(1).Width = screenwidth / 6
+                DataGridView1.Columns(2).Width = screenwidth / 8
+                DataGridView1.Columns(3).Width = screenwidth / 8
+                DataGridView1.Columns(4).Width = screenwidth / 14
+                DataGridView1.Columns(5).Width = screenwidth / 10.5
                 DataGridView1.Columns(6).Visible = False
                 DataGridView1.Columns(7).Visible = False
                 DataGridView1.ClearSelection()
                 DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
                 DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
                 DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-
-            Else
+                CenterDataGridViewHeader()
             End If
         Else
             DataGridView1.DataSource = ""
@@ -100,6 +100,11 @@ Public Class update_product
         frm.ShowDialog()
         frm.MdiParent = admin_panel
 
+    End Sub
+    Private Sub CenterDataGridViewHeader()
+        For Each column As DataGridViewColumn In DataGridView1.Columns
+            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Next
     End Sub
 
 

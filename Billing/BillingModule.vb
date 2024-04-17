@@ -280,15 +280,15 @@ Public Class BILLING
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
             gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
-
+            BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+            BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
         Catch ex As Exception
             MsgBox($"SQL Exception occurred loadgrid: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
             Debug.WriteLine(ex.ToString)
         End Try
-        BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+
 
     End Sub
     Private Sub CalculateGrandTotal(BillNo As String)
@@ -409,7 +409,7 @@ Public Class BILLING
         Dim rowcount As Integer
         longpaper = 0
         rowcount = BillingGridsumma.Rows.Count
-        longpaper = rowcount * 15
+        longpaper = rowcount * 70 + 300
         longpaper = longpaper + 200
     End Sub
 
@@ -418,6 +418,7 @@ Public Class BILLING
         Dim pagesetup As New PageSettings
         'pagesetup.PaperSize = New PaperSize("Custom", 250, 500) 'fixed size
         pagesetup.PaperSize = New PaperSize("Custom", 250, longpaper)
+        'pagesetup.Margins = New Margins(2, 2, 2, 50)
         PD.DefaultPageSettings = pagesetup
     End Sub
 
@@ -462,7 +463,7 @@ Public Class BILLING
         Dim CashierAndAdminhi As Integer = 80
         e.Graphics.DrawString("Cashier", f8, Brushes.Black, 0, CashierAndAdminhi)
         e.Graphics.DrawString(":", f8, Brushes.Black, 50, CashierAndAdminhi)
-        e.Graphics.DrawString("Admin", f8, Brushes.Black, 70, CashierAndAdminhi)
+        e.Graphics.DrawString(currentuser.ToString, f8, Brushes.Black, 70, CashierAndAdminhi)
         'e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 0, 90)
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, 100)
         e.Graphics.DrawString("Product Name", f10b, Brushes.Black, 0, 110)

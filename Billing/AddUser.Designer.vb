@@ -118,7 +118,9 @@ Partial Class AddUser
         Controls.Add(Label1)
         Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
+        MaximumSize = New Size(335, 332)
         MinimizeBox = False
+        MinimumSize = New Size(335, 332)
         Name = "AddUser"
         StartPosition = FormStartPosition.CenterScreen
         Text = "AddUser"

@@ -24,11 +24,7 @@ Public Class Add_Product
     End Sub
 
     Public Sub Add_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If common.update = "1" Then
-            Button2.Location = New Point(12, 441)
-            Button5.Visible = True
 
-        End If
         loaded()
 
     End Sub
@@ -93,7 +89,7 @@ Public Class Add_Product
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button10.Click
         If ComboBox1.SelectedItem = Nothing Then
             MsgBox("Please Select the Category...")
         ElseIf ComboBox2.SelectedItem = Nothing Then
@@ -107,9 +103,7 @@ Public Class Add_Product
         Else
             If common.update = "1" Then
                 Dim state As Boolean = ShowConfirmation("Are You Sure to Update this Product ? ")
-
                 If state Then
-
                     Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1) WHERE product_id=@value7"
                     Dim param = New SqlParameter("@value1", TextBox2.Text.Trim())
                     Dim count = GetRowCount("SELECT 1 FROM products WHERE Product_name =@value1 and barcode='" + update_barcode + "' and status=1", param)
@@ -136,48 +130,9 @@ Public Class Add_Product
                     update_product.DataGridView1.ClearSelection()
                     Me.Close()
                 End If
-
-            Else
-                If barcode = "" Then
-                    MsgBox("Please Generate the Barcode...")
-
-                Else
-
-
-                    Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
-                    If state Then
-                        Dim price = Double.Parse(TextBox3.Text).ToString("0.00")
-                        Dim insertquery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN " &
-                           "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size,added_by) " &
-                           "VALUES ((SELECT Cat_id FROM Category WHERE Category = @value1 AND status = 1), @value2, @value3, @value4, " &
-                           "@value5, (SELECT brand_id FROM Brands WHERE Brand = @value6 AND status = 1), '1', CAST(GETDATE() AS DATE), " &
-                           "(SELECT size_id FROM size WHERE size = @value7 AND status = 1),(SELECT USERID FROM LOGIN WHERE USERNAME = @value8 AND ROLE = @value9)) END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) END"
-
-                        Dim valuesToInsert As New Dictionary(Of String, Object)
-                        valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
-                        valuesToInsert.Add("@value2", TextBox2.Text.ToUpper)
-                        valuesToInsert.Add("@value3", NumericUpDown1.Value)
-                        valuesToInsert.Add("@value4", price.ToString)
-                        valuesToInsert.Add("@value5", barcode)
-                        valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
-                        valuesToInsert.Add("@value7", ComboBox3.SelectedItem)
-                        valuesToInsert.Add("@value8", currentuser)
-                        valuesToInsert.Add("@value9", currentrole)
-                        Dim result As Boolean = InsertData(insertquery, valuesToInsert)
-
-                        If result = True Then
-                            MsgBox("Product Added Successfully!")
-                            Me.Close()
-
-
-                        End If
-                        clear()
-
-                    End If
-                End If
             End If
-
         End If
+
 
 
 
@@ -201,7 +156,7 @@ Public Class Add_Product
         Add_list("select * from size  where status='1' order by size_id", ComboBox3, "size")
 
         If (common.update = "1") Then
-            Button2.Text = "Update Product"
+            Button10.Enabled = True
             Me.Text = "Update Products"
             ComboBox1.SelectedItem = update_category
             ComboBox3.SelectedItem = update_size
@@ -209,7 +164,10 @@ Public Class Add_Product
             TextBox2.Text = common.update_product
             NumericUpDown1.Value = update_quantity
             TextBox3.Text = update_price
+            Button10.Visible = True
+            Button5.Visible = True
             Button1.Enabled = False
+            Button2.Visible = False
             PictureBox1.Visible = False
             PictureBox2.Visible = False
 
@@ -340,5 +298,54 @@ Public Class Add_Product
 
             MsgBox("Size is Not Selected")
         End If
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        If ComboBox1.SelectedItem = Nothing Then
+            MsgBox("Please Select the Category...")
+        ElseIf ComboBox2.SelectedItem = Nothing Then
+            MsgBox("Please Select the Brand...")
+        ElseIf TextBox2.Text.Trim = "" Then
+            MsgBox("Please Enter the Product Name...")
+        ElseIf NumericUpDown1.Value = 0 Or NumericUpDown1.Value = Nothing Then
+            MsgBox("Please Enter the Quantity...")
+        ElseIf TextBox3.Text.Trim = "" Then
+            MsgBox("Please Enter the Price...")
+        ElseIf barcode = "" Then
+            MsgBox("Please Generate the Barcode...")
+        Else
+            Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
+            If state Then
+                Dim price = Double.Parse(TextBox3.Text).ToString("0.00")
+                Dim insertquery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN " &
+                   "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size,added_by) " &
+                   "VALUES ((SELECT Cat_id FROM Category WHERE Category = @value1 AND status = 1), @value2, @value3, @value4, " &
+                   "@value5, (SELECT brand_id FROM Brands WHERE Brand = @value6 AND status = 1), '1', CAST(GETDATE() AS DATE), " &
+                   "(SELECT size_id FROM size WHERE size = @value7 AND status = 1),(SELECT USERID FROM LOGIN WHERE USERNAME = @value8 AND ROLE = @value9)) END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) END"
+
+                Dim valuesToInsert As New Dictionary(Of String, Object)
+                valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
+                valuesToInsert.Add("@value2", TextBox2.Text.ToUpper)
+                valuesToInsert.Add("@value3", NumericUpDown1.Value)
+                valuesToInsert.Add("@value4", price.ToString)
+                valuesToInsert.Add("@value5", barcode)
+                valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
+                valuesToInsert.Add("@value7", ComboBox3.SelectedItem)
+                valuesToInsert.Add("@value8", currentuser)
+                valuesToInsert.Add("@value9", currentrole)
+                Dim result As Boolean = InsertData(insertquery, valuesToInsert)
+
+                If result = True Then
+                    MsgBox("Product Added Successfully!")
+                    Me.Close()
+
+
+                End If
+                clear()
+
+            End If
+        End If
+
+
     End Sub
 End Class

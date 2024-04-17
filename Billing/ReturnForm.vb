@@ -159,7 +159,7 @@ Public Class ReturnForm
         Dim rowcount As Integer
         longpaper = 0
         rowcount = ReturnGrid.Rows.Count
-        longpaper = rowcount * 15
+        longpaper = rowcount * 70 + 300
         longpaper = longpaper + 200
     End Sub
 
