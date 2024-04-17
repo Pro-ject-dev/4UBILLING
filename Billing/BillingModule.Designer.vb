@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class BILLING
     Inherits System.Windows.Forms.Form
 
@@ -23,8 +23,8 @@ Partial Class BILLING
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(BILLING))
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox1 = New GroupBox()
         Label9 = New Label()
         Label10 = New Label()
@@ -95,11 +95,13 @@ Partial Class BILLING
         ' Label9
         ' 
         resources.ApplyResources(Label9, "Label9")
-        Label9.Name = "Label9"' 
+        Label9.Name = "Label9"
+        ' 
         ' Label10
         ' 
         resources.ApplyResources(Label10, "Label10")
-        Label10.Name = "Label10"' 
+        Label10.Name = "Label10"
+        ' 
         ' ReturnAmount
         ' 
         ReturnAmount.BorderStyle = BorderStyle.FixedSingle
@@ -112,17 +114,20 @@ Partial Class BILLING
         MobileNo.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         MobileNo.AutoCompleteSource = AutoCompleteSource.CustomSource
         resources.ApplyResources(MobileNo, "MobileNo")
-        MobileNo.Name = "MobileNo"' 
+        MobileNo.Name = "MobileNo"
+        ' 
         ' BarcodeCodetxt
         ' 
         BarcodeCodetxt.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(BarcodeCodetxt, "BarcodeCodetxt")
-        BarcodeCodetxt.Name = "BarcodeCodetxt"' 
+        BarcodeCodetxt.Name = "BarcodeCodetxt"
+        ' 
         ' Return_billno
         ' 
         Return_billno.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Return_billno, "Return_billno")
-        Return_billno.Name = "Return_billno"' 
+        Return_billno.Name = "Return_billno"
+        ' 
         ' AddUserbtn
         ' 
         resources.ApplyResources(AddUserbtn, "AddUserbtn")
@@ -138,15 +143,18 @@ Partial Class BILLING
         ' Label7
         ' 
         resources.ApplyResources(Label7, "Label7")
-        Label7.Name = "Label7"' 
+        Label7.Name = "Label7"
+        ' 
         ' Label1
         ' 
         resources.ApplyResources(Label1, "Label1")
-        Label1.Name = "Label1"' 
+        Label1.Name = "Label1"
+        ' 
         ' Label6
         ' 
         resources.ApplyResources(Label6, "Label6")
-        Label6.Name = "Label6"' 
+        Label6.Name = "Label6"
+        ' 
         ' Bill_no
         ' 
         Bill_no.BorderStyle = BorderStyle.FixedSingle
@@ -169,7 +177,8 @@ Partial Class BILLING
         ' Label5
         ' 
         resources.ApplyResources(Label5, "Label5")
-        Label5.Name = "Label5"' 
+        Label5.Name = "Label5"
+        ' 
         ' ProductName
         ' 
         resources.ApplyResources(ProductName, "ProductName")
@@ -179,7 +188,8 @@ Partial Class BILLING
         ' Label4
         ' 
         resources.ApplyResources(Label4, "Label4")
-        Label4.Name = "Label4"' 
+        Label4.Name = "Label4"
+        ' 
         ' Total
         ' 
         Total.BorderStyle = BorderStyle.FixedSingle
@@ -190,7 +200,8 @@ Partial Class BILLING
         ' Label3
         ' 
         resources.ApplyResources(Label3, "Label3")
-        Label3.Name = "Label3"' 
+        Label3.Name = "Label3"
+        ' 
         ' Price
         ' 
         Price.BorderStyle = BorderStyle.FixedSingle
@@ -202,33 +213,35 @@ Partial Class BILLING
         ' 
         resources.ApplyResources(Label2, "Label2")
         Label2.BackColor = Color.Transparent
-        Label2.Name = "Label2"' 
+        Label2.Name = "Label2"
+        ' 
         ' Quantity
         ' 
         Quantity.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Quantity, "Quantity")
-        Quantity.Name = "Quantity"' 
+        Quantity.Name = "Quantity"
+        ' 
         ' BillingGridsumma
         ' 
         BillingGridsumma.BackgroundColor = Color.White
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Black
-        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = Color.White
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = Color.Black
+        DataGridViewCellStyle15.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle15.ForeColor = Color.White
+        DataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = DataGridViewTriState.True
+        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         resources.ApplyResources(BillingGridsumma, "BillingGridsumma")
         BillingGridsumma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Tahoma", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        BillingGridsumma.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = SystemColors.Window
+        DataGridViewCellStyle16.Font = New Font("Tahoma", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = DataGridViewTriState.False
+        BillingGridsumma.DefaultCellStyle = DataGridViewCellStyle16
         BillingGridsumma.Name = "BillingGridsumma"
         BillingGridsumma.ReadOnly = True
         BillingGridsumma.RowTemplate.Height = 40
@@ -251,15 +264,18 @@ Partial Class BILLING
         ' Label15
         ' 
         resources.ApplyResources(Label15, "Label15")
-        Label15.Name = "Label15"' 
+        Label15.Name = "Label15"
+        ' 
         ' Label14
         ' 
         resources.ApplyResources(Label14, "Label14")
-        Label14.Name = "Label14"' 
+        Label14.Name = "Label14"
+        ' 
         ' Label13
         ' 
         resources.ApplyResources(Label13, "Label13")
-        Label13.Name = "Label13"' 
+        Label13.Name = "Label13"
+        ' 
         ' Balance
         ' 
         Balance.BorderStyle = BorderStyle.FixedSingle
@@ -270,20 +286,24 @@ Partial Class BILLING
         ' Label12
         ' 
         resources.ApplyResources(Label12, "Label12")
-        Label12.Name = "Label12"' 
+        Label12.Name = "Label12"
+        ' 
         ' Amount
         ' 
         Amount.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Amount, "Amount")
-        Amount.Name = "Amount"' 
+        Amount.Name = "Amount"
+        ' 
         ' Label11
         ' 
         resources.ApplyResources(Label11, "Label11")
-        Label11.Name = "Label11"' 
+        Label11.Name = "Label11"
+        ' 
         ' Label8
         ' 
         resources.ApplyResources(Label8, "Label8")
-        Label8.Name = "Label8"' 
+        Label8.Name = "Label8"
+        ' 
         ' grandtot
         ' 
         grandtot.BorderStyle = BorderStyle.FixedSingle
@@ -294,7 +314,7 @@ Partial Class BILLING
         ' BILLING
         ' 
         resources.ApplyResources(Me, "$this")
-        AutoScaleMode = AutoScaleMode.Dpi
+        AutoScaleMode = AutoScaleMode.Font
         Controls.Add(GroupBox3)
         Controls.Add(BillingGridsumma)
         Controls.Add(GroupBox1)
