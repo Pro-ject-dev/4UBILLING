@@ -6,7 +6,7 @@ Public Class registration
         If TextBox1.Text.Trim.ToString = "" Or MaskedTextBox1.Text.Trim.ToString = "" Or MaskedTextBox2.Text.ToString = "" Then
             MessageBox.Show("All Fields Are Manditory !", "Register Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            If (Len(MaskedTextBox1.Text.Trim) > 8) And (Len(MaskedTextBox2.Text.Trim) > 8) Then
+            If (Len(MaskedTextBox1.Text.Trim) >= 8) And (Len(MaskedTextBox2.Text.Trim) >= 8) Then
 
                 If (MaskedTextBox1.Text.Trim = MaskedTextBox2.Text.Trim) Then
                     If userstatus = "1" Then

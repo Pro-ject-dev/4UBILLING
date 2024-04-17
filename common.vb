@@ -33,9 +33,6 @@ Module common
 
     Private ReadOnly key As Byte() = Encoding.UTF8.GetBytes("ThisIsA16ByteKey")
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
-    Public connectionString As String = "Data Source=mssql-168791-0.cloudclusters.net,10058;Initial Catalog=4ufashion;User ID=vasudev;Password=Vasu@12345"
-    'Public connectionString As String = "Data Source=DESKTOP-3FLJO23\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-    'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
         Try
             Using connection As New SqlConnection(connectionString)

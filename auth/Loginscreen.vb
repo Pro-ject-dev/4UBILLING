@@ -21,14 +21,11 @@ Public Class Loginscreen
         userRequired.Visible = False
         If Len(password.Text) < 1 Then
             pass_holder.Visible = True
-
         End If
         If Len(username.Text) < 1 Then
             user_holder.Visible = True
-
         End If
         password.PasswordChar = "*"
-
         If dropdown.Items.Count > 0 Then
             dropdown.SelectedIndex = 0
         End If

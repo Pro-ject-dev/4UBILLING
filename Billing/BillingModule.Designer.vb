@@ -236,7 +236,6 @@ Partial Class BILLING
         BillingGridsumma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle16.BackColor = SystemColors.Window
-        DataGridViewCellStyle16.Font = New Font("Tahoma", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText
