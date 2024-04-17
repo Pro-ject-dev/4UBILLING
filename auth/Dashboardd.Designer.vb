@@ -23,6 +23,7 @@ Partial Class Dashboardd
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        Button2 = New Button()
         LabelSubHead = New Label()
         Panel12 = New Panel()
         FlowLayoutPanel9 = New FlowLayoutPanel()
@@ -138,7 +139,6 @@ Partial Class Dashboardd
         LTotalSales = New Label()
         labelSales = New Label()
         LabelHead = New Label()
-        Button2 = New Button()
         Panel1.SuspendLayout()
         Panel12.SuspendLayout()
         FlowLayoutPanel9.SuspendLayout()
@@ -208,6 +208,15 @@ Partial Class Dashboardd
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1582, 799)
         Panel1.TabIndex = 0
+        ' 
+        ' Button2
+        ' 
+        Button2.Location = New Point(1315, 34)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(186, 44)
+        Button2.TabIndex = 33
+        Button2.Text = "Click To Refresh 🗘"
+        Button2.UseVisualStyleBackColor = True
         ' 
         ' LabelSubHead
         ' 
@@ -1319,21 +1328,13 @@ Partial Class Dashboardd
         LabelHead.Size = New Size(173, 32)
         LabelHead.TabIndex = 7
         LabelHead.Text = "Dash Board"' 
-        ' Button2
-        ' 
-        Button2.Location = New Point(1315, 34)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(186, 44)
-        Button2.TabIndex = 33
-        Button2.Text = "Click To Refresh 🗘"
-        Button2.UseVisualStyleBackColor = True
-        ' 
         ' Dashboardd
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1608, 823)
         Controls.Add(Panel1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "Dashboardd"

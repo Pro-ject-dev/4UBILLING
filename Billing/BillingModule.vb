@@ -409,7 +409,7 @@ Public Class BILLING
         Dim rowcount As Integer
         longpaper = 0
         rowcount = BillingGridsumma.Rows.Count
-        longpaper = rowcount * 15
+        longpaper = rowcount * 70 + 300
         longpaper = longpaper + 200
     End Sub
 
@@ -418,6 +418,7 @@ Public Class BILLING
         Dim pagesetup As New PageSettings
         'pagesetup.PaperSize = New PaperSize("Custom", 250, 500) 'fixed size
         pagesetup.PaperSize = New PaperSize("Custom", 250, longpaper)
+        'pagesetup.Margins = New Margins(2, 2, 2, 50)
         PD.DefaultPageSettings = pagesetup
     End Sub
 
