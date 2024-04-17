@@ -162,7 +162,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Price", Me.Price.Text))
                                         InsertParameter.Add(New SqlParameter("@Total", Me.Total.Text))
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
-                                        InsertParameter.Add(New SqlParameter("@Billedby", UserId))
+                                        InsertParameter.Add(New SqlParameter("@Billedby", userID))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then
@@ -279,7 +279,8 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
+            Dim gridSizes As New List(Of Double)({100.0, 100.0, 100.0, 200.0, 120.0, 150.0, 100.0})
+            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             'CalCulate GrandTotal
