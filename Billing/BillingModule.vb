@@ -162,7 +162,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Price", Me.Price.Text))
                                         InsertParameter.Add(New SqlParameter("@Total", Me.Total.Text))
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
-                                        InsertParameter.Add(New SqlParameter("@Billedby", userID))
+                                        InsertParameter.Add(New SqlParameter("@Billedby", UserId))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then
