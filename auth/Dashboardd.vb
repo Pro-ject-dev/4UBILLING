@@ -3,6 +3,8 @@
 Public Class Dashboardd
 
     Public Sub Dash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(screenwidth / 1.195, screenheight / 1.4)
+
         timer_tick()
         Me.IconRupee.Image = My.Resources.rupee
         Me.IconQuantity.Image = My.Resources.totalcustomer

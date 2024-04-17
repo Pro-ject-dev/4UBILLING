@@ -8,12 +8,13 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(screenwidth / 1.2, screenheight / 1.2)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()
         InitialLoad()
         Dim validate As New DataGridViewButtonColumn()
-        Dim delete As New DataGridViewButtonColumn()
+        Dim delete As New DataGridViewButtonColumn()S
         With validate
             .Name = "val"
             .HeaderText = "UPDATE"
@@ -162,7 +163,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Price", Me.Price.Text))
                                         InsertParameter.Add(New SqlParameter("@Total", Me.Total.Text))
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
-                                        InsertParameter.Add(New SqlParameter("@Billedby", UserId))
+                                        InsertParameter.Add(New SqlParameter("@Billedby", userID))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then
@@ -180,8 +181,6 @@ Public Class BILLING
                                 End Using
 
                             End Using
-
-
                         End If
                     End Using
                 End Using
@@ -278,9 +277,9 @@ Public Class BILLING
         Try
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
-            parameters.Add(New SqlParameter("@BillNO", BillNo))
-            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
+            parameters.Add(New SqlParameter("@ BillNO", BillNo))
 
+            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {}, parameters)
             'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
         Catch ex As Exception

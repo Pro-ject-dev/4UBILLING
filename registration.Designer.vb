@@ -42,7 +42,7 @@ Partial Class registration
         Label1.Name = "Label1"
         Label1.Size = New Size(175, 25)
         Label1.TabIndex = 0
-        Label1.Text = "Enter the Username :" ' 
+        Label1.Text = "Enter the Username :"' 
         ' Label2
         ' 
         Label2.AutoSize = True
@@ -50,7 +50,7 @@ Partial Class registration
         Label2.Name = "Label2"
         Label2.Size = New Size(171, 25)
         Label2.TabIndex = 1
-        Label2.Text = "Enter the Password :" ' 
+        Label2.Text = "Enter the Password :"' 
         ' Label3
         ' 
         Label3.AutoSize = True
@@ -58,7 +58,7 @@ Partial Class registration
         Label3.Name = "Label3"
         Label3.Size = New Size(136, 25)
         Label3.TabIndex = 2
-        Label3.Text = "Select the Role :" ' 
+        Label3.Text = "Select the Role :"' 
         ' Label4
         ' 
         Label4.AutoSize = True
@@ -66,7 +66,7 @@ Partial Class registration
         Label4.Name = "Label4"
         Label4.Size = New Size(165, 25)
         Label4.TabIndex = 3
-        Label4.Text = "Confirm Password :" ' 
+        Label4.Text = "Confirm Password :"' 
         ' TextBox1
         ' 
         TextBox1.BorderStyle = BorderStyle.FixedSingle
@@ -91,7 +91,7 @@ Partial Class registration
         GroupBox1.Size = New Size(446, 401)
         GroupBox1.TabIndex = 5
         GroupBox1.TabStop = False
-        GroupBox1.Text = "***" ' 
+        GroupBox1.Text = "***"' 
         ' Button1
         ' 
         Button1.Location = New Point(17, 344)
@@ -135,6 +135,7 @@ Partial Class registration
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(466, 409)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MaximumSize = New Size(488, 465)
         MinimizeBox = False

@@ -57,7 +57,7 @@ Public Class registration
         End If
     End Sub
 
-    Private Sub registration_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub registration_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         userstatus = "1"
     End Sub
 End Class
