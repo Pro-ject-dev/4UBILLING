@@ -29,7 +29,8 @@ Public Class ReturnForm
         Dim Query As String = "SELECT Rt.ReturnId As 'RETURNID',PRO.Product_name As 'PRODUCT NAME',Rt.Quantity As 'QUANTITY',Rt.Price As 'PRICE',Rt.Total As 'TOTAL' FROM ReturnTable AS Rt  inner join Products As PRO on PRO.Barcode = Rt.Barcode where Rt.Billing_no = @BillNo and Rt.Status =0 "
         Dim parameter As New List(Of SqlParameter)
         parameter.Add(New SqlParameter("@BillNo", Billno))
-        gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, {100, 120, 200, 140, 100}.ToList, parameter)
+        Dim gridSizes As New List(Of Double)({10, 10, 10, 10, 10})
+        gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, gridSizes, parameter)
         CalculateGrandTotal(Billno)
         CalculateCurrentTotal(Billno)
     End Sub

@@ -280,7 +280,8 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, {100, 100, 100, 200, 120, 150, 100}.ToList, parameters)
+            Dim gridSizes As New List(Of Double)({15, 10, 10, 10, 10, 10, 10})
+            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             'CalCulate GrandTotal
@@ -393,14 +394,22 @@ Public Class BILLING
         End If
     End Sub
 
-    Private Sub GenerateBill()
-        changelongpaper()
-        Dim printDialog As New PrintDialog()
-        printDialog.Document = PD
-        If printDialog.ShowDialog() = DialogResult.OK Then
-            PD.Print()
-        End If
-    End Sub
+    Private Function GenerateBill()
+        Try
+            changelongpaper()
+            Dim printDialog As New PrintDialog()
+            printDialog.Document = PD
+            If printDialog.ShowDialog() = DialogResult.OK Then
+                PD.Print()
+                Return 1
+            Else
+                Return -1
+            End If
+        Catch ex As Exception
+            Return -1
+        End Try
+
+    End Function
 
 
     Dim WithEvents PD As New PrintDocument

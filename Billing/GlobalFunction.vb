@@ -119,7 +119,7 @@ Module GlobalFunction
 
     End Sub
 
-    Public Sub gridWithPram(Grid As DataGridView, Sqlquery As String, GridColumn As List(Of Int32), Gridsize As List(Of Int32), Parameters As List(Of SqlParameter))
+    Public Sub gridWithPram(Grid As DataGridView, Sqlquery As String, GridColumn As List(Of Int32), Gridsize As List(Of Double), Parameters As List(Of SqlParameter))
         Try
             Dim con As SqlConnection = New SqlConnection(connectionString)
             Dim command1 As New SqlCommand(Sqlquery, con)
@@ -135,25 +135,16 @@ Module GlobalFunction
             Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
             Grid.DataSource = dt1
             For i As Integer = 0 To GridColumn.Count - 1
-                Grid.Columns(GridColumn(i)).Width = Gridsize(i)
+                Grid.Columns(GridColumn(i)).Width = screenwidth / Gridsize(i)
             Next
             Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            'Grid.Columns(0).Width = 180
-            'Grid.Columns(1).Width = 180
-            'Grid.Columns(2).Width = 180
-            'Grid.Columns(3).Width = 180
-            'Grid.Columns(4).Width = 180
-            'Grid.Columns(5).Width = 180
             Grid.AllowUserToAddRows = False
             Grid.AllowUserToDeleteRows = False
             Grid.AllowUserToResizeColumns = False
             Grid.Columns(0).Visible = True
             Grid.ColumnHeadersVisible = True
             Grid.ClearSelection()
-
-
-
             For Each row As DataGridViewRow In Grid.Rows
                 If row.Index Mod 2 = 0 Then
                     row.DefaultCellStyle.BackColor = Color.LightBlue
