@@ -145,9 +145,6 @@ Module GlobalFunction
             Grid.Columns(0).Visible = True
             Grid.ColumnHeadersVisible = True
             Grid.ClearSelection()
-
-
-
             For Each row As DataGridViewRow In Grid.Rows
                 If row.Index Mod 2 = 0 Then
                     row.DefaultCellStyle.BackColor = Color.LightBlue

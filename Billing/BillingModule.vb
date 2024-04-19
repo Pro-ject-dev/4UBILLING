@@ -279,7 +279,7 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            Dim gridSizes As New List(Of Double)({100.0, 100.0, 100.0, 200.0, 120.0, 150.0, 100.0})
+            Dim gridSizes As New List(Of Double)({15, 10, 10, 10, 10, 10, 10})
             gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
