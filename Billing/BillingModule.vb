@@ -8,6 +8,7 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()

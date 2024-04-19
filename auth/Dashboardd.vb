@@ -13,15 +13,29 @@ Public Class Dashboardd
     End Sub
 
     Private Function getParameters() As Dictionary(Of String, Object)
-        Dim dateString As String = (Date.Now).ToString
-        Dim array As String() = dateString.Split(" ")
-        array = array(0).Split("/")
-        Dim monthInteger As Integer = Convert.ToInt32(array(0))
-        Dim yearInteger As Integer = Convert.ToInt32(array(2))
-        Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-        parameters.Add("@month", monthInteger)
-        parameters.Add("@year", yearInteger)
-        Return parameters
+        Dim dateString As String = (Date.Now).ToString("MM/dd/yyyy")
+        MsgBox(dateString)
+        Try
+            Dim array As String() = dateString.Split("-")
+            Dim monthInteger As Integer = Convert.ToInt32(array(0))
+            Dim yearInteger As Integer = Convert.ToInt32(array(2))
+            Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            parameters.Add("@month", monthInteger)
+            parameters.Add("@year", yearInteger)
+            Return parameters
+        Catch ex As Exception
+            Dim array As String() = dateString.Split("/")
+            Dim monthInteger As Integer = Convert.ToInt32(array(0))
+            Dim yearInteger As Integer = Convert.ToInt32(array(2))
+            Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
+            parameters.Add("@month", monthInteger)
+            parameters.Add("@year", yearInteger)
+            Return parameters
+        End Try
+
+
+
+
     End Function
 
     Public Sub timer_tick()

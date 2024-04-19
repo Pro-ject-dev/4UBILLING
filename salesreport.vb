@@ -7,6 +7,7 @@ Public Class salesreport
     Public query As String
     Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(screenwidth / 1.145, screenheight / 1.52)
 
         pro_filter.Checked = True
         cust_filter.Checked = True
@@ -58,13 +59,17 @@ Public Class salesreport
         dataTable = LoadDataTable(query)
         If dataTable IsNot Nothing Then
             DataGridView1.DataSource = dataTable
-            DataGridView1.Columns(0).Width = 180
-            DataGridView1.Columns(1).Width = 180
-            DataGridView1.Columns(2).Width = 180
-            DataGridView1.Columns(3).Width = 180
-            DataGridView1.Columns(4).Width = 180
-            DataGridView1.Columns(5).Width = 180
-            DataGridView1.Columns(6).Width = 180
+            DataGridView1.Columns(0).Width = screenwidth / 15
+            DataGridView1.Columns(1).Width = screenwidth / 17
+            DataGridView1.Columns(2).Width = screenwidth / 13
+            DataGridView1.Columns(3).Width = screenwidth / 15
+            DataGridView1.Columns(4).Width = screenwidth / 11
+            DataGridView1.Columns(5).Width = screenwidth / 20
+            DataGridView1.Columns(6).Width = screenwidth / 20
+            DataGridView1.Columns(7).Width = screenwidth / 20
+            DataGridView1.Columns(8).Width = screenwidth / 12
+
+
             DataGridView1.ClearSelection()
             DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
             DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black

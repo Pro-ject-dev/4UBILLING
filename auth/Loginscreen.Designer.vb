@@ -165,13 +165,13 @@ Partial Class Loginscreen
         ' 
         pass_holder.AutoSize = True
         pass_holder.Cursor = Cursors.IBeam
-        pass_holder.Font = New Font("Microsoft Sans Serif", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        pass_holder.Font = New Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point)
         pass_holder.ForeColor = Color.FromArgb(CByte(160), CByte(160), CByte(160))
         pass_holder.Location = New Point(8, 18)
         pass_holder.Name = "pass_holder"
         pass_holder.Size = New Size(234, 25)
         pass_holder.TabIndex = 15
-        pass_holder.Text = "Enter your password here" ' 
+        pass_holder.Text = "Enter your password here"' 
         ' IconLoginPassword
         ' 
         IconLoginPassword.Image = My.Resources.Resources.loginpassword
@@ -195,7 +195,7 @@ Partial Class Loginscreen
         ' password
         ' 
         password.BorderStyle = BorderStyle.None
-        password.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        password.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         password.ForeColor = Color.Black
         password.Location = New Point(3, 15)
         password.Margin = New Padding(3, 4, 3, 4)
@@ -203,24 +203,24 @@ Partial Class Loginscreen
         password.Name = "password"
         password.Size = New Size(537, 46)
         password.TabIndex = 6
-        ' 
+        password.Text = "123456789"' 
         ' passRequired
         ' 
         passRequired.AutoSize = True
-        passRequired.Font = New Font("Microsoft Sans Serif", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        passRequired.Font = New Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point)
         passRequired.ForeColor = Color.Red
         passRequired.Location = New Point(8, 79)
         passRequired.Name = "passRequired"
         passRequired.Size = New Size(209, 25)
         passRequired.TabIndex = 9
-        passRequired.Text = "Password is required**" ' 
+        passRequired.Text = "Password is required**"' 
         ' Panel3
         ' 
         Panel3.Controls.Add(user_holder)
         Panel3.Controls.Add(IconLoginUser)
-        Panel3.Controls.Add(username)
         Panel3.Controls.Add(Panel6)
         Panel3.Controls.Add(userRequired)
+        Panel3.Controls.Add(username)
         Panel3.Location = New Point(153, 271)
         Panel3.Margin = New Padding(3, 4, 3, 4)
         Panel3.Name = "Panel3"
@@ -231,13 +231,13 @@ Partial Class Loginscreen
         ' 
         user_holder.AutoSize = True
         user_holder.Cursor = Cursors.IBeam
-        user_holder.Font = New Font("Microsoft Sans Serif", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        user_holder.Font = New Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point)
         user_holder.ForeColor = Color.FromArgb(CByte(160), CByte(160), CByte(160))
         user_holder.Location = New Point(8, 20)
         user_holder.Name = "user_holder"
         user_holder.Size = New Size(199, 25)
         user_holder.TabIndex = 14
-        user_holder.Text = "Enter your name here" ' 
+        user_holder.Text = "Enter your name here"' 
         ' IconLoginUser
         ' 
         IconLoginUser.Image = My.Resources.Resources.loginuser
@@ -252,7 +252,7 @@ Partial Class Loginscreen
         ' username
         ' 
         username.BorderStyle = BorderStyle.None
-        username.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        username.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         username.ForeColor = Color.Black
         username.Location = New Point(3, 15)
         username.Margin = New Padding(3, 4, 3, 4)
@@ -260,7 +260,7 @@ Partial Class Loginscreen
         username.Name = "username"
         username.Size = New Size(537, 51)
         username.TabIndex = 5
-        ' 
+        username.Text = "d"' 
         ' Panel6
         ' 
         Panel6.BackColor = SystemColors.ControlDark
@@ -273,23 +273,23 @@ Partial Class Loginscreen
         ' userRequired
         ' 
         userRequired.AutoSize = True
-        userRequired.Font = New Font("Microsoft Sans Serif", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        userRequired.Font = New Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point)
         userRequired.ForeColor = Color.Red
         userRequired.Location = New Point(8, 81)
         userRequired.Name = "userRequired"
         userRequired.Size = New Size(213, 25)
         userRequired.TabIndex = 8
-        userRequired.Text = "Username is required**" ' 
+        userRequired.Text = "Username is required**"' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Microsoft Sans Serif", 16.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Label3.Font = New Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Point)
         Label3.ForeColor = Color.Black
         Label3.Location = New Point(392, 156)
         Label3.Name = "Label3"
         Label3.Size = New Size(139, 37)
         Label3.TabIndex = 3
-        Label3.Text = "Fashion" ' 
+        Label3.Text = "Fashion"' 
         ' IconU
         ' 
         IconU.Anchor = AnchorStyles.None
@@ -318,7 +318,7 @@ Partial Class Loginscreen
         ' Login
         ' 
         Login.BackColor = Color.FromArgb(CByte(251), CByte(124), CByte(81))
-        Login.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Login.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Login.ForeColor = SystemColors.ButtonHighlight
         Login.Location = New Point(509, 825)
         Login.Margin = New Padding(3, 4, 3, 4)
@@ -330,7 +330,7 @@ Partial Class Loginscreen
         ' 
         ' Loginscreen
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ControlLightLight
         ClientSize = New Size(1924, 1050)

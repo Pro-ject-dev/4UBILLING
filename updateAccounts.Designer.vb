@@ -25,7 +25,6 @@ Partial Class updateAccounts
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(updateAccounts))
         GroupBox1 = New GroupBox()
         DataGridView1 = New DataGridView()
- 
         GroupBox1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -38,8 +37,7 @@ Partial Class updateAccounts
         GroupBox1.Size = New Size(946, 448)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
-        GroupBox1.Text = "Account Details" ' 
-        ' DataGridView1
+        GroupBox1.Text = "Account Details" ' DataGridView1
         ' 
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.AllowUserToDeleteRows = False
@@ -64,7 +62,6 @@ Partial Class updateAccounts
         DataGridView1.Size = New Size(913, 398)
         DataGridView1.TabIndex = 10
         ' 
-
         ' updateAccounts
         ' 
         AutoScaleDimensions = New SizeF(10.0F, 25.0F)
