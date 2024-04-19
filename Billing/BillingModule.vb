@@ -8,6 +8,7 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()
@@ -162,7 +163,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Price", Me.Price.Text))
                                         InsertParameter.Add(New SqlParameter("@Total", Me.Total.Text))
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
-                                        InsertParameter.Add(New SqlParameter("@Billedby", UserId))
+                                        InsertParameter.Add(New SqlParameter("@Billedby", userID))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
                                         If QuantityCheckDataelse = 1 Then

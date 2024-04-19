@@ -35,20 +35,21 @@
 
 
     Public Sub load()
-        Me.Size = New Size(790, 510)
-        DataGridView1.Width = 708
-        GroupBox1.Width = 745
-        GroupBox1.Height = 440
+        Me.Size = New Size(screenwidth / 2.4, screenheight / 2.3)
+        DataGridView1.Width = screenwidth / 2.6
+        DataGridView1.Height = screenheight / 3
+        GroupBox1.Width = screenwidth / 2.5
+        GroupBox1.Height = screenheight / 2.65
         Dim query As String = "Select userid As 'User ID',Username,Password,Role from login"
         Dim dataTable As DataTable = LoadDataTable(query)
         DataGridView1.DataSource = dataTable
         DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridView1.Columns(0).Width = 120
-        DataGridView1.Columns(1).Width = 380
+        DataGridView1.Columns(0).Width = screenwidth / 10
+        DataGridView1.Columns(1).Width = screenwidth / 5
         DataGridView1.Columns(2).Visible = False
-        DataGridView1.Columns(3).Width = 206
+        DataGridView1.Columns(3).Width = screenwidth / 9
     End Sub
 
 End Class
