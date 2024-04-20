@@ -92,6 +92,7 @@ Partial Class Backup
         Controls.Add(Label1)
         Controls.Add(Button1)
         Controls.Add(Label2)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "Backup"

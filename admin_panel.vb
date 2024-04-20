@@ -49,6 +49,12 @@ Public Class admin_panel
         frm.ShowDialog()
         Dim frm1 = Loginscreen
         frm1.ShowDialog()
+
+        If Loginscreen.allow = False Then
+            Application.Exit()
+        End If
+
+
         user.Text = currentuser
         role.Text = currentrole
         Dim time As New Timer()

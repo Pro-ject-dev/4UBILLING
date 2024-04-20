@@ -1,10 +1,9 @@
-﻿Imports System.Data.SqlClient
+﻿
+Imports System.Data.SqlClient
 Imports System.Drawing.Printing
-Imports System.Security.Cryptography
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports Microsoft.Data.SqlClient
 
 Public Class BILLING
+    Public allow = 0
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -280,7 +279,14 @@ Public Class BILLING
             Dim query As String = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@BillNO", BillNo))
-            Dim gridSizes As New List(Of Double)({15, 10, 10, 10, 10, 10, 10})
+            Dim gridSizes As New List(Of Double)
+            If allow = 0 Then
+                allow = 1
+                gridSizes.AddRange({screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+            Else
+                gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+            End If
+
             gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White

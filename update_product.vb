@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Public Class update_product
     Public query As String
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = New Size(screenwidth / 1.35, screenheight / 1.42)
+        Me.Size = New Size(screenwidth / 1.35, screenheight / 1.6)
         ComboBox1.Items.Add("")
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")

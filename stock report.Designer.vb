@@ -271,6 +271,7 @@ Partial Class stock_report
         Controls.Add(pro_filter)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "stock_report"

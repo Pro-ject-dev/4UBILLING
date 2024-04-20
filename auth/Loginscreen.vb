@@ -112,12 +112,7 @@ Public Class Loginscreen
 
 
 
-    Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
-        If allow = False Then
-            Application.Exit()
 
-        End If
-    End Sub
 
     Private Sub user_holder_Click(sender As Object, e As EventArgs) Handles user_holder.Click
         username.Select()

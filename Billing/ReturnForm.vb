@@ -7,6 +7,7 @@ Imports Microsoft.Identity.Client.ApiConfig
 
 Public Class ReturnForm
     Public Currentot As Double = 0
+    Public allow = 0
     Private Sub ReturnForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BillNo.Focus()
         LoadGrid("Summa")
@@ -28,8 +29,16 @@ Public Class ReturnForm
     Private Sub LoadGrid(Billno)
         Dim Query As String = "SELECT Rt.ReturnId As 'RETURNID',PRO.Product_name As 'PRODUCT NAME',Rt.Quantity As 'QUANTITY',Rt.Price As 'PRICE',Rt.Total As 'TOTAL' FROM ReturnTable AS Rt  inner join Products As PRO on PRO.Barcode = Rt.Barcode where Rt.Billing_no = @BillNo and Rt.Status =0 "
         Dim parameter As New List(Of SqlParameter)
+
         parameter.Add(New SqlParameter("@BillNo", Billno))
-        Dim gridSizes As New List(Of Double)({10, 10, 10, 10, 10})
+        Dim gridSizes As New List(Of Double)
+
+        If allow = 0 Then
+            allow = 1
+            gridSizes.AddRange({screenwidth / 100, screenwidth / 150, screenwidth / 100, screenwidth / 100, screenwidth / 100})
+        Else
+            gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 150, screenwidth / 100, screenwidth / 100, screenwidth / 100})
+        End If
         gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, gridSizes, parameter)
         CalculateGrandTotal(Billno)
         CalculateCurrentTotal(Billno)
