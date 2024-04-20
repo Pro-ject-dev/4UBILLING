@@ -313,6 +313,7 @@ Partial Class salesreport
         ClientSize = New Size(1663, 766)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "salesreport"

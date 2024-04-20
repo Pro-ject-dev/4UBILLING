@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Data.SqlClient
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 Public Class registration
@@ -16,11 +17,17 @@ Public Class registration
                             Dim valuesToInsert As New Dictionary(Of String, Object)
                             valuesToInsert.Add("@value1", TextBox1.Text.ToString.Trim)
                             valuesToInsert.Add("@value2", EncryptData(MaskedTextBox1.Text.Trim.ToString))
-                            Dim stat = InsertData(query, valuesToInsert)
-                            If stat Then
-                                MessageBox.Show("User Account is Successfully Added !", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                Me.Close()
+                            Dim count = GetRowCount("select * from login where username=@username", New SqlParameter("@username", TextBox1.Text))
+                            If count = 0 Then
+                                Dim stat = InsertData(query, valuesToInsert)
+                                If stat Then
+                                    MessageBox.Show("User Account is Successfully Added !", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                    Me.Close()
+                                End If
+                            Else
+                                MessageBox.Show("Username is Already Exist !", "Unable to Register", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             End If
+
                         End If
                     Else
                         Dim state As Boolean = ShowConfirmation("Are You Sure to Update this Account ? ")

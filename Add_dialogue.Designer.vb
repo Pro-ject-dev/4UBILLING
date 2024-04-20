@@ -82,6 +82,7 @@ Partial Class Add_dialogue
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(739, 263)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         MinimizeBox = False
         Name = "Add_dialogue"

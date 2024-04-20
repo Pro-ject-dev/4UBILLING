@@ -42,6 +42,7 @@ Partial Class sales_print
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1115, 672)
         Controls.Add(ReportViewer1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         Margin = New Padding(3, 4, 3, 4)
         Name = "sales_print"
         StartPosition = FormStartPosition.CenterScreen

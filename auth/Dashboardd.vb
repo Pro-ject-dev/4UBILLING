@@ -14,7 +14,6 @@ Public Class Dashboardd
 
     Private Function getParameters() As Dictionary(Of String, Object)
         Dim dateString As String = (Date.Now).ToString("MM/dd/yyyy")
-        MsgBox(dateString)
         Try
             Dim array As String() = dateString.Split("-")
             Dim monthInteger As Integer = Convert.ToInt32(array(0))

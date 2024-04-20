@@ -2,7 +2,7 @@
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class Add_dialogue
-    Private Sub Add_dialogue_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Add_dialogue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If common.status = "category" Then
             GroupBox1.Text = "Category"

@@ -39,9 +39,9 @@ Partial Class Loginscreen
         Panel3 = New Panel()
         user_holder = New Label()
         IconLoginUser = New PictureBox()
-        username = New TextBox()
         Panel6 = New Panel()
         userRequired = New Label()
+        username = New TextBox()
         Label3 = New Label()
         IconU = New PictureBox()
         IconFour = New PictureBox()
@@ -203,7 +203,7 @@ Partial Class Loginscreen
         password.Name = "password"
         password.Size = New Size(537, 46)
         password.TabIndex = 6
-        password.Text = "123456789"' 
+        ' 
         ' passRequired
         ' 
         passRequired.AutoSize = True
@@ -249,18 +249,6 @@ Partial Class Loginscreen
         IconLoginUser.TabIndex = 13
         IconLoginUser.TabStop = False
         ' 
-        ' username
-        ' 
-        username.BorderStyle = BorderStyle.None
-        username.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        username.ForeColor = Color.Black
-        username.Location = New Point(3, 15)
-        username.Margin = New Padding(3, 4, 3, 4)
-        username.Multiline = True
-        username.Name = "username"
-        username.Size = New Size(537, 51)
-        username.TabIndex = 5
-        username.Text = "d"' 
         ' Panel6
         ' 
         Panel6.BackColor = SystemColors.ControlDark
@@ -280,6 +268,18 @@ Partial Class Loginscreen
         userRequired.Size = New Size(213, 25)
         userRequired.TabIndex = 8
         userRequired.Text = "Username is required**"' 
+        ' username
+        ' 
+        username.BorderStyle = BorderStyle.None
+        username.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        username.ForeColor = Color.Black
+        username.Location = New Point(3, 15)
+        username.Margin = New Padding(3, 4, 3, 4)
+        username.Multiline = True
+        username.Name = "username"
+        username.Size = New Size(537, 51)
+        username.TabIndex = 5
+        ' 
         ' Label3
         ' 
         Label3.AutoSize = True
