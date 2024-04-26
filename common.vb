@@ -80,7 +80,7 @@ Module common
             Dim desiredWidth As Integer = 400
             Dim desiredHeight As Integer = 50
             Dim resizedBitmap As New Bitmap(desiredWidth, desiredHeight)
-            Dim graphics As Graphics = Graphics.FromImage(resizedBitmap)
+            Dim graphics As Graphics = graphics.FromImage(resizedBitmap)
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
             graphics.DrawImage(encodedBitmap, 0, 0, desiredWidth, desiredHeight)
             graphics.Dispose()
