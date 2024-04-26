@@ -1,6 +1,7 @@
 ﻿
 Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports PdfSharp.Pdf
 
 Public Class BILLING
     Public allow = 0
@@ -360,7 +361,7 @@ Public Class BILLING
                             If reader.HasRows Then
                                 While reader.Read()
                                     Dim CustomerId As Int32 = Convert.ToInt32(reader("Customer_id"))
-                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal where Billing_no =@BillNO"
+                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,Billed_by=1 where Billing_no =@BillNO"
                                     Dim parameters As New List(Of SqlParameter)
                                     parameters.Add(New SqlParameter("@BillNO", Me.Bill_no.Text))
                                     parameters.Add(New SqlParameter("@CustomerID", CustomerId))
@@ -409,6 +410,7 @@ Public Class BILLING
             printDialog.Document = PD
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
+
                 Return 1
             Else
                 Return -1
