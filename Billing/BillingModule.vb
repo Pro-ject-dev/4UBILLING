@@ -361,11 +361,12 @@ Public Class BILLING
                             If reader.HasRows Then
                                 While reader.Read()
                                     Dim CustomerId As Int32 = Convert.ToInt32(reader("Customer_id"))
-                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,Billed_by=1 where Billing_no =@BillNO"
+                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,Billed_by=@Billedby where Billing_no =@BillNO"
                                     Dim parameters As New List(Of SqlParameter)
                                     parameters.Add(New SqlParameter("@BillNO", Me.Bill_no.Text))
                                     parameters.Add(New SqlParameter("@CustomerID", CustomerId))
                                     parameters.Add(New SqlParameter("@GrandTotal", Me.grandtot.Text))
+                                    parameters.Add(New SqlParameter("@Billedby", userID))
                                     Dim ReduceQuantity As Int32 = FinalizeBillingForReduceQuantity(Me.Bill_no.Text)
                                     If ReduceQuantity = 1 Then
                                         Dim Exec As Int32 = QueryProcess(InsertCusidQuery, parameters)
