@@ -49,6 +49,11 @@ Partial Class BILLING
         Quantity = New RichTextBox()
         BillingGridsumma = New DataGridView()
         GroupBox3 = New GroupBox()
+        Label18 = New Label()
+        Label17 = New Label()
+        Label16 = New Label()
+        DiscountOut = New RichTextBox()
+        DiscountIo = New RichTextBox()
         Label15 = New Label()
         Label14 = New Label()
         Label13 = New Label()
@@ -94,11 +99,13 @@ Partial Class BILLING
         ' Label9
         ' 
         resources.ApplyResources(Label9, "Label9")
-        Label9.Name = "Label9" ' 
+        Label9.Name = "Label9"
+        ' 
         ' Label10
         ' 
         resources.ApplyResources(Label10, "Label10")
-        Label10.Name = "Label10" ' 
+        Label10.Name = "Label10"
+        ' 
         ' ReturnAmount
         ' 
         ReturnAmount.BorderStyle = BorderStyle.FixedSingle
@@ -111,17 +118,20 @@ Partial Class BILLING
         MobileNo.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         MobileNo.AutoCompleteSource = AutoCompleteSource.CustomSource
         resources.ApplyResources(MobileNo, "MobileNo")
-        MobileNo.Name = "MobileNo" ' 
+        MobileNo.Name = "MobileNo"
+        ' 
         ' BarcodeCodetxt
         ' 
         BarcodeCodetxt.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(BarcodeCodetxt, "BarcodeCodetxt")
-        BarcodeCodetxt.Name = "BarcodeCodetxt" ' 
+        BarcodeCodetxt.Name = "BarcodeCodetxt"
+        ' 
         ' Return_billno
         ' 
         Return_billno.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Return_billno, "Return_billno")
-        Return_billno.Name = "Return_billno" ' 
+        Return_billno.Name = "Return_billno"
+        ' 
         ' AddUserbtn
         ' 
         resources.ApplyResources(AddUserbtn, "AddUserbtn")
@@ -137,15 +147,18 @@ Partial Class BILLING
         ' Label7
         ' 
         resources.ApplyResources(Label7, "Label7")
-        Label7.Name = "Label7" ' 
+        Label7.Name = "Label7"
+        ' 
         ' Label1
         ' 
         resources.ApplyResources(Label1, "Label1")
-        Label1.Name = "Label1" ' 
+        Label1.Name = "Label1"
+        ' 
         ' Label6
         ' 
         resources.ApplyResources(Label6, "Label6")
-        Label6.Name = "Label6" ' 
+        Label6.Name = "Label6"
+        ' 
         ' Bill_no
         ' 
         Bill_no.BorderStyle = BorderStyle.FixedSingle
@@ -168,7 +181,8 @@ Partial Class BILLING
         ' Label5
         ' 
         resources.ApplyResources(Label5, "Label5")
-        Label5.Name = "Label5" ' 
+        Label5.Name = "Label5"
+        ' 
         ' ProductName
         ' 
         resources.ApplyResources(ProductName, "ProductName")
@@ -178,7 +192,8 @@ Partial Class BILLING
         ' Label4
         ' 
         resources.ApplyResources(Label4, "Label4")
-        Label4.Name = "Label4" ' 
+        Label4.Name = "Label4"
+        ' 
         ' Total
         ' 
         Total.BorderStyle = BorderStyle.FixedSingle
@@ -189,7 +204,8 @@ Partial Class BILLING
         ' Label3
         ' 
         resources.ApplyResources(Label3, "Label3")
-        Label3.Name = "Label3" ' 
+        Label3.Name = "Label3"
+        ' 
         ' Price
         ' 
         Price.BorderStyle = BorderStyle.FixedSingle
@@ -201,12 +217,14 @@ Partial Class BILLING
         ' 
         resources.ApplyResources(Label2, "Label2")
         Label2.BackColor = Color.Transparent
-        Label2.Name = "Label2" ' 
+        Label2.Name = "Label2"
+        ' 
         ' Quantity
         ' 
         Quantity.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Quantity, "Quantity")
-        Quantity.Name = "Quantity" ' 
+        Quantity.Name = "Quantity"
+        ' 
         ' BillingGridsumma
         ' 
         BillingGridsumma.BackgroundColor = Color.White
@@ -226,6 +244,11 @@ Partial Class BILLING
         ' 
         ' GroupBox3
         ' 
+        GroupBox3.Controls.Add(Label18)
+        GroupBox3.Controls.Add(Label17)
+        GroupBox3.Controls.Add(Label16)
+        GroupBox3.Controls.Add(DiscountOut)
+        GroupBox3.Controls.Add(DiscountIo)
         GroupBox3.Controls.Add(Label15)
         GroupBox3.Controls.Add(Label14)
         GroupBox3.Controls.Add(Label13)
@@ -239,18 +262,49 @@ Partial Class BILLING
         GroupBox3.Name = "GroupBox3"
         GroupBox3.TabStop = False
         ' 
+        ' Label18
+        ' 
+        resources.ApplyResources(Label18, "Label18")
+        Label18.Name = "Label18"
+        ' 
+        ' Label17
+        ' 
+        resources.ApplyResources(Label17, "Label17")
+        Label17.Name = "Label17"
+        ' 
+        ' Label16
+        ' 
+        resources.ApplyResources(Label16, "Label16")
+        Label16.Name = "Label16"
+        ' 
+        ' DiscountOut
+        ' 
+        DiscountOut.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(DiscountOut, "DiscountOut")
+        DiscountOut.Name = "DiscountOut"
+        DiscountOut.ReadOnly = True
+        ' 
+        ' DiscountIo
+        ' 
+        DiscountIo.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(DiscountIo, "DiscountIo")
+        DiscountIo.Name = "DiscountIo"
+        ' 
         ' Label15
         ' 
         resources.ApplyResources(Label15, "Label15")
-        Label15.Name = "Label15" ' 
+        Label15.Name = "Label15"
+        ' 
         ' Label14
         ' 
         resources.ApplyResources(Label14, "Label14")
-        Label14.Name = "Label14" ' 
+        Label14.Name = "Label14"
+        ' 
         ' Label13
         ' 
         resources.ApplyResources(Label13, "Label13")
-        Label13.Name = "Label13" ' 
+        Label13.Name = "Label13"
+        ' 
         ' Balance
         ' 
         Balance.BorderStyle = BorderStyle.FixedSingle
@@ -261,20 +315,24 @@ Partial Class BILLING
         ' Label12
         ' 
         resources.ApplyResources(Label12, "Label12")
-        Label12.Name = "Label12" ' 
+        Label12.Name = "Label12"
+        ' 
         ' Amount
         ' 
         Amount.BorderStyle = BorderStyle.FixedSingle
         resources.ApplyResources(Amount, "Amount")
-        Amount.Name = "Amount" ' 
+        Amount.Name = "Amount"
+        ' 
         ' Label11
         ' 
         resources.ApplyResources(Label11, "Label11")
-        Label11.Name = "Label11" ' 
+        Label11.Name = "Label11"
+        ' 
         ' Label8
         ' 
         resources.ApplyResources(Label8, "Label8")
-        Label8.Name = "Label8" ' 
+        Label8.Name = "Label8"
+        ' 
         ' grandtot
         ' 
         grandtot.BorderStyle = BorderStyle.FixedSingle
@@ -337,4 +395,9 @@ Partial Class BILLING
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents DiscountOut As RichTextBox
+    Friend WithEvents DiscountIo As RichTextBox
 End Class

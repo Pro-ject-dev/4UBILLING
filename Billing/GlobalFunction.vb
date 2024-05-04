@@ -119,5 +119,18 @@ Module GlobalFunction
 
     End Sub
 
+    Public Function DiscountPrice(grandtot As Double, discountpercent As Double)
+        If discountpercent < 100 Then
+            Dim grandTotal As Double = grandtot
+            Dim discountPercentage As Double = discountpercent
+            Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
+            Dim discountedTotal As Double = grandTotal - discountAmount
+            Return Convert.ToInt32(discountAmount).ToString(0.00)
+        Else
+            Return Convert.ToInt32(grandtot).ToString(0.00)
+        End If
+
+    End Function
+
 
 End Module
