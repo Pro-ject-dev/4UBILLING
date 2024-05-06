@@ -1,6 +1,7 @@
 ﻿
 Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports PdfSharp.Pdf
 
 Public Class BILLING
     Public allow = 0
@@ -49,6 +50,10 @@ Public Class BILLING
         Me.Quantity.Text = 1
         Me.MobileNo.Text = ""
         Me.BarcodeCodetxt.Clear()
+        Me.DiscountIo.Clear()
+        Me.DiscountOut.Clear()
+        Me.Amount.Clear()
+        Me.Balance.Clear()
         LoadGrid(Me.Bill_no.Text)
         BarcodeCodetxt.Focus()
     End Sub
@@ -216,7 +221,7 @@ Public Class BILLING
             t = t & vbCrLf & "Price : " & Price
             t = t & vbCrLf & "Total : " & Total
             a = MsgBox(t, vbOKCancel, "Please Confirm ...")
-            If a = vbOK Then
+            If a = vbOK And newQuantity > 0 Then
                 Dim updateQuery As String = "update dbo.Billing set Quantity=@Quantity,Total=@Total where ref_id =@refid"
                 Dim updateParameter As New List(Of SqlParameter)
                 updateParameter.Add(New SqlParameter("@Quantity", Convert.ToInt32(newQuantity)))
@@ -287,7 +292,9 @@ Public Class BILLING
                 gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
             End If
 
-            gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
+            Dim objgrid As New GridClass
+            objgrid.gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
+
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             'CalCulate GrandTotal
@@ -358,11 +365,12 @@ Public Class BILLING
                             If reader.HasRows Then
                                 While reader.Read()
                                     Dim CustomerId As Int32 = Convert.ToInt32(reader("Customer_id"))
-                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal where Billing_no =@BillNO"
+                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,Billed_by=@Billedby where Billing_no =@BillNO"
                                     Dim parameters As New List(Of SqlParameter)
                                     parameters.Add(New SqlParameter("@BillNO", Me.Bill_no.Text))
                                     parameters.Add(New SqlParameter("@CustomerID", CustomerId))
                                     parameters.Add(New SqlParameter("@GrandTotal", Me.grandtot.Text))
+                                    parameters.Add(New SqlParameter("@Billedby", 1))
                                     Dim ReduceQuantity As Int32 = FinalizeBillingForReduceQuantity(Me.Bill_no.Text)
                                     If ReduceQuantity = 1 Then
                                         Dim Exec As Int32 = QueryProcess(InsertCusidQuery, parameters)
@@ -407,6 +415,7 @@ Public Class BILLING
             printDialog.Document = PD
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
+
                 Return 1
             Else
                 Return -1
@@ -657,25 +666,31 @@ Public Class BILLING
     End Sub
 
     Private Sub BillingGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles BillingGridsumma.CellContentClick
-        If BillingGridsumma.Columns(e.ColumnIndex).Name = "del" Then ' Ensure a valid cell is clicked
-            Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
-            Dim DeleteQuery As String = "DELETE FROM Billing WHERE ref_id=@RefId;"
-            Dim parameters As New List(Of SqlParameter)
-            parameters.Add(New SqlParameter("@RefId", Convert.ToInt32(RefId)))
-            If DeleteProduct(DeleteQuery, parameters) = 1 Then
-                LoadGrid(Me.Bill_no.Text)
-                CalculateGrandTotal(Me.Bill_no.Text)
-                MsgBox("Deleted The Product!")
-            End If
+        Try
+            If BillingGridsumma.Columns(e.ColumnIndex).Name = "del" Then ' Ensure a valid cell is clicked
+                Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
+                Dim DeleteQuery As String = "DELETE FROM Billing WHERE ref_id=@RefId;"
+                Dim parameters As New List(Of SqlParameter)
+                parameters.Add(New SqlParameter("@RefId", Convert.ToInt32(RefId)))
+                If DeleteProduct(DeleteQuery, parameters) = 1 Then
+                    LoadGrid(Me.Bill_no.Text)
+                    CalculateGrandTotal(Me.Bill_no.Text)
+                    MsgBox("Deleted The Product!")
+                End If
 
-        ElseIf BillingGridsumma.Columns(e.ColumnIndex).Name = "val" Then
-            Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
-            Dim Quantity As String = BillingGridsumma.Rows(e.RowIndex).Cells(6).Value.ToString()
-            Dim Price As String = BillingGridsumma.Rows(e.RowIndex).Cells(7).Value.ToString()
-            BillingGridsumma.Rows(e.RowIndex).Selected = True
-            Dim dr As DataGridViewRow = BillingGridsumma.SelectedRows(0)
-            UpdateProduct(RefId, Quantity, Price)
-        End If
+            ElseIf BillingGridsumma.Columns(e.ColumnIndex).Name = "val" Then
+                Dim RefId As String = BillingGridsumma.Rows(e.RowIndex).Cells(2).Value.ToString()
+                Dim Quantity As String = BillingGridsumma.Rows(e.RowIndex).Cells(6).Value.ToString()
+                Dim Price As String = BillingGridsumma.Rows(e.RowIndex).Cells(7).Value.ToString()
+                BillingGridsumma.Rows(e.RowIndex).Selected = True
+                Dim dr As DataGridViewRow = BillingGridsumma.SelectedRows(0)
+                UpdateProduct(RefId, Quantity, Price)
+            End If
+        Catch ex As Exception
+            'MsgBox(ex.ToString)
+
+        End Try
+
     End Sub
 
 
@@ -700,10 +715,12 @@ Public Class BILLING
         If e.KeyCode = Keys.Enter And Len(Return_billno.Text) <> 0 Then
             If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
                 Me.ReturnAmount.Text = GetTheReturnAmount(Me.Return_billno.Text).ToString
+                InitialLoad()
             Else
                 MsgBox("please Provide Appropriate Return BillNo")
                 Me.ReturnAmount.Clear()
                 Me.Return_billno.Clear()
+                InitialLoad()
             End If
         End If
 
@@ -711,27 +728,32 @@ Public Class BILLING
 
 
 
-    Private Sub Amount_KeyDown(sender As Object, e As KeyEventArgs) Handles Amount.KeyDown
+    Private Sub Amount_TextChanged(sender As Object, e As EventArgs) Handles Amount.TextChanged
         Try
-            If e.KeyCode = Keys.Enter Then
-                Dim GrandTotal As Integer = Convert.ToDouble(Me.grandtot.Text)
-                Dim UserAmount As Integer = Convert.ToDouble(Me.Amount.Text)
-                Dim ReturnAmount As Integer
-                If Not String.IsNullOrEmpty(Me.ReturnAmount.Text) Then
-                    ReturnAmount = Convert.ToDouble(Me.ReturnAmount.Text)
-                Else
-                    ReturnAmount = 0
-                End If
+            Dim GrandTotal As Integer = Convert.ToDouble(Me.grandtot.Text)
+            Dim UserAmount As Integer = Convert.ToDouble(Me.Amount.Text)
+            Dim DiscountAmount As Integer
+            Dim ReturnAmount As Integer
+            If Not String.IsNullOrEmpty(Me.DiscountOut.Text) Then
+                DiscountAmount = Convert.ToDouble(Me.DiscountOut.Text)
+            Else
+                DiscountAmount = 0
+            End If
+            If Not String.IsNullOrEmpty(Me.ReturnAmount.Text) Then
+                ReturnAmount = Convert.ToDouble(Me.ReturnAmount.Text)
+            Else
+                ReturnAmount = 0
+            End If
 
-                If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount Then
-                    Me.Balance.Text = ReturnAmount + UserAmount - GrandTotal
-                Else
-                    Me.Balance.Text = 0
-                End If
+            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount - DiscountAmount Then
+                Me.Balance.Text = ReturnAmount + UserAmount + DiscountAmount - GrandTotal
+            Else
+                Me.Balance.Text = 0
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
-            InitialLoad()
+            Me.Amount.Clear()
+            Me.Balance.Clear()
+            Me.Amount.Focus()
         End Try
 
 
@@ -741,5 +763,38 @@ Public Class BILLING
 
     Private Sub MobileNo_GotFocus(sender As Object, e As EventArgs) Handles MobileNo.GotFocus
         LoadAutoComplete()
+    End Sub
+
+
+    'Private Sub DiscountIo_KeyDown(sender As Object, e As KeyEventArgs) Handles DiscountIo.KeyDown
+    '    If e.KeyCode = Keys.Enter Then
+    '        Try
+    '            Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
+    '            MsgBox(Me.DiscountOut.Text)
+    '        Catch ex As Exception
+    '            Me.DiscountOut.Text = "0"
+    '        End Try
+    '    End If
+
+    'End Sub
+
+    Private Sub DiscountIo_TextChanged(sender As Object, e As EventArgs) Handles DiscountIo.TextChanged
+        Try
+            Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
+
+            If DiscountOut.Text < 0 Then
+                Me.DiscountOut.Text = "0"
+            End If
+        Catch ex As Exception
+            Me.DiscountOut.Text = "0"
+        End Try
+    End Sub
+
+
+
+
+
+    Private Sub Return_billno_TextChanged(sender As Object, e As EventArgs) Handles Return_billno.TextChanged
+
     End Sub
 End Class
