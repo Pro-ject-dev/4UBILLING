@@ -39,7 +39,8 @@ Public Class ReturnForm
         Else
             gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 150, screenwidth / 100, screenwidth / 100, screenwidth / 100})
         End If
-        gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, gridSizes, parameter)
+        Dim objgrid As New GridClass
+        objgrid.gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, gridSizes, parameter)
         CalculateGrandTotal(Billno)
         CalculateCurrentTotal(Billno)
     End Sub
@@ -211,8 +212,8 @@ Public Class ReturnForm
         b = Me.BillNo.Text
         'range from top
         e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, centermargin, 5, center)
-        'e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 25, center)
-        e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, 10, 25, center)
+        e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 25, center)
+        'e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, 10, 25, center)
         e.Graphics.DrawString("Pudukkottai - Dt,Cell : 78712 93638", f10, Brushes.Black, centermargin, 40, center)
         Dim BillAndDatehi As Integer = 70
         e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 120, BillAndDatehi)
@@ -521,5 +522,16 @@ Public Class ReturnForm
 
     Private Sub BillNo_TextChanged(sender As Object, e As EventArgs) Handles BillNo.TextChanged
 
+    End Sub
+
+    Private Sub ReturnForm_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        Select Case e.Alt And e.KeyCode
+            Case Keys.F3
+                Button3.PerformClick()
+        End Select
+        Select Case e.Control And e.KeyCode
+            Case Keys.F3
+                Button2.Focus()
+        End Select
     End Sub
 End Class
