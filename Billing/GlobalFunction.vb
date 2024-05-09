@@ -135,7 +135,7 @@ Module GlobalFunction
             Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
             Grid.DataSource = dt1
             For i As Integer = 0 To GridColumn.Count - 1
-                Grid.Columns(GridColumn(i)).Width = screenwidth / Gridsize(i)
+                Grid.Columns(GridColumn(i)).Width = Gridsize(i)
             Next
             Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White

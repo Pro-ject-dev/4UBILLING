@@ -7,7 +7,7 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
+        'Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()
@@ -282,15 +282,14 @@ Public Class BILLING
             Dim gridSizes As New List(Of Double)
             If allow = 0 Then
                 allow = 1
-                gridSizes.AddRange({screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+                gridSizes.AddRange({100, 100, 100, 200, 120, 150, 100})
             Else
-                gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+                gridSizes.AddRange({100, 100, 100, 200, 120, 150, 100, 100, 100})
             End If
 
             gridWithPram(BillingGridsumma, query, {0, 1, 2, 3, 4, 5, 6}.ToList, gridSizes, parameters)
             BillingGridsumma.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             BillingGridsumma.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            'CalCulate GrandTotal
             CalculateGrandTotal(BillNo)
         Catch ex As Exception
             MsgBox($"SQL Exception occurred loadgrid: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
