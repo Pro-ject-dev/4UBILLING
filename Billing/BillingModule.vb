@@ -378,6 +378,7 @@ Public Class BILLING
                                             Try
                                                 GenerateBill()
 
+
                                             Catch ex As Exception
                                                 MsgBox(ex.ToString)
                                             End Try
@@ -415,7 +416,7 @@ Public Class BILLING
             printDialog.Document = PD
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
-
+                PD.Print()
                 Return 1
             Else
                 Return -1
@@ -715,7 +716,6 @@ Public Class BILLING
         If e.KeyCode = Keys.Enter And Len(Return_billno.Text) <> 0 Then
             If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
                 Me.ReturnAmount.Text = GetTheReturnAmount(Me.Return_billno.Text).ToString
-
             Else
                 MsgBox("please Provide Appropriate Return BillNo")
                 Me.ReturnAmount.Clear()
@@ -745,8 +745,8 @@ Public Class BILLING
                 ReturnAmount = 0
             End If
 
-            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount Then
-                Me.Balance.Text = ReturnAmount + UserAmount - GrandTotal
+            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount - DiscountAmount Then
+                Me.Balance.Text = ReturnAmount + UserAmount + DiscountAmount - GrandTotal
             Else
                 Me.Balance.Text = 0
             End If
@@ -783,7 +783,14 @@ Public Class BILLING
             Dim discountPercentage As Double = discountpercent
             Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
             Dim discountedTotal As Double = grandTotal - discountAmount
-            Me.grandtot.Text = discountedTotal
+            'Me.grandtot.Text = discountedTotal
+            If Not String.IsNullOrEmpty(Me.ReturnAmount.Text) Then
+                Dim Final_amount_val As Double = Convert.ToDouble(Me.grandtot.Text) - discountedTotal + Convert.ToDouble(Me.ReturnAmount.Text)
+                Final_amount.Text = Final_amount_val.ToString("0.00")
+            Else
+                Final_amount.Text = "0"
+            End If
+
             Return Convert.ToInt32(discountAmount).ToString(0.00)
         Else
             CalculateGrandTotal(Me.Bill_no.Text)
@@ -798,21 +805,15 @@ Public Class BILLING
 
             If DiscountOut.Text < 0 Then
                 Me.DiscountOut.Text = "0"
-                CalculateGrandTotal(Me.Bill_no.Text)
-                Me.grandtot.Text = "0"
+                'CalculateGrandTotal(Me.Bill_no.Text)
+                'Me.grandtot.Text = "0"
             End If
         Catch ex As Exception
             Me.DiscountOut.Text = "0"
-            CalculateGrandTotal(Me.Bill_no.Text)
+            'CalculateGrandTotal(Me.Bill_no.Text)
 
         End Try
     End Sub
 
 
-
-
-
-    Private Sub Return_billno_TextChanged(sender As Object, e As EventArgs) Handles Return_billno.TextChanged
-
-    End Sub
 End Class

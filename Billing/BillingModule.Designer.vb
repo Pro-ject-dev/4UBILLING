@@ -23,7 +23,7 @@ Partial Class BILLING
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(BILLING))
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox1 = New GroupBox()
         Label9 = New Label()
         Label10 = New Label()
@@ -49,6 +49,8 @@ Partial Class BILLING
         Quantity = New RichTextBox()
         BillingGridsumma = New DataGridView()
         GroupBox3 = New GroupBox()
+        Label19 = New Label()
+        Final_amount = New RichTextBox()
         Label18 = New Label()
         Label17 = New Label()
         Label16 = New Label()
@@ -228,14 +230,14 @@ Partial Class BILLING
         ' BillingGridsumma
         ' 
         BillingGridsumma.BackgroundColor = Color.White
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Black
-        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = Color.White
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Black
+        DataGridViewCellStyle2.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         resources.ApplyResources(BillingGridsumma, "BillingGridsumma")
         BillingGridsumma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         BillingGridsumma.Name = "BillingGridsumma"
@@ -244,6 +246,8 @@ Partial Class BILLING
         ' 
         ' GroupBox3
         ' 
+        GroupBox3.Controls.Add(Label19)
+        GroupBox3.Controls.Add(Final_amount)
         GroupBox3.Controls.Add(Label18)
         GroupBox3.Controls.Add(Label17)
         GroupBox3.Controls.Add(Label16)
@@ -261,6 +265,18 @@ Partial Class BILLING
         resources.ApplyResources(GroupBox3, "GroupBox3")
         GroupBox3.Name = "GroupBox3"
         GroupBox3.TabStop = False
+        ' 
+        ' Label19
+        ' 
+        resources.ApplyResources(Label19, "Label19")
+        Label19.Name = "Label19"
+        ' 
+        ' Final_amount
+        ' 
+        Final_amount.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(Final_amount, "Final_amount")
+        Final_amount.Name = "Final_amount"
+        Final_amount.ReadOnly = True
         ' 
         ' Label18
         ' 
@@ -400,4 +416,6 @@ Partial Class BILLING
     Friend WithEvents Label16 As Label
     Friend WithEvents DiscountOut As RichTextBox
     Friend WithEvents DiscountIo As RichTextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Final_amount As RichTextBox
 End Class
