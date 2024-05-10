@@ -8,7 +8,7 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
+        'Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()
@@ -287,9 +287,9 @@ Public Class BILLING
             Dim gridSizes As New List(Of Double)
             If allow = 0 Then
                 allow = 1
-                gridSizes.AddRange({screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+                gridSizes.AddRange({100, 100, 100, 200, 120, 150, 100})
             Else
-                gridSizes.AddRange({screenwidth / 100, screenwidth / 100, screenwidth / 50, screenwidth / 190, screenwidth / 140, screenwidth / 140, screenwidth / 80, screenwidth / 80, screenwidth / 80})
+                gridSizes.AddRange({100, 100, 100, 100, 100, 200, 120, 150, 100})
             End If
 
             Dim objgrid As New GridClass
@@ -745,8 +745,8 @@ Public Class BILLING
                 ReturnAmount = 0
             End If
 
-            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount - DiscountAmount Then
-                Me.Balance.Text = ReturnAmount + UserAmount + DiscountAmount - GrandTotal
+            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount Then
+                Me.Balance.Text = ReturnAmount + UserAmount - GrandTotal
             Else
                 Me.Balance.Text = 0
             End If
@@ -777,16 +777,34 @@ Public Class BILLING
     '    End If
 
     'End Sub
+    Public Function DiscountPrice(grandtot As Double, discountpercent As Double)
+        If discountpercent < 100 Then
+            Dim grandTotal As Double = grandtot
+            Dim discountPercentage As Double = discountpercent
+            Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
+            Dim discountedTotal As Double = grandTotal - discountAmount
+            Me.grandtot.Text = discountedTotal
+            Return Convert.ToInt32(discountAmount).ToString(0.00)
+        Else
+            CalculateGrandTotal(Me.Bill_no.Text)
+            Return Convert.ToInt32(grandtot).ToString(0.00)
+        End If
 
+    End Function
     Private Sub DiscountIo_TextChanged(sender As Object, e As EventArgs) Handles DiscountIo.TextChanged
+        CalculateGrandTotal(Me.Bill_no.Text)
         Try
             Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
 
             If DiscountOut.Text < 0 Then
                 Me.DiscountOut.Text = "0"
+                CalculateGrandTotal(Me.Bill_no.Text)
+                Me.grandtot.Text = "0"
             End If
         Catch ex As Exception
             Me.DiscountOut.Text = "0"
+            CalculateGrandTotal(Me.Bill_no.Text)
+
         End Try
     End Sub
 

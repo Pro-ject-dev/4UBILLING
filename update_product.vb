@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Public Class update_product
     Public query As String
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = New Size(screenwidth / 1.35, screenheight / 1.6)
+        'Me.Size = New Size(screenwidth / 1.35, screenheight / 1.6)
         ComboBox1.Items.Add("")
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
@@ -38,12 +38,12 @@ Public Class update_product
             Dim dataTable As DataTable = LoadDataTable(query)
             If dataTable IsNot Nothing Then
                 DataGridView1.DataSource = dataTable
-                DataGridView1.Columns(0).Width = screenwidth / 10
-                DataGridView1.Columns(1).Width = screenwidth / 6
-                DataGridView1.Columns(2).Width = screenwidth / 8
-                DataGridView1.Columns(3).Width = screenwidth / 8
-                DataGridView1.Columns(4).Width = screenwidth / 14
-                DataGridView1.Columns(5).Width = screenwidth / 10.5
+                DataGridView1.Columns(0).Width = 180
+                DataGridView1.Columns(1).Width = 330
+                DataGridView1.Columns(2).Width = 300
+                DataGridView1.Columns(3).Width = 200
+                DataGridView1.Columns(4).Width = 100
+                DataGridView1.Columns(5).Width = 213
                 DataGridView1.Columns(6).Visible = False
                 DataGridView1.Columns(7).Visible = False
                 DataGridView1.ClearSelection()

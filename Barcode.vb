@@ -63,11 +63,11 @@
         DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridView1.Columns(0).Width = screenwidth / 18
-        DataGridView1.Columns(1).Width = screenwidth / 8
-        DataGridView1.Columns(2).Width = screenwidth / 9
-        DataGridView1.Columns(3).Width = screenwidth / 9
-        DataGridView1.Columns(4).Width = screenwidth / 15
+        'DataGridView1.Columns(0).Width = screenwidth / 18
+        'DataGridView1.Columns(1).Width = screenwidth / 8
+        'DataGridView1.Columns(2).Width = screenwidth / 9
+        'DataGridView1.Columns(3).Width = screenwidth / 9
+        'DataGridView1.Columns(4).Width = screenwidth / 15
 
 
 
