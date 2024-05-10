@@ -49,6 +49,8 @@ Partial Class BILLING
         Quantity = New RichTextBox()
         BillingGridsumma = New DataGridView()
         GroupBox3 = New GroupBox()
+        Label19 = New Label()
+        Final_amount = New RichTextBox()
         Label18 = New Label()
         Label17 = New Label()
         Label16 = New Label()
@@ -63,6 +65,8 @@ Partial Class BILLING
         Label11 = New Label()
         Label8 = New Label()
         grandtot = New RichTextBox()
+        Label20 = New Label()
+        RefundAmounttxtbox = New RichTextBox()
         GroupBox1.SuspendLayout()
         CType(BillingGridsumma, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox3.SuspendLayout()
@@ -244,6 +248,10 @@ Partial Class BILLING
         ' 
         ' GroupBox3
         ' 
+        GroupBox3.Controls.Add(Label20)
+        GroupBox3.Controls.Add(RefundAmounttxtbox)
+        GroupBox3.Controls.Add(Label19)
+        GroupBox3.Controls.Add(Final_amount)
         GroupBox3.Controls.Add(Label18)
         GroupBox3.Controls.Add(Label17)
         GroupBox3.Controls.Add(Label16)
@@ -261,6 +269,18 @@ Partial Class BILLING
         resources.ApplyResources(GroupBox3, "GroupBox3")
         GroupBox3.Name = "GroupBox3"
         GroupBox3.TabStop = False
+        ' 
+        ' Label19
+        ' 
+        resources.ApplyResources(Label19, "Label19")
+        Label19.Name = "Label19"
+        ' 
+        ' Final_amount
+        ' 
+        Final_amount.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(Final_amount, "Final_amount")
+        Final_amount.Name = "Final_amount"
+        Final_amount.ReadOnly = True
         ' 
         ' Label18
         ' 
@@ -340,6 +360,18 @@ Partial Class BILLING
         grandtot.Name = "grandtot"
         grandtot.ReadOnly = True
         ' 
+        ' Label20
+        ' 
+        resources.ApplyResources(Label20, "Label20")
+        Label20.Name = "Label20"
+        ' 
+        ' RefundAmounttxtbox
+        ' 
+        RefundAmounttxtbox.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(RefundAmounttxtbox, "RefundAmounttxtbox")
+        RefundAmounttxtbox.Name = "RefundAmounttxtbox"
+        RefundAmounttxtbox.ReadOnly = True
+        ' 
         ' BILLING
         ' 
         resources.ApplyResources(Me, "$this")
@@ -400,4 +432,8 @@ Partial Class BILLING
     Friend WithEvents Label16 As Label
     Friend WithEvents DiscountOut As RichTextBox
     Friend WithEvents DiscountIo As RichTextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Final_amount As RichTextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents RefundAmounttxtbox As RichTextBox
 End Class
