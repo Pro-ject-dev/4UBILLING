@@ -523,4 +523,15 @@ Public Class ReturnForm
     Private Sub BillNo_TextChanged(sender As Object, e As EventArgs) Handles BillNo.TextChanged
 
     End Sub
+
+    Private Sub ReturnForm_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        Select Case e.Alt And e.KeyCode
+            Case Keys.F3
+                Button3.PerformClick()
+        End Select
+        Select Case e.Control And e.KeyCode
+            Case Keys.F3
+                Button2.Focus()
+        End Select
+    End Sub
 End Class
