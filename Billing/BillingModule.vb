@@ -329,6 +329,7 @@ Public Class BILLING
                 End Using
 
             End Using
+            Final_amount_val(Me.ReturnAmount.Text, Me.DiscountOut.Text, Me.grandtot.Text)
             ' Execute the query
         Catch ex As Exception
             MsgBox($"SQL Exception occurred CalculateGrandTotal: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
@@ -378,6 +379,7 @@ Public Class BILLING
                                             Try
                                                 GenerateBill()
 
+
                                             Catch ex As Exception
                                                 MsgBox(ex.ToString)
                                             End Try
@@ -415,7 +417,7 @@ Public Class BILLING
             printDialog.Document = PD
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
-
+                PD.Print()
                 Return 1
             Else
                 Return -1
@@ -715,7 +717,7 @@ Public Class BILLING
         If e.KeyCode = Keys.Enter And Len(Return_billno.Text) <> 0 Then
             If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
                 Me.ReturnAmount.Text = GetTheReturnAmount(Me.Return_billno.Text).ToString
-
+                CalculateGrandTotal(Me.Bill_no.Text)
             Else
                 MsgBox("please Provide Appropriate Return BillNo")
                 Me.ReturnAmount.Clear()
@@ -745,8 +747,8 @@ Public Class BILLING
                 ReturnAmount = 0
             End If
 
-            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount Then
-                Me.Balance.Text = ReturnAmount + UserAmount - GrandTotal
+            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount - DiscountAmount Then
+                Me.Balance.Text = ReturnAmount + UserAmount + DiscountAmount - GrandTotal
             Else
                 Me.Balance.Text = 0
             End If
@@ -783,7 +785,9 @@ Public Class BILLING
             Dim discountPercentage As Double = discountpercent
             Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
             Dim discountedTotal As Double = grandTotal - discountAmount
-            Me.grandtot.Text = discountedTotal
+            'Me.grandtot.Text = discountedTotal
+
+
             Return Convert.ToInt32(discountAmount).ToString(0.00)
         Else
             CalculateGrandTotal(Me.Bill_no.Text)
@@ -795,24 +799,33 @@ Public Class BILLING
         CalculateGrandTotal(Me.Bill_no.Text)
         Try
             Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
-
+            CalculateGrandTotal(Me.Bill_no.Text)
             If DiscountOut.Text < 0 Then
                 Me.DiscountOut.Text = "0"
                 CalculateGrandTotal(Me.Bill_no.Text)
-                Me.grandtot.Text = "0"
             End If
         Catch ex As Exception
             Me.DiscountOut.Text = "0"
             CalculateGrandTotal(Me.Bill_no.Text)
-
         End Try
     End Sub
 
+    Public Sub Final_amount_val(ReturnAmount As String, DiscountAmount As String, GrandTotal As String)
+        If String.IsNullOrEmpty(ReturnAmount) Then
+            ReturnAmount = "0"
+        End If
+        If String.IsNullOrEmpty(DiscountAmount) Then
+            DiscountAmount = "0"
+        End If
+        If String.IsNullOrEmpty(GrandTotal) Then
+            GrandTotal = "0"
+        End If
 
-
-
-
-    Private Sub Return_billno_TextChanged(sender As Object, e As EventArgs) Handles Return_billno.TextChanged
-
+        Dim FinalVal As Double = Convert.ToDouble(GrandTotal) - (Convert.ToDouble(ReturnAmount) + Convert.ToDouble(DiscountAmount))
+        MessageBox.Show($"GrandTotal: {GrandTotal}{Environment.NewLine}ReturnAmount: {ReturnAmount}{Environment.NewLine}DiscountAmount: {DiscountAmount} Finalval:{FinalVal}{Environment.NewLine}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Me.Final_amount.Text = FinalVal.ToString("0.00")
+        If FinalVal < 1 Then
+            Me.Final_amount.Text = "0"
+        End If
     End Sub
 End Class
