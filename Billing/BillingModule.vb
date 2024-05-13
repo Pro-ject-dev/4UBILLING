@@ -79,7 +79,7 @@ Public Class BILLING
                             Me.Quantity.Focus()
                             'MessageBox.Show($"Product Name: {ProductName}{Environment.NewLine}Quantity: {Quantity}{Environment.NewLine}Price: {Price}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             IncrementTheTotal(Me.Quantity.Text, Me.Price.Text)
-                            BarcodeCodetxt.Focus()
+
                         End While
                     Else
                         ' No rows found - display an error message
@@ -88,7 +88,7 @@ Public Class BILLING
                         BarcodeCodetxt.Focus()
                         InitialLoad()
                         Me.Quantity.Text = 1
-
+                        BarcodeCodetxt.Focus()
                     End If
                 End Using
             End Using
@@ -294,9 +294,9 @@ Public Class BILLING
             Dim gridSizes As New List(Of Double)
             If allow = 0 Then
                 allow = 1
-                gridSizes.AddRange({100, 100, 100, 200, 120, 150, 100})
+                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100})
             Else
-                gridSizes.AddRange({100, 100, 100, 100, 100, 200, 120, 150, 100})
+                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100, 80, 80})
             End If
 
             Dim objgrid As New GridClass
@@ -563,7 +563,6 @@ Public Class BILLING
             e.Graphics.DrawString("Discount:   " + "    " + DiscountIo.Text + "%", f10b, Brushes.Black, 10, 10 + height2 + 75)
             e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
         Else
-
             e.Graphics.DrawString("Total Quantity:" + " " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
             e.Graphics.DrawString("Net Amount:    " + " " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
             e.Graphics.DrawString("Grand Total:   " + " " + Final_amount.Text, f10b, Brushes.Black, 10, 10 + height2 + 35)
@@ -691,6 +690,9 @@ Public Class BILLING
                     LoadGrid(Me.Bill_no.Text)
                     CalculateGrandTotal(Me.Bill_no.Text)
                     MsgBox("Deleted The Product!")
+                    DiscountIotextChangedFunction()
+                    AmountValue()
+
                 End If
 
             ElseIf BillingGridsumma.Columns(e.ColumnIndex).Name = "val" Then
@@ -700,6 +702,8 @@ Public Class BILLING
                 BillingGridsumma.Rows(e.RowIndex).Selected = True
                 Dim dr As DataGridViewRow = BillingGridsumma.SelectedRows(0)
                 UpdateProduct(RefId, Quantity, Price)
+                DiscountIotextChangedFunction()
+                AmountValue()
             End If
         Catch ex As Exception
             'MsgBox(ex.ToString)
@@ -790,6 +794,10 @@ Public Class BILLING
 
     End Function
     Private Sub DiscountIo_TextChanged(sender As Object, e As EventArgs) Handles DiscountIo.TextChanged
+        DiscountIotextChangedFunction()
+    End Sub
+
+    Public Sub DiscountIotextChangedFunction()
         CalculateGrandTotal(Me.Bill_no.Text)
         Try
             Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
