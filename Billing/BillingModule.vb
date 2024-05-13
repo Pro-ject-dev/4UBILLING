@@ -294,9 +294,9 @@ Public Class BILLING
             Dim gridSizes As New List(Of Double)
             If allow = 0 Then
                 allow = 1
-                gridSizes.AddRange({100, 100, 100, 200, 120, 150, 100})
+                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100})
             Else
-                gridSizes.AddRange({100, 100, 100, 100, 100, 200, 120, 150, 100})
+                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100, 80, 80})
             End If
 
             Dim objgrid As New GridClass
