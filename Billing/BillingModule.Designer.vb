@@ -23,7 +23,7 @@ Partial Class BILLING
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(BILLING))
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         GroupBox1 = New GroupBox()
         Label9 = New Label()
         Label10 = New Label()
@@ -49,6 +49,8 @@ Partial Class BILLING
         Quantity = New RichTextBox()
         BillingGridsumma = New DataGridView()
         GroupBox3 = New GroupBox()
+        Label20 = New Label()
+        RefundAmounttxtbox = New RichTextBox()
         Label19 = New Label()
         Final_amount = New RichTextBox()
         Label18 = New Label()
@@ -65,8 +67,6 @@ Partial Class BILLING
         Label11 = New Label()
         Label8 = New Label()
         grandtot = New RichTextBox()
-        Label20 = New Label()
-        RefundAmounttxtbox = New RichTextBox()
         GroupBox1.SuspendLayout()
         CType(BillingGridsumma, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox3.SuspendLayout()
@@ -232,14 +232,14 @@ Partial Class BILLING
         ' BillingGridsumma
         ' 
         BillingGridsumma.BackgroundColor = Color.White
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.Black
-        DataGridViewCellStyle2.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = Color.White
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.Black
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        BillingGridsumma.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         resources.ApplyResources(BillingGridsumma, "BillingGridsumma")
         BillingGridsumma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         BillingGridsumma.Name = "BillingGridsumma"
@@ -269,6 +269,18 @@ Partial Class BILLING
         resources.ApplyResources(GroupBox3, "GroupBox3")
         GroupBox3.Name = "GroupBox3"
         GroupBox3.TabStop = False
+        ' 
+        ' Label20
+        ' 
+        resources.ApplyResources(Label20, "Label20")
+        Label20.Name = "Label20"
+        ' 
+        ' RefundAmounttxtbox
+        ' 
+        RefundAmounttxtbox.BorderStyle = BorderStyle.FixedSingle
+        resources.ApplyResources(RefundAmounttxtbox, "RefundAmounttxtbox")
+        RefundAmounttxtbox.Name = "RefundAmounttxtbox"
+        RefundAmounttxtbox.ReadOnly = True
         ' 
         ' Label19
         ' 
@@ -359,18 +371,6 @@ Partial Class BILLING
         resources.ApplyResources(grandtot, "grandtot")
         grandtot.Name = "grandtot"
         grandtot.ReadOnly = True
-        ' 
-        ' Label20
-        ' 
-        resources.ApplyResources(Label20, "Label20")
-        Label20.Name = "Label20"
-        ' 
-        ' RefundAmounttxtbox
-        ' 
-        RefundAmounttxtbox.BorderStyle = BorderStyle.FixedSingle
-        resources.ApplyResources(RefundAmounttxtbox, "RefundAmounttxtbox")
-        RefundAmounttxtbox.Name = "RefundAmounttxtbox"
-        RefundAmounttxtbox.ReadOnly = True
         ' 
         ' BILLING
         ' 
