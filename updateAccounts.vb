@@ -35,10 +35,10 @@
 
 
     Public Sub load()
-        Me.Size = New Size(720, 510)
+        Me.Size = New Size(760, 260)
         DataGridView1.Width = 708
-        GroupBox1.Width = 745
-        GroupBox1.Height = 440
+        GroupBox1.Width = 730
+        GroupBox1.Height = 200
         Dim query As String = "Select userid As 'User ID',Username,Password,Role from login"
         Dim dataTable As DataTable = LoadDataTable(query)
         DataGridView1.DataSource = dataTable

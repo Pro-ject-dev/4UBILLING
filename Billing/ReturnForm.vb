@@ -35,9 +35,9 @@ Public Class ReturnForm
 
         If allow = 0 Then
             allow = 1
-            gridSizes.AddRange({100, 120, 200, 140, 100})
+            gridSizes.AddRange({100, 120, 100, 100, 100})
         Else
-            gridSizes.AddRange({100, 100, 100, 200, 140, 100})
+            gridSizes.AddRange({100, 100, 120, 100, 100, 100, 120})
         End If
         Dim objgrid As New GridClass
         objgrid.gridWithPram(ReturnGrid, Query, {0, 1, 2, 3, 4}.ToList, gridSizes, parameter)
