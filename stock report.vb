@@ -1,4 +1,5 @@
-﻿Imports System.Security.Cryptography
+﻿Imports System.Net.Mail
+Imports System.Security.Cryptography
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
@@ -6,7 +7,7 @@ Public Class stock_report
     Public query As String
     Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Size = New Size(1185, 450)
+        'Me.Size = New Size(1185, 450)
 
         pro_filter.Checked = True
         date_filter.Checked = True
@@ -107,6 +108,7 @@ Public Class stock_report
         If dataTable.Rows.Count = 0 Then
             MsgBox("Please Select Any of the Fields !")
         Else
+
 
             stock_query = ModifystockColumnNames(query)
             Dim frm = New stock_print

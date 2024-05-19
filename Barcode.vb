@@ -12,8 +12,13 @@
         Dim clickedRowIndex As Integer = e.RowIndex
         Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
         PictureBox1.Image = generate(barcodee)
-        PrintPreviewDialog1.Document = PrintDocument1
-        PrintPreviewDialog1.ShowDialog()
+        Dim print As New PrintDialog()
+        print.Document = PrintDocument1
+        If print.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.PrinterSettings.Copies = print.PrinterSettings.Copies
+            PrintDocument1.Print()
+        End If
+
 
     End Sub
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting

@@ -52,6 +52,8 @@ Partial Class Add_Product
         ComboBox1 = New ComboBox()
         PrintPreviewDialog1 = New PrintPreviewDialog()
         PrintDocument1 = New Printing.PrintDocument()
+        Label8 = New Label()
+        TextBox1 = New TextBox()
         GroupBox1.SuspendLayout()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox2.SuspendLayout()
@@ -61,11 +63,11 @@ Partial Class Add_Product
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(Label8)
         GroupBox1.Controls.Add(Button10)
         GroupBox1.Controls.Add(Button5)
         GroupBox1.Controls.Add(Button2)
         GroupBox1.Controls.Add(Label5)
-        GroupBox1.Controls.Add(TextBox3)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(NumericUpDown1)
         GroupBox1.Controls.Add(TextBox2)
@@ -75,13 +77,13 @@ Partial Class Add_Product
         GroupBox1.Controls.Add(GroupBox2)
         GroupBox1.Location = New Point(12, 12)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(997, 485)
+        GroupBox1.Size = New Size(997, 542)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "Product Details"' 
         ' Button10
         ' 
-        Button10.Location = New Point(16, 441)
+        Button10.Location = New Point(16, 497)
         Button10.Name = "Button10"
         Button10.Size = New Size(370, 34)
         Button10.TabIndex = 16
@@ -91,7 +93,7 @@ Partial Class Add_Product
         ' 
         ' Button5
         ' 
-        Button5.Location = New Point(602, 441)
+        Button5.Location = New Point(602, 497)
         Button5.Name = "Button5"
         Button5.Size = New Size(370, 34)
         Button5.TabIndex = 15
@@ -101,7 +103,7 @@ Partial Class Add_Product
         ' 
         ' Button2
         ' 
-        Button2.Location = New Point(319, 441)
+        Button2.Location = New Point(319, 497)
         Button2.Name = "Button2"
         Button2.Size = New Size(370, 34)
         Button2.TabIndex = 14
@@ -113,13 +115,13 @@ Partial Class Add_Product
         Label5.AutoSize = True
         Label5.Location = New Point(28, 329)
         Label5.Name = "Label5"
-        Label5.Size = New Size(143, 25)
+        Label5.Size = New Size(142, 25)
         Label5.TabIndex = 9
-        Label5.Text = "Price                  :"' 
+        Label5.Text = "Actual Price       :"' 
         ' TextBox3
         ' 
         TextBox3.BorderStyle = BorderStyle.FixedSingle
-        TextBox3.Location = New Point(191, 327)
+        TextBox3.Location = New Point(175, 350)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(370, 31)
         TextBox3.TabIndex = 8
@@ -175,9 +177,11 @@ Partial Class Add_Product
         ' GroupBox2
         ' 
         GroupBox2.Controls.Add(Label7)
+        GroupBox2.Controls.Add(TextBox1)
         GroupBox2.Controls.Add(Button8)
         GroupBox2.Controls.Add(Button9)
         GroupBox2.Controls.Add(ComboBox3)
+        GroupBox2.Controls.Add(TextBox3)
         GroupBox2.Controls.Add(Button7)
         GroupBox2.Controls.Add(Button6)
         GroupBox2.Controls.Add(PictureBox2)
@@ -190,7 +194,7 @@ Partial Class Add_Product
         GroupBox2.Controls.Add(ComboBox1)
         GroupBox2.Location = New Point(16, 30)
         GroupBox2.Name = "GroupBox2"
-        GroupBox2.Size = New Size(956, 405)
+        GroupBox2.Size = New Size(964, 461)
         GroupBox2.TabIndex = 10
         GroupBox2.TabStop = False
         GroupBox2.Text = "***"' 
@@ -251,7 +255,7 @@ Partial Class Add_Product
         ' 
         PictureBox2.BorderStyle = BorderStyle.FixedSingle
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(863, 343)
+        PictureBox2.Location = New Point(863, 396)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(50, 45)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
@@ -288,7 +292,7 @@ Partial Class Add_Product
         ' PictureBox1
         ' 
         PictureBox1.BorderStyle = BorderStyle.FixedSingle
-        PictureBox1.Location = New Point(601, 342)
+        PictureBox1.Location = New Point(601, 395)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(233, 45)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
@@ -297,7 +301,7 @@ Partial Class Add_Product
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(175, 346)
+        Button1.Location = New Point(175, 399)
         Button1.Name = "Button1"
         Button1.Size = New Size(370, 34)
         Button1.TabIndex = 12
@@ -307,11 +311,11 @@ Partial Class Add_Product
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(12, 349)
+        Label6.Location = New Point(12, 402)
         Label6.Name = "Label6"
-        Label6.Size = New Size(145, 25)
+        Label6.Size = New Size(140, 25)
         Label6.TabIndex = 11
-        Label6.Text = "Barcode             :"' 
+        Label6.Text = "Barcode            :"' 
         ' ComboBox1
         ' 
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
@@ -334,11 +338,27 @@ Partial Class Add_Product
         ' PrintDocument1
         ' 
         ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(28, 381)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(140, 25)
+        Label8.TabIndex = 18
+        Label8.Text = "Retail Price        :"' 
+        ' TextBox1
+        ' 
+        TextBox1.BorderStyle = BorderStyle.FixedSingle
+        TextBox1.Location = New Point(175, 298)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(370, 31)
+        TextBox1.TabIndex = 17
+        ' 
         ' Add_Product
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1021, 509)
+        ClientSize = New Size(1021, 566)
         Controls.Add(GroupBox1)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
@@ -385,4 +405,6 @@ Partial Class Add_Product
     Friend WithEvents Button9 As Button
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Button10 As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class

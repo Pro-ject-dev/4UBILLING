@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Reporting.WinForms
 Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports System.IO
 
 Public Class stock_print
 
@@ -34,4 +35,19 @@ Public Class stock_print
         End Try
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            Dim filePath As String = Path.Combine("C:\stock_report", "report.pdf")
+            Dim dir As String = Path.GetDirectoryName(filePath)
+            If Not Directory.Exists(dir) Then
+                Directory.CreateDirectory(dir)
+            End If
+            Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "YourNamespace.Report1.rdlc"
+            Dim renderedBytes As Byte() = Me.ReportViewer1.LocalReport.Render("PDF")
+            MessageBox.Show("Report saved successfully.")
+            sendmail("Stocks Report", "4U Fashions Stocks Report", "C:\stock_report\report.pdf")
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message)
+        End Try
+    End Sub
 End Class

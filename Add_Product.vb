@@ -104,7 +104,7 @@ Public Class Add_Product
             If common.update = "1" Then
                 Dim state As Boolean = ShowConfirmation("Are You Sure to Update this Product ? ")
                 If state Then
-                    Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1) WHERE product_id=@value7"
+                    Dim updateQuery As String = "UPDATE products SET Cat_id=(select Cat_id from Category where Category=@value1 and status = 1), Product_name=@value2, Quantity=@value3, Price=@value4, Barcode=@value5, Brand_id=(select brand_id from Brands where Brand=@value6 and status= 1 ),size=(select size_id from size where size=@value8 and status = 1),Actual_Price=@value9 WHERE product_id=@value7"
                     Dim param = New SqlParameter("@value1", TextBox2.Text.Trim())
                     Dim count = GetRowCount("SELECT 1 FROM products WHERE Product_name =@value1 and barcode='" + update_barcode + "' and status=1", param)
                     If count = 1 Then
@@ -117,6 +117,8 @@ Public Class Add_Product
                         valuesToInsert.Add("@value6", ComboBox2.SelectedItem)
                         valuesToInsert.Add("@value7", update_productid)
                         valuesToInsert.Add("@value8", ComboBox3.SelectedItem)
+                        valuesToInsert.Add("@value9", TextBox1.Text.ToString)
+
                         Dim status = InsertData(updateQuery, valuesToInsert)
                         If status Then
                             MsgBox("Product Updated Successfully!")
@@ -147,6 +149,7 @@ Public Class Add_Product
         TextBox3.Text = ""
         PictureBox1.Image = Nothing
         barcode = ""
+        TextBox1.Text = ""
         loaded()
     End Sub
 
@@ -164,6 +167,7 @@ Public Class Add_Product
             TextBox2.Text = common.update_product
             NumericUpDown1.Value = update_quantity
             TextBox3.Text = update_price
+            TextBox1.Text = update_actualprice
             Button10.Visible = True
             Button5.Visible = True
             Button1.Enabled = False
@@ -317,11 +321,12 @@ Public Class Add_Product
             Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
             If state Then
                 Dim price = Double.Parse(TextBox3.Text).ToString("0.00")
+                Dim act_price = Double.Parse(TextBox1.Text).ToString("0.00")
                 Dim insertquery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN " &
-                   "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size,added_by) " &
+                   "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size,added_by,Actual_Price) " &
                    "VALUES ((SELECT Cat_id FROM Category WHERE Category = @value1 AND status = 1), @value2, @value3, @value4, " &
                    "@value5, (SELECT brand_id FROM Brands WHERE Brand = @value6 AND status = 1), '1', CAST(GETDATE() AS DATE), " &
-                   "(SELECT size_id FROM size WHERE size = @value7 AND status = 1),(SELECT USERID FROM LOGIN WHERE USERNAME = @value8 AND ROLE = @value9)) END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) END"
+                   "(SELECT size_id FROM size WHERE size = @value7 AND status = 1),(SELECT USERID FROM LOGIN WHERE USERNAME = @value8 AND ROLE = @value9),@value10) END ELSE BEGIN RAISERROR ('Product with name %s already exists', 16, 1, @value2) END"
 
                 Dim valuesToInsert As New Dictionary(Of String, Object)
                 valuesToInsert.Add("@value1", ComboBox1.SelectedItem)
@@ -333,6 +338,8 @@ Public Class Add_Product
                 valuesToInsert.Add("@value7", ComboBox3.SelectedItem)
                 valuesToInsert.Add("@value8", currentuser)
                 valuesToInsert.Add("@value9", currentrole)
+                valuesToInsert.Add("@value10", act_price)
+
                 Dim result As Boolean = InsertData(insertquery, valuesToInsert)
 
                 If result = True Then
@@ -346,6 +353,14 @@ Public Class Add_Product
             End If
         End If
 
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
 
     End Sub
 End Class
