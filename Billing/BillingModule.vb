@@ -13,6 +13,7 @@ Public Class BILLING
         LoadAutoComplete()
         GeneratetheBillNo()
         InitialLoad()
+        Me.Quantity.Text = 1
         Dim validate As New DataGridViewButtonColumn()
         Dim delete As New DataGridViewButtonColumn()
         With validate
@@ -47,7 +48,6 @@ Public Class BILLING
         Me.Balance.Clear()
         Me.Total.Text = 0
         Me.Price.Text = 0
-        Me.Quantity.Text = 1
         Me.MobileNo.Text = ""
         Me.BarcodeCodetxt.Clear()
         Me.DiscountIo.Clear()
@@ -79,6 +79,7 @@ Public Class BILLING
                             Me.Quantity.Focus()
                             'MessageBox.Show($"Product Name: {ProductName}{Environment.NewLine}Quantity: {Quantity}{Environment.NewLine}Price: {Price}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             IncrementTheTotal(Me.Quantity.Text, Me.Price.Text)
+                            BarcodeCodetxt.Focus()
                         End While
                     Else
                         ' No rows found - display an error message
@@ -86,6 +87,8 @@ Public Class BILLING
                         BarcodeCodetxt.Clear()
                         BarcodeCodetxt.Focus()
                         InitialLoad()
+                        Me.Quantity.Text = 1
+
                     End If
                 End Using
             End Using
@@ -167,6 +170,9 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Price", Me.Price.Text))
                                         InsertParameter.Add(New SqlParameter("@Total", Me.Total.Text))
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
+                                        If (Len(userID)) <= 0 Then
+                                            MsgBox("UserIdEmpty")
+                                        End If
                                         InsertParameter.Add(New SqlParameter("@Billedby", userID))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
                                         Dim QuantityCheckDataelse As Int32 = QuantityCheck(Convert.ToInt32(ProductId), Convert.ToInt32(Me.Quantity.Text))
@@ -181,6 +187,7 @@ Public Class BILLING
                                         BarcodeCodetxt.Clear()
                                         BarcodeCodetxt.Focus()
                                         InitialLoad()
+                                        Me.Quantity.Text = 1
                                     End If
                                 End Using
 
@@ -330,6 +337,7 @@ Public Class BILLING
 
             End Using
             Final_amount_val(Me.ReturnAmount.Text, Me.DiscountOut.Text, Me.grandtot.Text)
+
             ' Execute the query
         Catch ex As Exception
             MsgBox($"SQL Exception occurred CalculateGrandTotal: {ex.Message}", MsgBoxStyle.Critical, "SQL Error")
@@ -378,13 +386,12 @@ Public Class BILLING
                                         If Exec = 1 Then
                                             Try
                                                 GenerateBill()
-
-
                                             Catch ex As Exception
                                                 MsgBox(ex.ToString)
                                             End Try
                                             GeneratetheBillNo()
                                             InitialLoad()
+                                            Me.Quantity.Text = 1
                                         End If
                                     End If
                                 End While
@@ -417,7 +424,7 @@ Public Class BILLING
             printDialog.Document = PD
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
-                PD.Print()
+                'PD.Print()
                 Return 1
             Else
                 Return -1
@@ -529,36 +536,40 @@ Public Class BILLING
         sumprice() 'call sub
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, height2)
         'e.Graphics.DrawString("0", f10b, Brushes.Black, 170, 10 + height2)
-        Dim RefundAmount As Double = 0
-        Dim ReturnAmounts As Double = 0
+        If String.IsNullOrEmpty(ReturnAmount.Text) Then
+            ReturnAmount.Text = "0"
+        End If
+        If String.IsNullOrEmpty(Final_amount.Text) Then
+            Final_amount.Text = "0"
+        End If
+        If String.IsNullOrEmpty(DiscountIo.Text) Then
+            DiscountIo.Text = "0"
+        End If
+        If String.IsNullOrEmpty(RefundAmounttxtbox.Text) Then
+            RefundAmounttxtbox.Text = "0"
+        End If
         If Len(Me.ReturnAmount.Text) <> 0 And Len(Return_billno.Text) <> 0 Then
-            ReduceAmount = Convert.ToDouble(Me.grandtot.Text) - Convert.ToDouble(ReturnAmount.Text)
+
             Dim Query As String = "update ReturnTable set Returned=@val where Returned=0 And Status = 1 And Billing_no=@BillNo"
             Dim parameters As New List(Of SqlParameter)
             parameters.Add(New SqlParameter("@val", 1))
             parameters.Add(New SqlParameter("@BillNo", Return_billno.Text))
             QueryProcess(Query, parameters)
-            ReturnAmounts = Convert.ToDouble(ReturnAmount.Text)
-            If ReduceAmount <= 0 Then
-                RefundAmount = Math.Abs(ReduceAmount)
-                ReduceAmount = 0
-            Else
-                RefundAmount = 0
-            End If
             e.Graphics.DrawString("Total Quantity:" + "    " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
             e.Graphics.DrawString("Net Amount:    " + "    " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 15)
-            e.Graphics.DrawString("Return Amount: " + " " + ReturnAmounts.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 30)
-            e.Graphics.DrawString("Grand Total:   " + "      " + ReduceAmount.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 45)
-            e.Graphics.DrawString("Refund Amount: " + " " + RefundAmount.ToString("0.00"), f10b, Brushes.Black, 10, 10 + height2 + 60)
-            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 80, center)
+            e.Graphics.DrawString("Return Amount: " + " " + ReturnAmount.Text, f10b, Brushes.Black, 10, 10 + height2 + 30)
+            e.Graphics.DrawString("Grand Total:   " + "      " + Final_amount.Text, f10b, Brushes.Black, 10, 10 + height2 + 45)
+            e.Graphics.DrawString("Refund Amount: " + " " + RefundAmounttxtbox.Text, f10b, Brushes.Black, 10, 10 + height2 + 60)
+            e.Graphics.DrawString("Discount:   " + "    " + DiscountIo.Text + "%", f10b, Brushes.Black, 10, 10 + height2 + 75)
+            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
         Else
-            ReduceAmount = Convert.ToDouble(Me.grandtot.Text)
+
             e.Graphics.DrawString("Total Quantity:" + " " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
             e.Graphics.DrawString("Net Amount:    " + " " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
+            e.Graphics.DrawString("Grand Total:   " + " " + Final_amount.Text, f10b, Brushes.Black, 10, 10 + height2 + 35)
+            e.Graphics.DrawString("Discount: " + " " + DiscountIo.Text + "%", f10b, Brushes.Black, 10, 10 + height2 + 50)
             e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
         End If
-
-        'e.Graphics.DrawString("~ Nosware Store ~", f10, Brushes.Black, centermargin, 50 + height2, center)
     End Sub
     Dim t_price As Integer
     Dim t_qty As Integer
@@ -603,10 +614,12 @@ Public Class BILLING
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         AddProduct(Me.BarcodeCodetxt.Text, Me.Bill_no.Text)
         InitialLoad()
+        Me.Quantity.Text = 1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         InitialLoad()
+        Me.Quantity.Text = 1
     End Sub
 
     Private Sub Quantity_KeyDown(sender As Object, e As KeyEventArgs) Handles Quantity.KeyDown
@@ -715,6 +728,13 @@ Public Class BILLING
     End Sub
     Private Sub Return_billno_KeyDown(sender As Object, e As KeyEventArgs) Handles Return_billno.KeyDown
         If e.KeyCode = Keys.Enter And Len(Return_billno.Text) <> 0 Then
+            If String.IsNullOrEmpty(Me.Return_billno.Text) Then
+                MsgBox("please Provide Appropriate Return BillNo")
+                Me.ReturnAmount.Clear()
+                Me.Return_billno.Clear()
+                InitialLoad()
+                Me.Quantity.Text = 1
+            End If
             If Convert.ToInt32(GetTheReturnAmount(Me.Return_billno.Text)) > 0 Then
                 Me.ReturnAmount.Text = GetTheReturnAmount(Me.Return_billno.Text).ToString
                 CalculateGrandTotal(Me.Bill_no.Text)
@@ -723,62 +743,38 @@ Public Class BILLING
                 Me.ReturnAmount.Clear()
                 Me.Return_billno.Clear()
                 InitialLoad()
+                Me.Quantity.Text = 1
             End If
         End If
-
     End Sub
 
 
 
     Private Sub Amount_TextChanged(sender As Object, e As EventArgs) Handles Amount.TextChanged
-        Try
-            Dim GrandTotal As Integer = Convert.ToDouble(Me.grandtot.Text)
-            Dim UserAmount As Integer = Convert.ToDouble(Me.Amount.Text)
-            Dim DiscountAmount As Integer
-            Dim ReturnAmount As Integer
-            If Not String.IsNullOrEmpty(Me.DiscountOut.Text) Then
-                DiscountAmount = Convert.ToDouble(Me.DiscountOut.Text)
-            Else
-                DiscountAmount = 0
-            End If
-            If Not String.IsNullOrEmpty(Me.ReturnAmount.Text) Then
-                ReturnAmount = Convert.ToDouble(Me.ReturnAmount.Text)
-            Else
-                ReturnAmount = 0
-            End If
-
-            If GrandTotal > 0 And UserAmount > 0 And UserAmount >= GrandTotal - ReturnAmount - DiscountAmount Then
-                Me.Balance.Text = ReturnAmount + UserAmount + DiscountAmount - GrandTotal
-            Else
-                Me.Balance.Text = 0
-            End If
-        Catch ex As Exception
-            Me.Amount.Clear()
-            Me.Balance.Clear()
-            Me.Amount.Focus()
-        End Try
-
-
+        AmountValue()
     End Sub
 
 
+    Public Sub AmountValue()
+        Try
+            CalculateGrandTotal(Me.Bill_no.Text)
 
+            If Not String.IsNullOrEmpty(Final_amount.Text) Then
+                'MsgBox("Enter Amount Textchanged")
+                Dim bal As Double = Convert.ToDouble(Me.Amount.Text) - Convert.ToDouble(Me.Final_amount.Text)
+                If bal < 0 Then
+                    bal = 0
+                End If
+                Me.Balance.Text = bal.ToString("0.00")
+            End If
+        Catch ex As Exception
+            Me.Balance.Text = "0"
+        End Try
+    End Sub
     Private Sub MobileNo_GotFocus(sender As Object, e As EventArgs) Handles MobileNo.GotFocus
         LoadAutoComplete()
     End Sub
 
-
-    'Private Sub DiscountIo_KeyDown(sender As Object, e As KeyEventArgs) Handles DiscountIo.KeyDown
-    '    If e.KeyCode = Keys.Enter Then
-    '        Try
-    '            Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
-    '            MsgBox(Me.DiscountOut.Text)
-    '        Catch ex As Exception
-    '            Me.DiscountOut.Text = "0"
-    '        End Try
-    '    End If
-
-    'End Sub
     Public Function DiscountPrice(grandtot As Double, discountpercent As Double)
         If discountpercent < 100 Then
             Dim grandTotal As Double = grandtot
@@ -786,8 +782,6 @@ Public Class BILLING
             Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
             Dim discountedTotal As Double = grandTotal - discountAmount
             'Me.grandtot.Text = discountedTotal
-
-
             Return Convert.ToInt32(discountAmount).ToString(0.00)
         Else
             CalculateGrandTotal(Me.Bill_no.Text)
@@ -800,13 +794,19 @@ Public Class BILLING
         Try
             Me.DiscountOut.Text = DiscountPrice(Convert.ToDouble(Me.grandtot.Text), Convert.ToDouble(Me.DiscountIo.Text))
             CalculateGrandTotal(Me.Bill_no.Text)
+            AmountValue()
+
             If DiscountOut.Text < 0 Then
                 Me.DiscountOut.Text = "0"
                 CalculateGrandTotal(Me.Bill_no.Text)
+                AmountValue()
+
             End If
         Catch ex As Exception
             Me.DiscountOut.Text = "0"
             CalculateGrandTotal(Me.Bill_no.Text)
+            AmountValue()
+
         End Try
     End Sub
 
@@ -822,10 +822,33 @@ Public Class BILLING
         End If
 
         Dim FinalVal As Double = Convert.ToDouble(GrandTotal) - (Convert.ToDouble(ReturnAmount) + Convert.ToDouble(DiscountAmount))
-        MessageBox.Show($"GrandTotal: {GrandTotal}{Environment.NewLine}ReturnAmount: {ReturnAmount}{Environment.NewLine}DiscountAmount: {DiscountAmount} Finalval:{FinalVal}{Environment.NewLine}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim Tempval As Double = Convert.ToDouble(GrandTotal) - Convert.ToDouble(DiscountAmount)
+        Dim RefundAmountval As Double
+        'MsgBox($"TemoVal:{Tempval}")
+        If Tempval > 0 Then
+            RefundAmountval = Tempval - Convert.ToDouble(ReturnAmount)
+            'MsgBox($"RefundAmountval:{RefundAmountval}")
+            If RefundAmountval < 0 Then
+                RefundAmountval = Math.Abs(RefundAmountval)
+            Else
+                RefundAmountval = 0
+            End If
+        Else
+            RefundAmountval = Convert.ToDouble(ReturnAmount)
+        End If
+        Me.RefundAmounttxtbox.Text = RefundAmountval.ToString("0.00")
+        'MessageBox.Show($"GrandTotal: {GrandTotal}{Environment.NewLine}ReturnAmount: {ReturnAmount}{Environment.NewLine}DiscountAmount: {DiscountAmount} Finalval:{FinalVal}{Environment.NewLine}", "Product Details", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.Final_amount.Text = FinalVal.ToString("0.00")
         If FinalVal < 1 Then
             Me.Final_amount.Text = "0"
         End If
+    End Sub
+
+    Private Sub BarcodeCodetxt_TextChanged(sender As Object, e As EventArgs) Handles BarcodeCodetxt.TextChanged
+
+    End Sub
+
+    Private Sub Return_billno_TextChanged(sender As Object, e As EventArgs) Handles Return_billno.TextChanged
+
     End Sub
 End Class
