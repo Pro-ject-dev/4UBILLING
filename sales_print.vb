@@ -47,7 +47,6 @@ Public Class sales_print
             Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "YourNamespace.Report2.rdlc"
             Dim renderedBytes As Byte() = Me.ReportViewer1.LocalReport.Render("PDF")
             File.WriteAllBytes(filePath, renderedBytes)
-            MessageBox.Show("Report saved successfully.")
             sendmail("Sales Report", "4U Fashions Sales Report", filePath)
 
         Catch ex As Exception

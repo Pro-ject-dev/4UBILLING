@@ -7,7 +7,7 @@ Public Class stock_report
     Public query As String
     Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.Size = New Size(1185, 450)
+        Me.Size = New Size(1185, 450)
 
         pro_filter.Checked = True
         date_filter.Checked = True
