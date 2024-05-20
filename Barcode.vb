@@ -12,8 +12,13 @@
         Dim clickedRowIndex As Integer = e.RowIndex
         Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
         PictureBox1.Image = generate(barcodee)
-        PrintPreviewDialog1.Document = PrintDocument1
-        PrintPreviewDialog1.ShowDialog()
+        Dim print As New PrintDialog()
+        print.Document = PrintDocument1
+        If print.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.PrinterSettings.Copies = print.PrinterSettings.Copies
+            PrintDocument1.Print()
+        End If
+
 
     End Sub
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
@@ -63,11 +68,11 @@
         DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
         DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        'DataGridView1.Columns(0).Width = screenwidth / 18
-        'DataGridView1.Columns(1).Width = screenwidth / 8
-        'DataGridView1.Columns(2).Width = screenwidth / 9
-        'DataGridView1.Columns(3).Width = screenwidth / 9
-        'DataGridView1.Columns(4).Width = screenwidth / 15
+        DataGridView1.Columns(0).Width = 100
+        DataGridView1.Columns(1).Width = 175
+        DataGridView1.Columns(2).Width = 100
+        DataGridView1.Columns(3).Width = 150
+        DataGridView1.Columns(4).Width = 110
 
 
 

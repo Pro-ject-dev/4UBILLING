@@ -20,7 +20,7 @@ Public Class update_product
         load_data()
     End Sub
     Public Sub load_data()
-        query = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name' , Quantity , Price, Barcode,Size.size from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id INNER JOIN Size ON products.size = Size.Size_id WHERE 1=1 and products.status='1'"
+        query = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name' , Quantity , Price, Barcode,Size.size,actual_price from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id INNER JOIN Size ON products.size = Size.Size_id WHERE 1=1 and products.status='1'"
         If ComboBox1.SelectedItem <> "" Then
             query += " and product_id='" + ComboBox1.SelectedItem + "'"
         End If
@@ -46,6 +46,8 @@ Public Class update_product
                 DataGridView1.Columns(5).Width = 146
                 DataGridView1.Columns(6).Visible = False
                 DataGridView1.Columns(7).Visible = False
+                DataGridView1.Columns(8).Visible = False
+
                 DataGridView1.ClearSelection()
                 DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
                 DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
@@ -95,6 +97,7 @@ Public Class update_product
         update_barcode = selectedRow.Cells(6).Value.ToString
         update_price = selectedRow.Cells(5).Value.ToString
         update_size = selectedRow.Cells(7).Value.ToString
+        update_actualprice = selectedRow.Cells(8).Value.ToString
         common.update = "1"
         Dim frm = New Add_Product
         frm.ShowDialog()

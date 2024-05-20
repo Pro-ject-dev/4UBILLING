@@ -69,8 +69,12 @@ Public Class admin_panel
             ExitToolStripMenuItem1.Visible = False
             ExitToolStripMenuItem2.Visible = False
             UserAccountsToolStripMenuItem.Visible = False
+            HomeToolStripMenuItem.Visible = False
         End If
-        DashboardToolStripMenuItem.PerformClick()
+        If currentrole = "ADMINISTRATOR" Then
+            DashboardToolStripMenuItem.PerformClick()
+
+        End If
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DashboardToolStripMenuItem.Click

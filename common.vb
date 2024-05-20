@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Drawing2D
+Imports System.Net.Mail
 Imports System.Reflection.Emit
 Imports System.Security.Cryptography
 Imports System.Text
@@ -13,6 +14,7 @@ Module common
     Public update As String = "0"
     Public update_productid As String = ""
     Public update_product As String = ""
+    Public update_actualprice As String = ""
     Public update_category As String = ""
     Public update_size As String = ""
     Public update_brand As String = ""
@@ -37,9 +39,13 @@ Module common
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
     'Public connectionString As String = "Data Source=mssql-168791-0.cloudclusters.net,10058;Initial Catalog=4ufashion;User ID=vasudev;Password=Vasu@12345"
     'Public connectionString As String = "Data Source=DESKTOP-3FLJO23\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+
     'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
 
-    Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
+    Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+
+
+    'Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
 
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
 
@@ -83,7 +89,7 @@ Module common
             Dim desiredWidth As Integer = 400
             Dim desiredHeight As Integer = 50
             Dim resizedBitmap As New Bitmap(desiredWidth, desiredHeight)
-            Dim graphics As Graphics = graphics.FromImage(resizedBitmap)
+            Dim graphics As Graphics = Graphics.FromImage(resizedBitmap)
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
             graphics.DrawImage(encodedBitmap, 0, 0, desiredWidth, desiredHeight)
             graphics.Dispose()
@@ -246,6 +252,26 @@ Module common
         End Using
     End Function
 
+    Public Function sendmail(subject As String, body As String, filepath As String)
+        Dim mail As New MailMessage()
+        mail.From = New MailAddress("info.sustainnovatechlabs@gmail.com")
+        mail.To.Add("vasudevan180603@gmail.com")
+        mail.Subject = subject
+        mail.Body = body
+        Dim fileName As String = filepath
+        Dim attachment As New Attachment(fileName)
+        mail.Attachments.Add(attachment)
+        Dim smtpServer As New SmtpClient("smtp.gmail.com")
+        smtpServer.Credentials = New Net.NetworkCredential("info.sustainnovatechlabs@gmail.com", "uoxgqxzngnfwmtsu")
+        smtpServer.Port = 587
+        smtpServer.EnableSsl = True
+        Try
+            smtpServer.Send(mail)
+            MessageBox.Show("Email sent successfully!")
+        Catch ex As Exception
+            MessageBox.Show("Error sending email: " & ex.Message)
+        End Try
+    End Function
 
 End Module
 

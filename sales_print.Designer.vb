@@ -25,6 +25,7 @@ Partial Class sales_print
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Button1 = New Button()
         SuspendLayout()
         ' 
         ' ReportViewer1
@@ -36,11 +37,21 @@ Partial Class sales_print
         ReportViewer1.Size = New Size(1000, 600)
         ReportViewer1.TabIndex = 0
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(798, 7)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(251, 34)
+        Button1.TabIndex = 2
+        Button1.Text = "Send Via Mail"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' sales_print
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1115, 672)
+        Controls.Add(Button1)
         Controls.Add(ReportViewer1)
         FormBorderStyle = FormBorderStyle.FixedSingle
         Margin = New Padding(3, 4, 3, 4)
@@ -51,4 +62,5 @@ Partial Class sales_print
     End Sub
     Friend WithEvents Login As Button
     Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents Button1 As Button
 End Class

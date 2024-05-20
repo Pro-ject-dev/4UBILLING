@@ -1,4 +1,5 @@
-﻿Imports System.Security.Cryptography
+﻿Imports System.Net.Mail
+Imports System.Security.Cryptography
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
@@ -6,7 +7,7 @@ Public Class stock_report
     Public query As String
     Dim dataTable As DataTable
     Private Sub update_product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.Size = New Size(screenwidth / 1.145, screenheight / 1.62)
+        Me.Size = New Size(1185, 450)
 
         pro_filter.Checked = True
         date_filter.Checked = True
@@ -50,13 +51,13 @@ Public Class stock_report
         dataTable = LoadDataTable(query)
         If dataTable IsNot Nothing Then
             DataGridView1.DataSource = dataTable
-            DataGridView1.Columns(0).Width = 140
-            DataGridView1.Columns(1).Width = 140
-            DataGridView1.Columns(2).Width = 230
-            DataGridView1.Columns(3).Width = 200
-            DataGridView1.Columns(4).Width = 180
-            DataGridView1.Columns(5).Width = 100
-            DataGridView1.Columns(6).Width = 158
+            DataGridView1.Columns(0).Width = 100
+            DataGridView1.Columns(1).Width = 100
+            DataGridView1.Columns(2).Width = 180
+            DataGridView1.Columns(3).Width = 120
+            DataGridView1.Columns(4).Width = 120
+            DataGridView1.Columns(5).Width = 90
+            DataGridView1.Columns(6).Width = 90
             DataGridView1.Columns(7).Visible = False
             DataGridView1.ClearSelection()
             DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black
@@ -107,6 +108,7 @@ Public Class stock_report
         If dataTable.Rows.Count = 0 Then
             MsgBox("Please Select Any of the Fields !")
         Else
+
 
             stock_query = ModifystockColumnNames(query)
             Dim frm = New stock_print

@@ -8,7 +8,7 @@ Public Class BILLING
     Public ProductId As String
     Public ReduceAmount As Double = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.Size = New Size(screenwidth / 1.06, screenheight / 1.2)
+        Me.Size = New Size(1395, 569)
         Me.BarcodeCodetxt.Focus()
         LoadAutoComplete()
         GeneratetheBillNo()
@@ -294,9 +294,9 @@ Public Class BILLING
             Dim gridSizes As New List(Of Double)
             If allow = 0 Then
                 allow = 1
-                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100})
+                gridSizes.AddRange({100, 156, 100, 100, 120, 100, 100})
             Else
-                gridSizes.AddRange({100, 100, 100, 100, 120, 100, 100, 80, 80})
+                gridSizes.AddRange({100, 100, 100, 156, 100, 100, 120, 100, 100})
             End If
 
             Dim objgrid As New GridClass
