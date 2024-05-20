@@ -39,7 +39,11 @@ Module common
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
     'Public connectionString As String = "Data Source=mssql-168791-0.cloudclusters.net,10058;Initial Catalog=4ufashion;User ID=vasudev;Password=Vasu@12345"
     'Public connectionString As String = "Data Source=DESKTOP-3FLJO23\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+
+    'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+
     Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+
 
     'Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
 
@@ -85,7 +89,7 @@ Module common
             Dim desiredWidth As Integer = 400
             Dim desiredHeight As Integer = 50
             Dim resizedBitmap As New Bitmap(desiredWidth, desiredHeight)
-            Dim graphics As Graphics = graphics.FromImage(resizedBitmap)
+            Dim graphics As Graphics = Graphics.FromImage(resizedBitmap)
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic
             graphics.DrawImage(encodedBitmap, 0, 0, desiredWidth, desiredHeight)
             graphics.Dispose()
