@@ -172,6 +172,7 @@ Public Class BILLING
                                         InsertParameter.Add(New SqlParameter("@Barcode", Me.BarcodeCodetxt.Text))
                                         If (Len(userID)) <= 0 Then
                                             MsgBox("UserIdEmpty")
+                                            userID = "1"
                                         End If
                                         InsertParameter.Add(New SqlParameter("@Billedby", userID))
                                         InsertParameter.Add(New SqlParameter("@Grandtotal", "0"))
@@ -444,7 +445,7 @@ Public Class BILLING
         longpaper = 0
         rowcount = BillingGridsumma.Rows.Count
         longpaper = rowcount * 70 + 300
-        longpaper = longpaper + 200
+        longpaper = longpaper + 230
     End Sub
 
 
@@ -511,14 +512,12 @@ Public Class BILLING
         '    Exit Sub
         'Else
         Dim hi As Integer
-        Dim Queryes = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
+        'Dim Queryes = "select ref_id As 'REF ID',pro.Product_name As 'PRODUCT NAME',cat.Category As 'CATEGORY',Brand.Brand As 'BRAND',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Total 'TOTAL' from dbo.Billing As Bill inner join Products As pro on pro.Product_id = Bill.Product_id  inner join Category As cat on cat.Cat_id = pro.Cat_id inner join Brands As Brand on Brand.Brand_id = pro.Brand_id where Bill.Status = 0 And Bill.Billing_no = @BillNO"
         height = 50
         hi = 0
         For row As Integer = 0 To BillingGridsumma.RowCount - 1
             height += 20 + hi
-            'MsgBox(row)
             'Product Name
-            'hi = row * 2
             hi = 17 + row
             e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(3).Value.ToString, f10, Brushes.Black, 0, 100 + height)
             'Quantity
@@ -555,19 +554,29 @@ Public Class BILLING
             parameters.Add(New SqlParameter("@val", 1))
             parameters.Add(New SqlParameter("@BillNo", Return_billno.Text))
             QueryProcess(Query, parameters)
+            'Barcode
+            Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
+            Dim barcodeimage As Image
+            barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, Me.Bill_no.Text))
             e.Graphics.DrawString("Total Quantity:" + "    " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
             e.Graphics.DrawString("Net Amount:    " + "    " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 15)
             e.Graphics.DrawString("Return Amount: " + " " + ReturnAmount.Text, f10b, Brushes.Black, 10, 10 + height2 + 30)
             e.Graphics.DrawString("Grand Total:   " + "      " + Final_amount.Text, f10b, Brushes.Black, 10, 10 + height2 + 45)
             e.Graphics.DrawString("Refund Amount: " + " " + RefundAmounttxtbox.Text, f10b, Brushes.Black, 10, 10 + height2 + 60)
             e.Graphics.DrawString("Discount:   " + "    " + DiscountIo.Text + "%", f10b, Brushes.Black, 10, 10 + height2 + 75)
-            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
+            e.Graphics.DrawImage(barcodeimage, CInt((e.PageBounds.Width - 53) / 2), 10 + height2 + 85, 100, 35)
+            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 110, center)
         Else
+            'Barcode
+            Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
+            Dim barcodeimage As Image
+            barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, Me.Bill_no.Text))
             e.Graphics.DrawString("Total Quantity:" + " " + t_qty.ToString(), f10b, Brushes.Black, 10, 10 + height2)
             e.Graphics.DrawString("Net Amount:    " + " " + Me.grandtot.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
             e.Graphics.DrawString("Grand Total:   " + " " + Final_amount.Text, f10b, Brushes.Black, 10, 10 + height2 + 35)
             e.Graphics.DrawString("Discount: " + " " + DiscountIo.Text + "%", f10b, Brushes.Black, 10, 10 + height2 + 50)
-            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 90, center)
+            e.Graphics.DrawImage(barcodeimage, CInt((e.PageBounds.Width - 80) / 2), 10 + height2 + 75, 100, 35)
+            e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 110, center)
         End If
     End Sub
     Dim t_price As Integer

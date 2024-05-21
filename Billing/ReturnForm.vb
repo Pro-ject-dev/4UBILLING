@@ -257,7 +257,10 @@ Public Class ReturnForm
             e.Graphics.DrawString(row("Total").ToString(), f10, Brushes.Black, 150, 100 + height + hi)
             initialval += 1
         Next
-
+        'Barcode
+        Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
+        Dim barcodeimage As Image
+        barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, Me.BillNo.Text))
         Dim height2 As Integer
         height2 = 110 + height + hi + 20
         'call sub
@@ -265,9 +268,8 @@ Public Class ReturnForm
         'e.Graphics.DrawString("0", f10b, Brushes.Black, 170, 10 + height2)
         e.Graphics.DrawString("Total Quantity:" + " " + Currentot.ToString, f10b, Brushes.Black, 10, 10 + height2)
         e.Graphics.DrawString("Net Amount:    " + " " + CurrentTotal.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
-        e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 50, center)
-
-        'e.Graphics.DrawString("~ Nosware Store ~", f10, Brushes.Black, centermargin, 50 + height2, center)
+        e.Graphics.DrawImage(barcodeimage, CInt((e.PageBounds.Width - 55) / 2), 10 + height2 + 35, 100, 35)
+        e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 55, center)
     End Sub
     Function Sum(BillNo)
         Dim Query As String = "select Sum(Quantity) as 'Quantity'  from ReturnTable where Status = 0 and Billing_no =@Billno and Returned = 0"

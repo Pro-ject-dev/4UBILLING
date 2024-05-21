@@ -1,5 +1,6 @@
 ﻿Public Class Barcode
-
+    Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
+    Dim barcodeimage As Image
     Private Sub Barcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label1.Text = "Enter the Product  :"
         PictureBox1.Visible = False
@@ -12,6 +13,7 @@
         Dim clickedRowIndex As Integer = e.RowIndex
         Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
         PictureBox1.Image = generate(barcodee)
+        barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, barcodee.ToString))
         Dim print As New PrintDialog()
         print.Document = PrintDocument1
         If print.ShowDialog() = DialogResult.OK Then
@@ -35,7 +37,9 @@
 
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        e.Graphics.DrawImage(PictureBox1.Image, 4, 4)
+        Dim height2 = 0
+        'e.Graphics.DrawImage(PictureBox1.Image, 4, 4)
+        e.Graphics.DrawImage(barcodeimage, CInt((e.PageBounds.Width - 80) / 2), 10 + height2 + 25, 100, 35)
     End Sub
 
 
