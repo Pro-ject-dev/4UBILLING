@@ -3,15 +3,12 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 
 Public Class Add_Product
-
-
     Dim barcode As String
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         common.status = "brand"
         Dim frm = New Add_dialogue
         frm.Show()
         frm.MdiParent = admin_panel
-
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -19,14 +16,10 @@ Public Class Add_Product
         Dim frm = New Add_dialogue
         frm.Show()
         frm.MdiParent = admin_panel
-
-
     End Sub
 
     Public Sub Add_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         loaded()
-
     End Sub
 
 
@@ -353,14 +346,6 @@ Public Class Add_Product
             End If
         End If
 
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-
-    End Sub
-
-    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
 
     End Sub
 End Class

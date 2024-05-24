@@ -81,7 +81,7 @@ Public Class Loginscreen
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Login.Click
         Dim parameters As Dictionary(Of String, Object) = New Dictionary(Of String, Object)
-        Dim queryString As String = "select * from Login where UserName = @user and Password = @pass and Role = @role"
+        Dim queryString As String = "select UserId from Login where UserName = @user and Password = @pass and Role = @role"
         If Len(username.Text) > 0 And Len(password.Text) > 0 Then
             userRequired.Visible = False
             passRequired.Visible = False
