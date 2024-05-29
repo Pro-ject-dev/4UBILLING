@@ -17,13 +17,16 @@ Public Class sales_print
                     da.Fill(dt)
                 End Using
             End Using
+
             With Me.ReportViewer1.LocalReport
                 .DataSources.Clear()
                 .ReportPath = "Report2.rdlc"
                 .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dataset", dt))
             End With
+
             Dim ps As New PageSettings()
-            ps.PaperSize = New PaperSize("A4", 827, 1169)
+            ps.PaperSize = New PaperSize("A4", 827, 1169) ' A4 size in hundredths of an inch
+            ps.Margins = New Margins(25, 25, 25, 25) ' Margins in hundredths of an inch (0.25 inches)
             ps.Landscape = False
             Me.ReportViewer1.SetPageSettings(ps)
             ReportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
@@ -33,6 +36,7 @@ Public Class sales_print
             MessageBox.Show("An error occurred: " & ex.Message)
         End Try
     End Sub
+
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
