@@ -39,13 +39,9 @@ Module common
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
     'Public connectionString As String = "Data Source=mssql-168791-0.cloudclusters.net,10058;Initial Catalog=4ufashion;User ID=vasudev;Password=Vasu@12345"
     'Public connectionString As String = "Data Source=DESKTOP-3FLJO23\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-
     'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-
-    Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-
-
-    'Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
+    'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+    Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
 
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
 
@@ -238,18 +234,23 @@ Module common
     End Function
 
     Public Function DecryptData(encryptedData As String) As String
-        Dim cipherText As Byte() = Convert.FromBase64String(encryptedData)
-        Using aesAlg As New AesCryptoServiceProvider()
-            aesAlg.Key = key
-            aesAlg.IV = iv
-            Dim decryptor As ICryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV)
-            Dim msDecrypt As New System.IO.MemoryStream(cipherText)
-            Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
-                Using srDecrypt As New System.IO.StreamReader(csDecrypt)
-                    Return srDecrypt.ReadToEnd()
+        Try
+            Dim cipherText As Byte() = Convert.FromBase64String(encryptedData)
+            Using aesAlg As New AesCryptoServiceProvider()
+                aesAlg.Key = key
+                aesAlg.IV = iv
+                Dim decryptor As ICryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV)
+                Dim msDecrypt As New System.IO.MemoryStream(cipherText)
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+                    Using srDecrypt As New System.IO.StreamReader(csDecrypt)
+                        Return srDecrypt.ReadToEnd()
+                    End Using
                 End Using
             End Using
-        End Using
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+
+        End Try
     End Function
 
     Public Function sendmail(subject As String, body As String, filepath As String)

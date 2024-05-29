@@ -212,32 +212,33 @@ Public Class ReturnForm
         b = Me.BillNo.Text
         'range from top
         e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, centermargin, 5, center)
-        e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 25, center)
+        e.Graphics.DrawString("Return Bill", f10b, Brushes.Black, centermargin, 25, center)
+        e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, centermargin + 1, 35, center)
         'e.Graphics.DrawString("RMS Complex, Near Canara Bank, Puduvalavu", f10, Brushes.Black, 10, 25, center)
-        e.Graphics.DrawString("Pudukkottai - Dt,Cell : 78712 93638", f10, Brushes.Black, centermargin, 40, center)
-        Dim BillAndDatehi As Integer = 70
+        e.Graphics.DrawString("Pudukkottai - Dt,Cell : 78712 93638", f10, Brushes.Black, centermargin, 50, center)
+        Dim BillAndDatehi As Integer = 80
         e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 120, BillAndDatehi)
         e.Graphics.DrawString("BillNo", f8, Brushes.Black, 0, BillAndDatehi)
         e.Graphics.DrawString(":", f8, Brushes.Black, 50, BillAndDatehi)
         e.Graphics.DrawString(b, f8, Brushes.Black, 70, BillAndDatehi)
-        Dim CashierAndAdminhi As Integer = 80
+        Dim CashierAndAdminhi As Integer = 90
         e.Graphics.DrawString("Cashier", f8, Brushes.Black, 0, CashierAndAdminhi)
         e.Graphics.DrawString(":", f8, Brushes.Black, 50, CashierAndAdminhi)
         e.Graphics.DrawString("Admin", f8, Brushes.Black, 70, CashierAndAdminhi)
         'e.Graphics.DrawString(DateTime.Now(), f8, Brushes.Black, 0, 90)
-        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 100)
-        e.Graphics.DrawString("Product Name", f10b, Brushes.Black, 0, 110)
-        e.Graphics.DrawString("Quantity", f10b, Brushes.Black, 25, 135)
-        e.Graphics.DrawString("Price", f10b, Brushes.Black, 85, 135)
-        e.Graphics.DrawString("Total", f10b, Brushes.Black, 150, 135)
-        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 150)
+        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 110)
+        e.Graphics.DrawString("Product Name", f10b, Brushes.Black, 0, 120)
+        e.Graphics.DrawString("Quantity", f10b, Brushes.Black, 25, 145)
+        e.Graphics.DrawString("Price", f10b, Brushes.Black, 85, 145)
+        e.Graphics.DrawString("Total", f10b, Brushes.Black, 150, 145)
+        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 160)
         Dim height As Integer 'DGV Position
         ReturnGrid.AllowUserToAddRows = False
         'If DataGridView1.CurrentCell.Value Is Nothing Then
         '    Exit Sub
         'Else
         Dim hi As Integer
-        height = 50
+        height = 60
         hi = 0
         Dim initialval As Integer = 0
         Dim billingDetails As DataTable = GetBillingDetails(Me.BillNo.Text)
@@ -257,17 +258,19 @@ Public Class ReturnForm
             e.Graphics.DrawString(row("Total").ToString(), f10, Brushes.Black, 150, 100 + height + hi)
             initialval += 1
         Next
-
+        'Barcode
+        Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
+        Dim barcodeimage As Image
+        barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, Me.BillNo.Text))
         Dim height2 As Integer
-        height2 = 110 + height + hi + 20
+        height2 = 120 + height + hi + 20
         'call sub
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, height2)
         'e.Graphics.DrawString("0", f10b, Brushes.Black, 170, 10 + height2)
         e.Graphics.DrawString("Total Quantity:" + " " + Currentot.ToString, f10b, Brushes.Black, 10, 10 + height2)
         e.Graphics.DrawString("Net Amount:    " + " " + CurrentTotal.Text, f10b, Brushes.Black, 10, 10 + height2 + 20)
-        e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 50, center)
-
-        'e.Graphics.DrawString("~ Nosware Store ~", f10, Brushes.Black, centermargin, 50 + height2, center)
+        e.Graphics.DrawImage(barcodeimage, CInt((e.PageBounds.Width - 55) / 2), 10 + height2 + 45, 100, 35)
+        e.Graphics.DrawString("~ Thanks for visting ~", f10, Brushes.Black, centermargin, 10 + height2 + 75, center)
     End Sub
     Function Sum(BillNo)
         Dim Query As String = "select Sum(Quantity) as 'Quantity'  from ReturnTable where Status = 0 and Billing_no =@Billno and Returned = 0"
@@ -372,7 +375,7 @@ Public Class ReturnForm
                                 InsertParameter.Add(New SqlParameter("@Price", Price.ToString))
                                 InsertParameter.Add(New SqlParameter("@Total", FirstTotal.ToString))
                                 InsertParameter.Add(New SqlParameter("@GrandTotal", 0))
-                                InsertParameter.Add(New SqlParameter("@ReturnBy", UserId))
+                                InsertParameter.Add(New SqlParameter("@ReturnBy", userID))
                                 InsertParameter.Add(New SqlParameter("@Product_id", Convert.ToInt32(productId)))
                                 InsertParameter.Add(New SqlParameter("@Customer_id", CustomerId))
                                 If QueryProcess(InsertQuery, InsertParameter) = 1 Then

@@ -15,6 +15,12 @@ Module SqlCon
                     Dim LoginValue As SqlDataReader = Command.ExecuteReader()
                     LoginValue.Read()
                     If LoginValue.HasRows Then
+                        userID = Convert.ToInt32(LoginValue("UserId"))
+
+                        While LoginValue.Read()
+                            userID = Convert.ToInt32(LoginValue("UserId"))
+
+                        End While
                         Return True
                     Else
                         Return False

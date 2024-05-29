@@ -23,7 +23,6 @@ Partial Class Splash
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Splash))
         PictureSplash = New PictureBox()
         Label1 = New Label()
         PictureLogo = New PictureBox()
@@ -36,6 +35,7 @@ Partial Class Splash
         iconMustache = New PictureBox()
         lableVersion = New Label()
         Timer1 = New Timer(components)
+        Label3 = New Label()
         CType(PictureSplash, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureLogo, ComponentModel.ISupportInitialize).BeginInit()
         CType(Load1, ComponentModel.ISupportInitialize).BeginInit()
@@ -46,7 +46,6 @@ Partial Class Splash
         ' 
         ' PictureSplash
         ' 
-        PictureSplash.Image = CType(resources.GetObject("PictureSplash.Image"), Image)
         PictureSplash.Location = New Point(29, 52)
         PictureSplash.Margin = New Padding(4)
         PictureSplash.Name = "PictureSplash"
@@ -63,13 +62,12 @@ Partial Class Splash
         Label1.Location = New Point(1712, 843)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(70, 25)
+        Label1.Size = New Size(56, 20)
         Label1.TabIndex = 1
         Label1.Text = "v.1.0.0"
         ' 
         ' PictureLogo
         ' 
-        PictureLogo.Image = CType(resources.GetObject("PictureLogo.Image"), Image)
         PictureLogo.Location = New Point(663, 119)
         PictureLogo.Name = "PictureLogo"
         PictureLogo.Size = New Size(213, 165)
@@ -82,7 +80,7 @@ Partial Class Splash
         Label2.AutoSize = True
         Label2.Location = New Point(712, 415)
         Label2.Name = "Label2"
-        Label2.Size = New Size(97, 25)
+        Label2.Size = New Size(80, 20)
         Label2.TabIndex = 10
         Label2.Text = "Loading..."
         ' 
@@ -119,22 +117,22 @@ Partial Class Splash
         ' labelBrandt
         ' 
         labelBrandt.AutoSize = True
-        labelBrandt.Font = New Font("Showcard Gothic", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        labelBrandt.Font = New Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point)
         labelBrandt.ForeColor = Color.FromArgb(CByte(237), CByte(20), CByte(99))
         labelBrandt.Location = New Point(663, 304)
         labelBrandt.Name = "labelBrandt"
-        labelBrandt.Size = New Size(213, 30)
+        labelBrandt.Size = New Size(181, 26)
         labelBrandt.TabIndex = 14
         labelBrandt.Text = "4ufashion look"
         ' 
         ' labelBrandb
         ' 
         labelBrandb.AutoSize = True
-        labelBrandb.Font = New Font("Showcard Gothic", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        labelBrandb.Font = New Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point)
         labelBrandb.ForeColor = Color.FromArgb(CByte(0), CByte(173), CByte(239))
         labelBrandb.Location = New Point(669, 334)
         labelBrandb.Name = "labelBrandb"
-        labelBrandb.Size = New Size(164, 30)
+        labelBrandb.Size = New Size(140, 26)
         labelBrandb.TabIndex = 16
         labelBrandb.Text = "Men's wear"
         ' 
@@ -154,20 +152,30 @@ Partial Class Splash
         lableVersion.ForeColor = SystemColors.ButtonShadow
         lableVersion.Location = New Point(882, 588)
         lableVersion.Name = "lableVersion"
-        lableVersion.Size = New Size(70, 25)
+        lableVersion.Size = New Size(56, 20)
         lableVersion.TabIndex = 18
         lableVersion.Text = "v.1.0.0"
         ' 
         ' Timer1
         ' 
         ' 
-        ' SplashScreen
+        ' Label3
         ' 
-        AutoScaleDimensions = New SizeF(12.0F, 25.0F)
+        Label3.AutoSize = True
+        Label3.Location = New Point(610, 585)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(266, 20)
+        Label3.TabIndex = 19
+        Label3.Text = "A SustainNova Tech Labs Product"
+        ' 
+        ' Splash
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(252), CByte(252), CByte(252))
         ClientSize = New Size(964, 622)
         ControlBox = False
+        Controls.Add(Label3)
         Controls.Add(lableVersion)
         Controls.Add(iconMustache)
         Controls.Add(labelBrandb)
@@ -179,10 +187,10 @@ Partial Class Splash
         Controls.Add(PictureLogo)
         Controls.Add(Label1)
         Controls.Add(PictureSplash)
-        Font = New Font("Microsoft Sans Serif", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Font = New Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point)
         FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(4)
-        Name = "SplashScreen"
+        Name = "Splash"
         StartPosition = FormStartPosition.CenterScreen
         Text = "SplashScreen"
         CType(PictureSplash, ComponentModel.ISupportInitialize).EndInit()
@@ -193,7 +201,6 @@ Partial Class Splash
         CType(iconMustache, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
-
     End Sub
 
     Friend WithEvents PictureSplash As PictureBox
@@ -208,4 +215,5 @@ Partial Class Splash
     Friend WithEvents iconMustache As PictureBox
     Friend WithEvents lableVersion As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label3 As Label
 End Class
