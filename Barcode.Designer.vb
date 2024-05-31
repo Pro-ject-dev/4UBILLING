@@ -22,7 +22,7 @@ Partial Class Barcode
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Barcode))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Barcode))
         GroupBox1 = New GroupBox()
         PictureBox1 = New PictureBox()
         TextBox1 = New TextBox()
@@ -43,37 +43,45 @@ Partial Class Barcode
         GroupBox1.Controls.Add(TextBox1)
         GroupBox1.Controls.Add(GroupBox2)
         GroupBox1.Controls.Add(Label1)
-        GroupBox1.Location = New Point(12, 6)
+        GroupBox1.Location = New Point(10, 5)
+        GroupBox1.Margin = New Padding(2, 2, 2, 2)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(984, 542)
+        GroupBox1.Padding = New Padding(2, 2, 2, 2)
+        GroupBox1.Size = New Size(787, 434)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
-        GroupBox1.Text = "Barcode Details"' 
+        GroupBox1.Text = "Barcode Details"
+        ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(641, 35)
+        PictureBox1.Location = New Point(513, 28)
+        PictureBox1.Margin = New Padding(2, 2, 2, 2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(289, 75)
+        PictureBox1.Size = New Size(231, 60)
         PictureBox1.TabIndex = 4
         PictureBox1.TabStop = False
         ' 
         ' TextBox1
         ' 
         TextBox1.BorderStyle = BorderStyle.FixedSingle
-        TextBox1.Location = New Point(185, 52)
+        TextBox1.Location = New Point(148, 42)
+        TextBox1.Margin = New Padding(2, 2, 2, 2)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(250, 31)
+        TextBox1.Size = New Size(200, 27)
         TextBox1.TabIndex = 3
         ' 
         ' GroupBox2
         ' 
         GroupBox2.Controls.Add(DataGridView1)
-        GroupBox2.Location = New Point(16, 114)
+        GroupBox2.Location = New Point(13, 91)
+        GroupBox2.Margin = New Padding(2, 2, 2, 2)
         GroupBox2.Name = "GroupBox2"
-        GroupBox2.Size = New Size(954, 412)
+        GroupBox2.Padding = New Padding(2, 2, 2, 2)
+        GroupBox2.Size = New Size(763, 330)
         GroupBox2.TabIndex = 2
         GroupBox2.TabStop = False
-        GroupBox2.Text = "***"' 
+        GroupBox2.Text = "***"
+        ' 
         ' DataGridView1
         ' 
         DataGridView1.AllowUserToAddRows = False
@@ -86,8 +94,8 @@ Partial Class Barcode
         DataGridView1.ColumnHeadersHeight = 50
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridView1.EnableHeadersVisualStyles = False
-        DataGridView1.Location = New Point(20, 29)
-        DataGridView1.Margin = New Padding(3, 2, 3, 2)
+        DataGridView1.Location = New Point(16, 23)
+        DataGridView1.Margin = New Padding(2, 2, 2, 2)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
@@ -96,17 +104,22 @@ Partial Class Barcode
         DataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridView1.RowTemplate.Height = 50
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(913, 360)
+        DataGridView1.Size = New Size(730, 288)
         DataGridView1.TabIndex = 10
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(15, 52)
+        Label1.Location = New Point(12, 42)
+        Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(164, 25)
+        Label1.Size = New Size(136, 20)
         Label1.TabIndex = 1
-        Label1.Text = "Select the Product :"' 
+        Label1.Text = "Select the Product :"
+        ' 
+        ' PrintDocument1
+        ' 
+        ' 
         ' PrintPreviewDialog1
         ' 
         PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
@@ -119,10 +132,11 @@ Partial Class Barcode
         ' 
         ' Barcode
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1008, 560)
+        ClientSize = New Size(806, 448)
         Controls.Add(GroupBox1)
+        Margin = New Padding(2, 2, 2, 2)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Barcode"
