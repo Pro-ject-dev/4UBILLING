@@ -22,7 +22,7 @@ Partial Class Add_Product
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Add_Product))
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Add_Product))
         GroupBox1 = New GroupBox()
         Label8 = New Label()
         Button10 = New Button()
@@ -75,31 +75,29 @@ Partial Class Add_Product
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(GroupBox2)
-        GroupBox1.Location = New Point(10, 10)
-        GroupBox1.Margin = New Padding(2, 2, 2, 2)
+        GroupBox1.Location = New Point(12, 12)
+        GroupBox1.Margin = New Padding(2)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Padding = New Padding(2, 2, 2, 2)
-        GroupBox1.Size = New Size(798, 434)
+        GroupBox1.Padding = New Padding(2)
+        GroupBox1.Size = New Size(998, 542)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
-        GroupBox1.Text = "Product Details"
-        ' 
+        GroupBox1.Text = "Product Details"' 
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(22, 305)
+        Label8.Location = New Point(28, 381)
         Label8.Margin = New Padding(2, 0, 2, 0)
         Label8.Name = "Label8"
-        Label8.Size = New Size(118, 20)
+        Label8.Size = New Size(140, 25)
         Label8.TabIndex = 18
-        Label8.Text = "Retail Price        :"
-        ' 
+        Label8.Text = "Retail Price        :"' 
         ' Button10
         ' 
-        Button10.Location = New Point(13, 398)
-        Button10.Margin = New Padding(2, 2, 2, 2)
+        Button10.Location = New Point(16, 498)
+        Button10.Margin = New Padding(2)
         Button10.Name = "Button10"
-        Button10.Size = New Size(296, 27)
+        Button10.Size = New Size(370, 34)
         Button10.TabIndex = 16
         Button10.Text = "Update Product"
         Button10.UseVisualStyleBackColor = True
@@ -107,10 +105,10 @@ Partial Class Add_Product
         ' 
         ' Button5
         ' 
-        Button5.Location = New Point(482, 398)
-        Button5.Margin = New Padding(2, 2, 2, 2)
+        Button5.Location = New Point(602, 498)
+        Button5.Margin = New Padding(2)
         Button5.Name = "Button5"
-        Button5.Size = New Size(296, 27)
+        Button5.Size = New Size(370, 34)
         Button5.TabIndex = 15
         Button5.Text = "Delete Product"
         Button5.UseVisualStyleBackColor = True
@@ -118,10 +116,10 @@ Partial Class Add_Product
         ' 
         ' Button2
         ' 
-        Button2.Location = New Point(255, 398)
-        Button2.Margin = New Padding(2, 2, 2, 2)
+        Button2.Location = New Point(319, 498)
+        Button2.Margin = New Padding(2)
         Button2.Name = "Button2"
-        Button2.Size = New Size(296, 27)
+        Button2.Size = New Size(370, 34)
         Button2.TabIndex = 14
         Button2.Text = "Add Product"
         Button2.UseVisualStyleBackColor = True
@@ -129,71 +127,66 @@ Partial Class Add_Product
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(22, 263)
+        Label5.Location = New Point(28, 329)
         Label5.Margin = New Padding(2, 0, 2, 0)
         Label5.Name = "Label5"
-        Label5.Size = New Size(118, 20)
+        Label5.Size = New Size(142, 25)
         Label5.TabIndex = 9
-        Label5.Text = "Actual Price       :"
-        ' 
+        Label5.Text = "Actual Price       :"' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(21, 222)
+        Label4.Location = New Point(26, 278)
         Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(116, 20)
+        Label4.Size = New Size(144, 25)
         Label4.TabIndex = 7
-        Label4.Text = "Quantity            :"
-        ' 
+        Label4.Text = "Quantity            :"' 
         ' NumericUpDown1
         ' 
-        NumericUpDown1.Location = New Point(153, 222)
-        NumericUpDown1.Margin = New Padding(2, 2, 2, 2)
-        NumericUpDown1.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        NumericUpDown1.Location = New Point(191, 278)
+        NumericUpDown1.Margin = New Padding(2)
+        NumericUpDown1.Maximum = New [Decimal](New Integer() {1000000, 0, 0, 0})
         NumericUpDown1.Name = "NumericUpDown1"
-        NumericUpDown1.Size = New Size(296, 27)
+        NumericUpDown1.Size = New Size(370, 31)
         NumericUpDown1.TabIndex = 6
         ' 
         ' TextBox2
         ' 
         TextBox2.BorderStyle = BorderStyle.FixedSingle
-        TextBox2.Location = New Point(153, 182)
-        TextBox2.Margin = New Padding(2, 2, 2, 2)
+        TextBox2.Location = New Point(191, 228)
+        TextBox2.Margin = New Padding(2)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(610, 27)
+        TextBox2.Size = New Size(762, 31)
         TextBox2.TabIndex = 5
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(22, 182)
+        Label3.Location = New Point(28, 228)
         Label3.Margin = New Padding(2, 0, 2, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(119, 20)
+        Label3.Size = New Size(145, 25)
         Label3.TabIndex = 4
-        Label3.Text = "Product Name   :"
-        ' 
+        Label3.Text = "Product Name   :"' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(17, 94)
+        Label2.Location = New Point(21, 118)
         Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(123, 20)
+        Label2.Size = New Size(149, 25)
         Label2.TabIndex = 2
-        Label2.Text = " Brand Name      :"
-        ' 
+        Label2.Text = " Brand Name      :"' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(21, 53)
+        Label1.Location = New Point(26, 66)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(116, 20)
+        Label1.Size = New Size(143, 25)
         Label1.TabIndex = 0
-        Label1.Text = "Category           :"
-        ' 
+        Label1.Text = "Category           :"' 
         ' GroupBox2
         ' 
         GroupBox2.Controls.Add(Label7)
@@ -212,50 +205,48 @@ Partial Class Add_Product
         GroupBox2.Controls.Add(Button1)
         GroupBox2.Controls.Add(Label6)
         GroupBox2.Controls.Add(ComboBox1)
-        GroupBox2.Location = New Point(13, 24)
-        GroupBox2.Margin = New Padding(2, 2, 2, 2)
+        GroupBox2.Location = New Point(16, 30)
+        GroupBox2.Margin = New Padding(2)
         GroupBox2.Name = "GroupBox2"
-        GroupBox2.Padding = New Padding(2, 2, 2, 2)
-        GroupBox2.Size = New Size(771, 369)
+        GroupBox2.Padding = New Padding(2)
+        GroupBox2.Size = New Size(964, 461)
         GroupBox2.TabIndex = 10
         GroupBox2.TabStop = False
-        GroupBox2.Text = "***"
-        ' 
+        GroupBox2.Text = "***"' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(10, 118)
+        Label7.Location = New Point(12, 148)
         Label7.Margin = New Padding(2, 0, 2, 0)
         Label7.Name = "Label7"
-        Label7.Size = New Size(115, 20)
+        Label7.Size = New Size(142, 25)
         Label7.TabIndex = 23
-        Label7.Text = "Size                   :"
-        ' 
+        Label7.Text = "Size                   :"' 
         ' TextBox1
         ' 
         TextBox1.BorderStyle = BorderStyle.FixedSingle
-        TextBox1.Location = New Point(140, 238)
-        TextBox1.Margin = New Padding(2, 2, 2, 2)
+        TextBox1.Location = New Point(175, 298)
+        TextBox1.Margin = New Padding(2)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(296, 27)
+        TextBox1.Size = New Size(370, 31)
         TextBox1.TabIndex = 17
         ' 
         ' Button8
         ' 
-        Button8.Location = New Point(594, 114)
-        Button8.Margin = New Padding(2, 2, 2, 2)
+        Button8.Location = New Point(742, 142)
+        Button8.Margin = New Padding(2)
         Button8.Name = "Button8"
-        Button8.Size = New Size(155, 27)
+        Button8.Size = New Size(194, 34)
         Button8.TabIndex = 26
         Button8.Text = "Delete Size"
         Button8.UseVisualStyleBackColor = True
         ' 
         ' Button9
         ' 
-        Button9.Location = New Point(441, 114)
-        Button9.Margin = New Padding(2, 2, 2, 2)
+        Button9.Location = New Point(551, 142)
+        Button9.Margin = New Padding(2)
         Button9.Name = "Button9"
-        Button9.Size = New Size(147, 27)
+        Button9.Size = New Size(184, 34)
         Button9.TabIndex = 25
         Button9.Text = "Add Size"
         Button9.UseVisualStyleBackColor = True
@@ -264,37 +255,37 @@ Partial Class Add_Product
         ' 
         ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox3.FormattingEnabled = True
-        ComboBox3.Location = New Point(140, 114)
-        ComboBox3.Margin = New Padding(2, 2, 2, 2)
+        ComboBox3.Location = New Point(175, 142)
+        ComboBox3.Margin = New Padding(2)
         ComboBox3.Name = "ComboBox3"
-        ComboBox3.Size = New Size(297, 28)
+        ComboBox3.Size = New Size(370, 33)
         ComboBox3.TabIndex = 24
         ' 
         ' TextBox3
         ' 
         TextBox3.BorderStyle = BorderStyle.FixedSingle
-        TextBox3.Location = New Point(140, 280)
-        TextBox3.Margin = New Padding(2, 2, 2, 2)
+        TextBox3.Location = New Point(175, 350)
+        TextBox3.Margin = New Padding(2)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(296, 27)
+        TextBox3.Size = New Size(370, 31)
         TextBox3.TabIndex = 8
         ' 
         ' Button7
         ' 
-        Button7.Location = New Point(594, 70)
-        Button7.Margin = New Padding(2, 2, 2, 2)
+        Button7.Location = New Point(742, 88)
+        Button7.Margin = New Padding(2)
         Button7.Name = "Button7"
-        Button7.Size = New Size(155, 27)
+        Button7.Size = New Size(194, 34)
         Button7.TabIndex = 19
         Button7.Text = "Delete Brand"
         Button7.UseVisualStyleBackColor = True
         ' 
         ' Button6
         ' 
-        Button6.Location = New Point(594, 28)
-        Button6.Margin = New Padding(2, 2, 2, 2)
+        Button6.Location = New Point(742, 35)
+        Button6.Margin = New Padding(2)
         Button6.Name = "Button6"
-        Button6.Size = New Size(155, 27)
+        Button6.Size = New Size(194, 34)
         Button6.TabIndex = 18
         Button6.Text = "Delete Category"
         Button6.UseVisualStyleBackColor = True
@@ -303,10 +294,10 @@ Partial Class Add_Product
         ' 
         PictureBox2.BorderStyle = BorderStyle.FixedSingle
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(690, 317)
-        PictureBox2.Margin = New Padding(2, 2, 2, 2)
+        PictureBox2.Location = New Point(862, 396)
+        PictureBox2.Margin = New Padding(2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(40, 36)
+        PictureBox2.Size = New Size(50, 44)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 17
         PictureBox2.TabStop = False
@@ -314,20 +305,20 @@ Partial Class Add_Product
         ' 
         ' Button4
         ' 
-        Button4.Location = New Point(441, 70)
-        Button4.Margin = New Padding(2, 2, 2, 2)
+        Button4.Location = New Point(551, 88)
+        Button4.Margin = New Padding(2)
         Button4.Name = "Button4"
-        Button4.Size = New Size(147, 27)
+        Button4.Size = New Size(184, 34)
         Button4.TabIndex = 16
         Button4.Text = "Add Brand"
         Button4.UseVisualStyleBackColor = True
         ' 
         ' Button3
         ' 
-        Button3.Location = New Point(441, 29)
-        Button3.Margin = New Padding(2, 2, 2, 2)
+        Button3.Location = New Point(551, 36)
+        Button3.Margin = New Padding(2)
         Button3.Name = "Button3"
-        Button3.Size = New Size(147, 27)
+        Button3.Size = New Size(184, 34)
         Button3.TabIndex = 15
         Button3.Text = "Add Category"
         Button3.UseVisualStyleBackColor = True
@@ -336,29 +327,29 @@ Partial Class Add_Product
         ' 
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(140, 70)
-        ComboBox2.Margin = New Padding(2, 2, 2, 2)
+        ComboBox2.Location = New Point(175, 88)
+        ComboBox2.Margin = New Padding(2)
         ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(297, 28)
+        ComboBox2.Size = New Size(370, 33)
         ComboBox2.TabIndex = 14
         ' 
         ' PictureBox1
         ' 
         PictureBox1.BorderStyle = BorderStyle.FixedSingle
-        PictureBox1.Location = New Point(481, 316)
-        PictureBox1.Margin = New Padding(2, 2, 2, 2)
+        PictureBox1.Location = New Point(601, 395)
+        PictureBox1.Margin = New Padding(2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(187, 36)
+        PictureBox1.Size = New Size(233, 44)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 13
         PictureBox1.TabStop = False
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(140, 319)
-        Button1.Margin = New Padding(2, 2, 2, 2)
+        Button1.Location = New Point(175, 399)
+        Button1.Margin = New Padding(2)
         Button1.Name = "Button1"
-        Button1.Size = New Size(296, 27)
+        Button1.Size = New Size(370, 34)
         Button1.TabIndex = 12
         Button1.Text = "Generate "
         Button1.UseVisualStyleBackColor = True
@@ -366,21 +357,20 @@ Partial Class Add_Product
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(10, 322)
+        Label6.Location = New Point(12, 402)
         Label6.Margin = New Padding(2, 0, 2, 0)
         Label6.Name = "Label6"
-        Label6.Size = New Size(115, 20)
+        Label6.Size = New Size(140, 25)
         Label6.TabIndex = 11
-        Label6.Text = "Barcode            :"
-        ' 
+        Label6.Text = "Barcode            :"' 
         ' ComboBox1
         ' 
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(140, 29)
-        ComboBox1.Margin = New Padding(2, 2, 2, 2)
+        ComboBox1.Location = New Point(175, 36)
+        ComboBox1.Margin = New Padding(2)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(297, 28)
+        ComboBox1.Size = New Size(370, 33)
         ComboBox1.TabIndex = 1
         ' 
         ' PrintPreviewDialog1
@@ -398,12 +388,12 @@ Partial Class Add_Product
         ' 
         ' Add_Product
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(817, 453)
+        ClientSize = New Size(1021, 566)
         Controls.Add(GroupBox1)
         FormBorderStyle = FormBorderStyle.FixedSingle
-        Margin = New Padding(2, 2, 2, 2)
+        Margin = New Padding(2)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Add_Product"
