@@ -116,4 +116,37 @@ Public Class admin_panel
         frm.Show()
         frm.MdiParent = Me
     End Sub
+
+    'Private Sub admin_panel_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+    '    Select Case e.Alt And e.KeyCode
+    '        Case Keys.B
+    '            Dim frm = New BILLING
+    '            frm.Show()
+    '            frm.MdiParent = Me
+    '    End Select
+    '    Select Case e.Alt And e.KeyCode
+    '        Case Keys.A
+    '            Dim frm = Add_Product
+    '            frm.Show()
+    '            frm.MdiParent = Me
+    '    End Select
+    '    Select Case e.Alt And e.KeyCode
+    '        Case Keys.U
+    '            Dim frm = update_product
+    '            frm.Show()
+    '            frm.MdiParent = Me
+    '    End Select
+    '    Select Case e.Alt And e.KeyCode
+    '        Case Keys.R
+    '            Dim frm = New ReturnForm
+    '            frm.Show()
+    '            frm.MdiParent = Me
+    '    End Select
+    '    Select Case e.Alt And e.KeyCode
+    '        Case Keys.D
+    '            Dim dashhboad = Dashboardd
+    '            dashhboad.Show()
+    '            dashhboad.MdiParent = Me
+    '    End Select
+    'End Sub
 End Class
