@@ -89,7 +89,6 @@ Public Class Barcode
         Dim f12b As New Font("Calibri", 12, FontStyle.Bold)
         Dim f11b As New Font("Calibri", 11, FontStyle.Bold)
         Dim f8b As New Font("Calibri", 8, FontStyle.Bold)
-
         'First Bill
         e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 10, 2, center)
         e.Graphics.DrawImage(barcodeimage, 25, 22, 100, 35)

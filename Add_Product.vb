@@ -255,7 +255,7 @@ Public Class Add_Product
     End Sub
 
     Public Function load_product()
-        TextBox2.Text = ComboBox2.Text & " " & ComboBox1.Text & " - " & ComboBox3.Text
+        TextBox2.Text = ComboBox2.Text & " " & ComboBox1.Text & " - " & ComboBox3.Text & " " & TextBox3.Text
     End Function
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
@@ -347,5 +347,9 @@ Public Class Add_Product
         End If
 
 
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        load_product()
     End Sub
 End Class
