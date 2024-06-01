@@ -5,6 +5,7 @@ Public Class Barcode
     Dim barcodeimage As Image
     Dim RetailPrice
     Dim Category
+    Dim BarcodeNo
     Private Sub Barcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label1.Text = "Enter the Product  :"
         PictureBox1.Visible = False
@@ -13,9 +14,9 @@ Public Class Barcode
 
 
     Private Sub ButtonColumn_Click(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-
         Dim clickedRowIndex As Integer = e.RowIndex
         Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
+        BarcodeNo = DataGridView1.CurrentRow.Cells(4).Value()
         PictureBox1.Image = generate(barcodee)
         RetailPrice = DataGridView1.CurrentRow.Cells(5).Value()
         Category = DataGridView1.CurrentRow.Cells(2).Value()
@@ -87,15 +88,19 @@ Public Class Barcode
         Dim f14 As New Font("Calibri", 14, FontStyle.Bold)
         Dim f12b As New Font("Calibri", 12, FontStyle.Bold)
         Dim f11b As New Font("Calibri", 11, FontStyle.Bold)
+        Dim f8b As New Font("Calibri", 8, FontStyle.Bold)
+
         'First Bill
-        e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 10, 5, center)
-        e.Graphics.DrawImage(barcodeimage, 25, 25, 100, 35)
-        e.Graphics.DrawString(Category.ToString, f11b, Brushes.Black, 10, 60, center)
+        e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 10, 2, center)
+        e.Graphics.DrawImage(barcodeimage, 25, 22, 100, 35)
+        e.Graphics.DrawString(BarcodeNo.ToString, f11b, Brushes.Black, 40, 50, center)
+        e.Graphics.DrawString(Category.ToString, f8b, Brushes.Black, 10, 65, center)
         e.Graphics.DrawString("MRP:" + " " + RetailPrice.ToString, f12b, Brushes.Black, 10, 75, center)
         'Second Bill
-        e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 230, 5, center)
-        e.Graphics.DrawImage(barcodeimage, 250, 25, 100, 35)
-        e.Graphics.DrawString(Category.ToString, f11b, Brushes.Black, 230, 60, center)
+        e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 230, 2, center)
+        e.Graphics.DrawImage(barcodeimage, 250, 22, 100, 35)
+        e.Graphics.DrawString(BarcodeNo.ToString, f11b, Brushes.Black, 265, 50, center)
+        e.Graphics.DrawString(Category.ToString, f8b, Brushes.Black, 230, 65, center)
         e.Graphics.DrawString("MRP:" + " " + RetailPrice.ToString, f12b, Brushes.Black, 230, 75, center)
     End Sub
 
