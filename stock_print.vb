@@ -57,7 +57,7 @@ Public Class stock_print
 
     Private Function RemoveEvenPages(filePath As String)
         ' Define input and output file paths
-        Dim OpfilePath As String = Path.Combine("C:\sales_report", "opreport.pdf")
+        Dim OpfilePath As String = Path.Combine("C:\stock_report", "opreport.pdf")
         Dim inputFilePath As String = filePath
         Dim outputFilePath As String = OpfilePath
         Dim doc As PdfDocument = PdfReader.Open(inputFilePath, PdfDocumentOpenMode.Modify)
