@@ -421,11 +421,23 @@ Public Class BILLING
     Private Function GenerateBill()
         Try
             changelongpaper()
+
             Dim printDialog As New PrintDialog()
             printDialog.Document = PD
+            Dim myPrinters = PrinterSettings.InstalledPrinters.OfType(Of String).
+                     Where(Function(p) p.Contains("POS-80C")).ToList()
+            If Not myPrinters.Count > 0 Then
+                MsgBox("printer Not Found!")
+            Else
+                Dim printerName As String = myPrinters(0)
+                'MsgBox("Printer found: " & printerName)
+                ' Set the printer for PrintDocument
+                PD.PrinterSettings.PrinterName = printerName
+            End If
+
+            PD.PrinterSettings.Copies = 2
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
-                'PD.Print()
                 Return 1
             Else
                 Return -1
@@ -455,6 +467,7 @@ Public Class BILLING
         pagesetup.PaperSize = New PaperSize("Custom", 250, longpaper)
         'pagesetup.Margins = New Margins(2, 2, 2, 50)
         PD.DefaultPageSettings = pagesetup
+
     End Sub
 
     Private Sub PD_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PD.PrintPage

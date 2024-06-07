@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 
 Public Class Barcode
     Dim gbarcode As New MessagingToolkit.Barcode.BarcodeEncoder
@@ -14,23 +15,39 @@ Public Class Barcode
 
 
     Private Sub ButtonColumn_Click(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        Dim clickedRowIndex As Integer = e.RowIndex
-        Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
-        BarcodeNo = DataGridView1.CurrentRow.Cells(4).Value()
-        PictureBox1.Image = generate(barcodee)
-        RetailPrice = DataGridView1.CurrentRow.Cells(5).Value()
-        Category = DataGridView1.CurrentRow.Cells(2).Value()
-        'MsgBox(RetailPrice)
-        'MsgBox(Category)
-        barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, barcodee.ToString))
-        Dim print As New PrintDialog()
-        print.Document = PrintDocument1
-        PrintPreviewDialog1.Document = PrintDocument1
-        PrintPreviewDialog1.ShowDialog()
-        If print.ShowDialog() = DialogResult.OK Then
-            PrintDocument1.PrinterSettings.Copies = print.PrinterSettings.Copies
-            PrintDocument1.Print()
-        End If
+        Try
+            Dim clickedRowIndex As Integer = e.RowIndex
+            Dim barcodee = DataGridView1.CurrentRow.Cells(4).Value()
+            BarcodeNo = DataGridView1.CurrentRow.Cells(4).Value()
+            PictureBox1.Image = generate(barcodee)
+            RetailPrice = DataGridView1.CurrentRow.Cells(5).Value()
+            Category = DataGridView1.CurrentRow.Cells(2).Value()
+            'MsgBox(RetailPrice)
+            'MsgBox(Category)
+            barcodeimage = New Bitmap(gbarcode.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, barcodee.ToString))
+            Dim print As New PrintDialog()
+            print.Document = PrintDocument1
+            Dim myPrinters = PrinterSettings.InstalledPrinters.OfType(Of String).
+                     Where(Function(p) p.Contains("SNBC TVSE LP 46 NEO BPLE")).ToList()
+            If Not myPrinters.Count > 0 Then
+                MsgBox("printer Not Found!")
+            Else
+                Dim printerName As String = myPrinters(0)
+                'MsgBox("Printer found: " & printerName)
+                ' Set the printer for PrintDocument
+                PrintDocument1.PrinterSettings.PrinterName = printerName
+            End If
+
+            PrintPreviewDialog1.Document = PrintDocument1
+            PrintPreviewDialog1.ShowDialog()
+            If print.ShowDialog() = DialogResult.OK Then
+                PrintDocument1.PrinterSettings.Copies = print.PrinterSettings.Copies
+                PrintDocument1.Print()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
 
 
     End Sub
@@ -89,7 +106,6 @@ Public Class Barcode
         Dim f12b As New Font("Calibri", 12, FontStyle.Bold)
         Dim f11b As New Font("Calibri", 11, FontStyle.Bold)
         Dim f8b As New Font("Calibri", 8, FontStyle.Bold)
-
         'First Bill
         e.Graphics.DrawString("4U FASHION LOOK", f14, Brushes.Black, 10, 2, center)
         e.Graphics.DrawImage(barcodeimage, 25, 22, 100, 35)

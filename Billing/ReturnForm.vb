@@ -154,6 +154,16 @@ Public Class ReturnForm
             changelongpaper()
             Dim printDialog As New PrintDialog()
             printDialog.Document = PD
+            Dim myPrinters = PrinterSettings.InstalledPrinters.OfType(Of String).
+                     Where(Function(p) p.Contains("POS-80C")).ToList()
+            If Not myPrinters.Count > 0 Then
+                MsgBox("printer Not Found")
+            Else
+                Dim printerName As String = myPrinters(0)
+                'MsgBox("Printer found: " & printerName)
+                'Set the printer for PrintDocument
+                PD.PrinterSettings.PrinterName = printerName
+            End If
             If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
             End If
