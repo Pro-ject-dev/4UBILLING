@@ -42,6 +42,8 @@ Partial Class stock_report
         Panel3 = New Panel()
         date_filter = New CheckBox()
         Panel5 = New Panel()
+        Label7 = New Label()
+        ComboBox1 = New ComboBox()
         pro_filter = New CheckBox()
         GroupBox2.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -113,7 +115,7 @@ Partial Class stock_report
         ' 
         ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox4.FormattingEnabled = True
-        ComboBox4.Location = New Point(29, 75)
+        ComboBox4.Location = New Point(29, 61)
         ComboBox4.Name = "ComboBox4"
         ComboBox4.Size = New Size(343, 33)
         ComboBox4.TabIndex = 4
@@ -122,7 +124,7 @@ Partial Class stock_report
         ' 
         Label4.AutoSize = True
         Label4.ForeColor = Color.Black
-        Label4.Location = New Point(28, 209)
+        Label4.Location = New Point(28, 168)
         Label4.Name = "Label4"
         Label4.Size = New Size(67, 25)
         Label4.TabIndex = 9
@@ -131,7 +133,7 @@ Partial Class stock_report
         ' 
         Label2.AutoSize = True
         Label2.ForeColor = Color.Black
-        Label2.Location = New Point(25, 37)
+        Label2.Location = New Point(25, 30)
         Label2.Name = "Label2"
         Label2.Size = New Size(91, 25)
         Label2.TabIndex = 5
@@ -140,7 +142,7 @@ Partial Class stock_report
         ' 
         ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox3.FormattingEnabled = True
-        ComboBox3.Location = New Point(29, 237)
+        ComboBox3.Location = New Point(29, 198)
         ComboBox3.Name = "ComboBox3"
         ComboBox3.Size = New Size(343, 33)
         ComboBox3.TabIndex = 8
@@ -149,7 +151,7 @@ Partial Class stock_report
         ' 
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(29, 158)
+        ComboBox2.Location = New Point(29, 131)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(343, 33)
         ComboBox2.TabIndex = 6
@@ -158,7 +160,7 @@ Partial Class stock_report
         ' 
         Label3.AutoSize = True
         Label3.ForeColor = Color.Black
-        Label3.Location = New Point(25, 121)
+        Label3.Location = New Point(25, 99)
         Label3.Name = "Label3"
         Label3.Size = New Size(93, 25)
         Label3.TabIndex = 7
@@ -242,6 +244,8 @@ Partial Class stock_report
         ' Panel5
         ' 
         Panel5.BorderStyle = BorderStyle.FixedSingle
+        Panel5.Controls.Add(Label7)
+        Panel5.Controls.Add(ComboBox1)
         Panel5.Controls.Add(ComboBox3)
         Panel5.Controls.Add(ComboBox2)
         Panel5.Controls.Add(Label2)
@@ -252,6 +256,24 @@ Partial Class stock_report
         Panel5.Name = "Panel5"
         Panel5.Size = New Size(405, 320)
         Panel5.TabIndex = 19
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.ForeColor = Color.Black
+        Label7.Location = New Point(28, 236)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(58, 25)
+        Label7.TabIndex = 11
+        Label7.Text = "Price :"' 
+        ' ComboBox1
+        ' 
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(28, 264)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(343, 33)
+        ComboBox1.TabIndex = 10
         ' 
         ' pro_filter
         ' 
@@ -311,4 +333,6 @@ Partial Class stock_report
     Friend WithEvents Panel3 As Panel
     Friend WithEvents date_filter As CheckBox
     Friend WithEvents pro_filter As CheckBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

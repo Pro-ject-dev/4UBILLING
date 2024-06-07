@@ -15,6 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Report1.rdlc~RF300c2bcf.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="4ufashion.ico" />
   </ItemGroup>
 

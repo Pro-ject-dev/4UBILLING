@@ -14,9 +14,11 @@ Public Class stock_report
         ComboBox2.Items.Add("")
         ComboBox3.Items.Add("")
         ComboBox4.Items.Add("")
+        ComboBox1.Items.Add("")
         Add_list("select product_name from products where status='1'", ComboBox4, "product_name")
         Add_list("select category from category where status = '1' ", ComboBox2, "category")
         Add_list("select brand from brands where status = '1' ", ComboBox3, "brand")
+        Add_list("select distinct(price) from products where status = '1' ", ComboBox1, "price")
         DataGridView1.ClearSelection()
 
     End Sub
@@ -39,6 +41,9 @@ Public Class stock_report
             End If
             If ComboBox4.SelectedItem <> "" Then
                 query += " and product_name ='" + ComboBox4.SelectedItem + "'"
+            End If
+            If ComboBox1.SelectedItem <> "" Then
+                query += " and price ='" + ComboBox1.SelectedItem + "'"
             End If
         End If
         If CheckBox1.Checked = True Then
@@ -123,10 +128,13 @@ Public Class stock_report
             ComboBox2.Enabled = False
             ComboBox3.Enabled = False
             ComboBox4.Enabled = False
+            ComboBox1.Enabled = False
         Else
             ComboBox2.Enabled = True
             ComboBox3.Enabled = True
             ComboBox4.Enabled = True
+            ComboBox1.Enabled = True
+
         End If
         load_data()
     End Sub
@@ -142,5 +150,7 @@ Public Class stock_report
         load_data()
     End Sub
 
-
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        load_data()
+    End Sub
 End Class

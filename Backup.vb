@@ -65,22 +65,15 @@ Public Class Backup
     End Function
 
     Public Async Function SendDocumentAsync(botClient As TelegramBotClient, chatId As Long, filePath As String, progress As ProgressBar) As Task
-        progress.Value = 60
-        Label3.Text = "60 %"
-        Dim fileInfo As New FileInfo(filePath)
-        progress.Value = 70
-        Label3.Text = "70 %"
-        Dim fileStream As New FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read)
-        progress.Value = 80
-        Label3.Text = "80 %"
-        Dim documentFile As InputOnlineFile = New InputOnlineFile(fileStream, fileInfo.Name)
         progress.Value = 90
         Label3.Text = "90 %"
-        sendmail(" Backup File", "4U Fashion Look Backup File", filePath)
-        fileStream.Close()
+        Dim estatus = sendmail(" Backup File", "4U Fashion Look Backup File", filePath)
         progress.Value = 100
         Label3.Text = "100 %"
-        MessageBox.Show("Backup successfully sent!", "Backup Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If estatus Then
+            MessageBox.Show("Backup successfully sent!", "Backup Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        End If
 
         Me.Close()
     End Function
