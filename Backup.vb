@@ -76,7 +76,7 @@ Public Class Backup
         Dim documentFile As InputOnlineFile = New InputOnlineFile(fileStream, fileInfo.Name)
         progress.Value = 90
         Label3.Text = "90 %"
-        Dim sentDocument As Message = Await botClient.SendDocumentAsync(chatId, documentFile)
+        sendmail(" Backup File", "4U Fashion Look Backup File", filePath)
         fileStream.Close()
         progress.Value = 100
         Label3.Text = "100 %"
