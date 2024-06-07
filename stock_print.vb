@@ -27,7 +27,7 @@ Public Class stock_print
             ps.PaperSize = New PaperSize("A4", 827, 1169)
             ps.Landscape = False
             Me.ReportViewer1.SetPageSettings(ps)
-            ReportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
+            Me.ReportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
             Me.ReportViewer1.RefreshReport()
 
         Catch ex As Exception
@@ -44,7 +44,7 @@ Public Class stock_print
             End If
             Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "YourNamespace.Report1.rdlc"
             Dim renderedBytes As Byte() = Me.ReportViewer1.LocalReport.Render("PDF")
-            MessageBox.Show("Report saved successfully.")
+            File.WriteAllBytes(filePath, renderedBytes)
             sendmail("Stocks Report", "4U Fashions Stocks Report", "C:\stock_report\report.pdf")
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message)

@@ -111,7 +111,7 @@ Public Class Barcode
     End Sub
 
     Public Sub autocomplete()
-        Dim query As String = "Select product_id as 'Product Id', product_name , Category.Category as Category , brands.brand as 'Brand Name',Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.product_name Like '%" & TextBox1.Text.Replace("'", "''") & "%' and products.status='1'"
+        Dim query As String = "Select product_id as 'Product Id', product_name , Category.Category as Category , brands.brand as 'Brand Name',Barcode from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and ( products.product_name Like '%" & TextBox1.Text.Replace("'", "''") & "%' or products.product_id like '%" & TextBox1.Text.Replace("'", "''") & "%') and products.status='1' order by products.product_id"
         Dim dataTable As DataTable = LoadDataTable(query)
 
         If dataTable IsNot Nothing Then
@@ -128,7 +128,7 @@ Public Class Barcode
     End Sub
 
     Public Sub load()
-        Dim query As String = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name',Barcode,products.price from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and products.product_name Like '%" & TextBox1.Text.Replace("'", "''") & "%' and products.status='1'"
+        Dim query As String = "Select product_id as 'Product Id', product_name as 'Product Name', Category.Category as Category , brands.brand as 'Brand Name',Barcode,products.price from products INNER JOIN Category ON products.cat_id = Category.cat_id INNER JOIN brands ON brands.brand_id = products.brand_id WHERE 1=1 and (products.product_name Like '%" & TextBox1.Text.Replace("'", "''") & "%' or products.product_id like '%" & TextBox1.Text.Replace("'", "''") & "%') and products.status='1' order by products.product_id"
         Dim dataTable As DataTable = LoadDataTable(query)
         DataGridView1.DataSource = dataTable
         DataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Black

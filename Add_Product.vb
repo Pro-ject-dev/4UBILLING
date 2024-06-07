@@ -117,7 +117,7 @@ Public Class Add_Product
                             MsgBox("Product Updated Successfully!")
                         End If
                     Else
-                        MsgBox("This Product is Already Added!")
+                        MsgBox("This Product Name is not Editable!")
                     End If
                     common.update = "0"
                     Dim dataTable As DataTable = LoadDataTable(update_product.query)
@@ -313,8 +313,8 @@ Public Class Add_Product
         Else
             Dim state As Boolean = ShowConfirmation("Are You Sure to Add this Product ?")
             If state Then
-                Dim price = Double.Parse(TextBox3.Text).ToString("0.00")
-                Dim act_price = Double.Parse(TextBox1.Text).ToString("0.00")
+                Dim price = TextBox3.Text
+                Dim act_price = TextBox1.Text
                 Dim insertquery As String = "IF NOT EXISTS (SELECT 1 FROM products WHERE Product_name = @value2 and status=1) BEGIN " &
                    "INSERT INTO products (Cat_id, Product_name, Quantity, Price, Barcode, Brand_id, Status, date, size,added_by,Actual_Price) " &
                    "VALUES ((SELECT Cat_id FROM Category WHERE Category = @value1 AND status = 1), @value2, @value3, @value4, " &
