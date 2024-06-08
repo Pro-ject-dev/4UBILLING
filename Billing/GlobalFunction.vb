@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 Imports Microsoft.Data.SqlClient
 
 Module GlobalFunction
@@ -10,7 +11,7 @@ Module GlobalFunction
             Using command As New SqlCommand(Query, con)
                 command.Parameters.AddWithValue("@Product_id", Product_id)
                 con.Open()
-                Using reader As SqlDataReader = command.ExecuteReader()
+                Using reader As SqlDataReader = command.ExecuteReader
                     If reader.HasRows Then
                         While reader.Read()
                             Dim Quantity As Int32 = reader("Quantity")

@@ -428,19 +428,17 @@ Public Class BILLING
                      Where(Function(p) p.Contains("POS-80C")).ToList()
             If Not myPrinters.Count > 0 Then
                 MsgBox("printer Not Found!")
+                Return -1
             Else
                 Dim printerName As String = myPrinters(0)
+
+
                 'MsgBox("Printer found: " & printerName)
                 ' Set the printer for PrintDocument
                 PD.PrinterSettings.PrinterName = printerName
-            End If
-
-            PD.PrinterSettings.Copies = 2
-            If printDialog.ShowDialog() = DialogResult.OK Then
+                PD.PrinterSettings.Copies = 2
                 PD.Print()
                 Return 1
-            Else
-                Return -1
             End If
         Catch ex As Exception
             Return -1
