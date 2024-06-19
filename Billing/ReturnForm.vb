@@ -158,21 +158,23 @@ Public Class ReturnForm
                      Where(Function(p) p.Contains("POS-80C")).ToList()
             If Not myPrinters.Count > 0 Then
                 MsgBox("printer Not Found")
+                Return -1
             Else
                 Dim printerName As String = myPrinters(0)
+
+
                 'MsgBox("Printer found: " & printerName)
                 'Set the printer for PrintDocument
                 PD.PrinterSettings.PrinterName = printerName
-            End If
-            If printDialog.ShowDialog() = DialogResult.OK Then
                 PD.Print()
+                Return 1
             End If
-            Return 1
         Catch ex As Exception
             Return -1
         End Try
 
     End Function
+
     Dim WithEvents PD As New PrintDocument
     'Dim PPD As New PrintPreviewDialog
     Dim longpaper As Integer
