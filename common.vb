@@ -32,7 +32,6 @@ Module common
     Public updaterole As String = ""
     Public validate As New DataGridViewButtonColumn()
     Public delete As New DataGridViewButtonColumn()
-
     Private ReadOnly key As Byte() = Encoding.UTF8.GetBytes("ThisIsA16ByteKey")
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
     Public connectionString As String = "Data Source=DESKTOP-7IRNTJB\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
