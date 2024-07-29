@@ -431,8 +431,6 @@ Public Class BILLING
                 Return -1
             Else
                 Dim printerName As String = myPrinters(0)
-
-
                 'MsgBox("Printer found: " & printerName)
                 ' Set the printer for PrintDocument
                 PD.PrinterSettings.PrinterName = printerName
