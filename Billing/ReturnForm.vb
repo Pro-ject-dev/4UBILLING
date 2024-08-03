@@ -55,7 +55,7 @@ Public Class ReturnForm
                     If reader.HasRows Then
                         While reader.Read()
                             If Len(Me.GrandTotal.Text) <> 0 And Me.GrandTotal.Text <> 0 And Len(Me.BillNo.Text) <> 0 Then
-                                Dim UpdateQuery As String = "update ReturnTable set Status=1,GrandTotal=@GrandTotal where Billing_no = @BillNo "
+                                Dim UpdateQuery As String = "update ReturnTable set Status=1,GrandTotal=@GrandTotal where Billing_no = @BillNo"
                                 Dim UpdateQueryparameter As New List(Of SqlParameter)
                                 UpdateQueryparameter.Add(New SqlParameter("@GrandTotal", Convert.ToInt32(reader("Total"))))
                                 UpdateQueryparameter.Add(New SqlParameter("@BillNo", Me.BillNo.Text))
@@ -329,7 +329,7 @@ Public Class ReturnForm
         Return dataTable
     End Function
     Private Sub GetTheProduct(BillNo, Barcode)
-        Dim Query As String = "select Bill.Barcode As 'BARCODE',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Product_id As 'PRODUCT ID',Bill.Customer_id As 'CUSTOMER ID' from Billing AS Bill where Bill.Barcode =@Barcode And Bill.Billing_no =@BillNo And Status=1"
+        Dim Query As String = "select Bill.Barcode As 'BARCODE',Bill.Quantity As 'QUANTITY',Bill.Price As 'PRICE',Bill.Product_id As 'PRODUCT ID',Bill.Customer_id As 'CUSTOMER ID',Bill.DiscountPercentage As 'DiscountPercentage' from Billing AS Bill where Bill.Barcode =@Barcode And Bill.Billing_no =@BillNo And Status=1"
         Dim con As SqlConnection = New SqlConnection(connectionString)
         Try
             Using command As New SqlCommand(Query, con)
@@ -344,8 +344,9 @@ Public Class ReturnForm
                             Dim Price As String = reader("PRICE").ToString
                             Dim productId As Int32 = Convert.ToInt32(reader("PRODUCT ID"))
                             Dim CustomerId As Int32 = Convert.ToInt32(reader("CUSTOMER ID"))
-
-                            InsertReturnProduct(BillNo, BillQuantity, Barcodeval, Price, productId, CustomerId)
+                            Dim DiscountPercentage As Double = Convert.ToDouble(reader("DiscountPercentage"))
+                            'MsgBox(DiscountPercentage)
+                            InsertReturnProduct(BillNo, BillQuantity, Barcodeval, Price, productId, CustomerId, DiscountPercentage)
                         End While
                     Else
                         MsgBox("Provide Appropriate Details")
@@ -361,7 +362,7 @@ Public Class ReturnForm
         End Try
     End Sub
 
-    Private Sub InsertReturnProduct(BillNo, BillQuantity, Barcodeval, Price, productId, CustomerId)
+    Private Sub InsertReturnProduct(BillNo, BillQuantity, Barcodeval, Price, productId, CustomerId, DiscountPercentage)
         Dim Query As String = "select Billing_no,sum(Quantity) As 'Quantity',Price from  ReturnTable where Billing_no =@BillNo and Barcode =@Barcodeval  GROUP BY Billing_no, Price"
         Dim con As SqlConnection = New SqlConnection(connectionString)
         Try
@@ -380,6 +381,7 @@ Public Class ReturnForm
                                 Dim InsertQuery As String = "Insert into ReturnTable (Billing_no,Barcode,Quantity,Price,Total,GrandTotal,ReturnBy,Date,Status,Product_id,Returned,Customer_id) values(@Billingno,@Barcodeval,@Quantity,@Price,@Total,@GrandTotal,@ReturnBy,GETDATE(),0,@Product_id,0,@Customer_id)"
                                 Dim FirstQuantity = 1
                                 Dim FirstTotal = FirstQuantity * Price
+                                FirstTotal = DiscountPrice(Convert.ToDouble(FirstTotal), Convert.ToDouble(DiscountPercentage))
                                 Dim InsertParameter As New List(Of SqlParameter)
                                 InsertParameter.Add(New SqlParameter("@Billingno", BillNo))
                                 InsertParameter.Add(New SqlParameter("@Barcodeval", Barcodeval))
@@ -403,6 +405,7 @@ Public Class ReturnForm
                         Dim InsertQuery As String = "Insert into ReturnTable (Billing_no,Barcode,Quantity,Price,Total,GrandTotal,ReturnBy,Date,Status,Product_id,Returned,Customer_id) values(@Billingno,@Barcodeval,@Quantity,@Price,@Total,@GrandTotal,@ReturnBy,GETDATE(),0,@Product_id,0,@Customer_id)"
                         Dim FirstQuantity = 1
                         Dim FirstTotal = FirstQuantity * Price
+                        FirstTotal = DiscountPrice(Convert.ToDouble(FirstTotal), Convert.ToDouble(DiscountPercentage))
                         Dim InsertParameter As New List(Of SqlParameter)
                         InsertParameter.Add(New SqlParameter("@Billingno", BillNo))
                         InsertParameter.Add(New SqlParameter("@Barcodeval", Barcodeval))
@@ -410,7 +413,7 @@ Public Class ReturnForm
                         InsertParameter.Add(New SqlParameter("@Price", Price.ToString))
                         InsertParameter.Add(New SqlParameter("@Total", FirstTotal.ToString))
                         InsertParameter.Add(New SqlParameter("@GrandTotal", 0))
-                        InsertParameter.Add(New SqlParameter("@ReturnBy", UserId))
+                        InsertParameter.Add(New SqlParameter("@ReturnBy", userID))
                         InsertParameter.Add(New SqlParameter("@Product_id", Convert.ToInt32(productId)))
                         InsertParameter.Add(New SqlParameter("@Customer_id", CustomerId))
                         If QueryProcess(InsertQuery, InsertParameter) = 1 Then
@@ -450,6 +453,23 @@ Public Class ReturnForm
         End Try
     End Function
 
+
+    Public Function DiscountPrice(grandtot As Double, discountpercent As Double) As Int32
+        If discountpercent < 100 And discountpercent <> 0 Then
+            Dim grandTotal As Double = grandtot
+            Dim discountPercentage As Double = discountpercent
+
+            'changes required
+            Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
+            Dim discountedTotal As Double = grandTotal - discountAmount
+            'Me.grandtot.Text = discountedTotal
+            Return Convert.ToInt32(discountedTotal).ToString(0.00)
+        Else
+            LoadGrid(Me.BillNo.Text)
+            Return Convert.ToInt32(grandtot).ToString(0.00)
+        End If
+
+    End Function
 
 
     Private Sub BillNo_KeyDown(sender As Object, e As KeyEventArgs) Handles BillNo.KeyDown
