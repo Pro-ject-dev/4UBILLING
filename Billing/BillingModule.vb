@@ -375,12 +375,17 @@ Public Class BILLING
                             If reader.HasRows Then
                                 While reader.Read()
                                     Dim CustomerId As Int32 = Convert.ToInt32(reader("Customer_id"))
-                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,Billed_by=@Billedby where Billing_no =@BillNO"
+                                    Dim disper As Double = 0
+                                    If Convert.ToInt32(DiscountIo.Text) < 100 And DiscountIo.Text <> 0 Then
+                                        disper = Convert.ToDouble(DiscountIo.Text)
+                                    End If
+                                    Dim InsertCusidQuery As String = "update Billing set Customer_id =@CustomerID,Status=1,GrandTotal=@GrandTotal,DiscountPercentage=@DiscountPercentage,Billed_by=@Billedby where Billing_no =@BillNO"
                                     Dim parameters As New List(Of SqlParameter)
                                     parameters.Add(New SqlParameter("@BillNO", Me.Bill_no.Text))
                                     parameters.Add(New SqlParameter("@CustomerID", CustomerId))
                                     parameters.Add(New SqlParameter("@GrandTotal", Me.grandtot.Text))
                                     parameters.Add(New SqlParameter("@Billedby", 1))
+                                    parameters.Add(New SqlParameter("@DiscountPercentage", disper))
                                     Dim ReduceQuantity As Int32 = FinalizeBillingForReduceQuantity(Me.Bill_no.Text)
                                     If ReduceQuantity = 1 Then
                                         Dim Exec As Int32 = QueryProcess(InsertCusidQuery, parameters)
@@ -428,19 +433,15 @@ Public Class BILLING
                      Where(Function(p) p.Contains("POS-80C")).ToList()
             If Not myPrinters.Count > 0 Then
                 MsgBox("printer Not Found!")
+                Return -1
             Else
                 Dim printerName As String = myPrinters(0)
                 'MsgBox("Printer found: " & printerName)
                 ' Set the printer for PrintDocument
                 PD.PrinterSettings.PrinterName = printerName
-            End If
-
-            PD.PrinterSettings.Copies = 2
-            If printDialog.ShowDialog() = DialogResult.OK Then
+                PD.PrinterSettings.Copies = 2
                 PD.Print()
                 Return 1
-            Else
-                Return -1
             End If
         Catch ex As Exception
             Return -1
@@ -539,6 +540,13 @@ Public Class BILLING
             e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(7).Value.ToString, f10, Brushes.Black, 80, 100 + height + hi)
             'Total
             e.Graphics.DrawString(BillingGridsumma.Rows(row).Cells(8).Value.ToString, f10, Brushes.Black, 150, 100 + height + hi)
+            Dim convertTotAsDouble = Convert.ToDouble(BillingGridsumma.Rows(row).Cells(8).Value.ToString)
+            Dim convertPercentageDouble = Convert.ToDouble(Me.DiscountIo.Text)
+            Dim curDisCountAmount = DiscountPrice(convertTotAsDouble, convertPercentageDouble)
+            Dim curDiscountTot = convertTotAsDouble - curDisCountAmount
+            'MsgBox(curDiscountTot.ToString)
+            e.Graphics.DrawString(curDiscountTot.ToString, f10, Brushes.Black, 150, 100 + height + hi)
+
 
         Next
         'End If
@@ -800,11 +808,17 @@ Public Class BILLING
     Private Sub MobileNo_GotFocus(sender As Object, e As EventArgs) Handles MobileNo.GotFocus
         LoadAutoComplete()
     End Sub
-
-    Public Function DiscountPrice(grandtot As Double, discountpercent As Double)
-        If discountpercent < 100 Then
+    Public Function ReturnPercentagevalue(discountpercentage As Double)
+        Dim reductionFactor As Double = (100 - discountpercentage) / 100
+        Console.WriteLine("Reduction Factor: " & reductionFactor.ToString("F2"))
+        MsgBox(reductionFactor.ToString("F2"))
+    End Function
+    Public Function DiscountPrice(grandtot As Double, discountpercent As Double) As Int32
+        If discountpercent < 100 And discountpercent <> 0 Then
             Dim grandTotal As Double = grandtot
             Dim discountPercentage As Double = discountpercent
+
+            'changes required
             Dim discountAmount As Double = (discountPercentage / 100) * grandTotal
             Dim discountedTotal As Double = grandTotal - discountAmount
             'Me.grandtot.Text = discountedTotal
@@ -879,6 +893,14 @@ Public Class BILLING
     End Sub
 
     Private Sub Return_billno_TextChanged(sender As Object, e As EventArgs) Handles Return_billno.TextChanged
+
+    End Sub
+
+    Private Sub Final_amount_TextChanged(sender As Object, e As EventArgs) Handles Final_amount.TextChanged
+
+    End Sub
+
+    Private Sub MobileNo_TextChanged(sender As Object, e As EventArgs) Handles MobileNo.TextChanged
 
     End Sub
 End Class

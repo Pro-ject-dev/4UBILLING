@@ -34,9 +34,9 @@ Module common
     Public delete As New DataGridViewButtonColumn()
     Private ReadOnly key As Byte() = Encoding.UTF8.GetBytes("ThisIsA16ByteKey")
     Private ReadOnly iv As Byte() = Encoding.UTF8.GetBytes("1234567890123456")
-    Public connectionString As String = "Data Source=DESKTOP-7IRNTJB\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
+    'Public connectionString As String = "Data Source=DESKTOP-7IRNTJB\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
     'Public connectionString As String = "Data Source=VASU\SQLEXPRESS;Initial Catalog=4ufashion;Integrated Security=True"
-    'Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
+    Public connectionString As String = "Data Source=(localdb)\local;Initial Catalog=4ufashion;Integrated Security=True"
 
     Public Function InsertData(query As String, parameters As Dictionary(Of String, Object)) As Boolean
 
@@ -251,7 +251,8 @@ Module common
     Public Function sendmail(subject As String, body As String, filepath As String)
         Dim mail As New MailMessage()
         mail.From = New MailAddress("info.sustainnovatechlabs@gmail.com")
-        mail.To.Add("sikki801@gmail.com")
+        'mail.To.Add("sikki801@gmail.com")
+        mail.To.Add("saravanan7937@mountzion.ac.in")
         mail.Subject = subject
         mail.Body = body
         Dim fileName As String = filepath
